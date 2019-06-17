@@ -1,0 +1,136 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/mb/ontologies/2017/0/untitled-ontology-4#"
+     xml:base="http://www.semanticweb.org/mb/ontologies/2017/0/untitled-ontology-4"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:untitled-ontology-4="http://www.semanticweb.org/mb/ontologies/2017/0/untitled-ontology-4#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/mb/ontologies/2017/0/untitled-ontology-4"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/mb/ontologies/2017/0/untitled-ontology-4#tieneHijo -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/mb/ontologies/2017/0/untitled-ontology-4#tieneHijo"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/mb/ontologies/2017/0/untitled-ontology-4#HijoParricidaNietoNoParricida -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mb/ontologies/2017/0/untitled-ontology-4#HijoParricidaNietoNoParricida">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/mb/ontologies/2017/0/untitled-ontology-4#tieneHijo"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://www.semanticweb.org/mb/ontologies/2017/0/untitled-ontology-4#Parricida"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://www.semanticweb.org/mb/ontologies/2017/0/untitled-ontology-4#tieneHijo"/>
+                                <owl:someValuesFrom>
+                                    <owl:Class>
+                                        <owl:complementOf rdf:resource="http://www.semanticweb.org/mb/ontologies/2017/0/untitled-ontology-4#Parricida"/>
+                                    </owl:Class>
+                                </owl:someValuesFrom>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/mb/ontologies/2017/0/untitled-ontology-4#Mito -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mb/ontologies/2017/0/untitled-ontology-4#Mito"/>
+    
+
+
+    <!-- http://www.semanticweb.org/mb/ontologies/2017/0/untitled-ontology-4#Parricida -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/mb/ontologies/2017/0/untitled-ontology-4#Parricida"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/mb/ontologies/2017/0/untitled-ontology-4#Edipo -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mb/ontologies/2017/0/untitled-ontology-4#Edipo">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mb/ontologies/2017/0/untitled-ontology-4#Mito"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/mb/ontologies/2017/0/untitled-ontology-4#Parricida"/>
+        <tieneHijo rdf:resource="http://www.semanticweb.org/mb/ontologies/2017/0/untitled-ontology-4#Polinices"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mb/ontologies/2017/0/untitled-ontology-4#Polinices -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mb/ontologies/2017/0/untitled-ontology-4#Polinices">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mb/ontologies/2017/0/untitled-ontology-4#Mito"/>
+        <tieneHijo rdf:resource="http://www.semanticweb.org/mb/ontologies/2017/0/untitled-ontology-4#Tersandro"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mb/ontologies/2017/0/untitled-ontology-4#Tersandro -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mb/ontologies/2017/0/untitled-ontology-4#Tersandro">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mb/ontologies/2017/0/untitled-ontology-4#Mito"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:complementOf rdf:resource="http://www.semanticweb.org/mb/ontologies/2017/0/untitled-ontology-4#Parricida"/>
+            </owl:Class>
+        </rdf:type>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/mb/ontologies/2017/0/untitled-ontology-4#Yocasta -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/mb/ontologies/2017/0/untitled-ontology-4#Yocasta">
+        <rdf:type rdf:resource="http://www.semanticweb.org/mb/ontologies/2017/0/untitled-ontology-4#Mito"/>
+        <tieneHijo rdf:resource="http://www.semanticweb.org/mb/ontologies/2017/0/untitled-ontology-4#Edipo"/>
+        <tieneHijo rdf:resource="http://www.semanticweb.org/mb/ontologies/2017/0/untitled-ontology-4#Polinices"/>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.2.6.20160910-2108) https://github.com/owlcs/owlapi -->
+
