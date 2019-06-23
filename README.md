@@ -7,7 +7,7 @@ _Tutor_: José Samos Jiménez
 
 _Autora_: Gema Correa Fernandez
 
-#### Descripción del trabajo
+### Descripción del trabajo
 
 La Web Semántica ofrece mecanismos que son muy útiles para la integración de información. Se han definido estándares de representación de Información Geográfica mediante herramientas de la Web Semántica.
 
