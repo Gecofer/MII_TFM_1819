@@ -3,9 +3,9 @@
 
 **Repositorio para el Trabajo de Fin de Máster, del Máster de Ingeniería Informática de la Universidad de Granada impartido en la Escuela Técnica Superior de Ingeniería Informática y de Telecomunicaciones**
 
-Tutor: **José Samos Jiménez**
+- Tutor: **José Samos Jiménez**
 
-Autora: **Gema Correa Fernandez**
+- Autora: **Gema Correa Fernandez**
 
 ### Descripción del trabajo
 
