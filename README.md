@@ -15,4 +15,4 @@ En este proyecto se pretende estudiar las herramientas de la Web Semántica que 
 
 ### Enlaces de interés
 
-- [Información académica acerca Trabajo de Fin de Máster](http://masteres.ugr.es/ing-informatica/pages/info_academica/tfm/tfm)
+- [Información académica acerca del Trabajo de Fin de Máster](http://masteres.ugr.es/ing-informatica/pages/info_academica/tfm/tfm)
