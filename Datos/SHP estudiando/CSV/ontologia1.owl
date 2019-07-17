@@ -1,0 +1,581 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#CGN"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#EDI"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#IND"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#MAR"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#NIC"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203233"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203252"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203277"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203373"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203375"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203386"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203387"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203388"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203390"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203391"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203393"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203396"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203437"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203438"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203444"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203450"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203452"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203457"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203463"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203472"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1309141"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1309156"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#181062"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#181064"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#758271"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#758940"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#759271"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Desconocido"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Edificaciones"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Estado"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ParqueCasaGrande"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ParqueCerroSanCristobal"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ParqueFiscalLuisPortero"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ParqueJardin"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ParqueLomaLinda"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ParqueMunicipal"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ParqueSanSebastian"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PedroVerdeJardin2"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PedroVerdeJardin3"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PedroVerdeJardin4"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Poligonos"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Puntos"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SCL"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Tipo"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#USO"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ZVMolinoAltoJuntoCMediaLuna"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#1052"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#1056"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#1057"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#1134"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#1149"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#1150"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#1151"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#1193"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#1194"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#1195"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#1196"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#1197"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#1198"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ParqueCallecircunvalaciÃ³n"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ParqueDeLaestaciÃ³n"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#CGN"/>
+        <Class IRI="#Tipo"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#EDI"/>
+        <Class IRI="#Tipo"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#IND"/>
+        <Class IRI="#Tipo"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#MAR"/>
+        <Class IRI="#Tipo"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#NIC"/>
+        <Class IRI="#Tipo"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203233"/>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#CGN"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203233"/>
+        <Class IRI="#SCL"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203252"/>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#CGN"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203252"/>
+        <Class IRI="#SCL"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203277"/>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#MAR"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203277"/>
+        <Class IRI="#SCL"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203373"/>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#CGN"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203373"/>
+        <Class IRI="#SCL"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203375"/>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#CGN"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203375"/>
+        <Class IRI="#SCL"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203386"/>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#CGN"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203386"/>
+        <Class IRI="#SCL"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203387"/>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#CGN"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203387"/>
+        <Class IRI="#SCL"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203388"/>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#CGN"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203388"/>
+        <Class IRI="#SCL"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203390"/>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#CGN"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203390"/>
+        <Class IRI="#SCL"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203391"/>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#CGN"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203391"/>
+        <Class IRI="#SCL"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203393"/>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#CGN"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203393"/>
+        <Class IRI="#SCL"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203396"/>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#NIC"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203396"/>
+        <Class IRI="#SCL"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203437"/>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#NIC"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203437"/>
+        <Class IRI="#SCL"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203438"/>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#NIC"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203438"/>
+        <Class IRI="#SCL"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203444"/>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#NIC"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203444"/>
+        <Class IRI="#SCL"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203450"/>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#NIC"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203450"/>
+        <Class IRI="#SCL"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203452"/>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#NIC"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203452"/>
+        <Class IRI="#SCL"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203457"/>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#NIC"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203457"/>
+        <Class IRI="#SCL"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203463"/>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#NIC"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203463"/>
+        <Class IRI="#SCL"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203472"/>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#NIC"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203472"/>
+        <Class IRI="#SCL"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1309141"/>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#IND"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1309141"/>
+        <Class IRI="#USO"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1309156"/>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#IND"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1309156"/>
+        <Class IRI="#USO"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#181062"/>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#EDI"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#181062"/>
+        <Class IRI="#USO"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#181064"/>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#EDI"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#181064"/>
+        <Class IRI="#USO"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#758271"/>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#EDI"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#758271"/>
+        <Class IRI="#USO"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#758940"/>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#EDI"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#758940"/>
+        <Class IRI="#USO"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#759271"/>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#EDI"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#759271"/>
+        <Class IRI="#USO"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Desconocido"/>
+        <Class IRI="#1134"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Edificaciones"/>
+        <Class IRI="#Poligonos"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Estado"/>
+        <Class IRI="#Edificaciones"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ParqueCasaGrande"/>
+        <Class IRI="#1052"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ParqueCerroSanCristobal"/>
+        <Class IRI="#1056"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ParqueFiscalLuisPortero"/>
+        <Class IRI="#1057"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ParqueJardin"/>
+        <Class IRI="#Puntos"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ParqueLomaLinda"/>
+        <Class IRI="#1196"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ParqueMunicipal"/>
+        <Class IRI="#1150"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ParqueSanSebastian"/>
+        <Class IRI="#1198"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PedroVerdeJardin2"/>
+        <Class IRI="#1197"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PedroVerdeJardin3"/>
+        <Class IRI="#1151"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PedroVerdeJardin4"/>
+        <Class IRI="#1195"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SCL"/>
+        <Class IRI="#Estado"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Tipo"/>
+        <Class IRI="#Edificaciones"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#USO"/>
+        <Class IRI="#Estado"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ZVMolinoAltoJuntoCMediaLuna"/>
+        <Class IRI="#1149"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#1052"/>
+        <Class IRI="#ParqueJardin"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#1056"/>
+        <Class IRI="#ParqueJardin"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#1057"/>
+        <Class IRI="#ParqueJardin"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#1134"/>
+        <Class IRI="#ParqueJardin"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#1149"/>
+        <Class IRI="#ParqueJardin"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#1150"/>
+        <Class IRI="#ParqueJardin"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#1151"/>
+        <Class IRI="#ParqueJardin"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#1193"/>
+        <Class IRI="#ParqueJardin"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#1194"/>
+        <Class IRI="#ParqueJardin"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#1195"/>
+        <Class IRI="#ParqueJardin"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#1196"/>
+        <Class IRI="#ParqueJardin"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#1197"/>
+        <Class IRI="#ParqueJardin"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#1198"/>
+        <Class IRI="#ParqueJardin"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ParqueCallecircunvalaciÃ³n"/>
+        <Class IRI="#1194"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ParqueDeLaestaciÃ³n"/>
+        <Class IRI="#1193"/>
+    </SubClassOf>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 4.5.7.2018-12-02T02:23:35Z) https://github.com/owlcs/owlapi -->
+

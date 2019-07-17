@@ -1,0 +1,1 @@
+{"Collections":[{"sheetName":"parque-jardin","startColumn":"A","endColumn":"D","startRow":"2","endRow":"14","comment":"","rule":"Class: @C*\n  SubClassOf: @A*","active":true},{"sheetName":"parque-jardin","startColumn":"A","endColumn":"D","startRow":"2","endRow":"14","comment":"","rule":"Class: @A*\n  SubClassOf: ParqueJardin","active":true}]}

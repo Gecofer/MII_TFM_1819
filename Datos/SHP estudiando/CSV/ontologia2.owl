@@ -1,0 +1,366 @@
+Prefix(:=<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31>
+
+Declaration(Class(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#CGN>))
+Declaration(Class(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#EDI>))
+Declaration(Class(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#IND>))
+Declaration(Class(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#MAR>))
+Declaration(Class(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#NIC>))
+Declaration(Class(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203233>))
+Declaration(Class(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203252>))
+Declaration(Class(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203277>))
+Declaration(Class(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203373>))
+Declaration(Class(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203375>))
+Declaration(Class(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203386>))
+Declaration(Class(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203387>))
+Declaration(Class(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203388>))
+Declaration(Class(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203390>))
+Declaration(Class(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203391>))
+Declaration(Class(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203393>))
+Declaration(Class(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203396>))
+Declaration(Class(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203437>))
+Declaration(Class(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203438>))
+Declaration(Class(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203444>))
+Declaration(Class(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203450>))
+Declaration(Class(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203452>))
+Declaration(Class(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203457>))
+Declaration(Class(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203463>))
+Declaration(Class(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203472>))
+Declaration(Class(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1309141>))
+Declaration(Class(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1309156>))
+Declaration(Class(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#181062>))
+Declaration(Class(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#181064>))
+Declaration(Class(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#758271>))
+Declaration(Class(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#758940>))
+Declaration(Class(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#759271>))
+Declaration(Class(:Desconocido))
+Declaration(Class(:Edificaciones))
+Declaration(Class(:Estado))
+Declaration(Class(:Lineas))
+Declaration(Class(:ParqueCasaGrande))
+Declaration(Class(:ParqueCerroSanCristobal))
+Declaration(Class(:ParqueFiscalLuisPortero))
+Declaration(Class(:ParqueJardin))
+Declaration(Class(:ParqueLomaLinda))
+Declaration(Class(:ParqueMunicipal))
+Declaration(Class(:ParqueSanSebastian))
+Declaration(Class(:PedroVerdeJardin2))
+Declaration(Class(:PedroVerdeJardin3))
+Declaration(Class(:PedroVerdeJardin4))
+Declaration(Class(:Poligonos))
+Declaration(Class(:Puntos))
+Declaration(Class(:SCL))
+Declaration(Class(:Tipo))
+Declaration(Class(:USO))
+Declaration(Class(:ZVMolinoAltoJuntoCMediaLuna))
+Declaration(Class(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#1052>))
+Declaration(Class(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#1056>))
+Declaration(Class(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#1057>))
+Declaration(Class(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#1134>))
+Declaration(Class(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#1149>))
+Declaration(Class(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#1150>))
+Declaration(Class(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#1151>))
+Declaration(Class(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#1193>))
+Declaration(Class(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#1194>))
+Declaration(Class(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#1195>))
+Declaration(Class(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#1196>))
+Declaration(Class(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#1197>))
+Declaration(Class(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#1198>))
+Declaration(Class(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#ParqueCallecircunvalaciÃ³n>))
+Declaration(Class(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#ParqueDeLaestaciÃ³n>))
+############################
+#   Classes
+############################
+
+# Class: <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#CGN> (<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#CGN>)
+
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#CGN> :Tipo)
+
+# Class: <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#EDI> (<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#EDI>)
+
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#EDI> :Tipo)
+
+# Class: <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#IND> (<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#IND>)
+
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#IND> :Tipo)
+
+# Class: <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#MAR> (<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#MAR>)
+
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#MAR> :Tipo)
+
+# Class: <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#NIC> (<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#NIC>)
+
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#NIC> :Tipo)
+
+# Class: <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203233> (<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203233>)
+
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203233> <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#CGN>)
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203233> :SCL)
+
+# Class: <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203252> (<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203252>)
+
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203252> <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#CGN>)
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203252> :SCL)
+
+# Class: <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203277> (<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203277>)
+
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203277> <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#MAR>)
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203277> :SCL)
+
+# Class: <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203373> (<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203373>)
+
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203373> <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#CGN>)
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203373> :SCL)
+
+# Class: <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203375> (<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203375>)
+
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203375> <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#CGN>)
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203375> :SCL)
+
+# Class: <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203386> (<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203386>)
+
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203386> <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#CGN>)
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203386> :SCL)
+
+# Class: <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203387> (<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203387>)
+
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203387> <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#CGN>)
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203387> :SCL)
+
+# Class: <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203388> (<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203388>)
+
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203388> <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#CGN>)
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203388> :SCL)
+
+# Class: <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203390> (<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203390>)
+
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203390> <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#CGN>)
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203390> :SCL)
+
+# Class: <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203391> (<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203391>)
+
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203391> <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#CGN>)
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203391> :SCL)
+
+# Class: <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203393> (<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203393>)
+
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203393> <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#CGN>)
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203393> :SCL)
+
+# Class: <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203396> (<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203396>)
+
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203396> <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#NIC>)
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203396> :SCL)
+
+# Class: <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203437> (<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203437>)
+
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203437> <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#NIC>)
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203437> :SCL)
+
+# Class: <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203438> (<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203438>)
+
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203438> <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#NIC>)
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203438> :SCL)
+
+# Class: <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203444> (<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203444>)
+
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203444> <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#NIC>)
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203444> :SCL)
+
+# Class: <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203450> (<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203450>)
+
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203450> <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#NIC>)
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203450> :SCL)
+
+# Class: <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203452> (<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203452>)
+
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203452> <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#NIC>)
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203452> :SCL)
+
+# Class: <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203457> (<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203457>)
+
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203457> <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#NIC>)
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203457> :SCL)
+
+# Class: <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203463> (<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203463>)
+
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203463> <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#NIC>)
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203463> :SCL)
+
+# Class: <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203472> (<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203472>)
+
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203472> <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#NIC>)
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1203472> :SCL)
+
+# Class: <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1309141> (<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1309141>)
+
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1309141> <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#IND>)
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1309141> :USO)
+
+# Class: <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1309156> (<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1309156>)
+
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1309156> <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#IND>)
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#1309156> :USO)
+
+# Class: <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#181062> (<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#181062>)
+
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#181062> <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#EDI>)
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#181062> :USO)
+
+# Class: <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#181064> (<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#181064>)
+
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#181064> <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#EDI>)
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#181064> :USO)
+
+# Class: <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#758271> (<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#758271>)
+
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#758271> <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#EDI>)
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#758271> :USO)
+
+# Class: <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#758940> (<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#758940>)
+
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#758940> <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#EDI>)
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#758940> :USO)
+
+# Class: <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#759271> (<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#759271>)
+
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#759271> <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#EDI>)
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-29#759271> :USO)
+
+# Class: :Desconocido (:Desconocido)
+
+SubClassOf(:Desconocido <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#1134>)
+
+# Class: :Edificaciones (:Edificaciones)
+
+SubClassOf(:Edificaciones :Poligonos)
+
+# Class: :Estado (:Estado)
+
+SubClassOf(:Estado :Edificaciones)
+
+# Class: :ParqueCasaGrande (:ParqueCasaGrande)
+
+SubClassOf(:ParqueCasaGrande <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#1052>)
+
+# Class: :ParqueCerroSanCristobal (:ParqueCerroSanCristobal)
+
+SubClassOf(:ParqueCerroSanCristobal <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#1056>)
+
+# Class: :ParqueFiscalLuisPortero (:ParqueFiscalLuisPortero)
+
+SubClassOf(:ParqueFiscalLuisPortero <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#1057>)
+
+# Class: :ParqueJardin (:ParqueJardin)
+
+SubClassOf(:ParqueJardin :Puntos)
+
+# Class: :ParqueLomaLinda (:ParqueLomaLinda)
+
+SubClassOf(:ParqueLomaLinda <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#1196>)
+
+# Class: :ParqueMunicipal (:ParqueMunicipal)
+
+SubClassOf(:ParqueMunicipal <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#1150>)
+
+# Class: :ParqueSanSebastian (:ParqueSanSebastian)
+
+SubClassOf(:ParqueSanSebastian <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#1198>)
+
+# Class: :PedroVerdeJardin2 (:PedroVerdeJardin2)
+
+SubClassOf(:PedroVerdeJardin2 <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#1197>)
+
+# Class: :PedroVerdeJardin3 (:PedroVerdeJardin3)
+
+SubClassOf(:PedroVerdeJardin3 <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#1151>)
+
+# Class: :PedroVerdeJardin4 (:PedroVerdeJardin4)
+
+SubClassOf(:PedroVerdeJardin4 <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#1195>)
+
+# Class: :SCL (:SCL)
+
+SubClassOf(:SCL :Estado)
+
+# Class: :Tipo (:Tipo)
+
+SubClassOf(:Tipo :Edificaciones)
+
+# Class: :USO (:USO)
+
+SubClassOf(:USO :Estado)
+
+# Class: :ZVMolinoAltoJuntoCMediaLuna (:ZVMolinoAltoJuntoCMediaLuna)
+
+SubClassOf(:ZVMolinoAltoJuntoCMediaLuna <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#1149>)
+
+# Class: <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#1052> (<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#1052>)
+
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#1052> :ParqueJardin)
+
+# Class: <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#1056> (<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#1056>)
+
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#1056> :ParqueJardin)
+
+# Class: <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#1057> (<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#1057>)
+
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#1057> :ParqueJardin)
+
+# Class: <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#1134> (<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#1134>)
+
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#1134> :ParqueJardin)
+
+# Class: <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#1149> (<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#1149>)
+
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#1149> :ParqueJardin)
+
+# Class: <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#1150> (<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#1150>)
+
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#1150> :ParqueJardin)
+
+# Class: <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#1151> (<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#1151>)
+
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#1151> :ParqueJardin)
+
+# Class: <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#1193> (<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#1193>)
+
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#1193> :ParqueJardin)
+
+# Class: <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#1194> (<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#1194>)
+
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#1194> :ParqueJardin)
+
+# Class: <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#1195> (<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#1195>)
+
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#1195> :ParqueJardin)
+
+# Class: <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#1196> (<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#1196>)
+
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#1196> :ParqueJardin)
+
+# Class: <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#1197> (<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#1197>)
+
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#1197> :ParqueJardin)
+
+# Class: <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#1198> (<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#1198>)
+
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#1198> :ParqueJardin)
+
+# Class: <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#ParqueCallecircunvalaciÃ³n> (<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#ParqueCallecircunvalaciÃ³n>)
+
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#ParqueCallecircunvalaciÃ³n> <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#1194>)
+
+# Class: <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#ParqueDeLaestaciÃ³n> (<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#ParqueDeLaestaciÃ³n>)
+
+SubClassOf(<http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#ParqueDeLaestaciÃ³n> <http://www.semanticweb.org/gema/ontologies/2019/6/untitled-ontology-31#1193>)
+
+
+)
