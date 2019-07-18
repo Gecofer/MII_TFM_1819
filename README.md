@@ -1,7 +1,7 @@
 # TFM - Trabajo Fin de Máster
 ## Integración de Información Geográfica en la Web Semántica
 
-**Repositorio para el Trabajo de Fin de Máster, del Máster de Ingeniería Informática de la Universidad de Granada impartido en la Escuela Técnica Superior de Ingeniería Informática y de Telecomunicaciones**
+**Repositorio para el Trabajo de Fin de Máster, del Máster de Ingeniería Informática de la Universidad de Granada impartido en la Escuela Técnica Superior de Ingenierías Informática y de Telecomunicación**
 
 - Tutor: **José Samos Jiménez**
 - Autora: **Gema Correa Fernandez**

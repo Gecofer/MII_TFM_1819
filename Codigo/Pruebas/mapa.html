@@ -1,0 +1,746 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>XOSM</title>
+    <!-- CSS -->
+    <link href="bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="app.css" rel="stylesheet">
+
+    <!-- CodeMirror to enhance code visualization -->
+    <link rel="stylesheet" href="js/CodeMirror/lib/codemirror.css">
+    <script src="js/CodeMirror/lib/codemirror.js"></script>
+    <script src="js/CodeMirror/mode/xml/xml.js"></script>
+    <script src="js/CodeMirror/mode/xquery/xquery.js"></script>
+    <script src="js/CodeMirror/addon/selection/active-line.js"></script>
+
+  </head>
+  <body>
+    <!-- jQuery -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="//www.fuelcdn.com/fuelux/3.6.3/js/fuelux.min.js"></script>
+    <!-- Leaflet -->
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css" />
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
+
+
+<script type="text/javascript">
+  jQuery(function($) {
+  $("#contactUsLink").click(function(e) {
+      e.preventDefault();
+      $('#contactUs').modal('show');
+  });
+});
+</script>
+
+<!-- Modal -->
+<div class="modal fade" id="indexing" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Indexing Map Objects</h3>
+      </div>
+      <div class="modal-body">
+        <div class="loader" data-initialize="loader"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--
+<div class="modal fade" id="loader" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Running Query</h3>
+      </div>
+      <div class="modal-body">
+        <div class="loader" data-initialize="loader"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+-->
+
+<div class="modal fade" id="loader" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">
+          <div id="loaderTitle"></div>
+        </h3>
+      </div>
+      <div class="modal-body">
+        <div class="loader" data-initialize="loader">
+          <div id="loaderBody"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="showOSM" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+      	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title">OSM data</h3>
+      </div>
+      <div class="modal-body">
+      	<code>
+      		<div id="osmData">
+      		</div>
+      	</code>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalAlert" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title">
+          <div id="modalAlertTitle"></div>
+        </h3>
+      </div>
+      <div class="modal-body">
+        <p>
+          <div id="modalAlertBody"></div>
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="contactUs" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title">Project Team</h3>
+      </div>
+      <div class="modal-body app-modal-body">
+        Jesús Manuel Almendros-Jimenez <a href="mailto:jalmen@ual.es">jalmen@ual.es</a><br/>
+        Antonio Becerra-Terón <a href="mailto:abecerra@ual.es">abecerra@ual.es</a><br/>
+        Manuel Torres <a href="mailto:mtorres@ual.es">mtorres@ual.es</a><br/><br/>
+        Departamento de Informatica (<a href="http://www.ual.es">University of Almería)</a><br/>
+        04120 Almería (Spain)
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<div class="container fu-docs-container">
+
+  <div class="row">
+    <div class="col-md-12" role="main">
+
+
+      <div class="fu-docs-section">
+
+        <div class="page-header">
+        </div>
+
+        <div class = "col-md-9">
+
+
+          <div class="form-group row">
+                <label for="inputKey" class="col-md-1 control-label">Address:</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" id="address" placeholder="i.e. Calzada de Castro, Almeria, Spain">
+                </div>
+                <div class="col-md-1">
+                    <button class="btn btn-primary" onclick="getLngLat($('#address').val());">Search</button>
+                </div>
+            </div>
+
+          <!-- Nav tabs for Map -->
+          <div id = 'datos'></div>
+            <ul class="nav nav-tabs" role="tablist">
+              <li role="presentation" class="active"><a href="#menuMap" aria-controls="profile" role="tab" data-toggle="tab">Map</a></li>
+              <li role="presentation"><a href="#menuData" aria-controls="messages" role="tab" data-toggle="tab">Data</a></li>
+          </ul>
+
+          <!-- Tab panes for Map and Data -->
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="menuMap">
+              <div id="map" style="height: 700px"></div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="menuData">
+              <form action="downloadXML.php" method='post'>
+                <textarea id = 'mapXMLData' name = 'mapXMLData'></textarea>
+                <input type = "submit" class="btn btn-primary" value = "Download XML"/>
+              </form>
+            </div>
+          </div>
+
+          <p></p>
+        </div>
+
+        <div class = "col-md-3">
+
+          <!-- Nav tabs -->
+          <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#menuXQueryShell" aria-controls="profile" role="tab" data-toggle="tab">XQuery Shell</a></li>
+            <li role="presentation"><a href="#menuPBDExamples" aria-controls="messages" role="tab" data-toggle="tab">PBD</a></li>
+            <li role="presentation"><a href="#menuRLDExamples" aria-controls="messages" role="tab" data-toggle="tab">RLD</a></li>
+            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#infoModal">
+              Info
+            </button>
+          </ul>
+
+          <!-- Tab panes -->
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="menuXQueryShell">
+                  <textarea id = 'query' name = 'query' rows = '30' cols = '50' placeholder = 'XQuery shell - Examples Tab provides some testing examples'></textarea><br/>
+                  <button onclick = "removeMapLayers();" class="btn btn-warning">Clear Map</button>
+                  <button onclick = "clearQuery();" class="btn btn-warning">Clear Query</button>
+                  <button  id = "runXQueryShellbtn" class="btn btn-primary">Run</button><br/>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="menuPBDExamples">
+            <div class="panel-group" id="PBDaccordion" role="tablist" aria-multiselectable="true">
+
+              <div class="panel panel-default">  <div class="panel-heading" role="tab" id="PBDheading1">    <h4 class="panel-title">    <a role="button" data-toggle="collapse" data-parent="#PBDaccordion" href="#PBDcollapse1" aria-controls="collapse1">1. Retrieve the streets in London intersecting <i>Haymarket</i> street and touching <i>Trafalgar Square</i>.    </a>    </h4>  </div>  <div id="PBDcollapse1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="PBDheading1">    <div class="panel-body">      <div class = "col-md-12">        <pre>(: Type Haymarket, London in Address Text Box :)
+let $layer := xosm_pbd:getLayerByName(. ,"Haymarket",0)
+let $s := xosm_pbd:getElementByName(. ,"Haymarket")
+let $ts := xosm_pbd:getElementByName(. ,"Trafalgar Square")
+return fn:filter(fn:filter($layer,xosm_sp:intersecting(?,$s)), xosm_sp:touching(?,$ts))        </pre>        <button class="btn btn-primary" onclick="runningXQueryExample('example1PBD.xq');">Run</button>      </div>    </div>  </div></div><div class="panel panel-default">  <div class="panel-heading" role="tab" id="PBDheading2">    <h4 class="panel-title">    <a role="button" data-toggle="collapse" data-parent="#PBDaccordion" href="#PBDcollapse2" aria-controls="collapse2">2. Retrieve the restaurants in Roma further north to <i>Picasso hotel</i>.    </a>    </h4>  </div>  <div id="PBDcollapse2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="PBDheading2">    <div class="panel-body">      <div class = "col-md-12">        <pre>(: Type Repubblica, Rome in Address Text Box :)
+let $layer := xosm_pbd:getLayerByBB(.)
+let $hotel := xosm_pbd:getElementByName(. ,"Picasso")
+return fn:filter(fn:filter($layer,xosm_kw:searchKeyword(?,"restaurant")), xosm_sp:furtherNorthPoints($hotel ,?))        </pre>        <button class="btn btn-primary" onclick="runningXQueryExample('example2PBD.xq');">Run</button>      </div>    </div>  </div></div><div class="panel panel-default">  <div class="panel-heading" role="tab" id="PBDheading3">    <h4 class="panel-title">    <a role="button" data-toggle="collapse" data-parent="#PBDaccordion" href="#PBDcollapse3" aria-controls="collapse3">3. Retrieve hotels of Vienna close to food venues (food venues = number of bars and restaurants bigger than 30)    </a>    </h4>  </div>  <div id="PBDcollapse3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="PBDheading3">    <div class="panel-body">      <div class = "col-md-12">        <pre> (: Type Vienna in Address Text Box :)
+for $hotel in xosm_pbd:getElementsByKeyword(. ,"hotel")[@type="point" or @type="area"]
+let $layer := xosm_pbd:getLayerByElement(. , $hotel ,200) where count(fn:filter($layer , xosm_kw:searchKeywordSet(?, ("bar","restaurant")))) >= 30
+return $hotel
+        </pre>        <button class="btn btn-primary" onclick="runningXQueryExample('example3PBD.xq');">Run</button>      </div>    </div>  </div></div><div class="panel panel-default">  <div class="panel-heading" role="tab" id="PBDheading4">    <h4 class="panel-title">    <a role="button" data-toggle="collapse" data-parent="#PBDaccordion" href="#PBDcollapse4" aria-controls="collapse4">4. Retrieve the hotels of Munich with the greatest number of churches nearby    </a>    </h4>  </div>  <div id="PBDcollapse4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="PBDheading4">    <div class="panel-body">      <div class = "col-md-12">        <pre>(: Type Munich in Address Text Box :)
+let $hotel := xosm_pbd:getElementsByKeyword(. ,"hotel")
+let $f := function($hotel){ -(count(fn:filter(xosm_pbd:getLayerByElement(. , $hotel ,100), xosm_kw:searchKeyword(?,"church"))))}
+return fn:sort($hotel ,$f)[1]         </pre>        <button class="btn btn-primary" onclick="runningXQueryExample('example4PBD.xq');">Run</button>      </div>    </div>  </div></div><div class="panel panel-default">  <div class="panel-heading" role="tab" id="PBDheading5">    <h4 class="panel-title">    <a role="button" data-toggle="collapse" data-parent="#PBDaccordion" href="#PBDcollapse5" aria-controls="collapse5">5. Retrieve the size of park areas close to <i>Karl-Liebknecht-Straße</i> in Berlin.    </a>    </h4>  </div>  <div id="PBDcollapse5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="PBDheading5">    <div class="panel-body">      <div class = "col-md-12">        <pre>(: Type Karl-Liebknecht-Straße, Berlin in Address Text Box :)
+let $layer := xosm_pbd:getLayerByName(. ,"Karl-Liebknecht-Straße" ,350)
+let $parkAreas := fn:filter($layer ,xosm_kw:searchKeyword (?,"park"))
+return xosm_ag:metricSum($parkAreas ,"area")        </pre>        <button class="btn btn-primary" onclick="runningXQueryExample('example5PBD.xq');">Run</button>      </div>    </div>  </div></div><div class="panel panel-default">  <div class="panel-heading" role="tab" id="PBDheading6">    <h4 class="panel-title">    <a role="button" data-toggle="collapse" data-parent="#PBDaccordion" href="#PBDcollapse6" aria-controls="collapse6">6. Retrieve the top-star rating biggest hotels close to <i>Via Dante</i> in Milan).    </a>    </h4>  </div>  <div id="PBDcollapse6" class="panel-collapse collapse" role="tabpanel" aria-labelledby="PBDheading6">    <div class="panel-body">      <div class = "col-md-12">        <pre>(: Type Via Dante, Milan in Address Text Box :)
+let $layer := xosm_pbd:getLayerByName(. ,"Via Dante" ,350)
+let $hotels := fn:filter($layer,xosm_kw:searchKeyword(?,"hotel"))
+return xosm_ag:metricMax(xosm_ag:metricMax($hotels ,"stars"), "area")         </pre>        <button class="btn btn-primary" onclick="runningXQueryExample('example6PBD.xq');">Run</button>      </div>    </div>  </div></div><div class="panel panel-default">  <div class="panel-heading" role="tab" id="PBDheading7">    <h4 class="panel-title">    <a role="button" data-toggle="collapse" data-parent="#PBDaccordion" href="#PBDcollapse7" aria-controls="collapse7">7. Request taxi stops close to <i>Carrousel du Louvre</i> in Paris    </a>    </h4>  </div>  <div id="PBDcollapse7" class="panel-collapse collapse" role="tabpanel" aria-labelledby="PBDheading7">    <div class="panel-body">      <div class = "col-md-12">        <pre>(: Type Paris in Address Text Box :)
+let $taxis := xosm_open:json("http://opendata.paris.fr/explore/dataset/paris_taxis_stations/download/?format=geojson&amp;timezone=Europe/Berlin" ,"","amenity","taxi","highway","*")
+let $building := xosm_pbd:getElementByName (. ,"Carrousel du Louvre")
+return fn:filter($taxis,xosm_sp:DWithIn($building,?,500))        </pre>        <button class="btn btn-primary" onclick="runningXQueryExample('example7PBD.xq');">Run</button>      </div>    </div>  </div></div><div class="panel panel-default">  <div class="panel-heading" role="tab" id="PBDheading8">    <h4 class="panel-title">    <a role="button" data-toggle="collapse" data-parent="#PBDaccordion" href="#PBDcollapse8" aria-controls="collapse8">8. Retrieves free events of Madrid.    </a>    </h4>  </div>  <div id="PBDcollapse8" class="panel-collapse collapse" role="tabpanel" aria-labelledby="PBDheading8">    <div class="panel-body">      <div class = "col-md-12">        <pre> (: Type Madrid in Address Text Box :)
+let $events := xosm_open:json("http://data2.esrism.opendata.arcgis.com/datasets/51900577e33a4ba4ab59a691247aeee9_0.geojson","EVENTO","place","*","area","yes")
+return fn:filter($events ,function($p) {not(empty($p/node/tag[@k="GRATUITO" and @v="Sí"]))})        </pre>        <button class="btn btn-primary" onclick="runningXQueryExample('example8PBD.xq');">Run</button>      </div>    </div>  </div></div><div class="panel panel-default">  <div class="panel-heading" role="tab" id="PBDheading9">    <h4 class="panel-title">    <a role="button" data-toggle="collapse" data-parent="#PBDaccordion" href="#PBDcollapse9" aria-controls="collapse9">9. Retrieve Wikipedia information about places nearby to the intersection point of <i>Calle Mayor</i> and <i>Calle de Esparteros</i> in Madrid.    </a>    </h4>  </div>  <div id="PBDcollapse9" class="panel-collapse collapse" role="tabpanel" aria-labelledby="PBDheading9">    <div class="panel-body">      <div class = "col-md-12">        <pre>(: Type Calle Mayor, Madrid in Address Text Box :)
+let $x := xosm_pbd:getElementByName(. ,"Calle Mayor")
+let $y := xosm_pbd:getElementByName(. ,"Calle de Esparteros")
+return for $i in xosm_sp:intersectionPoints($x,$y)
+return xosm_open:wiki_element($i)        </pre>        <button class="btn btn-primary" onclick="runningXQueryExample('example9PBD.xq');">Run</button>      </div>    </div>  </div></div><div class="panel panel-default">  <div class="panel-heading" role="tab" id="PBDheading10">    <h4 class="panel-title">    <a role="button" data-toggle="collapse" data-parent="#PBDaccordion" href="#PBDcollapse10" aria-controls="collapse10">10. Retrieves the information provided by tixik.com around <i>Picadilly</i> in London.    </a>    </h4>  </div>  <div id="PBDcollapse10" class="panel-collapse collapse" role="tabpanel" aria-labelledby="PBDheading10">    <div class="panel-body">      <div class = "col-md-12">        <pre>(: Type Picadilly, London in Address Text Box :)
+let $x := xosm_pbd:getElementByName(. ,"Piccadilly")
+return xosm_open:tixik_element($x)        </pre>        <button class="btn btn-primary" onclick="runningXQueryExample('example10PBD.xq');">Run</button>      </div>    </div>  </div></div>
+          </div>
+            </div>
+
+            <div role="tabpanel" class="tab-pane" id="menuRLDExamples">
+            <div class="panel-group" id="RLDaccordion" role="tablist" aria-multiselectable="true">
+
+              <div class="panel panel-default">  <div class="panel-heading" role="tab" id="RLDheading1">    <h4 class="panel-title">    <a role="button" data-toggle="collapse" data-parent="#RLDaccordion" href="#RLDcollapse1" aria-controls="collapse1">1. Retrieve the streets in London intersecting <i>Haymarket</i> street and touching <i>Trafalgar Square</i>.    </a>    </h4>  </div>  <div id="RLDcollapse1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="RLDheading1">    <div class="panel-body">      <div class = "col-md-12">        <pre>(: Type Haymarket, London in Address Text Box :)
+let $layer := xosm_rld:getLayerByName(. ,"Haymarket",0)
+let $s := xosm_rld:getElementByName(. ,"Haymarket")
+let $ts := xosm_rld:getElementByName(. ,"Trafalgar Square")
+return fn:filter(fn:filter($layer,xosm_sp:intersecting(?,$s)), xosm_sp:touching(?,$ts))        </pre>        <button class="btn btn-primary" onclick="runningXQueryExample('example1Rev.xq');">Run</button>      </div>    </div>  </div></div><div class="panel panel-default">  <div class="panel-heading" role="tab" id="RLDheading2">    <h4 class="panel-title">    <a role="button" data-toggle="collapse" data-parent="#RLDaccordion" href="#RLDcollapse2" aria-controls="collapse2">2. Retrieve the restaurants in Roma further north to <i>Picasso hotel</i>.    </a>    </h4>  </div>  <div id="RLDcollapse2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="RLDheading2">    <div class="panel-body">      <div class = "col-md-12">        <pre>(: Type Repubblica, Rome in Address Text Box :)
+let $layer := xosm_rld:getLayerByBB(.)
+let $hotel := xosm_rld:getElementByName(. ,"Picasso")
+return fn:filter(fn:filter($layer,xosm_kw:searchKeyword(?,"restaurant")), xosm_sp:furtherNorthPoints($hotel ,?))        </pre>        <button class="btn btn-primary" onclick="runningXQueryExample('example2Rev.xq');">Run</button>      </div>    </div>  </div></div><div class="panel panel-default">  <div class="panel-heading" role="tab" id="RLDheading3">    <h4 class="panel-title">    <a role="button" data-toggle="collapse" data-parent="#RLDaccordion" href="#RLDcollapse3" aria-controls="collapse3">3. Retrieve hotels of Vienna close to food venues (food venues = number of bars and restaurants bigger than 30)    </a>    </h4>  </div>  <div id="RLDcollapse3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="RLDheading3">    <div class="panel-body">      <div class = "col-md-12">        <pre> (: Type Vienna in Address Text Box :)
+for $hotel in xosm_rld:getElementsByKeyword(. ,"hotel")[@type="point" or @type="area"]
+let $layer := xosm_rld:getLayerByElement(. , $hotel ,200) where count(fn:filter($layer , xosm_kw:searchKeywordSet(?, ("bar","restaurant")))) >= 30
+return $hotel
+        </pre>        <button class="btn btn-primary" onclick="runningXQueryExample('example3Rev.xq');">Run</button>      </div>    </div>  </div></div><div class="panel panel-default">  <div class="panel-heading" role="tab" id="RLDheading4">    <h4 class="panel-title">    <a role="button" data-toggle="collapse" data-parent="#RLDaccordion" href="#RLDcollapse4" aria-controls="collapse4">4. Retrieve the hotels of Munich with the greatest number of churches nearby    </a>    </h4>  </div>  <div id="RLDcollapse4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="RLDheading4">    <div class="panel-body">      <div class = "col-md-12">        <pre>(: Type Munich in Address Text Box :)
+let $hotel := xosm_rld:getElementsByKeyword(. ,"hotel")
+let $f := function($hotel){ -(count(fn:filter(xosm_rld:getLayerByElement(. , $hotel ,100), xosm_kw:searchKeyword(?,"church"))))}
+return fn:sort($hotel ,$f)[1]         </pre>        <button class="btn btn-primary" onclick="runningXQueryExample('example4Rev.xq');">Run</button>      </div>    </div>  </div></div><div class="panel panel-default">  <div class="panel-heading" role="tab" id="RLDheading5">    <h4 class="panel-title">    <a role="button" data-toggle="collapse" data-parent="#RLDaccordion" href="#RLDcollapse5" aria-controls="collapse5">5. Retrieve the size of park areas close to <i>Karl-Liebknecht-Straße</i> in Berlin.    </a>    </h4>  </div>  <div id="RLDcollapse5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="RLDheading5">    <div class="panel-body">      <div class = "col-md-12">        <pre>(: Type Karl-Liebknecht-Straße, Berlin in Address Text Box :)
+let $layer := xosm_rld:getLayerByName(. ,"Karl-Liebknecht-Straße" ,350)
+let $parkAreas := fn:filter($layer ,xosm_kw:searchKeyword (?,"park"))
+return xosm_ag:metricSum($parkAreas ,"area")        </pre>        <button class="btn btn-primary" onclick="runningXQueryExample('example5Rev.xq');">Run</button>      </div>    </div>  </div></div><div class="panel panel-default">  <div class="panel-heading" role="tab" id="RLDheading6">    <h4 class="panel-title">    <a role="button" data-toggle="collapse" data-parent="#RLDaccordion" href="#RLDcollapse6" aria-controls="collapse6">6. Retrieve the top-star rating biggest hotels close to <i>Via Dante</i> in Milan).    </a>    </h4>  </div>  <div id="RLDcollapse6" class="panel-collapse collapse" role="tabpanel" aria-labelledby="RLDheading6">    <div class="panel-body">      <div class = "col-md-12">        <pre>(: Type Via Dante, Milan in Address Text Box :)
+let $layer := xosm_rld:getLayerByName(. ,"Via Dante" ,350)
+let $hotels := fn:filter($layer,xosm_kw:searchKeyword(?,"hotel"))
+return xosm_ag:metricMax(xosm_ag:metricMax($hotels ,"stars"), "area")         </pre>        <button class="btn btn-primary" onclick="runningXQueryExample('example6Rev.xq');">Run</button>      </div>    </div>  </div></div><div class="panel panel-default">  <div class="panel-heading" role="tab" id="RLDheading7">    <h4 class="panel-title">    <a role="button" data-toggle="collapse" data-parent="#RLDaccordion" href="#RLDcollapse7" aria-controls="collapse7">7. Request taxi stops close to <i>Carrousel du Louvre</i> in Paris    </a>    </h4>  </div>  <div id="RLDcollapse7" class="panel-collapse collapse" role="tabpanel" aria-labelledby="RLDheading7">    <div class="panel-body">      <div class = "col-md-12">        <pre>(: Type Paris in Address Text Box :)
+let $taxis := xosm_open:json("http://opendata.paris.fr/explore/dataset/paris_taxis_stations/download/?format=geojson&amp;timezone=Europe/Berlin" ,"","amenity","taxi","highway","*")
+let $building := xosm_rld:getElementByName (. ,"Carrousel du Louvre")
+return fn:filter($taxis,xosm_sp:DWithIn($building,?,500))        </pre>        <button class="btn btn-primary" onclick="runningXQueryExample('example7Rev.xq');">Run</button>      </div>    </div>  </div></div><div class="panel panel-default">  <div class="panel-heading" role="tab" id="RLDheading8">    <h4 class="panel-title">    <a role="button" data-toggle="collapse" data-parent="#RLDaccordion" href="#RLDcollapse8" aria-controls="collapse8">8. Retrieves free events of Madrid.    </a>    </h4>  </div>  <div id="RLDcollapse8" class="panel-collapse collapse" role="tabpanel" aria-labelledby="RLDheading8">    <div class="panel-body">      <div class = "col-md-12">        <pre> (: Type Madrid in Address Text Box :)
+let $events := xosm_open:json("http://data2.esrism.opendata.arcgis.com/datasets/51900577e33a4ba4ab59a691247aeee9_0.geojson","EVENTO","place","*","area","yes")
+return fn:filter($events ,function($p) {not(empty($p/node/tag[@k="GRATUITO" and @v="Sí"]))})        </pre>        <button class="btn btn-primary" onclick="runningXQueryExample('example8Rev.xq');">Run</button>      </div>    </div>  </div></div><div class="panel panel-default">  <div class="panel-heading" role="tab" id="RLDheading9">    <h4 class="panel-title">    <a role="button" data-toggle="collapse" data-parent="#RLDaccordion" href="#RLDcollapse9" aria-controls="collapse9">9. Retrieve Wikipedia information about places nearby to the intersection point of <i>Calle Mayor</i> and <i>Calle de Esparteros</i> in Madrid.    </a>    </h4>  </div>  <div id="RLDcollapse9" class="panel-collapse collapse" role="tabpanel" aria-labelledby="RLDheading9">    <div class="panel-body">      <div class = "col-md-12">        <pre>(: Type Calle Mayor, Madrid in Address Text Box :)
+let $x := xosm_rld:getElementByName(. ,"Calle Mayor")
+let $y := xosm_rld:getElementByName(. ,"Calle de Esparteros")
+return for $i in xosm_sp:intersectionPoints($x,$y)
+return xosm_open:wiki_element($i)        </pre>        <button class="btn btn-primary" onclick="runningXQueryExample('example9Rev.xq');">Run</button>      </div>    </div>  </div></div><div class="panel panel-default">  <div class="panel-heading" role="tab" id="RLDheading10">    <h4 class="panel-title">    <a role="button" data-toggle="collapse" data-parent="#RLDaccordion" href="#RLDcollapse10" aria-controls="collapse10">10. Retrieves the information provided by tixik.com around <i>Picadilly</i> in London.    </a>    </h4>  </div>  <div id="RLDcollapse10" class="panel-collapse collapse" role="tabpanel" aria-labelledby="RLDheading10">    <div class="panel-body">      <div class = "col-md-12">        <pre>(: Type Picadilly, London in Address Text Box :)
+let $x := xosm_rld:getElementByName(. ,"Piccadilly")
+return xosm_open:tixik_element($x)        </pre>        <button class="btn btn-primary" onclick="runningXQueryExample('example10Rev.xq');">Run</button>      </div>    </div>  </div></div>
+          </div>
+            </div>
+
+
+
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+</div>
+</div>
+
+<script language="JavaScript" type="text/javascript">
+
+var lat = 36.8395487;
+var lng = -2.45245;
+
+function getLngLat(address) {
+
+     $.ajax({
+      url: 'searchAddress.php',
+      type: 'GET',
+      data: {address:address},
+      dataType: 'text',
+      success: refresh
+    })
+     function refresh(data){
+
+       var returnedXML = data;
+       var xmlParsed = $.parseXML( returnedXML );
+       var xmlDoc = $( xmlParsed );
+
+       lat = xmlDoc.find("geometry").find("location").find("lat").text();
+       lng = xmlDoc.find("geometry").find("location").find("lng").text();
+
+       map.panTo([lat, lng]);
+     }
+
+}
+
+var controls = [];
+
+var map = L.map('map').setView([lat, lng], 16);
+
+L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+    maxZoom: 18,
+    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+
+    var southWest = map.getBounds().getSouthWest();
+    var northEast = map.getBounds().getNorthEast();
+
+
+function indexing(){
+
+    var southWest = map.getBounds().getSouthWest();
+    var northEast = map.getBounds().getNorthEast();
+
+
+       //var url = 'http://minerva.ual.es:8984/rest?run=indexing.xq' + '&databaseName=' + $('#database').val() + '&bbox1=' + southWest.lng + '&bbox2=' + southWest.lat + '&bbox3=' + northEast.lng + '&bbox4=' + northEast.lat;
+       var url = 'http://localhost:8984/rest?run=indexing.xq' + '&databaseName=' + $('#database').val() + '&bbox1=' + southWest.lng + '&bbox2=' + southWest.lat + '&bbox3=' + northEast.lng + '&bbox4=' + northEast.lat;
+
+
+       $('#spatialIndexModalTitle').text('Creating Spatial Index ' + $('#database').val());
+       $('#loader').modal('toggle');
+
+       $.ajax({
+         url: 'XQueryIndexing.php',
+         type: 'GET',
+         data: {url:url},
+         success: actualizar
+       })
+
+       function actualizar(datos){
+             $('#loader').modal('hide');
+         }
+      }
+
+    function showModalAlert(alertTitle, alertBody) {
+      $('#modalAlertTitle').text(alertTitle);
+      $('#modalAlertBody').text(alertBody);
+      $('#modalAlert').modal('show');
+     }
+
+    function showModalLoader(loaderTitle, loaderBody) {
+      $('#loaderTitle').text(loaderTitle);
+      $('#loaderBody').text(loaderBody);
+      $('#loader').modal('show');
+     }
+
+    function hideModalLoader() {
+      $('#loader').modal('hide');
+     }
+
+    $('#runXQueryShellbtn').click(function() {
+      if (XQueryEditor.getValue() == '') {
+          showModalAlert('XQuery code is missing', 'XQuery code must me typed');
+      }
+      else {
+        runningXQueryShell();
+      }
+    });
+
+
+$(function(){
+
+  $(document).on( 'scroll', function(){
+
+    if ($(window).scrollTop() > 100) {
+      $('.scroll-top-wrapper').addClass('show');
+    } else {
+      $('.scroll-top-wrapper').removeClass('show');
+    }
+  });
+
+  $('.scroll-top-wrapper').on('click', scrollToTop);
+
+  // CodeMirror textarea
+  XQueryEditor = CodeMirror.fromTextArea(document.getElementById("query"), {
+  mode: "application/xquery",
+  styleActiveLine: true,
+  lineNumbers: true,
+  lineWrapping: true
+});
+
+  mapXMLData = CodeMirror.fromTextArea(document.getElementById("mapXMLData"), {
+  mode: "application/xml",
+  styleActiveLine: true,
+  lineNumbers: true,
+  lineWrapping: true,
+  readOnly: true
+});
+
+});
+
+function scrollToTop() {
+  verticalOffset = typeof(verticalOffset) != 'undefined' ? verticalOffset : 0;
+  element = $('body');
+  offset = element.offset();
+  offsetTop = offset.top;
+  $('html, body').animate({scrollTop: offsetTop}, 500, 'linear');
+}
+
+
+function runningXQueryShell(){
+    if (map.getZoom() < 14) {
+      showModalAlert('Zoom too large', 'Zoom too large. Please, select a smaller zoom.');
+      map.setZoom(16);
+    }
+    else {
+
+      var southWest = map.getBounds().getSouthWest();
+      var northEast = map.getBounds().getNorthEast();
+
+      var text = XQueryEditor.getValue();
+
+      showModalLoader("Querying", "Querying and depicting resulting objects");
+
+   if (text.indexOf("xosm_rld") >= 0) // Si la consulta tiene el espacio de nombres rld debemos crear la base de datos */
+   {
+     //var url = 'http://minerva.ual.es:8984/rest?run=creatingDatabase.xq&bbox1=' + southWest.lng + '&bbox2=' + southWest.lat + '&bbox3=' + northEast.lng + '&bbox4=' + northEast.lat;
+     var url = 'http://localhost:8984/rest?run=creatingDatabase.xq&bbox1=' + southWest.lng + '&bbox2=' + southWest.lat + '&bbox3=' + northEast.lng + '&bbox4=' + northEast.lat;
+     createDatabase(url);
+   }
+
+  var schemaparam = {
+     "textArea" : encodeURIComponent(text), /* texArea que contiene la consulta */
+     "bbox1" : southWest.lng,
+     "bbox2" : southWest.lat,
+     "bbox3" : northEast.lng,
+     "bbox4" : northEast.lat,
+     "url" : 'http://localhost:8984/Paquito'
+     //"url" : 'http://minerva.ual.es:8984/Paquito'
+  };
+  $.ajax({
+       data: schemaparam,
+       url: 'elementsFromCURL.php',
+       type:  'POST',
+       success: refresh
+        }
+      )
+      function refresh(datos){
+      if (datos.length > 3) {
+        $('#osmData').text(datos);
+
+        if (datos.indexOf("<") > -1) {
+          updateXMLData(datos); // AHORA NO HAY QUE ESCRIBIR EL XML, YA QUE NO ES OSM
+
+          $('#showOSMbtn').show();
+          drawMap(datos);
+          //$("#mapXMLData").text(data);
+
+//          mapXMLData.getDoc().setValue(data);
+//          mapXMLData.refresh();
+        }
+        else {
+          removeMapLayers();
+          $('#showOSM').modal('show');
+        }
+      }
+      else {
+        removeMapLayers();
+      }
+      hideModalLoader();
+      scrollToTop();
+    }
+    }
+
+
+  }
+
+
+
+
+
+
+
+    function runningXQueryExample(example){
+    //$('#indexing').modal('show');
+
+
+    //var url = 'http://minerva.ual.es:8984/rest?run=' + example;
+    var url = 'http://localhost:8984/rest?run=' + example;
+
+    runQuery(url);
+    }
+
+  function createDatabase(url) {
+    $.ajax({
+      url: 'elementsFromAPI.php',
+      type: 'GET',
+      data: {url:url},
+      dataType: 'text',
+      async: false,
+      success: refresh
+    })
+      function refresh(){
+        hideModalLoader();
+    }
+  }
+
+  function runQuery(url) {
+    showModalLoader("Querying", "Querying and depicting resulting objects");
+
+    $.ajax({
+      url: 'elementsFromAPI.php',
+      type: 'GET',
+      data: {url:url},
+      dataType: 'text',
+      success: refresh
+    }
+    )
+    function refresh(data){
+      // Empty documents return 3 characters
+      if (data.length > 3) {
+        $('#osmData').text(data);
+
+        if (data.indexOf("<") > -1) {
+          $('#showOSMbtn').show();
+          drawMap(data);
+          //$("#mapXMLData").text(data);
+          updateXMLData(data);
+//          mapXMLData.getDoc().setValue(data);
+//          mapXMLData.refresh();
+        }
+        else {
+          removeMapLayers();
+          $('#showOSM').modal('show');
+        }
+      }
+      else {
+        removeMapLayers();
+      }
+      hideModalLoader();
+      scrollToTop();
+
+
+    }
+  }
+
+function updateXMLData(data) {
+
+  $('#mapXMLData').val(data);
+  mapXMLData.getDoc().setValue(data);
+}
+
+function clearQuery() {
+  XQueryEditor.getDoc().setValue("");
+}
+
+function removeMapLayers() {
+    for (z = 0; z < controls.length; z++) {
+      map.removeLayer(controls[z]);
+    }
+}
+
+function drawMap(data) {
+
+    for (z = 0; z < controls.length; z++) {
+      map.removeLayer(controls[z]);
+    }
+
+    controls = [];
+
+    $('#map').show();
+
+    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+        maxZoom: 18,
+        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+
+        var pointList = [];
+
+        // data is wrapped in <mydoc> to create a well formed XML document
+        theData = '<mydoc> ' + data + '</mydoc>';
+
+        // Obtener la primera latitud y longitud que aparece para tomarla como centro del mapa
+        var firstNode = $(theData).find("node").first();
+        var firstLat = firstNode.attr("lat");
+        var firstLon = firstNode.attr("lon");
+
+        map.panTo([firstLat, firstLon]);
+
+        // Find ways
+        $(theData).find("oneway").each(function() {
+
+          var oneway = $(this);
+
+          oneway.find("way").each(function(){
+
+            pointList = [];
+
+            // Get all the tag attributes and assign to a name to display it in a tooltip. Attribute 'name' is displayed in bold.
+            name = "";
+            $(this).find("tag").each(function() {
+              if (($(this).attr('k')).localeCompare("rdfs:comment") != 0 &&
+                  ($(this).attr('k')).localeCompare("owl:sameAs") != 0 &&
+                  ($(this).attr('k')).localeCompare("dbo:abstract") != 0 &&
+                  ($(this).attr('k')).localeCompare("dbo:abstract") != 0 &&
+                  ($(this).attr('k')).localeCompare("geo:geometry") != 0 &&
+                  ($(this).attr('k')).localeCompare("dbo:thumbnail") != 0 &&
+                  ($(this).attr('k')).localeCompare("georss:point") != 0 &&
+                  ($(this).attr('k')).localeCompare("dct:subject") != 0 &&
+                  ($(this).attr('k')).localeCompare("dbo:wikiPageID") != 0 &&
+                  ($(this).attr('k')).localeCompare("geo:lat") != 0 &&
+                  ($(this).attr('k')).localeCompare("geo:long") != 0 &&
+                  ($(this).attr('k')).localeCompare("geo:geometry") != 0 &&
+                  ($(this).attr('k')).localeCompare("georss:point") != 0 &&
+                  ($(this).attr('k')).localeCompare("dbo:wikiPageRevisionID") != 0
+                  )
+              {
+                if (($(this).attr('k')).localeCompare("name") == 0) {
+                  name = name.concat('<b>').concat($(this).attr('k')).concat(": ").concat($(this).attr('v')).concat('</b><br/>');
+                }
+                else {
+                  name = name.concat($(this).attr('k')).concat(": ").concat($(this).attr('v')).concat('<br/>');
+                }
+              }
+            });
+
+            $(this).find("nd").each(function(){
+
+              var ref = $(this).attr('ref');
+              var elementToFind = 'node[id=' + ref + ']';
+
+              var lat = oneway.find(elementToFind).attr('lat');
+              var lon = oneway.find(elementToFind).attr('lon');
+
+              var point = new L.LatLng(lat, lon);
+              pointList.push(point);
+            })
+
+            var firstpolyline = new L.polyline(pointList, {
+              color: "blue",
+              opacity: 1
+            });
+
+            firstpolyline.addTo(map).bindPopup(name);
+
+            controls.push(firstpolyline);
+          })
+
+        // Find nodes
+
+        if (oneway.attr('type').localeCompare('point') == 0) {
+
+        oneway.find("node").each(function(){
+
+            //Get lat, lon and name
+            var lat = $(this).attr('lat');
+            var lon = $(this).attr('lon');
+
+            //var name = $(this).find("tag[k='name']").attr('v');
+            // Get all the tag attributes and assign to a name to display it in a tooltip. Attribute 'name' is displayed in bold.
+            name = "";
+            $(this).find("tag").each(function() {
+              if (($(this).attr('k')).localeCompare("rdfs:comment") != 0 &&
+                  ($(this).attr('k')).localeCompare("owl:sameAs") != 0 &&
+                  ($(this).attr('k')).localeCompare("dbo:abstract") != 0 &&
+                  ($(this).attr('k')).localeCompare("dbo:abstract") != 0 &&
+                  ($(this).attr('k')).localeCompare("geo:geometry") != 0 &&
+                  ($(this).attr('k')).localeCompare("dbo:thumbnail") != 0 &&
+                  ($(this).attr('k')).localeCompare("georss:point") != 0 &&
+                  ($(this).attr('k')).localeCompare("dct:subject") != 0 &&
+                  ($(this).attr('k')).localeCompare("dbo:wikiPageID") != 0 &&
+                  ($(this).attr('k')).localeCompare("geo:lat") != 0 &&
+                  ($(this).attr('k')).localeCompare("geo:long") != 0 &&
+                  ($(this).attr('k')).localeCompare("geo:geometry") != 0 &&
+                  ($(this).attr('k')).localeCompare("georss:point") != 0 &&
+                  ($(this).attr('k')).localeCompare("dbo:wikiPageRevisionID") != 0
+
+                  )
+              {
+                if (($(this).attr('k')).localeCompare("name") == 0) {
+                  name = name.concat('<b>').concat($(this).attr('k')).concat(": ").concat($(this).attr('v')).concat('</b><br/>');
+                }
+                else {
+                  name = name.concat($(this).attr('k')).concat(": ").concat($(this).attr('v')).concat('<br/>');
+                }
+              }
+            });
+
+            // Create a marker and add it to the map
+            var control = L.marker([lat, lon]);
+            control.addTo(map)
+            .bindPopup(name);
+            controls.push(control);
+        })
+
+        }
+
+        })
+  }
+
+
+</script>
+
+
+  </body>
+</html>
