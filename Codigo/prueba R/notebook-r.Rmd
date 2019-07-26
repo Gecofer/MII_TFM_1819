@@ -1,0 +1,99 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter*. 
+
+```{r}
+library(shiny)
+library(leaflet)
+library(rgdal)
+library(mapview)
+library(DT)
+
+#r_colors <- rgb(t(col2rgb(colors()) / 255))
+#names(r_colors) <- colors()
+
+#shapeData1 <- readOGR(dsn="data/", layer="Edificaciones")
+#shapeData1 <- spTransform(shapeData1, CRS("+proj=longlat +datum=WGS84"))
+
+
+#shapeData2 <- readOGR(dsn="data/", layer="CurvaNivel")
+
+data <- read.csv("data/edficaciones.csv")
+
+datos1 <- readOGR(dsn="data/", layer="Edificaciones")
+datos2 <- readOGR(dsn="data/", layer="CurvaNivel")
+
+
+
+ui <- fluidPage(
+  
+  titlePanel(p("Spatial app", style = "color:#3474A7")),
+  
+  sidebarLayout(
+    sidebarPanel(
+      selectInput(
+        inputId = "variableselected",
+        label = "Select variable",
+        choices = c("ID_HOJA", "GID")
+      ),
+      selectInput(
+        inputId = "yearselected",
+        label = "Select value",
+        choices = 459750:459759
+      ),
+      actionButton("do", "Click Me")
+      # https://shiny.rstudio.com/articles/action-buttons.html
+      
+      
+      
+    ),
+    
+    mainPanel(
+      mapviewOutput("map", width = "100%", height = 400)
+    )
+  )
+  
+  
+  # mapviewOutput("map", width = "100%", height = 400),
+  #p()
+  
+  
+)
+
+server <- function(input, output) {
+  
+  output$table <- renderDT(data)
+  
+  
+  
+  #output$value <- renderPrint({ input$num })
+  
+  observeEvent(input$do, {
+    
+    shape <- readOGR(dsn="data/", layer="CurvaNivel") # Leemos la capa
+    shape1 <-shape[shape$GID == input$yearselected,] # Nos quedamos con el valor que nos interesa - 469896 - 459757
+    
+    output$map <- renderMapview({
+      
+      mapview(datos1) + mapview(datos2) + mapview(shape1)
+    })
+  })
+  
+ 
+} 
+
+shinyApp(ui, server)
+
+```
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Cmd+Shift+K* to preview the HTML file). 
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+
