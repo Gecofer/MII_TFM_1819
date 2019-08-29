@@ -11,18 +11,34 @@
 \label{ch:introduccion}
 
 \begin{quote}
-  {\bf\textsc{Resumen:}} Este capítulo define los límites del proyecto: problema a resolver, motivos de su elección, objetivos previstos y estructura. Teniendo como propósito convencer al lector para que no aparte la vista del trabajo.
+  {\bf\textsc{Resumen:}} Este capítulo define los límites del proyecto: problema a resolver, motivos de su elección, objetivos previstos y estructura. Teniendo como propósito convencer al lector y adentrarlo en el área definida como Web Semántica, dándole a conocer la capacidad que esta presenta para integrar información procedente de los Sistemas de Información Geográfica (SIG).
 \end{quote}
 
 
 \section{Introducción}
 
-El trabajo que se presenta a continuación es un estudio ...
-
 % Hablar sobre que vamos a estudiar
 
 % Que relevancia tienen los SIG aquí
 
+El trabajo que se presenta a continuación es un estudio sobre la necesidad de \textbf{integrar Información Geográfica en la Web Semántica mediante el uso herramientas específicas}. A partir de la Información Geográfica disponible en la Junta de Andalucía y centrándonos en la información geoespacial de edificaciones, curvas de nivel y cotas de altura de Ogíjares (Granada), es posible realizar una prueba de concepto gracias a la integración que los SIG presentan en la Web Semántica.\\
+
+Actualmente, la gran cantidad de datos presente en la Red puede suponer un problema para la búsqueda de información. Este hecho ha ocasionado que instituciones y organismos tanto privadas como públicas hayan optado por la utilización de la Web Semántica. De hecho, la Web Semántica surge como una extensión de la actual Web, para dar solución al problema de que la mayoría de los contenidos de la Web están diseñados para los humanos y no para que los programas de software procesen la semántica de manera significativa. Para ello, se necesita hacer uso de herramientas y tecnologías específicas proprocionadas por la Web Semántica. Dichas tecnologías tratan de aportar información extra a los recursos Web, proporcionando contenidos con significado que permitan mejorar la interoperabilidad entre los Sistemas Informáticos e incluso la aparición de agentes capaces de realizar procesos inteligentes de captura y tratamiento de la información. Por otro lado, los motores de búsqueda clásicos cuando manejan grandes cantidades de datos en su mayoría no estructurados y generalmente escritos en lenguajes naturales, suelen tener que hacer frente a la imprecisión, es decir, usan similitudes de palabras o estadísticas para encontrar fuentes relevantes, como es el caso de la búsqueda a la que estamos acostumbrados en Google, Yahoo! o Bing.
+
+% ejemplo
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1.07\linewidth]{imagenes/capitulo1/ejemplo-sig1}
+	\caption{Ejemplo de búsqueda en Google}
+	\label{fig:ejemplo-sig}
+\end{figure}
+
+En la figura \ref{fig:ejemplo-sig} se puede observar como los motores de búsquedas clásicos (Google) no interpretan la información, sino que simplemente se limitan a devolver resultados a partir de las palabras clave. En este caso se devuelven primero aquellos resultados que contienen en su título la frase ``sistemas de información geográfica''. Esto se realiza así debido a que la coincidencia de esa frase en el título del documento tiene más relevancia, que si lo encontráramos en el contenido textual de dicha página Web.\\
+
+Por contraposición, en el mundo de los SIG, los datos geoespaciales requieren más esfuerzo técnico. Como los datos SIG son muy relevantes para muchos aspectos de la vida humana, diversos organismos tanto públicos como privados construyen fuentes geoespaciales (mapas) de alta calidad para distintas necesidades: modelos digitales del terreno, mapas de ciudades o mapas meteorológicos, entre otros; además, dictan cómo deben publicarse dichos datos de manera pública. El carácter estructurado de los datos SIG hace posible describirlos con técnicas semánticas, por ejemplo, los objetos espaciales de una capa de un mapa pueden transformarse en instancias de una clase y los atributos pueden convertirse en una propiedad de datos.\\
+
+La capa semántica de los SIG brinda la ventaja de agregar conocimiento de dominio sobre la estructura de los datos (Edificio como una subclase de Sistema Urbano) y de vincular diversos sistemas SIG (Edificio en un SIG es una subclase de Construcción en otro). Principalmente, por la magnitud de juntar ambas tecnologías y sus posibilidades pretendo realizar una prueba de concepto que integre Información Geográfica procedente de la provincia de Granada en la Web Semántica.
+% es decir, una clase de entidad en un SIG es igual o una subclase de una clase de entidad en otro SIG 
 
 
 \section{Definición del problema}
@@ -33,15 +49,16 @@ El trabajo que se presenta a continuación es un estudio ...
 
 % Breve descripción antes de poner el objettivo de manera clara y concisa
 
-El trabajo tiene como objetivo la integración de Información Geográfica en la Web Semántica ...
+La Web Semántica permite incorporar información muy diversa, entre ella cabe destacar la Información Geográfica. Con los conocimientos que tengo adquiridos en el área de los SIG, pretendo hacer uso de ambas tecnologías para desarrollar un ejemplo práctico que agregue conocimiento geográfico sobre la estructura de datos de la Web Semántica. \\ %De tal forma que el trabajo tiene como objetivo la integración de Información Geográfica en la Web Semántica. \\
 
+A partir de los mecanismos para la integración de información procedente de diversas fuentes que ofrece la Web Semántica, se han definido estándares de representación de Información Geográfica mediante herramientas de la Web Semántica. En este proyecto se estudian algunas de las herramientas de la Web Semántica que se pueden utilizar para representar e integrar Información Geográfica, valorarlas y desarrollar una prueba de concepto. Se trabajará con información geoespacial, concretamente con archivos en formato \textit{Shapefile} de la provincia de Granada, en particular de mi pueblo Ogíjares y centrándonos en la información geoespacial obtenida de edificaciones, cotas de altura y curvas de nivel. En la prueba de concepto, se hará uso de las herramientas destinadas a la generación de información geoespacial (\texttt{QGIS} para permitir obtener la información de los \textit{Shapefile} a hojas de cálculo), generación de documentos \textit{RDF}  (\texttt{Protegé} para permitir llevar la información de los \textit{Shapefile} hacia documentos en formato \textit{RDF} de manera gráfica y su posterior visualización), consumo (\texttt{GraphBD} para permitir la visualización de archivos en formato \textit{RDF} y la realización de las consultas del lenguaje estándar de consulta geoespacial \textit{GEOSPARQL}) y visualización de la información geoespacial obtenida de las consultas (\texttt{R} para permitir ubicar la información geográfica en un mapa interactivo mediante la libería \textit{Shiny}).
 
 
 \section{Motivación}
 
 % Uno de los debates más habituales en la utilización de los Sistemas de Información Geográfica en entornos académicos es hasta que punto implican realmente un avance científico, con lo que su presencia como asignatura sería de pleno derecho, o si son sólo una herramienta, poco más que un procesador de textos, que los alumnos deberían aprender por su cuenta y que, como mucho, podría servir para explicar visualmente otros contenidos.
 
-\textit{?`Qué motivación y razones me llevan a comenzar un proyecto como este?} Cómo Ingeniera Técnica Informática y estudiante del Máster Universitario en Ingeniería Informática, he adquirido a lo largo del grado y del máster conocimientos y usos muy diversos que se le puede dar a la tecnología. Después de haber realizado el Trabajo de Fin de Grado en \textit{Análisis de Información Geográfica mediante QGIS y R centrado en el Modelo Digital del Terreno}, he querido seguir cumpliendo el objetivo que me propuse: conocer más el mundo en el que se mueven los SIG, puesto que en estos dos años me es imposible abarcar todas las áreas relacionadas con el mismo. Además, destacar que durante la realización del Máster Universitario en Ingeniería Informática, he adquirido algunos conocimientos en la temática de Web Semántica a partir de la asignatura de \textit{Desarrollo de Software basado en Componentes y Servicios} impartida por Manuel Ignacio Capel Tuñón. Es más, las ganas de adentrarme en este mundo, ha hecho que durante este año haya asistido al curso de Web Semántica del Máster de Desarollo de Software, impartido por el tutor junto con otros profesores. Por todo esto y más, y con la idea de pasar tanto en lo personal como en lo profesional a un siguiente nivel mi Trabajo de Fin de Grado, surgió este Trabajo de Fin de Máster en el que intento dar cabida a la Web Semántica Geoespacial, con el fin de enriquecerme tanto personal como profesionalmente y de adentrar al lector en este tema tan interesante.\\ 
+\textit{¿Qué motivación y razones me han llevado a comenzar un proyecto como este?} Cómo Ingeniera Técnica Informática y estudiante del Máster Universitario en Ingeniería Informática, he adquirido a lo largo del Grado y del Máster conocimientos y usos muy diversos que se le puede dar a la tecnología. Después de haber realizado el Trabajo de Fin de Grado en \textit{Análisis de Información Geográfica mediante QGIS y R centrado en el Modelo Digital del Terreno}, he querido seguir cumpliendo el objetivo que me propuse: conocer más el mundo en el que se mueven los SIG; puesto que en estos dos años me es imposible abarcar todas las áreas relacionadas con el mismo. Además, destacar que durante la realización del Máster Universitario en Ingeniería Informática, he adquirido algunos conocimientos en la temática de Web Semántica a partir de la asignatura de \textit{Desarrollo de Software basado en Componentes y Servicios} impartida por Manuel Ignacio Capel Tuñón. Es más, las ganas de adentrarme en este mundo, han hecho que durante este año haya asistido al curso de Web Semántica del Máster de Desarollo de Software, impartido por diversos profesores, entre ellos el tutor de este TFM. Por todo esto y más, y con la idea de pasar a un siguiente nivel mi Trabajo de Fin de Grado, surgió este Trabajo de Fin de Máster en el que intento dar cabida a la Web Semántica Geoespacial, con el fin de enriquecerme tanto personal como profesionalmente y de adentrar al lector en este tema tan interesante.\\ 
 
 % el profesor (actual tutor) me introdujo en un ámbito que desconocía y del que apenas había oído hablar. 
 
@@ -50,32 +67,31 @@ El trabajo tiene como objetivo la integración de Información Geográfica en la
 % hablar sobre la asignatura de SIG en el grado
 % hablar sobre la asignatura de Capel
 
-La idea de este proyecto comenzó a tomar forma a principios de curso, tras mantener varias reuniones con el tutor del TFG y ver que posibilidades había de seguir estudiando y ampliando los Sistemas de Información Geográficos de manera más práctica y profesional. Entonces, partiendo de todos los conocimientos que tengo a priori de la realización de este trabajo, me pregunto lo siguiente: \textit{?`existen interoperabilidad en los Sistemas de Información Geográfico?}. Este tipo de preguntas ha llevado a cabo el desarrollo del análisis en donde, gracias a ... En los sucesivos capítulos, iremos detallando cada uno de los conceptos que aquí mencionamos.
+La idea de este proyecto comenzó a tomar forma a principios de curso, tras mantener varias reuniones con el tutor del TFG y ver que posibilidades había de seguir estudiando y ampliando los SIG de manera más práctica y profesional. Entonces, partiendo de todos los conocimientos que tengo a priori de la realización de este trabajo, me pregunto lo siguiente: \textit{¿existe interoperabilidad\footnote{La interoperabilidad es la capacidad de los sistemas de información y de los procedimientos a los que éstos dan soporte, de compartir datos y posibilitar el intercambio de información y conocimiento entre ellos.} en los Sistemas de Información Geográfica?} Este tipo de preguntas ha llevado a cabo el inicio del desarrollo de la prueba de concepto en donde gracias a la capa semántica que ofrecen los SIG es posible integrarlos de manera adecuada en la Web Semántica. En los sucesivos capítulos, iremos detallando cada uno de los conceptos que a lo largo de este capítulo hemos mencionamos.
 
 
 % coursera
+%En este curso verá en que consisten las tecnologías de la Web Semántica y como se utilizan en la web actual. También tendrá la oportunidad de realizar varios proyectos aplicando todas estas tecnologías para resolver los problemas que Marcelo ha comentado anteriormente. Por ejemplo, ¿le gustaría que Google entendiera cada uno de los componentes de su página web? O si usted tienen una tienda virtual, ¿le gustaría que Google fuera capaz de identificar los distintos productos que forman parte de su tienda virtual y los desplegara al momento de hacer una búsqueda? Esto se consigue usando [DESCONOCIDO] y les mostraremos como se relaciona en este curso con las tecnologías de la Web Semántica.
 
-En este curso verá en que consisten las tecnologías de la Web Semántica y como se utilizan en la web actual. También tendrá la oportunidad de realizar varios proyectos aplicando todas estas tecnologías para resolver los problemas que Marcelo ha comentado anteriormente. Por ejemplo, ¿le gustaría que Google entendiera cada uno de los componentes de su página web? O si usted tienen una tienda virtual, ¿le gustaría que Google fuera capaz de identificar los distintos productos que forman parte de su tienda virtual y los desplegara al momento de hacer una búsqueda? Esto se consigue usando [DESCONOCIDO] y les mostraremos como se relaciona en este curso con las tecnologías de la Web Semántica.
-
-Además, ¿le gustaría poder acceder a la Wikipedia como si fuera una tabla Excel? ¿O le gustaría poder conocer como han hecho los gobiernos para hacer públicos sus datos y de esta manera permitir que los ciudadanos puedan acceder a la información de como se gastan sus impuestos, o puedan entender de una manera más sencilla como le afecta una ley? ¿O le gustaría saber como hacen los biólogos para compartir sus datos en la web?
+%Además, ¿le gustaría poder acceder a la Wikipedia como si fuera una tabla Excel? ¿O le gustaría poder conocer como han hecho los gobiernos para hacer públicos sus datos y de esta manera permitir que los ciudadanos puedan acceder a la información de como se gastan sus impuestos, o puedan entender de una manera más sencilla como le afecta una ley? ¿O le gustaría saber como hacen los biólogos para compartir sus datos en la web?
 
 
 \section{Premisas e Hipótesis}
 
 % La mejor forma de determinar el tema abordado es a través de premisas e hipótesis. La hipótesis consiste en una afirmación que usted considera verdadera y que va a probar o buscar probar a lo largo de su trabajo. Otra forma es delimitar el problema en forma de una pregunta de partida. Las hipótesis presentadas aquí son probadas en su trabajo es lo que llamas de tesis.
 
-La realización de este trabajo ha partido de varios supuestos básicos: ... Por último, considero que este trabajo ofrece posibilidades que merecen la máxima difusión, que son desconocidas para gran parte del público en general y de los Ingenieros en Informática en particular.
+La realización de este trabajo ha partido de varios supuestos básicos: el primero parte de la posibilidad de la interoperabilidad que presentan los datos con Información Geográfica. Asumiendo, que los datos geoespaciales interoperables pueden ser utilizados por diferentes programas y aplicaciones permitiendo así el intercambio de información y conocimiento entre ellos. El segundo supuesto es un hecho y es la utilidad de integrar información estructurada de diversas fuentes en la Web Semántica, gracias a la estructura que estos presentan, para así permitir que la información contenida en las páginas Web sea entendible tanto por humanos como por máquinas. Por último, considero que este trabajo ofrece posibilidades que merecen la máxima difusión, algunas menos conocidas para gran parte del público en general y de los Ingenieros en Informática en particular.
 
 
 \section{Objetivos}
 
 % Es la respuesta al problema especificado anteriormente, es decir, lo que se pretende hacer y que, después de alcanzado, habrá terminado el trabajo. Algunos verbos utilizados para determinar el objetivo general: contribuir / facilitar / subsidiar / proponer / aclarar / permitir / agregar / comprender.
 
-Este apartado recoge los objetivos iniciales marcados para la realización del trabajo, especificando los propósitos que se esperan conseguir del mismo. A continuación, se detallan tanto los objetivos generales como específicos para el TFM.
+Este apartado recoge los objetivos iniciales marcados para la realización del TFM, especificando los propósitos que se esperan conseguir del mismo. A continuación, se detallan tanto los objetivos generales como específicos.
 
 \subsection{Objetivo General}
 
-El objetivo de este proyecto es profundizar en ...
+El objetivo de este proyecto es profundizar \textbf{en las herramientas de la Web Semántica que se pueden utilizar para representar e integrar Información Geográfica, valorarlas y desarrollar una prueba de concepto}. Para ello, se hará uso de las distintas posibilidades que existen actualmente para la Web Semántica Geospacial. Así que, mediante este proyecto se adquirirá experiencia en la Web Semántica y en el uso de sus herramientas para combinar información procedente de los SIG.
 
 \subsection{Objetivos Específicos}
 
@@ -83,11 +99,30 @@ El objetivo de este proyecto es profundizar en ...
 
 % Comprobar si los objetivos puestos del principio corresponden con los objetivos que he cumplido al terminar el trabajo
 
-En el subapartado anterior, se mencionan a grandes rasgos los objetivos que vamos a lograr con dicho análisis y aplicación. Por tanto, detallaremos los objetivos más específicos del proyecto, en donde al final del documento comprobaremos que dichos objetivos se han cumplido:
+En el subapartado anterior, se mencionan a grandes rasgos los objetivos que vamos a lograr con dicho estudio y aplicación. Por tanto, detallaremos los objetivos más específicos del proyecto, en donde al final del documento comprobaremos que se han cumplido:
 
 \begin{enumerate}
 	
-	\item 
+	\item \textbf{Conocer diversas fuentes de información}, con las que obtener datos públicos geográficos de buena calidad.
+	
+	\item \textbf{Comprender la relación existente entre los Sistemas de Información Geográfica y la Web Semántica}, a priori dos áreas completamente diferentes.
+	
+	\item \textbf{Localizar diversas herramientas de la Web Semántica} que se puedan utilizar para representar e integrar Información Geográfica.
+	
+	\item \textbf{Aprender a crear ontologías y poblarlas} mediante información geográfica existente.
+		
+	\item Aprender a \textbf{agregar conocimiento de dominio geoespacial sobre la estructura de los datos} mediante el empleo de herramientas de la Web Semántica como Protegé.
+	
+	\item Apreciar las carencias o mejoras que supone usar \textbf{Protegé frente a otro tipo de herramientas}.
+	
+	\item Conocer cuál es la \textbf{estructura de los datos geoespaciales para realizar consultas con GeoSPARQL}.
+	
+	\item Mostrar algunos \textbf{métodos de trabajo}, estrechamente adaptados al tratamiento de Información Geográfica en la Web Semántica.
+	
+	\item \textbf{Aportaciones a la comunidad o al lector}, para que el proyecto sirva como puerta de acceso al mundo de la Web Semántica y en particular, al de la Web Semántica Geoespacial, y facilite el acceso a parte de los conocimientos actuales disponibles.
+	
+	\item \textbf{Aportaciones hacia mi persona} en la adquisición de conocimientos de la Web Semántica, creación de ontologías, manejo de herramientas semánticas como Protegé y aprendizaje para la creación de un mapa interactivo mediante la librería Shiny de R.	
+
 	
 	%\item \textbf{Análisis exhaustivo de los MDT}, contemplando las posibilidades que presentan para su futura aplicación en el ámbito de los SIG.
 	
@@ -115,16 +150,26 @@ En el subapartado anterior, se mencionan a grandes rasgos los objetivos que vamo
 En este primer capítulo, se ha desarrollado una pequeña introducción al contexto que desarrolla este trabajo, puntualizando en los motivos de la elección del mismo. A continuación, se detallan de forma resumida los contenidos del resto de capítulos de este documento:
 
 \begin{itemize}
-	\item En el \textit{capítulo 2} \textbf{(Sistemas de Información Geográfica)}, se contextualiza el trabajo, presentando para ello los SIG. Además, veremos brevemente el estado del arte sobre ciertos aspectos relacionados con el proyecto.
+	\item En el \textit{capítulo 2} \textbf{(Sistemas de Información Geográfica)}, se presentan los SIG, en donde, veremos brevemente el estado del arte sobre ciertos aspectos relacionados con el proyecto, necesarios para entender las especificaciones de los datos geográficos que vamos a usar.
 	
-	\item En el \textit{capítulo 3} \textbf{(Web Semántica)}, se expone el concepto de Web Semántica, necesario para comprender su aplicación en el \texttt{capítulo 4}.
+	\item En el \textit{capítulo 3} \textbf{(Web Semántica)}, se expone el concepto de Web Semántica, y las capas o tecnologías que conforman su arquitectura, necesarios para comprender su uso y aplicación en las herramientas y tecnologías usadas en el \texttt{capítulo 4}.
 	
-	\item En el \textit{capítulo 4} \textbf{(Aplicación)}, 
+	\item En el \textit{capítulo 4} \textbf{(Prueba de Concepto)}, se abarca el trabajo realizado por mí, en donde se realiza la prueba de concepto para integrar Información Geográfica procedente de la Junta de Andalucía, en concreto de la provincia de Granada, en la Web Semántica, gracias a las herramientas disponibles, las cuales se estudian y valoran para permitir desarrollar dicha prueba de concepto de manera adecuada y de acuerdo con los estándares establecidos.
 	
-	\item En el \textit{capítulo 5} \textbf{(Resultados)}, 
+	%El trabajo que se presenta a continuación es un estudio sobre la necesidad de \textbf{integrar Información Geográfica en la Web Semántica mediante el uso herramientas específicas}. A partir de la Información Geográfica disponible en la Junta de Andalucía y centrándonos en la información geoespacial de edificaciones, curvas de nivel y cotas de altura de Ogíjares (Granada), es posible realizar una prueba de concepto gracias a la integración que los SIG presentan en la Web Semántica.\\
+	
+	%\item En el \textit{capítulo 5} \textbf{(Resultados)}, 
 
-	\item En el \textit{capítulo 6} \textbf{(Conclusiones y Trabajo Futuro)}, se evalúan todas las propuestas realizadas en los \texttt{capítulos \ref{ch:aplicacion}} y \texttt{\ref{ch:resultados}}, recopilando tanto lo que se ha hecho a lo largo del desarrollo de este trabajo como las conclusiones y resultados finales obtenidos de esta experiencia. Se comentan además una serie de mejoras para el futuro que se podrían aplicar, pero que por diversos motivos caen fuera del ámbito de este trabajo.
+	\item En el \textit{capítulo 5} \textbf{(Conclusiones y Trabajo Futuro)}, se evalúan las propuestas realizadas en el \texttt{capítulo 4}, recopilando tanto lo que se ha hecho a lo largo del desarrollo de este trabajo como las conclusiones y resultados finales obtenidos de esta experiencia. Se comentan además una serie de mejoras para el futuro que se podrían aplicar, pero que por diversos motivos caen fuera del ámbito de este trabajo.
 	
+	\item En el \textit{Anexo A} (planificación del trabajo)
+	
+	\item En el \textit{Anexo B} (evolución de la Web)
+	
+	\item En el \textit{Anexo C} (¿Linked Data?)
+		
+	\item En el \textit{Anexo D} (errores y soluciones obtenidos)
+			
 	%\item Por último se incluye un \textbf{(Apéndice)}, que incorpora material adicional que complementa la información de algunos de los capítulos de este documento.
 	
 \end{itemize}

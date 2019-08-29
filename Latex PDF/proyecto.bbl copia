@@ -1,0 +1,85 @@
+\begin{thebibliography}{10}
+
+\bibitem{UTM}
+Ignacio~Alonso Fernández-Coppel.
+\newblock \textit{La Proyección UTM}.
+\newblock Disponible en:
+  \url{http://www.cartesia.org/data/apuntes/cartografia/cartografia-utm.pdf},
+  Acceso en: 26 de Agosto 2019.
+
+\bibitem{WGS84}
+Wikimedia Commons.
+\newblock \textit{WGS84 reference frame}.
+\newblock Disponible en:
+  \url{https://commons.wikimedia.org/wiki/File:WGS_84_reference_frame.png},
+  Acceso en: 6 de Junio 2018.
+
+\bibitem{ImagenCapasMapas}
+Science for a changing~world (USGS).
+\newblock \textit{GIS data layers visualization}.
+\newblock Disponible en:
+  \url{https://www.usgs.gov/media/images/gis-data-layers-visualization}, Acceso
+  en: 20 de Mayo 2018.
+
+\bibitem{gml}
+Edwin Chow.
+\newblock {\em Geography 2.0—A mash-up perspective}, pages 15--36.
+\newblock 05 2011.
+
+\bibitem{VictorOlaya}
+Victor Olaya.
+\newblock {\em Sistemas de Información Geográfica}.
+\newblock CreateSpace Independent Publishing Platform, 2014.
+\newblock ISBN 1530295947.
+
+\bibitem{tesis}
+John Fernando Baculima Cumbe \& Marcelo Xavier~Cajamarca Bermeo.
+\newblock \textit{Diseño e implementació de un repositorio ecuatoriano de
+  datos enlazados geoespaciales}.
+\newblock Disponible en:
+  \url{http://dspace.ucuenca.edu.ec/handle/123456789/19876}, Acceso en: 13 de
+  Agosto 2019.
+
+\bibitem{congreso-ritsi}
+Marta Dávila.
+\newblock \textit{{SIG}: {La} ciencia que nos permite entender cómo funciona
+  el mundo}.
+\newblock ESRI España.
+\newblock Congreso Estatal RITSI IX 13 de Abril de 2018 en la Universidad
+  Politécnica de Madrid.
+
+\bibitem{tipos-datos-sig}
+Confederación de~Empresarios~de Andalucía~(CEA).
+\newblock \textit{Tipos de SIG}.
+\newblock Disponible en: \url{http://sig.cea.es/tipos_SIG}, Acceso en: 9 de
+  Mayo 2018.
+
+\bibitem{raster}
+ArcGIS.
+\newblock \textit{?`Qué son los datos ráster?}
+\newblock Disponible en:
+  \url{http://desktop.arcgis.com/es/arcmap/10.3/manage-data/raster-and-images/what-is-raster-data.htm},
+  Acceso en: 6 de Junio 2018.
+
+\bibitem{AsignaturaSIG}
+José~Samos Jiménez.
+\newblock \textit{Sistemas de Información Geográficos (SIG)}.
+\newblock Asignatura impartida por el Dpto. de Lenguajes y Sistemas
+  Informáticos en la ETSIIT (UGR). Curso 2017-2018.
+
+\bibitem{wkt}
+Grupo TYC~GIS Formación.
+\newblock \textit{Crear capas vectoriales a partir de archivos de texto en
+  formato WKT}.
+\newblock Disponible en:
+  \url{https://www.cursosgis.com/crear-capas-vectoriales-a-partir-de-archivos-de-texto-en-formato-wkt/},
+  Acceso en: 21 de Agosto 2019.
+
+\bibitem{Instituto-Andalucia}
+Consejería de~Economía y Conocimiento de la Junta~de Andalucía.
+\newblock \textit{Instituto de Estadística y Cartografía}.
+\newblock Disponible en:
+  \url{http://www.juntadeandalucia.es/institutodeestadisticaycartografia/},
+  Acceso en: 3 de Junio 2018.
+
+\end{thebibliography}

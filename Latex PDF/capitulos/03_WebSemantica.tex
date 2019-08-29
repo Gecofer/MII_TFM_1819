@@ -2,486 +2,854 @@
 
 % La metodología elegida debe ser aquella que más se adecue a su objeto de estudio y al enfoque aplicado. Hay dos métodos principales: 1) cuantitativo, que es el uso de instrumental estadístico, de datos numéricos; y 2) cualitativo, que se caracteriza por la calificación de los datos recogidos, durante el análisis del problema.
 
+% ENLACES VISTOS
+% COURSERA: La Web Semántica: Herramientas para la publicación y extracción efectiva de información en la Web
+% CURSO EN COURSERA INTERESANTE: https://es.coursera.org/learn/web-semantica?action=enroll
+% http://www.fgcsic.es/lychnos/es_es/articulos/construyendo_una_web_semantica
+% Libro Geospatial Semantic Web
+% https://www.researchgate.net/publication/216537707_La_Web_semantica_y_las_tecnologias_del_lenguaje_humano
+% http://www.bibliopos.es/Biblion-A2-Bibliografia-Documentacion/18ontologia-Web-Semantica.pdf
 
 \chapter{Web Semántica}
 \label{ch:web-semantinca}
 
 \begin{quote}
-  {\bf\textsc{Resumen:}} Este capítulo ...
+  {\bf\textsc{Resumen:}} En este capítulo se presenta la Web Semántica como una extensión de la Web actual que nos ayuda a encontrar respuestas a preguntas en Internet haciendo uso de la información semántica contenida en la búsqueda, gracias a una información mejor definida. Los conocimientos que adquiramos a lo largo de este capítulo sirven como base para el posterior desarrollo del ejemplo práctico. De esta manera, dividiremos el capítulo en tres grandes apartados: el primero de ellos contextualiza y explica la Web Semántica, el segundo nos adentra en las capas de la arquitectura de la Web Semántica, y el tercero habla sobre aplicaciones y posibilidades futuras que presenta la Web Semántica.
 \end{quote}
 
 \section{Web Semántica}
 
-% http://www.fgcsic.es/lychnos/es_es/articulos/construyendo_una_web_semantica
-% http://www.bibliopos.es/Biblion-A2-Bibliografia-Documentacion/18ontologia-Web-Semantica.pdf
-% https://www.ceupe.com/blog/que-es-la-la-web-semantica.html
+A continuación, vamos a introducir la definición de Web Semántica, para ello es necesario realizar un breve estudio del arte sobre la Web actual, para así comprender su origen y contexto en el que nace.
+
+\subsection{Conceptos Generales}
+
+%% ANTECEDENTES
+%% DEFINICIÓN DE WEB, CUANDO SE CREO, QUIEN LA CREO, COMO SURGIÓ
+
 % https://disenowebakus.net/semantica-web.php
-% http://cmap.javeriana.edu.co/servlet/SBReadResourceServlet?rid=1264791321546_232600024_2804
+% tesis
+La revolución informática, acaecida durante el siglo XX, llevó consigo la introducción de cambios severos en distintos aspectos de la sociedad. De entre todas estas transformaciones, fueron muchos los que vaticinaron un nuevo mundo, fundamentado principalmente por la aparición de la informática personal, en donde los seres humanos tendrían acceso a grandes repositorios de información \cite{semantica-web}. Este hecho trajo consigo el desarrollo, por parte del físico Tim Berners-Lee del CERN\footnote{El \href{https://home.cern}{CERN}, Organización Europea para la Investigación Nuclear, es uno de los centros de investigación científica más grandes y respetados del mundo ubicado en Suiza.}, de un sistema de vinculación y transferencia de documentos en red que acabaría convirtiéndose en la World Wide Web (WWW) o Red Global Mundial, actualmente conocida como la \textbf{Web} \cite{tesis}.\\
+%.creada por Tim Berners-Lee en 1989 y presentada en el CERN\footnote{El \href{https://home.cern}{CERN}, Organización Europea para la Investigación Nuclear, es uno de los centros de investigación científica más grandes y respetados del mundo.} (Suiza) \cite{tesis}. \\
+
+% https://www.researchgate.net/publication/216537707_La_Web_semantica_y_las_tecnologias_del_lenguaje_humano
+% COURSERA: La Web Semántica: Herramientas para la publicación y extracción efectiva de información en la Web
+A lo largo de la literatura, muchos son los autores que han definido la Web Semántica como la Web del futuro. Sin embargo, para poder comprenderla es necesario entender bien cuál es la Web actual \cite{researchgate}. En términos generales, la Web actual es una red informática compuesta por multitud de documentos \cite{coursera}. Estos documentos son básicamente páginas Web que hacen uso del lenguaje natural para expresar sus contenidos (texto, imágenes, audios, enlaces) y de etiquetas HTML (\textit{HyperText Markup Language}) para su interpretación en los navegadores Web (Figura \ref{html}). 
+
+% https://fjph32html.wordpress.com/2015/03/08/leccion-3-estructura-basica-en-html/
+\begin{figure}[H]
+	\centering
+	\includegraphics[height=5.6cm]{imagenes/capitulo3/estructurabasica} 
+	\caption{Ejemplo de la estructura HTML \cite{imagen-html}}
+	\label{html}
+\end{figure}
+
+En la figura \ref{fig:web} se puede apreciar como ha evolucionado la Web desde sus inicios hasta la Web Semántica (para saber más información sobre la evolución de la Web, vaya al \texttt{Apéndice B: Evolución de la Web}).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imagenes/capitulo3/WEB}
+	\caption{Evolución de la Web Semántica}
+	\label{fig:web}
+\end{figure}
+
+% FUNCIONALIDAD WEB ACTUAL
+
+% Apuntes clase Jose
+% COURSERA: La Web Semántica: Herramientas para la publicación y extracción efectiva de información en la Web
+Una de las principales causas del éxito de la Web se debe a la implantación como formato universal del lenguaje HTML (Figura \ref{html}). Gracias a este lenguaje, los ordenadores pueden analizar la estructura de las páginas Web, determinar cuál es la cabecera o indicar dónde hay un enlace a otra página. Sin embargo, no tienen una manera fiable de procesar la semántica de las páginas, lo que convierte a la Web actual en una Web Sintáctica cargada de documentos HTML diseñados sólo para ser leídos por humanos \cite{apuntes-clase-jose}.\\
+
+La Web Sintáctica, la que usamos actualmente, hace alusión a la búsqueda de información sin interpretación del significado. Por ejemplo, si se escribe en Google la frase ``\textit{la buena lectura}'', el navegador buscará en que páginas aparecen esas tres palabras, es decir, dicha búsqueda se hace sin tener en cuenta el significado que pueda tener la frase. Por ejemplo, en la figura \ref{ejemplo} podemos apreciar como dicha búsqueda nos devuelve páginas en cuyo título aparecen al menos dos de las tres palabras de nuestra frase. Esto se debe a que el enfoque clásico de buscar en la Web se basa en similitudes y sinónimos generales de texto y palabras, además de en el uso de estadísticas, lo que dificulta limitar los resultados que un usuario desea. De esta manera, el usuario debe seguir un proceso iterativo para encontrar las palabras clave adecuadas para la obtención de los resultados esperados.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[height=9.5cm]{imagenes/capitulo3/ejemplo}
+	\caption{Ejemplo de la búsqueda ``\textit{la buena lectura}'' en Google}
+	\label{ejemplo}
+\end{figure}
+
+Otro ejemplo para la Web podría ser el mostrado en la figura \ref{fig:wikipedia}, en donde podemos ver una página Web (Wikipedia) con la descripción de la WWW \cite{coursera}. La mayoría de nosotros estamos familiarizados con Wikipedia, y cuando accedemos a ella no nos supone mucha dificultad distinguir su contenido textual, sus imágenes o sus enlaces en color azul para redirigirnos a otras páginas Web con otros contenidos totalmente distintos. Entonces \textit{¿cómo podría una aplicación consumir datos de dos Webs distintas?} o \textit{¿cómo sabría qué contenido leer dentro de cada página Web?} Ambas preguntas podrán ser contestadas una vez finalizado el presente trabajo.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[height=6.95cm]{imagenes/capitulo3/wikipedia}
+	\caption{Entrada en Wikipedia para la WWW}
+	\label{fig:wikipedia}
+\end{figure}
+
+
+% EJEMPLO 1 DE WEB ACTUAL
+
+
+% Leyendo el texto, el contenido. Pero, ¿cómo sabe qué contenido leer dentro de una página web? Mirando el código HTML de cada página. Podría ser pero es muy desordenado. Por dentro el código está muy desordenado siempre. Uno no sabe, una aplicación no sabría exactamente dónde está el nombre de una persona dentro del código html. Normalmente es muy difícil de saber.
+
+% http://www.fgcsic.es/lychnos/es_es/articulos/construyendo_una_web_semantica
+%Todos estamos bastante familiarizados con la Web y cómo operar con ella. Abrimos un navegador (por ejemplo, Chrome, Explorer, Firefox o Safari) e introducimos la dirección de la página que deseamos consultar o bien pedimos a un buscador (por ejemplo Google, Bing o Yahoo!) que nos determine las ubicaciones de documentos en la Web que contengan una combinación de palabras deseada y que nos las ordene por importancia.­
+
+
+% http://www.bibliopos.es/Biblion-A2-Bibliografia-Documentacion/18ontologia-Web-Semantica.pdf
 % https://www.w3c.es/Eventos/2009/Talleres/Murcia/Presentaciones/jesualdo.pdf
-% https://www.wiziq.com/tutorial/143922-La-Web-Semantica-y-sus-Principales-Caracteristicas
-% http://personales.upv.es/ccarrasc/doc/2002-2003/WebSem/WS_2_b.htm
-% http://inteligencia-artificial-unsxx.blogspot.com/p/web-semantica-y-web-30.html
 
-% https://www.weblaspalmas.es/noticias-tecnologicas/172/La-web-3-0-De-la-web-social-a-la-semantica.html
+% [ejemplo arquitectura de como funciona la web actual]
+% [mencionar algo de pubmed]
 
-% https://wiki.dbpedia.org/
+% ENTIENDO QUE ES LA WEB ACTUAL
+% DESAFÍOS QUE PRESENTA LA WEB ACTUAL
 
-%  Web 3.0: integración de la Web Semántica y la Web 2.0:  http://www.albertolsa.com/wp-content/uploads/2009/07/redessociales-web-30-integracion-de-la-web-semantica-y-la-web-20-los-santos-nava-godoy.pdf
+% COURSERA: La Web Semántica: Herramientas para la publicación y extracción efectiva de información en la Web
+Seguidamente, una vez entendida la Web actual, es necesario comprender los desafíos que presenta (tabla \ref{desafios}). Para ello debemos empezar diciendo que la Web actual es masiva (\textit{¿cuántos millones de páginas Web existen en la red?}), cambiante (\textit{¿cuántos tweets se generan en un segundo?}), heterogénea (\textit{¿cuántos millones de dispositivos independientes generan datos en un día?}) y está hecha para humanos \cite{coursera}.
 
-% evolucion de la web: http://profesores.elo.utfsm.cl/~tarredondo/info/networks/Evolucion_Web.pdf
-
-% aplicación de la web semántica en tráfico: https://www.ptcarretera.es/wp-content/uploads/2018/07/02_2017_lisitt_def.pdf
-
-% hablar sobre los tipos de web, según veo hay Web 1.0, Web 2.0 y Web 3.0 o Semántica
-
-% CURSO EN COURSERA INTERESANTE: https://es.coursera.org/learn/web-semantica?action=enroll
-
-% http://www.mclibre.org/consultar/xml/lecciones/web-semantica.html
-
-% Las web 3.0: de la web social a la semántica: https://www.puromarketing.com/12/15656/social-semantica.html
-
-La Web Semántica permitirá a las máquinas comprender documentos y datos semánticos, pudiendo asÍ colaborar entre ellas y con las personas.\\
-
-La Web Semántica no es una Web aparte, es una extensión de la Web actual que permite que los datos tengan un significado bien definido, de manera que personas y ordenadores puedan trabajar en cooperación más fácilmente.
-
-% tengo que ver como meter el apartado de 1.4 del Capítulo 1 
-
-Por web semántica se entiende una forma de organizar el contenido en la Web que mejore la cooperación entre computadoras y humanos. Esto pasa por avanzar de una web de documentos a una web de datos enlazados en la que se puedan ofrecer novedosos servicios que hagan uso del potencial de combinar e interrelacionar datos de diversa índole y procedencia.
-
-
-Hoy en día, la web tiene millones de usuarios, en donde los principales 
-
-
-Hoy en día, millones de usuarios hacen uso de lo que se conoce como web a través de los distintos navegadores que hay. 
-
-
-qué sabemos de la web actual, 
-
-
-% COURSERA
-
- ¿Y cómo es la web actual? Primero la web actual es masiva. ¿Cuántos millones y millones de páginas web existen? Además la web actual es cambiante ¿Cuántos tweets por segundo se generan? ¿Cuántas actualizaciones de perfil de Facebook se generan? Incontables, además la web actual es heterogénea ¿Cuántos millones de dispositivos como éste, o como sensores generan datos? La web actual además es distribuida, cualquier persona en el mundo puede acceder o generar contenido, no solo esto la web actual es un gran repositorio de información al cual todo el mundo puede acceder.
- 
- ¿Pero es realmente accesible esta información? Hoy en idea tenemos herramientas como Google y Bing y muchas otras que nos dan acceso a los datos. Pero estas herramientas tienen dificultades al momento de entender la información que está contenida en ellos. En particular estas herramientas miran las páginas web como si fueran conjunto de palabras, y no son capaces de entender o tienen dificultades al momento de entender los distintos elementos que forman parte de ella, que pueden ser tan diversos como personas, lugares geográficos, publicaciones, películas etcétera, y además tienen dificultades al momento de entender las relaciones que existen entre estos elementos.
- 
- En este curso verá en que consisten las tecnologías de la Web Semántica y como se utilizan en la web actual. También tendrá la oportunidad de realizar varios proyectos aplicando todas estas tecnologías para resolver los problemas que Marcelo ha comentado anteriormente. Por ejemplo, ¿le gustaría que Google entendiera cada uno de los componentes de su página web? O si usted tienen una tienda virtual, ¿le gustaría que Google fuera capaz de identificar los distintos productos que forman parte de su tienda virtual y los desplegara al momento de hacer una búsqueda? Esto se consigue usando [DESCONOCIDO] y les mostraremos como se relaciona en este curso con las tecnologías de la Web Semántica.
- 
- Además, ¿le gustaría poder acceder a la Wikipedia como si fuera una tabla Excel? ¿O le gustaría poder conocer como han hecho los gobiernos para hacer públicos sus datos y de esta manera permitir que los ciudadanos puedan acceder a la información de como se gastan sus impuestos, o puedan entender de una manera más sencilla como le afecta una ley? ¿O le gustaría saber como hacen los biólogos para compartir sus datos en la web?
- 
- \section{La web actual y sus desafíos}
- 
- La web semántica es lo que va a ser la web del futuro. Pero para poder llegar a la web del futuro tenemos que entender cuál es la web actual en la que estamos. Entonces, la web actual en la que estamos está compuesta por documentos. Estos documentos son básicamente páginas web html que vemos cualquier día, todos los días en nuestro navegador web. Estos documentos web están compuestos por contenido, que pueden ser texto, pueden ser imágenes, pueden ser vídeos, audios, etcétera. Y además está compuesto por enlaces. Estos enlaces nos llevan a otras páginas web. Esta es la forma de la web actual. Es la que todos conocemos.
- 
- [ejemplo arquitectura de como funciona la web actual]
- 
-  Todos estamos bastante familiarizados con la Web y sobre cómo operar con ella. Abrimos un navegador (por ejemplo, Explorer, Firefox o Safari) e introducimos la dirección de la página que deseamos consultar o bien pedimos a un buscador (por ejemplo Google o Yahoo!) que nos determine las ubicaciones de documentos en la Web que contengan una combinación de palabras deseada y que nos las ordene por importancia.­ % http://www.fgcsic.es/lychnos/es_es/articulos/construyendo_una_web_semantica
- 
- Un ejemplo de esta web actual sería el que vemos ahora en la pantalla. Este ejemplo lo que contiene es la descripción de la world wide web en la Wikipedia. Todos conocemos la Wikipedia y es muy sencillo acceder a ella. Dentro de esa descripción podemos ver que tenemos texto. Mucho texto. Esto sería principalmente el contenido de la página web. Además tenemos una imagen dentro de esta página web. Sería una parte más del contenido de la página web. Además, dentro de esta página web de la Wikipedia tenemos enlaces. Por ejemplo, tenemos enlaces a informática, tenemos enlaces a computación, tenemos enlaces a Internet. Estos enlaces nos redirigen a otra página web con un contenido distinto.
- 
-
- 
- [ejemplo de una página web]
- 
- % mencionar algo de pubmed
- 
- Seguimos hablando de enlaces. Y los enlaces en este otro ejemplo son enlaces de PubMed. PubMed es una base de datos. Una página web que contiene documentos científicos, documentos médicos sobre enfermedades y demás. Entonces aquí tenemos varios ejemplos de enlaces que nos llevan, precisamente, a esos documentos científicos de medicina.
- 
- 
- Entonces ya hemos visto un poquito como es la web actual y ahora vamos a ver los desafíos que presenta esta web actual. El primer desafío es la heterogeneidad. Como hemos visto, la Wikipedia tiene un formato, PubMed tiene otro formato, Facebook tiene otro formato de datos, nos presenta las cosas de forma distinta. Es decir la web es muy heterogénea.
- 
-\begin{figure}[H]
+\begin{table}[H]
 	\centering
-	\includegraphics[height=4.5cm]{imagenes/capitulo3/1}
-	\caption{}
-\end{figure}
- 
- 
- 
- Además la web es masiva. Hay muchísimos datos en PubMed, en Wikipedia, en Facebook. Hay una cantidad ingente de datos. Además cambia muy rápido. Por ejemplo, yo podría estar actualizando mi perfil de Facebook cada hora, cada dos horas. Hay gente que lo actualiza cada 15 minutos. Entonces todo esto cambia muy rápido y estoy dando un ejemplo muy chiquito, muy concreto.
- 
- Y sobre todo, la web actual está hecha para humanos. Si nos hemos fijado hasta el momento, los ejemplos que he puesto, la Wikipedia, PubMed Facebook, todo esto está hecho para que sea consumido por humanos. Las máquinas, el software no tiene tanto acceso a este contenido. Es difícil para un programa interpretar los datos que hay, por ejemplo, en el perfil de Facebook de una persona. o dentro de la Wikipedia.
- 
- \begin{figure}[H]
- 	\centering
- 	\includegraphics[height=4.5cm]{imagenes/capitulo3/2}
- 	\caption{}
- 	\label{}
- \end{figure}
- 
- 
- 
- 
- Más en detalle la web es heterogénea porque cada aplicación web, cada página web crea los datos y los presenta a los usuarios de una forma totalmente distintas. Es distinto lo que se hace en Facebook, en LinkedIn, en Orkut, en MySpace. Todas esas son redes sociales. Son totalmente distintas y no intercambian datos entre ellas.
- 
- Además la web es masiva. Por ejemplo, la Wikipedia son casi 6 terabytes de datos. Y ¿qué es un terabyte de datos?
- 
- En un terabyte de datos caben 678 millones de páginas de texto. 678 millones, eso, suponiendo que el Quijote tiene 1.000 páginas de texto, quiere decir que en un terabyte caben 678 mil Quijotes, Y en una Wikipedia, con 6 terabytes de datos, caben alrededor de 4 millones de Quijotes. Muchísimo.
- 
- La web actual cambia muy rápido. Actualmente se transfieren en Internet 160 terabytes de datos por segundo. Esos son 27 Wikipedias por segundo. Se transfieren alrededor de Internet 27 Wikipedias cada segundo. Eso es muchísimo.
- 
- Además la web está hecha para humanos. Como comentaba anteriormente Facebook lo consumen principalmente las personas. La Wikipedia la consumen normalmente las personas. Pero ¿qué pasa si yo quiero enlazar o combinar los datos de la Wikipedia y de Facebook o la Wikipedia y de PubMed? Eso actualmente, con el diseño de la web actual no es posible.
- 
- Entonces ¿cómo podría una aplicación consumir datos de dos webs distintas? Leyendo el texto, el contenido. Pero, ¿cómo sabe qué texto leer? ¿Cómo sabe qué contenido leer dentro de una página web?
- 
- Mirando el código de la html de cada página web. Podría ser pero es muy desordenado. Por dentro el código está muy desordenado siempre. Uno no sabe, una aplicación no sabría exactamente dónde está el nombre de una persona dentro del código html. Normalmente es muy difícil de saber.
- 
-  \begin{figure}[H]
- 	\centering
- 	\includegraphics[height=4.5cm]{imagenes/capitulo3/3}
- 	\caption{}
- \end{figure}
-
-Entonces, para resumir hemos visto que la web es masiva, está compuesta por documentos. Estos documentos tienen contenido y enlaces a otras páginas web. Hay varios desafíos dentro de la web actual que son la heterogeneidad, la velocidad de cambio, la masividad de la web. Y que está hecha para humanos. Un software, una aplicación no sabe identificar o consumir los datos de una página web.
-
-Entonces, estos son los desafíos que intenta resolver la web semántica. Sobre todo la parte de la heterogeneidad de datos y la parte de que está hecha para los humanos. La web semántica va a tratar de derribar las barreras que existen en la web actual para que los contenidos puedan ser consumidos por máquinas de manera mucho más eficiente.
+	\caption{Desafíos que presenta la Web actual \cite{coursera}}
+	\label{desafios}
+	\begin{tabular}{|>{\columncolor[HTML]{EFEFEF}}l |m{7.75cm}|}
+		\hline
+		\textbf{Heterogénea} & Múltiples organizaciones generan datos de forma independiente \\ \hline
+		\textbf{Masiva} & La cantidad de información existente es enorme \\ \hline
+		\textbf{Cambia muy rápido} &  Cada día son publicados y borrados enormes
+		vólumenes de información\\ \hline
+		\textbf{Hecha para humanos} &  En general, una persona puede interpretar la información de una página Web\\ \hline
+	\end{tabular}
+\end{table}
 
 
+
+%\begin{figure}[H]
+%	\centering
+%	\includegraphics[height=6cm]{imagenes/capitulo3/1} % Características de la WEB
+%	\caption{}
+%	\label{desafios}
+%\end{figure}
+
+
+
+%\begin{enumerate}
+
+% Heterogenea
+% El primer desafío es la heterogeneidad. Como hemos visto, la Wikipedia tiene un formato, PubMed tiene otro formato, Facebook tiene otro formato de datos, nos presenta las cosas de forma distinta. Es decir la web es muy heterogénea.
+%\item \textbf{Heterogénea}: ¿Cuántos millones de dispositivos independientes generan datos en un día? En la red existen muchas páginas web que son capaces de generar mucha cantidad de datos, y presentarlos de manera totalmente distinta a los usuarios. Por ejemplo, las redes sociales como 
+%Tanto las páginas web como aplicaciones web generan muchos datos, los cuales y los presenta de manera totalmente distinta a los usuarios. No es lo mismo lo que se hace en todas las redes sociales, como por ejemplo Twitter o Facebook, ya que son totalmente distintas y no intercambian datos entre ellas.
+
+% Masiva
+% ¿Y cómo es la web actual? Primero la web actual es masiva. 
+% Además la web es masiva. Hay muchísimos datos en PubMed, en Wikipedia, en Facebook. Hay una cantidad ingente de datos. Además cambia muy rápido. Por ejemplo, yo podría estar actualizando mi perfil de Facebook cada hora, cada dos horas. Hay gente que lo actualiza cada 15 minutos. Entonces todo esto cambia muy rápido y estoy dando un ejemplo muy chiquito, muy concreto. Además la web es masiva. Por ejemplo, la Wikipedia son casi 6 terabytes de datos. Y ¿qué es un terabyte de datos? En un terabyte de datos caben 678 millones de páginas de texto. 678 millones, eso, suponiendo que el Quijote tiene 1.000 páginas de texto, quiere decir que en un terabyte caben 678 mil Quijotes, Y en una Wikipedia, con 6 terabytes de datos, caben alrededor de 4 millones de Quijotes. Muchísimo.
+
+%\item \textbf{Masiva}: ¿Cuántos millones de páginas web existen? Hoy en día, páginas como Wikipedia o Twitter generan muchísimos datos cambiantes. Por ejemplo, es posible estar actualizando mi perfil cada hora. 
+
+% Cambia muy rápido
+%  Además la web actual es cambiante  ¿Cuántas actualizaciones de perfil de Facebook se generan? Incontables,
+% Esos son 27 Wikipedias por segundo. Se transfieren alrededor de Internet 27 Wikipedias cada segundo. Eso es muchísimo.
+%\item \textbf{Cambia muy rápido}: ¿Cuántos tweets por segundo se generan? Actualmente se transfieren en Internet 160 terabytes de datos por segundo, lo que genera que cambie muy rápido. 
+
+% Hecha para humanos
+% La web actual además es distribuida, cualquier persona en el mundo puede acceder o generar contenido, no solo esto la web actual es un gran repositorio de información al cual todo el mundo puede acceder.
+% Además la web está hecha para humanos. Como comentaba anteriormente Facebook lo consumen principalmente las personas. La Wikipedia la consumen normalmente las personas. Pero ¿qué pasa si yo quiero enlazar o combinar los datos de la Wikipedia y de Facebook o la Wikipedia y de PubMed? Eso actualmente, con el diseño de la web actual no es posible.
+%\item \textbf{Hecha para humanos}: Si nos hemos fijado hasta el momento, los ejemplos que he puesto, la Wikipedia, Twitter o Facebook, están hechas para que sean consumidos por las personas. Las máquinas, el software no tiene tanto acceso a este contenido. Es difícil para un programa interpretar los datos que hay, por ejemplo, en el perfil de Facebook de una persona. o dentro de la Wikipedia. 
+
+%\end{enumerate}
+
+% ENTENDER LA WEB ACTUAL (RESUMEN DEL PARRAFO)
+% INTRODUCIR AL FINAL LA WEB SEMÁNTICA (VER COMO HACERLO) Y ASÍ UNIRLO AL SIGUIENTE APARTADO
+
+% https://disenowebakus.net/semantica-web.php
+% COURSERA: La Web Semántica: Herramientas para la publicación y extracción efectiva de información en la Web
+% LA ONTOLOGÍA Y LA WEB SEMÁNTICA: RECOMENDACIONES DEL W3C. 
+% RAE
+% Apuntes clase Jose
+
+En consecuencia, podemos concluir que la Web se ha impuesto como el instrumento de uso cotidiano más potente y rápido para el intercambio y/o difusión de información en nuestra sociedad, accesible toda ella a través de Internet. No obstante, su capacidad para satisfacer necesidades específicas es limitada. Entonces, \textit{¿es realmente accesible esta información?} Hoy en día, existen numerosas herramientas como Google, Yahoo! o Bing que nos facilitan el acceso a esos datos \cite{semantica-web}. Sin embargo, estas herramientas tienen dificultades a la hora de entender la información que está contenida en ellas. Asimismo, la abrumadora obtención de resultados, tanto relevantes como irrelevantes a partir de una búsqueda, denota una importante falta de precisión en la Web \cite{coursera}. Este inconveniente se debe principalmente a que la Web actual carece de capacidad para expresar significados. En particular, estas herramientas miran las páginas Web como si fueran un conjunto de palabras, limitándose a recoger cadenas de caracteres indexadas en grandes bases de datos o a buscar palabras clave, y presentarlas en la pantalla del ordenador para su posterior visualización (Figura \ref{ejemplo}) \cite{web-semantica-w3c}. Por lo cual, estas herramientas no son capaces de entender los elementos que forman parte de ella (lugares geográficos, actores, películas) y las relaciones existentes entre estos elementos, lo que dificulta que el ordenador no sepa realmente lo que significa la información, puesto que la mayoría de los contenidos de la Web actual están diseñados para ser leídos por humanos \cite{apuntes-clase-jose}. \\
+
+% tesis
+%En la actualidad, la Web esta compuesta por varios documentos distribuidos en diferentes lugares del planeta, durante muchos años ha sido una poderosa herramienta para publicar, buscar y compartir información  convirtiéndose en una gran base de datos, siendo imposible explotar adecuadamente esa información. 
+%\begin{figure}[H]
+%	\centering
+%	\includegraphics[height=5.6cm]{imageness/capitulo3/bing} 
+%	\caption{Página inicial del buscador Bing}
+%	\label{bing}
+%\end{figure}
+
+%\begin{figure}[H]
+%	\centering
+%	\includegraphics[height=6.7cm]{imagenes/capitulo3/yahoo-busqueda} % https://www.google.com/search/howsearchworks/
+%	\caption{Búsqueda de ``ugr'' en Yahoo}
+%	\label{yahoo-busqueda}
+%\end{figure}
+
+% Apuntes clase Jose
+% COURSERA: La Web Semántica: Herramientas para la publicación y extracción efectiva de información en la Web
+Por esta razón surge la Web Semántica, para proporcionar estructura al contenido semántico de las páginas Web, con la finalidad de que los contenidos puedan ser consumidos por máquinas de manera más eficiente. En el siguiente subapartado entramos en detalle en el concepto de Web Semántica.
+
+\subsection{Concepto de Web Semántica} 
+
+Para comprender que es la Web Semántica, es necesario establecer los principios básicos sobre los que se asienta (figura \ref{fig:principio}). En el subapartado anterior se estableció el contexto en el que nace, a continuación se procede a explicar su definición. 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[height=4.5cm]{imagenes/capitulo3/10}
-	\caption{}
+	\includegraphics[width=0.65\linewidth]{imagenes/capitulo3/principio}
+	\caption{Principios básicos de la Web Semántica \cite{aplicacion}}
+	\label{fig:principio}
 \end{figure}
-% Evolución de una web cuyo contenido es producido por unos y consumidos por otros a una web semántica que mejora la cooperación entre computadoras y humanos.
 
-A partir de ahí podemos ir saltando de una página web a otra a través de hipervínculos –estas palabras, frases, imágenes o iconos que generan la descarga automática de otra página web cuando pinchamos sobre ellos–. Esto es lo que se conoce como la web de primera generación o Web 1.0: personas con conocimiento especializado de diseño y composición de páginas web crean los documentos con su contenido y definen los hipervínculos que los entrelazan; los usuarios no expertos son fundamentalmente consumidores de información. Leen noticias, consultan diccionarios, visualizan imágenes o vídeos o compran productos. % http://www.fgcsic.es/lychnos/es_es/articulos/construyendo_una_web_semantica
-
-En la web de segunda generación, la Web 2.0, los usuarios no expertos, además de consumidores, pueden ser también generadores de contenidos y proveedores de servicios. Mediante blogs, por ejemplo, se pueden escribir y compartir reflexiones periódicas, y los lectores pueden añadir comentarios o nuevos enlaces relevantes; con Wikipedia, millones de personas construyen una gran enciclopedia multilingüe que constantemente es actualizada y ampliada por los propios usuarios; a través de redes entre pares, como originalmente Napster, BitTorrent o eMule, se comparten películas y ficheros de música; y últimamente, con la irrupción de las redes sociales —Facebook, Tuenti o Twitter—, la Web se ha convertido en un espacio global de participación e interacción entre usuarios.% http://www.fgcsic.es/lychnos/es_es/articulos/construyendo_una_web_semantica
-
-La web semántica viene a ser la tercera generación de la Web, la Web 3.0, una extensión de la Web actual en la que los contenidos están organizados de forma que no solo los humanos sino también las computadoras sean capaces de procesar su significado —por eso lo de semántica— posibilitando así una mejor cooperación entre computadoras y humanos. La nomenclatura Web 1.0, 2.0 y 3.0 es seguramente artificiosa, ya que de hecho no se trata de nuevas versiones de la Web, sino de la misma web de siempre pero con niveles añadidos de funcionalidad. % http://www.fgcsic.es/lychnos/es_es/articulos/construyendo_una_web_semantica
+La \textbf{Web Semántica} es una corriente promovida también por Tim Berners-Lee, cuyo fin es lograr que las máquinas puedan entender y, por tanto, utilizar lo que la Web contiene. De ahí que se haya tomado el término \textit{semántica}, que desde el punto de vista lingüístico ``\textit{es la disciplina que estudia el significado de los términos}'' \cite{cwb}. Esta idea surge a raíz de un artículo publicado por la revista \textit{Scientific American} en mayo de 2001, en donde Tim Berners-Lee propone una nueva forma de organizar el contenido en la Red para superar el problema de la heterogeneidad semántica y proporcionar a las computadoras contenidos Web significativos \cite{web-semantica-w3c, libro-gis}.\\
 
 
- 
- 
-\subsection{Web actual vs. Web Semántica}
+% EMPEZAMOS A DEFINIR - PRIMERA DEFINICIÓN LA OFICIAL (VER OTRAS DE LA LITERATURA)
 
-La mayoría de los contenidos de la Web actual están diseñados para ser leídos por humanos.
 
-Los ordenadores puede analizar la estructura de las páginas Web y determinar cuál es la cabecera, dónde hay un enlace a otra página, etc.
-
-- No tienen una forma fiable de procesar la semántica de las páginas.
-
-La Web Semántica proporciona estructura al contenido semántico de las páginas Web, para que puedan ser tratadas por máquinas.
-
-– Crea un entorno donde los agentes que vagan de página a página pueden realizar tareas sofisticadas para los usuarios: no sÓlo miran las palabras clave de las páginas, sino que recogen la semántica de los datos.
-
-Todo ello “sin Inteligencia Artificial”, la semántica está en las páginas. 
-
-– Además, las páginas han sido desarrolladas por usuarios “no informáticos”.
-
-% diagrama de web y diagrama de web semántica
-
-% deberíamos de hablar algo sobre la web
-
-% estaría bien decir que signfica semántica por un lado, que signfica sintáctico por otro y así ir uniendo
-% búsquedas semánticas, no sólo sintácticas.
-
-% mencionar algo sobre lo de interoperabilidad
-
-% hablar sobre OGC
-
-% hablar sobre HTML y XML
-
-\section{De una web de documentos a una web de datos}
-
-Para alcanzar esta visión de una web semántica de entrada no se deberían enlazar únicamente documentos de texto, imágenes u otro contenido multimedia sino directamente los datos sin procesar.% http://www.fgcsic.es/lychnos/es_es/articulos/construyendo_una_web_semantica
-
-El conjunto de buenas prácticas para la publicación y el enlace de datos estructurados en la Web se conoce como Linked Data, datos enlazados. He aquí sus puntos principales:
-
+% LA ONTOLOGÍA Y LA WEB SEMÁNTICA: RECOMENDACIONES DEL W3C. 
 % http://www.fgcsic.es/lychnos/es_es/articulos/construyendo_una_web_semantica
 
-- Cada dato –o cada recurso, como suele llamarse a la información en la Web– debe tener un identificador único que lo distingue de cualquier otro dato publicable en la Web. Es lo que se conoce como Universal Resource Identifier, o URI. De hecho muchos usuarios de la Web ya estamos familiarizados con lo que es un URI. Por ejemplo, la dirección https://www.cia.gov/library/publications/the-world-factbook/geos/sp.html es el URI que identifica la página web con la información sobre España en el World Factbook. Pero, para enlazar datos, los URI deben identificar no solo a páginas sino a los elementos concretos que componen los datos. Así, pues, para publicar el hecho de que España y Francia compartan frontera debemos tener unos URI que identifiquen «España», «comparte frontera con» y «Francia», respectivamente.
 
-- Al mismo tiempo, estos identificadores deben ser desreferenciables, lo que significa que el identificador del recurso apunta a su vez al lugar en la Web donde podemos acceder al mismo. La desreferencia de un URI (literalmente «deshacer la referencia») se realiza mediante el protocolo HTTP (Hypertext Transfer Protocol) que posibilita los hipervínculos en la Web: cuando pinchamos sobre uno de estos vínculos, el protocolo HTTP toma el URI y a través de él es capaz de acceder al contenido al cual está apuntando. Lo mismo debe ocurrir ahora con los recursos que componen un dato. El URI de «comparte frontera con» deberá poder ser desreferenciado para acceder a la definición de lo que significa esta relación. Ahí entra la semántica: disponer de estas definiciones y poder acceder a ellas.
+% COURSERA: La Web Semántica: Herramientas para la publicación y extracción efectiva de información en la Web
+% https://www.researchgate.net/publication/216537707_La_Web_semantica_y_las_tecnologias_del_lenguaje_humano
+% https://disenowebakus.net/semantica-web.php
+% LA ONTOLOGÍA Y LA WEB SEMÁNTICA: RECOMENDACIONES DEL W3C. 
+% de descentralización, máxima facilidad de acceso y/o apertura al crecimiento
+En palabras de Tim Berners-Lee \cite{researchgate}: ``\textit{La Web Semántica es una extensión de la actual Web en la que a la información disponible se le otorga un significado bien definido que permita a los ordenadores y a las personas trabajar en cooperación. Está basada en la idea de proporcionar en la Web datos definidos y enlazados, permitiendo que aplicaciones heterogéneas localicen, integren, razonen y reutilicen la información presente en la Web}''. Considerando la definición aquí aportada, la Web Semántica se manifiesta como una evolución de la actual Web, no una sustitución ya que mantiene sus características principales (descentralización, facilidad de acceso), en donde los ordenadores son capaces de interpretar los documentos; sin hacer uso de Inteligencia Artificial ya que la semántica se encuentra en las páginas \cite{semantica-web}. \\
 
-- Los datos propiamente dichos se deben expresar usando el Resource Description Framework o RDF, un lenguaje para estructurar los datos en enunciados con el simple formato sujeto-predicado-objeto, y que se conoce como triplete. El sujeto y el objeto son recursos identificados mediante un URI, y el predicado es la relación entre estos recursos. Así pues el hecho de que España comparte frontera con Francia se expresaría en forma de triplete RDF de la siguiente manera:
+% OTRA DEFINICIÓN - W3C
 
-sujeto: %http://www4.wiwiss.fu-berlin.de/factbook/resource/Spain
-predicado: %http://www4.wi­wiss.fu-berlin.de/factbook/ns#landboundary
-objeto: %http://www4.wiwiss.fu-berlin.de/factbook/resource/France
+% COURSERA: La Web Semántica: Herramientas para la publicación y extracción efectiva de información en la Web
+% https://www.researchgate.net/publication/216537707_La_Web_semantica_y_las_tecnologias_del_lenguaje_humano
+% https://disenowebakus.net/semantica-web.php
+% LA ONTOLOGÍA Y LA WEB SEMÁNTICA: RECOMENDACIONES DEL W3C. 
+% https://disenowebakus.net/semantica-web.php
+Pero, \textit{¿cómo se traduce lo que acabamos de definir a la práctica?} En la práctica, la Web Semántica es un conjunto de recomendaciones\footnote{Una recomendación es una descripción formal de una tecnología que debe ser utilizada por todos.} desarrolladas por el \textbf{World Wide Web Consortium}\textbf{ (W3C) }que es el organismo encargado de velar por la normalización en Internet y dictar los distintos estándares para la Web. El objetivo principal de este organismo reside en ``\textit{guiar a la Web hacia su máximo potencial mediante el desarrollo de protocolos y pautas comunes que promuevan su evolución y garanticen su interactividad}’’ \cite{coursera, web-semantica-w3c}. Dentro de la página oficial del W3C (\url{https://www.w3.org}), podemos encontrar otra definición para la Web Semántica: ``\textit{La Web Semántica es la representación de datos en la Web. Es un esfuerzo colaborativo liderado por W3C con la participación de un gran número de investigadores y socios industriales. Se basa en el uso de RDF, que integra una gran variedad de aplicaciones mediante el uso de XML, para la sintaxis y el uso de URLs para su identificación}'' \cite{semantica-web}. Considerando la definición expuesta, los términos mencionados aquí se escapan de los conocimientos aprendidos hasta ahora, en donde las tecnologías nombradas serán tratadas en sucesivos apartados, ya que la W3C recomienda el uso de RDF (\textit{Resource Description Framework}) y OWL (\textit{Ontology Web Language}) para la construcción de la Web Semántica.\\
 
-Hemos usado las URI de la publicación del World Factbook como Linked Data realizada por la Universidad Libre de Berlín. Como se puede observar, en RDF la relación entre sujeto y objeto –el predicado– es a su vez también un recurso con su URI que debe ser desreferenciable. Como hemos dicho anteriormente, es así como accederemos a sus definiciones, especificando por ejemplo que Spain y France son países y que landboundary es la relación de dos países que comparten una frontera. Estas definiciones que aquí hemos expresado en lenguaje natural deberían ser especificadas a su vez como datos publicados en forma de tripletes RDF.
+% tesis
+% INTRODUCCIÓN A LA WEB SEMÁNTICA: REALIDADES Y PERSPECTIVAS.
+% COURSERA: La Web Semántica: Herramientas para la publicación y extracción efectiva de información en la Web
+De igual manera, nos encontramos a lo largo de la literatura más definiciones de Web Semántica, si bien todas guardan un nexo en común y es el de dotar de mayor significado a la Web actual a través de lenguajes universales que resuelvan los problemas ocasionados por una Web carente de semántica en la que a veces el acceso a la información se convierte en una tarea difícil \cite{introduccion}. Para ello, se desarrollan y usan lenguajes que facilitan la introducción en la Web de contenido legible por las máquinas \cite{tesis}. Entonces, \textit{¿cuáles son los requisitos esenciales para que una Web de datos pueda ser accedida y entendida tanto por ordenadores como por personas?} \cite{coursera}:
 
-- Finalmente, para poder utilizar todo el potencial que nos ofrece la infraestructura de la Web, los datos de un repositorio o base de datos deberían estar enlazados con datos externos, definidos en otro repositorio o base de datos. Es decir, el sujeto, predicado y objeto de un mismo triplete RDF no tienen por qué estar ubicados, definidos y gestionados en el mismo repositorio de datos, sino que pueden estar distribuidos por la Web.
+\begin{enumerate}
+	\item Se nescesita disponer de un l\textbf{enguaje que permita especificar los recursos de la Web y las relaciones que existen entre ellos}. Con esto, lo que se pretende es desarollar una Web más cohesionada en donde sea más fácil localizar, compartir e integrar información para sacar un mayor partido a los recursos disposibles. Para conseguir este objetivo es necesario que un sistema automático sea capaz de sacar sus propias conclusiones respecto a las búsquedas realizadas.
+	
+	\item Se necesita poder consultar esos datos mediante aplicaciones computacionales. Para ello es necesario disponer de un \textbf{lenguaje para describir consultas procesables por un computador} para su entendimiento y ser capaz de sacar conclusiones a partir de los datos de manera automática. Con esto se pretende explorar la Web de forma más automática y obtener resultados más enfocados.
+\end{enumerate}
 
-Publicando los datos directamente en formato RDF, con unos URI desreferenciables que apuntan a definiciones de entidades y sus relaciones, que a su vez se expresan como datos en RDF enlazando así unos datos con otros, es como se añade a la infraestructura tecnológica existente de la Web este nivel, que puede aumentar significativamente su funcionalidad pues permite procesar estos datos y sus relaciones de forma automatizada. Al igual que en la web de documentos, en la web de datos cualquier persona u organización puede publicar datos, del tipo que sea, y definir los vocabularios asociados a recursos y relaciones. Una buena práctica es usar los URI y los vocabularios ya existentes y ampliamente utilizados. A diferencia de la web de documentos, la estructuración de los datos es independiente de su visualización en pantalla para un usuario humano.
+% https://www.researchgate.net/publication/216537707_La_Web_semantica_y_las_tecnologias_del_lenguaje_humano
+A partir de los conceptos explicados hasta ahora, la implantación de la Web semántica frente a la actual Web supone un cambio de paradigma, ya que tiene que pasarse de una Web basada y creada en lenguaje natural a una Web estructurada y organizada, en donde los contenidos etiquetados semánticamente serán el elemento principal \cite{researchgate}. En la figura \ref{wa-ws} podemos ver la diferencia que hay entre ambos tipos de Web. Se observa como el esquema de la izquierda de la actual Web está basado en los enlaces con los que accedemos a otras páginas, mientras que en la Web Semántica (esquema de la derecha) disponemos de información relevante.
 
-
-\section{Introducción a la Web Semántica}
-
-% COURSERA
-
-Como habíamos visto en el video anterior, hay datos de todo tipo en la web, tenemos datos genéricos, datos médicos, noticias, datos fundamentales. Y en general, estos datos son de fácil acceso de las personas. En general las páginas web están diseñadas para que sean leídas por personas y formatos adecuados para que las personas puedan acceder a la información. Pero tenemos un problema, la cantidad de datos es tan grande que no la podemos manejar. Solo piensa en los datos que a los cuales usted accede a la web. Por ejemplo tiene el correo electrónico, puede crear una página en Facebook, puede tener información en Instagram, puede acceder a información en Wikipedia y en información general, puede acceder a información geográfica, etcétera, etcétera. ¿Sí? Veamos algunos ejemplos de estos datos en la web. 
-
- \begin{figure}[H]
+\begin{figure}[H]
 	\centering
-	\includegraphics[height=4.5cm]{imagenes/capitulo3/4}
-	\caption{}
+	\includegraphics[height=5.60cm]{imagenes/capitulo3/web-actual-web-semantica.png}
+	\caption{Web Sintáctica vs. Web Semántica}
+	\label{wa-ws}
 \end{figure}
 
- \begin{figure}[H]
+\begin{figure}[H]
 	\centering
-	\includegraphics[height=4.5cm]{imagenes/capitulo3/5}
-	\caption{}
+	\includegraphics[height=9.cm]{imagenes/capitulo3/duck21}
+	\caption{Búsqueda semántica de ``Apple'' en DuckDuckGo}
+	\label{busqueda-semantica}
 \end{figure}
 
- \begin{figure}[H]
+\begin{figure}[H]
 	\centering
-	\includegraphics[height=4.5cm]{imagenes/capitulo3/6}
-	\caption{}
+	\includegraphics[height=9.4cm]{imagenes/capitulo3/apple}
+	\caption{Búsqueda clásica de ``Apple'' en Google}
+	\label{busqueda-sintactica}
+\end{figure}
+
+% https://www.makeuseof.com/tag/top-7-semantic-search-engines-alternative-google-search/
+% http://swoogle.umbc.edu/2006/ no funciona 
+Por otro lado, para comprender los conceptos hasta aquí tratados, vamos a ver un ejemplo de buscador semántico. En Internet existen muchos buscadores de este tipo, de entre todas las posibilidades revisadas \cite{buscadores-semanticos} nos hemos quedado con dos: \textit{Swoogle} (\url{http://swoogle.umbc.edu/2006/}) y \textit{DuckDuckGo} (\url{https://duckduckgo.com/?t=h_}), pero debido a que el primero no ha funcionado, hemos hecho una pequeña demostración con el segundo. \textbf{DuckDuckGo} es un motor de búsqueda semántico rico en funciones, tiene innumerables razones para dejar atrás a Google. Respecto a las búsquedas, podemos encontrar una búsqueda clásica, búsqueda de información y/o compras, entre otros. Si se busca un término que tiene más de un significado, nos da la oportunidad de elegir lo que estamos buscando originalmente, con sus distintos resultados o significados. Por ejemplo, la búsqueda del término \textit{Apple}, en un navegador con idioma inglés, ofrece una larga lista de posibles significados, entre los que podemos destacar la fruta, la empresa tecnológica y muchos otros. Además, los clasifica en categorías, como se puede observar en la figura \ref{busqueda-semantica}. Sin embargo, la búsqueda para el término \textit{Apple} en un buscador sintáctico como puede ser Google, nos ofrece de primeras sólo la empresa tecnológica, ya que debido a estadísticas se obtiene que esa es la simlitud con mayor porcentaje para mostrar de primeras (figura \ref{busqueda-sintactica}).\\
+
+%\begin{figure}[H]
+%	\centering
+%	\includegraphics[height=8.5cm]{imagenes/capitulo3/duck1}
+%	\caption{DuckDuckGo}
+%	\label{DuckDuckGo}
+%\end{figure}
+
+Por tanto, después de haber analizado este ejemplo podemos concluir que la mayoría de los contenidos de la Web de hoy en día están diseñados para que los humanos los lean, no para que los programas de software procesen la semántica de manera significativa. Es por eso que nace la Web Semántica, para llevar estructuras a los contenidos significativos de las páginas Web y permitir que los programas de software procesen y comprendan los datos en las páginas. En donde, dichas tecnologías tratan de aportar información extra a los recursos Web, proporcionando contenidos con significado que permitan mejorar la interoperabilidad entre los Sistemas Informáticos \cite{aplicacion}. A través de la Web Semántica, los programas de software pueden usar colecciones estructuradas de información y conjuntos de reglas de inferencia para realizar razonamientos automatizados \cite{libro-gis}. \\
+
+Con esto hemos terminado de definir el concepto de Web Semántica, a continuación se explican las capas que componen su arquitectura, tecnologías usadas en la prueba de concepto que se verá en el siguiente capítulo.
+
+
+\section{Arquitectura de la Web Semántica}
+
+% ARQUITECTURA 
+% Capas de la Web Semántica
+
+% https://www.researchgate.net/publication/216537707_La_Web_semantica_y_las_tecnologias_del_lenguaje_humano
+\textit{¿Cuáles son los estándares para la Web Semántica?} En la figura \ref{fig:arquitectura1} se muestra la arquitectura de la Web Semántica tal y como la definió Berners-Lee. Se trata de una estructura de capas, donde cada nivel resulta un requisito previo para el siguiente \cite{researchgate}:
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\linewidth]{imagenes/capitulo3/arquitectura1} 
+	\caption{Modelo multicapa de la Web Semántica}
+	\label{fig:arquitectura1}
+\end{figure}
+
+% https://www.researchgate.net/publication/216537707_La_Web_semantica_y_las_tecnologias_del_lenguaje_humano
+\begin{enumerate}
+	\item \textbf{Unicode, URI, XML y RDF}: los tres primeros niveles hacen referencia a la base y los estándares en los que se sustenta su desarrollo, ya que permiten convertir la Web en una infraestructura global para compartir y reutilizar datos y documentos entre diferentes usuarios.
+	
+	\item \textbf{Ontologías}: capa donde reside el contenido semántico del sistema. 
+	
+	\item \textbf{Lógica}: en esta capa a partir de la estructura semántica generada con las ontologías y los metadatos, se realizan las inferencias lógicas; sin embargo, actúan como freno para la Web Semántica ya que comportan una infraestructura que actualmente es difícil de realizar a gran escala. 
+	
+	\item \textbf{Seguridad y Confianza}: son las dos últimas capas más rápidas en implantarse, ya que la confianza y la seguridad son elementos clave de cualquier arquitectura.
+\end{enumerate}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\linewidth]{imagenes/capitulo3/arquitectura2}
+	\caption{Estructura de la Web Semántica}
+	\label{fig:arquitectura2}
+\end{figure}
+
+La figura \ref{fig:arquitectura1} no es la única forma de representación de las capas de la arquitectura para la Web Semántica, sino que a lo largo de los años han surgido modelos similares. En el presente trabajo nos vamos a centrar en otro esquema (figura \ref{fig:arquitectura2}), el cual ha sido explicado en los cursos a los que he asistido durante este año. Así que a partir del esquema de la figura \ref{fig:arquitectura2}, vamos a describir las tecnologías o capas de carácter importante que se utilizan durante el desarrollo del presente trabajo: URI/IRI, XML, RDF, RDF Schema, Ontología (OWL) y SPARQL (GeoSPARQL).
+
+% En este curso nos vamos a centrar en cuatro de estos componentes de esta pirámide que están marcados con colores. En primer lugar vamos a ver RDF, que es el lenguaje básico para especificar recursos de la web y sus relaciones, RDFS que nos permite decir un poco más vamos a hablar de este vocabulario, SPARQL que es este lenguaje de consulta que nos permite extraer información desde la web y finalmente OWL o este lenguaje que nos permite identificar ontologías.
+
+\subsection{URI/IRI}
+
+URI/IRI son los identificadores de la Web (figura \ref{fig:250px-irivenndiagramm}). Es el primer elemento necesario para el acceso a los recursos de la Web, los cuales pueden ser identificados unívocamente en cualquier idioma, a través del uso de Unicode e identificadores URI \cite{aplicacion}. El \textbf{URI} (\textit{\textbf{Uniform Resource Identifier}}) es una secuencia compacta de caracteres que identifican un recurso abstracto o físico que no tiene porqué existir en la Web. En la tabla \ref{uris} se observan algunos ejemplos de URIs \cite{uri}.
+
+\begin{table}[H]
+	\caption{Ejemplos de URIs}
+	\label{uris}
+	\centering
+	\begin{tabular}{|m{5.6cm}|m{5.6cm}|}
+		\rowcolor[HTML]{EFEFEF} 
+		\hline
+		Ejemplo & Descripción \\ \hline
+		\url{ftp://ftp.is.co.za/rfc/rfc1808.txt} & Esquema FTP para servicios de protocolo de transferencia de archivos\\ \hline
+		%\url{http://www.math.uio.no/faq/compression-faq/part1.html} & esquema http para servicios de protocolo de transferencia de hipertexto\\ \hline
+		\url{mailto:mduerst@ifi.unizh.ch} & Esquema MAILTO para direcciones de correo electrónico \\ \hline
+		\url{telnet://melvyl.ucop.edu/} & Esquema TELNET para servicios interactivos a través del protocolo TELNET\\ \hline
+	\end{tabular}
+\end{table}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.35\linewidth]{imagenes/capitulo3/URI}
+	\caption{Conjunto que englobas las IRI}
+	\label{fig:250px-irivenndiagramm}
+\end{figure}
+
+El \textbf{IRI} (\textit{\textbf{International Resource Identifier}}) se puede utilizar para encontrar diferentes tipos de recursos, como documentos, personas, objetos físicos y conceptos abstractos. Las URL que usamos como direcciones Web son una forma de IRI que sí existen en la Web. Además el IRI nace como como complemento del URI, debido a que los IRI son identificadores globales, los usuarios pueden reutilizarlos para identificar lo mismo \cite{libro-gis}.
+
+
+%Son los identificadores de la Web, la URi no tiene porqué existir en la Web www.ugr.es/jsamos es existe es una URL, la URI no tiebe porque 
+
+%Lo más genrico con los URI
+
+% https://www.ietf.org/rfc/rfc3986.txt
+% https://www.ietf.org/rfc/rfc3986.txt
+%Un identificador uniforme de recursos (URI) es una secuencia compacta de caracteres que identifican un recurso abstracto o físico. Esta
+%La especificación define la sintaxis genérica de URI y un proceso para resolviendo referencias de URI que podrían estar en forma relativa, junto con directrices y consideraciones de seguridad para el uso de URI en el Internet. La sintaxis de URI define una gramática que es un superconjunto de todos URI válidos, lo que permite una implementación para analizar los componentes comunes de una referencia URI sin conocer los requisitos específicos del esquema de cada posible identificador. Esta especificación no define un gramática generativa para URIs; esa tarea la realiza el individuo especificaciones de cada esquema URI.
+
+
+% https://www.ietf.org/rfc/rfc3986.txt
+%Este documento define un nuevo elemento de protocolo, el Internacionalizado Identificador de recursos (IRI), como complemento del recurso uniforme Identificador (URI). Un IRI es una secuencia de caracteres de Juego de caracteres universal (Unicode / ISO 10646). Un mapeo de IRIs a Se definen URI, lo que significa que se pueden usar IRI en lugar de URI, en su caso, para identificar recursos.
+
+%Se eligió el enfoque de definir un nuevo elemento de protocolo en lugar de extender o cambiar la definición de URI. Esto se hizo en orden para permitir una distinción clara y evitar incompatibilidades con software existente Se proporcionan pautas para el uso y despliegue de IRI en varios protocolos, formatos y software componentes que actualmente tratan con URI.
+
+% https://www.ietf.org/rfc/rfc3986.txt
+%Los IRI están destinados a reemplazar los URI en la identificación de recursos para
+%protocolos, formatos y componentes de software que usan un UCS
+%repertorio de personajes. Es posible que estos protocolos y componentes nunca necesiten
+%para usar los URI directamente, especialmente cuando se usa el identificador de recursos
+%simplemente con fines de identificación. Sin embargo, cuando el recurso
+%identificador se utiliza para la recuperación de recursos, en muchos casos
+%necesario para determinar el URI asociado, porque actualmente la mayoría
+%Los mecanismos de recuperación solo se definen para los URI. En este caso, IRI
+%puede servir como elementos de presentación para elementos de protocolo URI. Un
+%ejemplo sería una barra de direcciones en un agente de usuario web. (Adicional
+%La justificación se da en la sección 3.1.)
+
+
+%A URI can be further classified as a locator, a name, or both.  The
+%term "Uniform Resource Locator" (URL) refers to the subset of URIs
+%that, in addition to identifying a resource, provide a means of
+%locating the resource by describing its primary access mechanism
+%(e.g., its network "location").  The term "Uniform Resource Name"
+%(URN) has been used historically to refer to both URIs under the
+%"urn" scheme [RFC2141], which are required to remain globally unique
+%and persistent even when the resource ceases to exist or becomes
+%unavailable, and to any other URI with the properties of a name.
+
+%An individual scheme does not have to be classified as being just one
+%of "name" or "locator".  Instances of URIs from any given scheme may
+%have the characteristics of names or locators or both, often
+%depending on the persistence and care in the assignment of
+%identifiers by the naming authority, rather than on any quality of
+%the scheme.  Future specifications and related documentation should
+%use the general term "URI" rather than the more restrictive terms
+%"URL" and "URN" [RFC3305].
+
+
+
+\subsection{XML} % Extensible Markup Language (XML). 
+
+% https://www.w3.org/XML/
+%HTML es muy limitado
+
+%Orientado a la presentación de los datos.
+%No permite la descripción de los datos. 􏰁No es extensible.
+
+%XML es necesario pero no suficiente
+%Es un lenguaje de marcado para describir datos estructurados.
+%No tiene etiquetas predefinidas – nosotros definimos las etiquetas.
+%XML Schema describe la estructura – El validador.
+%El problema es que las etiquetas no tienen un significado compartido.
+%XML modela documentos, y el mundo real no es un documento, sino una red de relaciones y objetos.
+%XML estandariza formato no significado.
+
+%Para la descripción sintáctica de los recursos se utiliza XML y XML-Schema como estándares de base, pero es necesario utilizar lenguajes que permitan imponer restricciones semánticas para descripciones completas.
+
+\textbf{XML (\textit{Extensible Markup Language})} es un lenguaje de marcas, derivado de SGML\footnote{SGML (\textit{Standard Generalized Markup Language}) es un lenguaje para marcar y describir documentos con independencia total del hardware y software utilizados.}, pensado para ser utilizado en el entorno Web y para ser usado en la descripción sintáctica de los recursos, es decir, es la herramienta utilizada para estructurar y presentar los contenidos Web (figura \ref{fig:1kwulhdymttawk7zefee8q}). No obstante, ofrece una capacidad limitada para expresar semántica (no tiene etiquetas predefinidas), por lo que es necesario utilizar lenguajes que permitan imponer restricciones semánticas para descripciones completas \cite{aplicacion}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{imagenes/capitulo3/1*kwUlHDYmt_TaWK7ZefEE8Q}
+	\caption{Ejemplo de XML}
+	\label{fig:1kwulhdymttawk7zefee8q}
 \end{figure}
 
 
-En primer lugar tenemos datos genéricos como el ejemplo en Wikipedia. En Wikipedia podemos encontrar información sobre todo tipo de elementos, por ejemplo información geográfica, información sobre historia de los países, información sobre, información científica, etcétera, etcétera. Si bien en algún lugar también tenemos datos médicos, por ejemplo tenemos la biblioteca nacional de medicina de Estados Unidos, donde acá uno puede encontrar información sobre enfermedades, sobre tratamientos, sobre síntomas, etcétera. También tenemos noticias y en esto probablemente usted todos los días lee algún diario que está publicado en la web, por ejemplo The New York Times. También tenemos datos gubernamentales, los distintos gobiernos han decidido tener leyes de transparencia que han obligado a las distintas agencias de estos gobiernos a publicar datos en la web. Por ejemplo, en esta transparencia podemos ver el London Data store, donde la ciudad de Londres guarda información gubernamental, por ejemplo información sobre transporte, sobre salud pública, etcétera.
+%Por tanto, XML responde a la necesidad de representar sintácticamente el modelo planteado por RDF para archivos legibles por ordenador.
 
-Entonces, ¿cómo podemos aprovechar estos datos? Algo que es importante tener en cuenta en este momento, es que los computadores tienen la capacidad para poder analizar estos datos, tenemos suficientes computadores, tenemos suficientes procesadores como para organizar esta información. Pero, ¿cuál es el problema que tenemos actualmente? Es que los capaces, los computadores no son capaces de interpretar la información que está en estas páginas web, o sea, las páginas están pensadas para ser leídas por personas no por computadores. Entonces, ¿qué es lo que necesitamos hacer? Hay que permitir que las aplicaciones computacionales entiendan los datos. Y aquí la pregunta fundamental es, ¿cómo podemos hacer esto?
+% Por eso, se entiende que RDF es a la Semántica lo que XML es a la Sintaxis. Gracias a RDF se expresan afirmaciones y mediante su lenguaje de base XML se define la estructura de tales afirmaciones. Por tanto, XML responde a la necesidad de representar sintácticamente el modelo planteado por RDF para archivos legibles por ordenador.
 
-Entonces, ¿cuáles son los requisitos para una web de datos efectiva por una web donde los computadores y las personas puedan acceder y entender la información? En primer lugar, es necesario tener un lenguaje que nos permita especificar los recursos que tenemos en la web y cuáles son las relaciones que existen entre ellos. ¿Sí? Con recurso me refiero a los distintos componentes de la web, esto puede ser una página web, un diario, una persona que tiene una página web, etcétera. Y queremos también especificar cuáles son las relaciones que existen entre ellos. Por ejemplo, esta noticia fue publicada en este diario, esta página de aquí, esta página por ejemplo tiene información sobre problemas de salud en este determinado país, etcétera, etcétera. Ahora un requisito fundamental para diseñar este lenguaje que nos permita especificar recursos, sus relaciones es que el debe ser procesable por un computador. Un computador, una aplicación computacional debe entender este lenguaje. En segundo lugar, necesitamos poder consultar estos datos mediante aplicaciones computacionales y con esto nos referimos a poder especificar lo que estamos buscando y que de manera automática se extraiga esta información. Aquí nuevamente tenemos dos requisitos fundamentales, debemos tener un lenguaje para describir consultas que sea procesable por un computador de nuevo vamos a describir una consulta en un cierto lenguaje y lo que esperamos que el computador entienda o la aplicación computacional entienda esta consulta y debemos ser capaz de sacar conclusiones a partir de los datos de manera automáticos. Debemos ser capaces de extraer de manera automática la respuesta a la consulta o la respuesta a las consultas que estamos realizando.
 
- \begin{figure}[H]
+%Para la descripción sintáctica de los recursos se utiliza XML y XML-Schema como estándares de base, pero es necesario utilizar lenguajes que permitan imponer restricciones semánticas para descripciones completas.
+
+% Originalmente fue diseñado para enfrentar los desafíos de la publicación electrónica a gran escala, XML también desempeña un papel cada vez más importante en el intercambio de una amplia variedad de datos en la Web y en otros lugares.
+
+%Esta página describe el trabajo que se está realizando en W3C dentro de la Actividad XML y cómo está estructurado. El trabajo en el W3C se lleva a cabo en grupos de trabajo. Los grupos de trabajo dentro de la actividad XML se enumeran a continuación, junto con enlaces a sus páginas web individuales.
+
+%Puede encontrar y descargar especificaciones técnicas formales aquí, porque las publicamos. Este no es un lugar para encontrar tutoriales, productos, cursos, libros u otra información relacionada con XML. Hay algunos enlaces a continuación que pueden ayudarlo a encontrar dichos recursos.
+
+%Encontrará enlaces a Recomendaciones del W3C, Recomendaciones propuestas, Borradores de trabajo, conjuntos de pruebas de conformidad y otros documentos en las páginas de cada Grupo de trabajo. Cada documento también contiene direcciones de correo electrónico que puede usar para enviar comentarios o preguntas, por ejemplo, si ha estado escribiendo software para implementarlos y ha encontrado problemas o errores.
+
+
+%Pero RDF no deja de ser un marco abstracto para describir recursos que requiere de una sintaxis concreta para expresar el conocimiento y transferirlo. De todas las formas sintácticas definidas para la formulación escrita de RDF, la más extendida es, sin lugar a dudas, la basada en XML (Extensible MarkUp Language), un metalenguaje surgido en 1998 bajo los auspicios del W3C. Se trata de un lenguaje de marcas, derivado de SGML, específicamente pensado para ser utilizado en el entorno web.\\
+
+
+%XML es la herramienta utilizada para estructurar y presentar los contenidos web. Sin embargo, ofrece una capacidad limitada para expresar semántica. Por eso, se entiende que RDF es a la Semántica lo que XML es a la Sintaxis. Gracias a RDF se expresan afirmaciones y mediante su lenguaje de base XML se define la estructura de tales afirmaciones. Por tanto, XML responde a la necesidad de representar sintácticamente el modelo planteado por RDF para archivos legibles por ordenador.
+
+
+\subsection{RDF} % Resource Description Framework (RDF)
+
+% libro
+% w3c
+\textbf{RDF} (\textit{Resource Description Framework}) es una familia de especificaciones W3C originalmente diseñada como un modelo de datos de metadatos (datos sobre datos) extendida de XML, pero no es estrictamente un formato XML, y tampoco se trata solo de metadatos. Es un método general para descomponer cualquier tipo de conocimiento en piezas pequeñas, con algunas reglas sobre la semántica o el significado de esas piezas \cite{libro-gis}. Es el estándar más popular y extendido en la comunidad Web; proporciona un entorno para expresar la información de un recurso Web de tal forma que pueda ser intercambiada entre aplicaciones sin pérdida de significado, es decir, es una manera de darle la información desmenuzada al ordenador para que la entienda e identifique cada parte de la sentencia esté en el orden que esté \cite{aplicacion}. \\
+
+La estructura central del RDF es un conjunto de triples (tripletas), que se conoce como grafo RDF y que consta de tres componentes, en donde cada miembro puede ser una referencia a un símbolo (generalmente representado por un URI), que tiene un significado bien definido \cite{web-semantica-w3c}. La figura \ref{fig:tripleta} ilustra los tres componentes de un grafo RDF, y la figura \ref{fig:ejemploRDF} muestra un ejemplo.
+
+\begin{figure}[H]
 	\centering
-	\includegraphics[height=4.5cm]{imagenes/capitulo3/7}
-	\caption{}
+	\includegraphics[width=0.46\linewidth]{imagenes/capitulo3/tripleta1}
+	\caption{Estructura de un grafo RDF}
+	\label{fig:tripleta}
 \end{figure}
 
+\begin{enumerate}
+	\item \textbf{Sujeto}: es el recurso, es decir, todo aquello que puede ser descrito.
+	\item \textbf{Predicado}: introduce la propiedad que va a detallarse sobre el recurso.
+	\item \textbf{Objeto}: es el valor de dicha propiedad.
+\end{enumerate}
 
-En mayo de 2001 la revista Scientific American publicaba un artículo en el que se proponía una nueva forma de organizar el contenido en la Red que desencadenaría una avalancha de posibilidades y, en consecuencia, revolucionaría Internet. El primer autor del artículo era Tim Berners-Lee, el físico del CERN que en 1980 desarrolló un sistema de vinculación y transferencia de documentos en red que acabó convirtiéndose en la World Wide Web que todos conocemos hoy. A la nueva forma de organización de la Web que los autores de dicho artículo pregonaban la llamaron web semántica. % http://www.fgcsic.es/lychnos/es_es/articulos/construyendo_una_web_semantica
+%en donde el sujeto y el objeto representan los dos recursos relacionados y el predicado representa la relación entre los dos recursos.
 
-En este punto es donde aparece la web semántica en este curso, en palabras de Tim Berners-Lee la web semántica es una extensión de la web actual en la cual se da un significado bien definido a la información, permitiendo mejorar la colaboración entre personas y computadores en la web. ¿En qué se traduce esto en la práctica? Bueno, la web semántica en la práctica lo que vemos hoy en día es un conjunto de recomendaciones desarrolladas por el World Wide Web Consortium, cuyo objetivo es que los computadores sean capaces de entender los datos en la web. Aquí tenemos que detenernos en dos conceptos importantes. En primer lugar, ¿qué es una recomendación? En este nivel, una recomendación es una descripción formal de una tecnología que debería ser utilizada por todos. ¿Sí? Es decir, un lenguaje común para todos. Lo que queremos hacer en este punto es desarrollar un lenguaje que por ejemplo nos permita especificar los recursos de la web que tenga una descripción formal, para que así pueda ser entendida por un computador y que sea un lenguaje común para todos. También es importante mencionar acá que el World Wide Web Consortium es el organismo regulador de la web, es el organismo que dicta los distintos estándares para la web.
-
- \begin{figure}[H]
+\begin{figure}[H]
 	\centering
-	\includegraphics[height=4.5cm]{imagenes/capitulo3/8}
-	\caption{}
+	\begin{subfigure}[h]{0.70\textwidth} 
+		\includegraphics[width=\textwidth]{imagenes/capitulo3/grafoRDF}
+		\caption{Grafo RDF}
+	\end{subfigure}       
+	\begin{subfigure}[h]{0.74\textwidth} 
+		\includegraphics[width=\textwidth]{imagenes/capitulo3/ejemploRDF}
+		\caption{Ejemplo RDF Tripleta}
+	\end{subfigure}
+	\caption{Ejemplo de grafo RDF \cite{aplicacion}}
+	\label{fig:ejemploRDF}
 \end{figure}
 
-Han pasado más de diez años y es bien seguro que la Web ha revolucionado muchos aspectos de nuestras vidas cotidianas, pero la revolución que se preveía en el artículo del Scientific American todavía no se ha producido, por lo menos no en su totalidad. Sin embargo, la visión de una web semántica que describieron Berners-Lee y sus colaboradores desencadenó toda un línea de proyectos de investigación, y, precisamente, en octubre pasado se celebró en Bonn, Alemania, la 10ª edición del Congreso Internacional sobre la Web Semántica. Pero, ¿qué significa que la Web sea semántica? Y ¿en qué medida la semántica en la Web ya ha revolucionado o acabará por revolucionar Internet? % http://www.fgcsic.es/lychnos/es_es/articulos/construyendo_una_web_semantica
+Básicamente RDF es un conjunto de declaraciones que definen clases y propiedades de los recursos. En la tabla \ref{tabla-rdf1} y \ref{tabla-rdf2} se muestra el vocabulario empleado por RDF \cite{tesis-otro}:
 
-Ahora, ¿cuáles son esos estándares para la web? En la figura usted puede observar la pirámide de estándares que se está desarrollando para llevar a cabo esta web semántica. Y en esta pirámide en la parte inferior vemos los componentes más básicos, en la parte superior donde vemos el trust o el nivel de confianza ve uno en los niveles superiores. En este curso nos vamos a centrar en cuatro de estos componentes de esta pirámide que están marcados con colores. En primer lugar vamos a ver RDF, que es el lenguaje básico para especificar recursos de la web y sus relaciones, RDFS que nos permite decir un poco más vamos a hablar de este vocabulario, SPARQL que es este lenguaje de consulta que nos permite extraer información desde la web y finalmente OWL o este lenguaje que nos permite identificar ontologías.
+\begin{table}[H]
+	\caption{Clases del vocabulario RDF}
+	\label{tabla-rdf1}
+		\centering
+	\begin{tabular}{|
+			>{\columncolor[HTML]{FFFFFF}}l |m{9cm}|}
+		\hline
+		\cellcolor[HTML]{EFEFEF}\textbf{CLASE} & \cellcolor[HTML]{EFEFEF} \textbf{DESCRIPCIÓN}\\ \hline
+		\texttt{rdf:XMLLiteral}                         & La clase de los valores literales de los valores literales XML                         \\ \hline
+		\texttt{rdf:Property}                         &  La clase de las propiedades RDF
+		\\ \hline
+		\texttt{rdf:Statement}                         &    La clase de las declaraciones RDF
+		\\ \hline
+		\texttt{rdf:Bag}                         &    La clase de los contenedores desordenados
+		\\ \hline
+		\texttt{rdf:Seq}                         &    La clase de los contenedores ordenados                      \\ \hline
+		\texttt{rdf:Alt}                         &     La clase de los contenedores de alternativas                     \\ \hline
+		\texttt{rdf:List}                         &  La clase de las listas RDF                        \\ \hline
+	\end{tabular}
+	
+\end{table}
 
+\begin{table}[H]
+	\caption{Propiedades del vocabulario RDF}
+	\label{tabla-rdf2}
+		\centering
+	\begin{tabular}{|
+			>{\columncolor[HTML]{FFFFFF}}l |m{9cm}|}
+		\hline
+		\cellcolor[HTML]{EFEFEF}\textbf{PROPIEDAD} & \cellcolor[HTML]{EFEFEF} \textbf{DESCRIPCIÓN}\\ \hline
+		\texttt{rdf:type}                         &      El sujeto es una instancia de una clase                    \\ \hline
+		\texttt{rdf:first}                         &   El primer item en la lista RDF del sujeto                       \\ \hline
+		\texttt{rdf:rest}                         &        El resto de la lista RDF del sujeto despúes del primer item                  \\ \hline
+		\texttt{rdf:value}                         &    Propiedad idiomática usada para valores estructurados                       \\ \hline
+		\texttt{rdf:subject}                         &     El sujeto de la declaración RDF del sujeto                     \\ \hline
+		\texttt{rdf:predicate }                         &      El predicado de la declaración RDF del sujeto                    \\ \hline
+		\texttt{rdf:object}                         &        El objeto de la declaración RDF del sujeto                  \\ \hline
+	\end{tabular}
+\end{table}
 
-El potencial de la web de datos, al igual que pasó con la web de documentos, reside en la participación a gran escala de numerosas personas y organizaciones en la publicación sistemática de datos en la Web, siguiendo las buenas prácticas de Linked Data. Es esta participación masiva, con un esfuerzo relativamente bajo, la que está detrás del éxito de la Web actual. La publicación de datos es solo una parte de lo que constituye la web de datos. La otra parte la forman las aplicaciones informáticas que nos proveen de los servicios para acceder, consultar, buscar y combinar los datos. Al igual que la web de documentos no nos sería de gran utilidad sin navegadores, buscadores o servicios de interacción social, las funcionalidades de la web de datos nos las dan las aplicaciones determinadas sobre los datos enlazados que utilizan leguajes específicos de consulta en repositorios RDF, tales como SPARQL, que se inspira en el leguaje SQL (Structured Query Language) de consulta de bases de datos tradicionales, pero ahora especialmente diseñado para ser ejecutado sobre la tecnología web. % http://www.fgcsic.es/lychnos/es_es/articulos/construyendo_una_web_semantica
+En la figura \ref{fig:ejemplo-rdf} podemos ver un ejemplo de RDF a partir del vocabulario que acabamos de ver en las tablas anteriores.
 
-
- \begin{figure}[H]
+\begin{figure}[H]
 	\centering
-	\includegraphics[height=4.5cm]{imagenes/capitulo3/9}
-	\caption{}
+	\includegraphics[width=1\linewidth]{imagenes/capitulo3/ejemplo-RDF}
+	\caption{Descripción de un recurso musical en RDF \cite{web-semantica-w3c}}
+	\label{fig:ejemplo-rdf}
 \end{figure}
 
-En resumen, ¿qué hemos visto hoy? Hemos visto que hay datos de todo tipo en la web, que son fácil acceso para las personas. Hemos visto que la cantidad de datos es tan grande que las personas no lo pueden manejar en su totalidad, son demasiados para que una persona simplemente pueda procesarlos por sí sola. También hemos visto que es difícil para un computador acceder a estos datos ya que no sabe como interpretarlos. La web de hoy en día está diseñada para ser leídas por personas, las páginas web están diseñadas para ser leídas por personas. ¿Sí? Y no está diseñada para que un computador las pueda leer de manera automática. Y finalmente la web semántica, que es el tema de este curso hemos visto que es un conjunto de recomendaciones para facilitar el acceso de los computadores a los datos. En particular, lo que queremos en este punto es tener el lenguaje que nos permita especificar los recursos que tenemos en la web, especificar las relaciones que tenemos entre ellos y también definir lenguajes que nos permitan extraer de manera automática de esta web.
+En la figura \ref{fig:imagen1} se muestra otro ejemplo de tripletas que indican la relación entre un recurso, nombre del recurso y geometría, es decir, en este caso el sujeto es el \textit{Recurso} que tiene la propiedad \textit{Nombre} cuyo valor es \textit{Quito}, además \textit{Recurso} tiene la propiedad \textit{Geometría} cuyo valor es \textit{Punto} y finalmente se indica que el sujeto \textit{Punto}, tiene la propiedad \textit{WKT} que indica el formato de la geometría, cuyo valor es \textit{POINT(-78.52495 -0.22985)} \cite{coursera}. 
 
-\section{Arquitectura Web Semántica}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.75\linewidth]{imagenes/capitulo3/Imagen1}
+	\caption{Ejemplo de tripletas \cite{coursera}}
+	\label{fig:imagen1}
+\end{figure}
 
-% % https://www.researchgate.net/figure/Figura-1-Arquitectura-de-la-web-semantica-Fuente-Tim-Berners-Lee_fig2_216537707
-
-
-\section{¿Qué no es la Web Semántica?}
-
-
-\section{Tecnologías de la Web Semántica}
-
-\subsection{Metadatos explícitos}
-
-Representación más fácilmente procesable por máquinas.
-
-Metadata: data about data
-
-Los metadatos representan parte del significado de los datos
-
-La Web Semántica no se basa en la manipulación de texto, sino en metadatos procesables por las máquinas.
-
-% XML
-% RDF
-
-% Ejemplo
+Por tanto, se entiende que RDF es a la semántica lo que XML es a la sintaxis, ya que XML responde a la necesidad de representar sintácticamente el modelo planteado por RDF para archivos entendibles por ordenador \cite{web-semantica-w3c}.
 
 
-\section{La web semántica en la práctica}
+\subsection{RDF Schema}
 
-% http://www.fgcsic.es/lychnos/es_es/articulos/construyendo_una_web_semantica
-
-Actualmente ya son numerosas las aplicaciones que de una forma u otra se basan en tecnologías semánticas para la Web. A continuación ilustraremos tres casos de naturaleza diversa para mostrar el potencial que todavía alberga la Web.
-
-\textbf{Producción científica}. Uno de los pilares para el avance de la ciencia es la publicación de los resultados de la experimentación científica para que puedan ser contrastados y corroborados por la comunidad científica y para que a su vez puedan ayudar a avanzar en otras líneas de investigación. El portal GoPubMed, por ejemplo, ofrece un buscador semántico de publicaciones científicas en el área de la biomedicina. Está conectado con la Gene Ontology, una ontología que unifica y estructura la terminología sobre genes y productos génicos de un amplio número de organismos. Con GoPubMed se pueden localizar los textos relevantes para una búsqueda no únicamente por la ocurrencia de determinadas palabras clave sino por la relación semántica existente entre conceptos biomédicos. 
-
-La publicación no solo de los resultados de una investigación sino también de los datos experimentales sobre los que se ha basado permitirá una mayor colaboración y transparencia en el ámbito de la investigación científica. Proyectos financiados por la Unión Europea, como OpenKnowledge o LiquidPub, han investigado formas novedosas de colaboración y publicación distribuida en la Web que apuntan a que vamos a ser testigos de un cambio importante en cómo se publican, se comparten y se diseminan los resultados científicos.
-
-\textbf{Gobiernos abiertos}. Numerosos gobiernos nacionales están impulsando iniciativas de «gobierno abierto», haciendo públicos los conjuntos de datos en su posesión para promover la transparencia, aumentar la eficiencia administrativa y estimular el crecimiento económico. La combinación de estos datos mediante mashups –aplicaciones web que combinan datos y funcionalidades de diferentes fuentes– permite realizar consultas y presentar sus resultados de forma novedosa y creativa. En 2009, en una localidad del estado de Ohio, en Estados Unidos, un abogado creó un mashup que combinaba los datos públicos sobre la ubicación de las tuberías de agua corriente con los datos obtenidos del censo municipal sobre qué viviendas estaban habitadas por familias afroamericanas. El mapa resultante reveló que, en determinados barrios limítrofes, el ayuntamiento claramente discriminaba a los hogares afroamericanos. En consecuencia, un juez decretó una indemnización por daños y perjuicios.
-
-% hablar sobre la página esa que tiene Londres - London Data store
-
-\textbf{Colaboración popular masiva}. LinkedGeoData es una iniciativa para añadir una dimensión espacial a los datos publicados en la web semántica y se basa en la información recogida por el proyecto OpenStreetMap, un mapa mundial abierto al que cualquiera puede añadir datos, al estilo de Wikipedia. A finales del 2009 muy pocas áreas de la ciudad de Port-au-Prince en Haití estaban etiquetadas. Pero justo después del gran terremoto de enero de 2010, cuando se hicieron públicas imágenes de satélite del país, miles de personas estudiaron estas imágenes y comenzaron a anotar en el OpenStreetMap información detallada sobre las zonas devastadas: carreteras bloqueadas, edificios dañados, ubicación de campos de refugiados y hospitales de campaña, muelles en los que atracaban los barcos con ayuda humanitaria, etc. Todos estos datos fueron de gran utilidad para los equipos de rescate que sobre el terreno consultaban esta información con sus dispositivos móviles.
+\textbf{Esquema RDF} o \textbf{RDFS} \textbf{(RDF Schema)} es una extensión semántica que enriquece a RDF. Es un vocabulario que permite definir un primer sistema de jerarquías entre las clases de recursos, especificando las propiedades y relaciones admitidas entre ellas, es decir, permite a los usuarios definir características semánticas de los datos RDF y comprobar las restricciones semánticas \cite{web-semantica-w3c, libro-gis, aplicacion}. Igual que se han definido para RDF, existe un vocabulario empleado por RDFS (tablas \ref{tabla-rdfs1} y \ref{tabla-rdfs2}) \cite{tesis-otro}.
 
 
+%Junto al RDF, se usa RDFS (RDF Schema) para definir las propiedades de los recursos y los tipos de recursos que son descritos. Es un mecanismo necesario para detallar cada elemento, especificar un vocabulario para definir las clases y propiedades, restringir las posibles combinaciones de clases y relaciones, y detectar violaciones de estas restricciones. Mientras un XML Schema puede ser utilizado para validar la sintaxis de un RDF/XML, un RDF Schema permite comprobar las restricciones semánticas.
 
-\subsection{Ontologías}
+\begin{table}[H]
+	\caption{Clases del vocabulario RDFS}
+	\label{tabla-rdfs1}
+	\centering
+	\begin{tabular}{|
+			>{\columncolor[HTML]{FFFFFF}}l |m{8.9cm}|}
+		\hline
+		\cellcolor[HTML]{EFEFEF}\textbf{CLASE} & \cellcolor[HTML]{EFEFEF} \textbf{DESCRIPCIÓN}\\ \hline
+		\texttt{rdfs:Resource}                         &        La clase de recurso, cada uno
+		\\ \hline
+		\texttt{rdfs:Literal}                         &        La clase del valor literal, por ejemplo, cadenas de texto y números enteros                  \\ \hline
+		\texttt{rdfs:Class}                         &        La clase de las clases
+		\\ \hline
+		\texttt{rdfs:Datatype}                         &    La clase de los tipos de datos RDF                      \\ \hline
+		\texttt{rdfs:Container}                         &   La clase de los contenedores RDF                       \\ \hline
+	\end{tabular}
+\end{table}
 
-El término “Ontología” viene de la Filosofía: El estudio de la naturaleza de la existencia.
+\begin{table}[H]
+	\caption{Propiedades del vocabulario RDF}
+	\label{tabla-rdfs2}
+	\centering
+	\begin{tabular}{|
+			>{\columncolor[HTML]{FFFFFF}}l |m{8cm}|}
+		\hline
+		\cellcolor[HTML]{EFEFEF}\textbf{PROPIEDAD} & \cellcolor[HTML]{EFEFEF} \textbf{DESCRIPCIÓN}\\ \hline
+		\textbf{rdfs:subClassOf}                         &         El sujeto es una subclase de una clase                 \\ \hline
+		\textbf{rdfs:subPropertyOf}                         &     El sujeto es una subpropiedad de una propiedad                     \\ \hline
+		\textbf{rdfs:domain}                         &           Un dominio de la propiedad del sujeto               \\ \hline
+		\textbf{rdfs:range}                         &        Un rango de la propiedad del sujeto                  \\ \hline
+		\textbf{rdfs:label}                         &        Un nombre para el sujeto legible por seres humanos                   \\ \hline
+		\textbf{rdfs:comment}                         &        Una descripción del recurso sujeto                  \\ \hline
+		\textbf{rdfs:member}                         &        Un miembro del recurso sujeto                  \\ \hline
+		\textbf{rdfs:seeAlso}                         &              Más información sobre el recurso sujeto            \\ \hline
+		\textbf{rdfs:isDefinedBy}                         &       La definición del recurso sujeto. 
+		\\ \hline
+	\end{tabular}
+\end{table}
 
-Tiene un significado distinto en Informática:
+Sin embargo, RDFS tiene limitaciones al carecer de expresividad para: información negativa (las mujeres no son hombres), cuantificadores (para que alguien sea considerado madre debe tener al menos un hijo), cardinalidad (un buen estudiante tiene que tener aprobadas más de 4 asignaturas) y no permite atributos de propiedades (transitiva, simétrica, inversa). Por todo esto y más, no se considera lo bastante completo para describir los recursos de la Web con el detalle necesario, pero se utiliza porque se puede emplear en muchos dominios y actuar de puente entre vocabularios \cite{aplicacion}.
 
-– Una ontología es una especificación formal y explícita de una conceptualización.
+\subsection{Ontología} % Web Ontology Language (OWL)
 
-Proporcionan un entendimiento compartido de un dominio: interoperabilidad semántica.
+% tesis
+La \textbf{ontología} es un concepto filosófico adoptado por la Informática, que parte de la metafísica y que trata del ser en general y de sus propiedades trascendentales \cite{apuntes-clase-jose}. Se trata de un esquema conceptual que define los términos a utilizar para describir y representar un área de conocimiento dado, con el objetivo de facilitar la comunicación entre diferentes entidades, es decir, codifican el conocimiento de un dominio y de esta manera hacen el conocimiento reutilizable \cite{tesis}. Así, definen de forma estándar y consensuada un vocabulario de conceptos como las relaciones entre ellos dentro de un área concreta del conocimiento, formando redes jerárquicas semánticas y recogiendo reglas lógicas y restricciones para hacer comprender a las máquinas los conceptos de un determinado campo. Por ejemplo, \textit{una ontología de arte establece que todos los escultores son artistas pero no todos los artistas son escultores} \cite{web-semantica-w3c}. En una ontología nos podemos encontrar \cite{aplicacion, apuntes-clase-jose}:
 
-– Solucionan diferencias en terminología.
+\begin{itemize}
+	\item \textbf{Conceptos}: sujetos básicos que se intentan formalizar sobre cualquier tipo de clase. En una ontología de deportes, cada clase sería un deporte: natación, baloncesto, tenis.
+	
+	\item  \textbf{Relaciones}: enlace entre los conceptos, cómo interactúan los conceptos del dominio (subclase-de, parte-de).
+	
+	\item \textbf{Propiedades}: definen características o atributos de los conceptos.
+	
+	\item \textbf{Instancias}: objetos particulares de un concepto.
+		
+	\item \textbf{Funciones}: tipo de relación en la que el elemento es el resultado de la aplicación directa de una operación sobre varios conceptos de la ontología.
+		
+	\item \textbf{Axiomas}: teoremas que se declaran sobre relaciones, y que deberán cumplir los elementos de la ontología. Es la clave de la inferencia de conocimiento. Por ejemplo, \textit{si A conoce B, B conoce A}.
+	
+	\item \textbf{Constantes}: permiten representar valores primitivos como cadenas de caracteres o valores numéricos
+	
+	\item \textbf{Restricciones}: descripciones sobre qué debe cumplirse para que un axioma sea cierto.
+	
+\end{itemize}
 
-– Hay que establecer correspondencias entre ontologías.
+%Las ontologías pueden ser modeladas con diferentes técnicas de modelado de conocimiento y a su vez implementadas con diferentes lenguajes. Algunas de las técnicas de modelado son utilizando: marcos y lógica de primer orden, lógica descriptiva, UML o bien diagramas Entidad-Relación. Entre los lenguajes de implementación, el W3C recomienda RDF y OWL.
 
-Útiles para organizar y navegar sitios Web.
-
-% Hay tres tipo de ontologías
-
-% Deberíamos ver como dar la definición de la ontología básica, y luego ver dicha definición para la Web Semántica
-
-% Poner ejemplos de ontologías
-
-% Existen ontologías geoespaciales y ontologías básicas, estaría bien centrarse en ambas
-
-% Ver los estándares
-
-%  Ejemplo
-
-Hay varios lenguajes de ontología disponibles para codificar la ontología.
-
-
-% Ontologías y razonamiento automatizado
-% http://www.fgcsic.es/lychnos/es_es/articulos/construyendo_una_web_semantica
-En último término, la visión de una web semántica, tal y como la plantearon Berners-Lee y sus colaboradores hace diez años, incluye también la posibilidad de razonar y sacar conclusiones lógicas de forma automatizada a partir de los datos publicados en la Web. Así pues, del hecho de que España comparta frontera con Francia y de que compartir frontera signifique que las regiones geográficas que constituyen estos países son contiguas, se debería poder deducir automáticamente que uno puede desplazarse de España a Francia por tierra sin tener que cruzar un tercer país. Esto, requiere que dispongamos de definiciones formales —es decir procesables por una computadora— de lo que significa la relación de contigüidad entre regiones espaciales y su relación con el desplazamiento continuo en regiones del espacio.
-
-Esta información adicional que complementa los datos y con la cual se pueden deducir relaciones semánticas sin que estén explícitamente representadas en el conjunto de datos es lo que se llama una ontología. Habitualmente se trata de un conjunto de expresiones en un lenguaje formal basado en la lógica que describe con mayor o menor detalle los conceptos y sus interrelaciones de un área de conocimiento en particular (por ejemplo de la geografía en general o de la de España en particular). Para poder publicar y razonar con ontologías en la Web se recomienda utilizar el Web Ontology Language (OWL).
+Una vez visto el concepto de ontología y su posible aplicación a la Web Semántica, es posible pasar a explicar OWL.
 
 \subsubsection{OWL}
 
+\textbf{OWL} \textbf{(\textit{Lenguaje de Ontologías Web})} es un lenguaje ontológico para la Web Semántica con significado formalmente definido, sirve para definir ontologías Web estructuradas y provee de más vocabulario para la descripción de propiedades y clases, por ejemplo: relaciones entre clases, cardinalidad, equivalencia y características de propiedades (figura \ref{fig:ejemplo-owl}). Realmente, OWL es una extensión del lenguaje RDF y emplea tripletas de RDF (figura \ref{fig:nomenclatura}), aunque es un lenguaje con más poder expresivo \cite{aplicacion}.
 
-\subsection{Lógica e Inferencia}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.51\linewidth]{imagenes/capitulo3/ejemplo-owl}
+	\caption{Ejemplo de una ontología \cite{apuntes-clase-jose}}
+	\label{fig:ejemplo-owl}
+\end{figure}
 
-La Lógica estudia los principios del razonamiento.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.63\linewidth]{imagenes/capitulo3/nomenclatura}
+	\caption{Nomenclatura básica ontología OWL \cite{apuntes-clase-jose}}
+	\label{fig:nomenclatura}
+\end{figure}
 
-Los razonadores automáticos pueden deducir (inferir) conclusiones a partir de un conocimiento.
+%OWL puede formularse en RDF, que ofrece la base adecuada para desarrollar ontologías, y mejora la capacidad expresiva de RDFS. Al construirse sobre RDF, las ontologías OWL podrán ser distribuidas en diferentes sistemas y ser compatibles con otros estándares web.\\
+En Octubre de 2009 nació \textit{OWL 2 Web Ontology Language} como recomendación del W3C para la edición de ontologías, extensión de la primera versión OWL 1 publicada en 2004. OWL 1 proporciona tres lenguajes, cada uno con nivel de expresividad mayor que el anterior, diseñados para ser usados por comunidades específicas de desarrolladores y usuarios \cite{owl-tipos}. En OWL 2 se definen tres nuevos perfiles y se proporcionan tres sublenguajes que ofrecen ventajas en escenarios particulares, todos más restrictivos que OWL DL y cada uno con diferentes aspectos expresivos a cambio de diferentes beneficios computacionales y/o de implementación \cite{aplicacion}. 
 
-La lógica se puede usar a partir del conocimiento representado mediante ontologías para
+\begin{itemize}
+	\item \textbf{OWL Lite}: diseñado para aquellos usuarios que necesitan principalmente creación de jerarquías y restricciones simples.
+	
+	\item \textbf{OWL DL}: es el lenguaje habitual de ontologías diseñado para aquellos usuarios que quieren la máxima expresividad conservando completitud computacional, es decir, está basado en lógica descriptiva y proporciona la máxima capacidad de expresión para garantizar computabilidad y decidibilidad (todas las conclusiones pueden ser deducidas y todos los cálculos se realizan en un tiempo finito).
+	
+	\item \textbf{OWL Full}: diseñado para aquellos usuarios que quieren máxima expresividad y libertad sintáctica de RDF sin garantías computacionales, es decir, permite expresividad de segundo orden, pero sin decidibilidad (no hay garantía computacional).
+\end{itemize}
 
-– Descubrir nuevo conocimiento no expresado explícitamente. 
-– Descubrir inconsistencias.
+Por otro lado, todas las ontologías deben de cumplir unas características: sintaxis bien definida, semántica específica, expresividad, fácilmente traducible entre los lenguajes ontológicos y eficiencia para realizar razonamientos \cite{apuntes-clase-jose}.\\
 
-Poder expresivo vs. complejidad computacional:
+No obstante, escribir en lenguajes como RDF y OWL resultan sumamente difícil y propensos a errores. Afortunadamente, existen en el mercado entornos gráficos para visualizar y construir ontologías de forma más razonable, como \textbf{Protegé}, software desarrollado por la Universidad de Stanford. Permite editar ontologías con una interfaz sencilla y en un entorno de menús, botones, cuadros de diálogo o representaciones gráficas fáciles de usar, tan importantes para una tarea con tanta de abstracción y síntesis.
 
-– Cuanto más expresiva es una lógica, llegar a conclusiones puede ser más costoso computacionalmente.
-
-Explicaciones: Expresión de los pasos de inferencia seguidos.
-
-% Ejemplo inferencias
-
-\subsection{Agentes}
-
-
-Los Agentes trabajan de forma proactiva y autónoma.
-
-
-Un agente personal en la Web Semántica:
-
-– Recibirá tareas y preferencias de un usuario.
-
-– Buscará información de fuentes Web, comunicándose con otros agentes.
-
-– Comparará información sobre requerimientos de usuarios y preferencias para tomar decisiones.
-
-– Dará respuestas al usuario.
+\subsection{Lenguajes de consulta}
 
 
-\section{Lenguaje de marcado geográfico}
-
-En literatura, se han desarrollado varios estándares útiles para facilitar el intercambio de datos espaciales. Por ejemplo, el archivo de datos geográficos (GDF) es un formato de archivo intercambiable para compartir datos geográficos. GDF está diseñado específicamente para el intercambio de datos espaciales para sistemas de transporte inteligente (ITS).
-
-% aquí se debe de hablar de GML
-
-% hablar sobre GDF y SDTS
-
-% Extensible Markup Language (XML). 
-% Resource Description Framework (RDF). 
-% Web Ontology Language (OWL).
-
-\section{XML}
-
-Geography Markup Language (GML) es “una gramática XML escrita en XML Schema para el modelado, transporte y almacenamiento de información geográfica, incluidas las propiedades espaciales y no espaciales de las características geográficas”
-
-\section{SVG}
-
-Como su nombre lo indica, SVG es un gráfico vectorial, que es diferente de los formatos de imagen rasterizada, como GIF, JPEG y PNG. Como gráfico vectorial, SVG utiliza declaraciones matemáticas para describir las formas y los trazados de una imagen.\\
-
-% hablar sobre la escalibilidad de SVG
-
-Los datos GML se pueden transformar en formato SVG utilizando un procesador XSLT a través de la combinación con una hoja de estilo. XSLT (Transformaciones de lenguaje extensible de hojas de estilo) es un lenguaje para transformar documentos XML en otros documentos XML u otros objetos, como HTML para páginas web.
-
-% limitaciones de SVG
-
-\section{RDF}
-
-\section{SPARQL}
-
-\section{Ontologías}
-
-% Hay tres tipo de ontologías
-
-% Deberíamos ver como dar la definición de la ontología básica, y luego ver dicha definición para la Web Semántica
-
-% Poner ejemplos de ontologías
-
-% Existen ontologías geoespaciales y ontologías básicas, estaría bien centrarse en ambas
-
-% Ver los estándares
+Por último, nos queda presentar dos lenguajes de consulta semántica: SPARQL, estándar ampliamente utilizado para consultar datos RDF y GeoSPARQL, extensión de SPARQL que admite operaciones geoespaciales.
 
 
+\subsubsection{SPARQL}
 
-Hay varios lenguajes de ontología disponibles para codificar la ontología.
-
-\subsection{OWL}
-
-
-% dejar clara la separación entre OWL y RDF, pero lo que los separa es una línea muy pequeña, pero antes deben de quedar y entender lo de RDF
+% dbpedia, que es la representación en RDF en wikipedia la dbpedia en español
 
 
+% COURSERA: La Web Semántica: Herramientas para la publicación y extracción efectiva de información en la Web
+%Hola, bienvenido a nuestro curso sobre la web semántica, en este video comenzaremos a ver algunas de la nociones básicas sobre el lenguaje de consulta SPARQL, en particular veremos la nociones de variables y patrones en SPARQL. Como ya hemos mencionado en los videos anteriores en la web existe una multitud de base de datos de RDF, por ejemplo dbpedia, que es la representación en RDF en wikipedia la dbpedia en español y IMDB que es una base de películas, etcétera. Muchas de estas bases RDF permiten acceder a sus datos utilizando el lenguaje de consulta SPARQL, recuerde que SPARQL es un lenguaje que nos permite escribir de manera precisa la información que queremos extraer y que es procesable por un computador, vale decir un computador puede de manera automática construir las respuestas de una consulta SPARQL. Entonces en esta base de datos RDF nos permiten utilizar este lenguaje SPARQL y la forma de hacerlo es a través de lo que es llamado un SPARQL endpoint, que es un servicio web donde uno puede colocar este tipos de consultas. En esta transparencia puede ver la dirección de dos de estos servicios web, la primera de ellas es el SPARQL endpoint de dbpedia que es dbpedia.org/sparql, la segunda es el SPARQL endpoint de dbpedia en español.
+
+%En esta transparencia usted puede ver este grafo RDF escrito en un archivo como una secuencia de triples, recuerde cuando teníamos una secuencia de triples en primer lugar especificamos los prefijos que vamos a utilizar en los URIs, recuerden que estos prefijos son utilizados para simplificar la notación que tenemos en estos URIs Una vez que hemos escrito estos prefijos en este caso tenemos dbpprop, dbpedia-owl y dbpedia construimos nuestros triples en esta caso tenemos cuatro triples el primero de ellos es dbpedia:Santiago rdf:type y dbpedia-owl:place, en este triple estamos diciendo que Santiago es de tipo lugar. En esta transparencia usted puede ver un grafo en la dbpedia con datos sobre lugares, esto simplemente es parte del grafo anterior donde decíamos bueno dbpedia:Santiago es de tipo lugar, que se encuentra en Chile y que su nombre oficial es Santiago. En esta transparencia usted tambien puede ver una consulta SPARQL y a continuación mostraremos las distintas partes de esta consulta, en primer lugar tenemos el encabezado de la consulta que puede ver en amarillo, este encabezado se puede distinguir a través de la palabra SELECT. En segundo lugar tenemos el patrón de la consulta que en este caso también esta desatascado en amarillo y que se encuentra dentro de la cláusula where. Es importante destacar que el patrón sigue la estructura sujeto, predicado, objeto. Por ejemplo en este caso tenemos un patrón de nuevo podemos ver este patrón en amarillo en el cual tenemos dos triples, en el primer triple ?X dbpprop:officialName ?name tenemos como sujeto a X, como predicado a dbprop:officialName y como objeto a name. En el segundo triple tenemos como sujeto a X, como predicado a rdf:type y como objeto a dbpedia-owl:Place. También es importante destacar que en este patrón tenemos variables y tenemos URIs, cada variable en una consulta SPARQL comienza con el signo de pregunta. En este caso entonces, tenemos como variables a signo de pregunta X y signo de pregunta name. También en una consulta SPARQL podemos tener URIs y en estos URIs utilizamos la notación usual, por ejemplo en esta consulta tenemos el URI dbpprop:officialName, en este caso estamos usando el prefijo dbpprop: ¿Cómo se calcula la respuesta a una consulta SPARQL? Bueno, en el patrón remplazamos cada variable por un URI o por un literal, y lo que es importante es que los triples resultantes de este remplazo debe estar en el grafo RDF. por ejemplo, en este caso podemos remplazar como he mostrado en la figura la variable X por dbpedia:Santiago y la variable name por Santiago. Si hacemos este remplazo entonces en el primer triple vamos a obtener el triple de dbpedia:Santiago, dbpprop:officialName Santiago que es un type que esta en el grafo RDF como es marcado en rojo. Lo que es importante en este caso es que tenemos que hacer el mismo remplazo en el segundo triple, y en este caso vamos a obtener el triple dbpedia:Santiago rdf:type, dbpedia-owl:place que tambien esta en nuestro grafo RDF. Por lo tanto en este caso tenemos un remplazo exitoso. ¿Para qué sirve el encabezado de una consulta SPARQL? El encabezado nos indica en este caso tenemos SELECT ?name por lo tanto nos está indicando que vamos a retornar los valores que hemos dado a la variable name, en este caso Santiago vale decir, esta consulta nos permite encontrar todos los nombres oficiales de los lugares que tenemos en dbpedia.
+
+\textbf{SPARQL} se trata de un lenguaje estandarizado por la W3C clave para el desarrollo de la Web Semántica, permite escribir de manera precisa la información que queremos extraer y que es procesable por un computador, es decir, es una especificación que ofrece un lenguaje y protocolos para consultar y manipular RDF \cite{tesis-otro}. En la figura \ref{fig:sparql}, podemos encontrar una consulta básica de selección SPARQL. Entre las características de SPARQL, resaltan: 
+
+\begin{itemize}
+	\item Lenguaje de consulta.
+	\item Formato XML, JSON, CSV y TSV  para resultados en una consulta.
+	\item Actualización de grafos RDF.
+	\item Protocolo para RDF.
+	\item Descubrir información acerca de la información  almacenada (dataset). 
+	\item Manejo de grafos mediante el protocolo HTTP. 
+\end{itemize}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{imagenes/capitulo3/sparql}
+	\caption{Estructura de una consulta en SPARQL}
+	\label{fig:sparql}
+\end{figure}
+
+Un ejemplo simple de una consulta SELECT se encuentra en la figura \ref{fig:ejemplo-sparql}, en donde se quieren obtener de la Dbpedia, los engenieros que viven en ciudades con una población de más de 10000000 habitantes. En la figura \ref{fig:salida-sparql} se puede observar la salida a dicha consulta \cite{tesis-otro}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imagenes/capitulo3/ejemplo-sparql}
+	\caption{Ejemplo de consulta de SPARQL}
+	\label{fig:ejemplo-sparql}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\linewidth]{imagenes/capitulo3/salida-sparql}
+	\caption{Respuesta a la salida de la consulta de la figura \ref{fig:ejemplo-sparql}}
+	\label{fig:salida-sparql}
+\end{figure}
 
 
-\section{Servicios web geoespaciales}
+%En la figura 2.3 se muestra un ejemplo de consulta SPARQL, haciendo referencia a las tripletas de la figura 2.2, se observa la estructura de la consulta para obtener los datos deseados como el Nombre del recurso, tipo de geometría y la geometría en formato WKT. Lo que se encuentra en el recuadro de color verde permite identificar el recurso, en este caso “Quito”, posteriormente en el recuadro de color rojo se observa la parte de la consulta que permite obtener el tipo de geometría del recurso “Quito” y finalmente en el recuadro de color azul se encuentra la parte de la consulta que permite obtener la geometría en formato WKT del recurso “Quito”, tambíen se muestra el resultado generado por la consulta SPARQL. 
 
-Con el desarrollo de estándares abiertos, surgieron servicios web para la interoperabilidad de datos a través de la web. Los servicios web son componentes de software autocontenidos y autodescritos que pueden ser descubiertos e invocados por otros componentes de software a través de la web.
+Como hemos comentado anteriormente, la herramienta Protegé nos permite construir contologías de manera más sencilla y rápida, sin embargo, también nos ofrece herramientas para realizar consultas con SPARQL. Entonces, SPARQL está bien establecido y es un lenguaje ampliamente utilizado para consultar ontologías RDF, pero carece de las construcciones necesarias para consultar datos espaciales. Afortunadamente, disponemos del estándar: Geo-SPARQL.
+
+\subsubsection{GeoSPARQL}
+
+% tesis
+% libro
+\textbf{GeoSPARQL} es un estándar establecido por \textit{Open Geoespatial Consortium} (OGC) (OGC11-052r4 2012). Es una extensión del lenguaje de consulta SPARQL para recuperar información geoespacial de conjuntos de datos RDF en la Web Semántica \cite{libro-gis}. Entre sus características podemos encontrar \cite{tesis}: 
+
+\begin{itemize}
+	\item Vocabulario RDF/OWL para representar información geoespacial.
+	\item Funciones extensión a SPARQL para cálculos espaciales.
+	\item Conjunto básico de clases, propiedades y tipo de datos que son utilizados para construir patrones de consulta. 
+\end{itemize}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imagenes/capitulo3/geosparql}
+	\caption{}
+	\label{fig:geosparql}
+\end{figure}
 
 
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|l|l|}
+		\hline
+		\rowcolor[HTML]{EFEFEF} 
+		{\textbf{OBJETO}} & { \textbf{DESCRIPCIÓN}} \\ \hline
+	\texttt{sfEquals}	&              espacialmente igual           \\ \hline
+	\texttt{sfDisjoint}	&        disjunto (no puede tocar)                 \\ \hline
+	\texttt{sfIntersects}	&     compartir al menos un punto                    \\ \hline
+\texttt{sfTouches} &          tocar externamente               \\ \hline
+	\texttt{sfWithin}	&      dentro (puede tocar el límite)                   \\ \hline
+\texttt{sfContains} &             el inverso de sfWithin            \\ \hline
+	\texttt{sfOverlaps}	&            algunos puntos comunes, misma dimensión             \\ \hline
+\texttt{sfCrosses} &         p.ej. área cruza la línea                \\ \hline		
+	\end{tabular}
+\end{table}
 
-\section{Reglas del futuro}
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|l|m{8.3cm}|}
+		\hline
+		\rowcolor[HTML]{EFEFEF} 
+		{\textbf{FUNCIÓN} } & {\textbf{DESCRIPCIÓN}} \\ \hline
+\texttt{distance}		&       la distancia de dos literales geométricos medidos en unidades dadas                  \\ \hline
+\texttt{buffer} &           literal de geometría como un literal de entrada con un buffer agregado, dado el radio y las unidades del buffer              \\ \hline
+	\texttt{convexHull}	&      el casco convexo de un literal de geometría                   \\ \hline
+\texttt{intersection} &          la intersección de dos literales de geometría               \\ \hline
+\texttt{union}		&     unión de dos literales de geometría                    \\ \hline
+\texttt{difference} &       la diferencia de dos literales de geometría                  \\ \hline
+	\texttt{symDifference}	&       establecer la diferencia simétrica de dos literales de geometría                  \\ \hline
+\texttt{envelope}  &              el cuadro delimitador de un literal de geometría           \\ \hline
+\texttt{boundary}		&    el límite de un literal de geometría                     \\ \hline
+\texttt{getsrid} &       URI del sistema de referencia espacial de un literal de geometría                  \\ \hline		
+	\end{tabular}
+\end{table}
+
+Para saber acerca del estándar y de su uso 
+
+En el apartado siguiente, haremos uso de este lenguaje para la obtención de la información geoespacial deseada, donde nos centraremos en varios ejemplos prácticos, y su uso de cara al futuro.\\
+
+
+En la figura \ref{fig:arquitectura2copia} podemos apreciar el recorrido que hemos hecho por las distintas capas que tiene la arquitectura para la Web Semántica. Como el resto de capas no resultan relevantes para nuestro proyecto, se ha obtado por no exponerlas, para así enfocar el presente trabajo en el objetivo planteado al principio del trabajo.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\linewidth]{imagenes/capitulo3/arquitectura2copia}
+	\caption{Tecnologías de la Web Semántica explicadas}
+	\label{fig:arquitectura2copia}
+\end{figure}
+
+\section{¿Qué no es la Web Semántica?}
+
+Una vez expuestos los contenidos que comprenden la Web Semántica, es necesario enfatizar qué no es la Web Semántica, con el objeto de evitar posibles confusiones futuras. Durante el presente trabajo, hemos hablado que la Web Semántica es una extensión de la actual Web, por tanto hablaremos que una Web no es Semántica cuando sea diferente a la actual Web y tenga estándares incompatibles con la Web actual \cite{introduccion}. Además, debe seguir cumpliendo las características que conforman la Web, puesto que una Web de navegacioón compleja no transparente y difícil de usar para usuarios finales, tampoco entraría dentro de lo que llamamos Web Semántica. Además, no todos los navegadores hacen uso de búsquedas semánticas, ya que la mayoría se basan por similtudes con las palabras usadas para la búsqueda sin hacer uso de la interpretación de la información.
+
+\section{Aplicaciones de la Web Semántica}
+
+
+Prototipo de un sistema semántico de diagnosis para congestiones de tráfico en carretera desarrollado por IBM (68), donde se presenta un prototipo que analiza de forma semántica y mediante enfoques de inteligencia artificial el histórico de congestiones de trafico para determinar las causas de situaciones inesperadas en casi tiempo real de la situación del trafico en la ciudad de Dublín.
+
+
+Aplicación de la Web Semántica en Trafico
+
+
+Reino Unido (data.gov.uk)
+
+El principal ejemplo encontrado con información de tráfico es el proporcionado desde el apartado transporte de la iniciativa de datos gubernamentales del Reino Unido (58), que permite consultar la información sobre estaciones de tren, aeropuertos y paradas de autobús entre otros, mediante consultas SPARQL.
+Por ejemplo para las estaciones de tren, se pueden lanzar las consultas mediante una interfaz similar a la de la ilustración, obteniendo el listado de las estaciones resultantes en diferentes formatos disponibles (ilustración 19):
+
+Desde data.gob.uk, también se puede acceder a información como los datos de tráfico, eventos planeados y no planeados en (59) pero esta vez en formato XML, siguiendo la estructura propuesta por DATEX II v1.0. El ejemplo de futuros eventos planificados puede consultarse en (60).
+Otra información disponible son los datos relativos a los conteos de tráfico en una región, pero estos sólo están disponibles en CSV o bien en PDF, sin integrar tampoco formatos RDF. Se pueden consultar desde (61).
+
+Estos ejemplos, son interesantes debido al tipo de información que publican, pero es necesario destacar que no se utilizan estándares de Web Semántica en la publicación de los datos, con lo que no se alcanzarían las 4 estrellas de la escala comentada en el apartado 4.2 Linked Data.
+
+Directorios y catálogos de documentos.
+Openguides.org
+www.dmoz.org
+Redes Sociales. FOAF
+http://www.foaf-project.org/
+Buscadores semánticos.
+http://www.aktors.org/technologies/csaktivespace/
+
+Buscadores Semánticos: Satisfacer las expectativas de búsqueda de usuarios que requieren resultados precisos.
 
 % http://www.fgcsic.es/lychnos/es_es/articulos/construyendo_una_web_semantica
+Actualmente ya son numerosas las aplicaciones que de una forma u otra se basan en tecnologías semánticas para la Web. A continuación ilustraremos tres casos de naturaleza diversa para mostrar el potencial que todavía alberga la Web.
 
-La web de datos, con sus vocabularios y ontologías, es un ente abierto y dinámico. Continuamente aparecen nuevos datos y nuevos enlaces entre ellos, mientras otros quedan obsoletos y se eliminan. Además, los servidores que hospedan estos datos a veces no están activos, bien porque han caído o bien porque están bajo mantenimiento. Eso implica una gran variabilidad semántica en los datos, por lo que hay que abordar los problemas que surgen cuando cambia el significado de un término, aparece una nueva terminología o surgen definiciones contradictorias. La publicación masiva de datos implica tener que preservar la privacidad de las personas e instituciones, garantizando que no sea posible deducir indirectamente determinada información confidencial. Además, el hecho de que cualquiera pueda publicar y enlazar datos en la web de datos implica que hay que tener en cuenta también aspectos sobre la procedencia de los datos, su calidad y la fiabilidad de las fuentes.
+\begin{itemize}
+	\item % http://www.fgcsic.es/lychnos/es_es/articulos/construyendo_una_web_semantica
+	\textbf{Producción científica}. Uno de los pilares para el avance de la ciencia es la publicación de los resultados de la experimentación científica para que puedan ser contrastados y corroborados por la comunidad científica y para que a su vez puedan ayudar a avanzar en otras líneas de investigación. El portal GoPubMed, por ejemplo, ofrece un buscador semántico de publicaciones científicas en el área de la biomedicina. Está conectado con la Gene Ontology, una ontología que unifica y estructura la terminología sobre genes y productos génicos de un amplio número de organismos. Con GoPubMed se pueden localizar los textos relevantes para una búsqueda no únicamente por la ocurrencia de determinadas palabras clave sino por la relación semántica existente entre conceptos biomédicos. 
+	
+	% http://www.fgcsic.es/lychnos/es_es/articulos/construyendo_una_web_semantica
+	La publicación no solo de los resultados de una investigación sino también de los datos experimentales sobre los que se ha basado permitirá una mayor colaboración y transparencia en el ámbito de la investigación científica. Proyectos financiados por la Unión Europea, como OpenKnowledge o LiquidPub, han investigado formas novedosas de colaboración y publicación distribuida en la Web que apuntan a que vamos a ser testigos de un cambio importante en cómo se publican, se comparten y se diseminan los resultados científicos.
+	
+	\item % http://www.fgcsic.es/lychnos/es_es/articulos/construyendo_una_web_semantica
+	\textbf{Gobiernos abiertos}. Numerosos gobiernos nacionales están impulsando iniciativas de «gobierno abierto», haciendo públicos los conjuntos de datos en su posesión para promover la transparencia, aumentar la eficiencia administrativa y estimular el crecimiento económico. La combinación de estos datos mediante mashups –aplicaciones web que combinan datos y funcionalidades de diferentes fuentes– permite realizar consultas y presentar sus resultados de forma novedosa y creativa. En 2009, en una localidad del estado de Ohio, en Estados Unidos, un abogado creó un mashup que combinaba los datos públicos sobre la ubicación de las tuberías de agua corriente con los datos obtenidos del censo municipal sobre qué viviendas estaban habitadas por familias afroamericanas. El mapa resultante reveló que, en determinados barrios limítrofes, el ayuntamiento claramente discriminaba a los hogares afroamericanos. En consecuencia, un juez decretó una indemnización por daños y perjuicios.
+	
+	\item % hablar sobre la página esa que tiene Londres - London Data store
+	
+	% http://www.fgcsic.es/lychnos/es_es/articulos/construyendo_una_web_semantica
+	\textbf{Colaboración popular masiva}. LinkedGeoData es una iniciativa para añadir una dimensión espacial a los datos publicados en la web semántica y se basa en la información recogida por el proyecto OpenStreetMap, un mapa mundial abierto al que cualquiera puede añadir datos, al estilo de Wikipedia. A finales del 2009 muy pocas áreas de la ciudad de Port-au-Prince en Haití estaban etiquetadas. Pero justo después del gran terremoto de enero de 2010, cuando se hicieron públicas imágenes de satélite del país, miles de personas estudiaron estas imágenes y comenzaron a anotar en el OpenStreetMap información detallada sobre las zonas devastadas: carreteras bloqueadas, edificios dañados, ubicación de campos de refugiados y hospitales de campaña, muelles en los que atracaban los barcos con ayuda humanitaria, etc. Todos estos datos fueron de gran utilidad para los equipos de rescate que sobre el terreno consultaban esta información con sus dispositivos móviles.
+	
+\end{itemize}
 
-Todas estas son ricas áreas de investigación en las que aplicar técnicas de inteligencia artificial, como el razonamiento automático, el alineamiento semántico, los modelos computacionales de confiabilidad, la minería de datos para la preservación de la privacidad y el control de revelación de estadísticas. Pero, en última instancia, las posibilidades de esta web semántica están en las manos de los usuarios, que son los que generan los datos e idean los servicios que, como decía Tim Berners-Lee, harán realidad todo el potencial de la Web.
+
+%\section{Retos del futuro}
+
+% http://www.fgcsic.es/lychnos/es_es/articulos/construyendo_una_web_semantica
+%La web de datos, con sus vocabularios y ontologías, es un ente abierto y dinámico. Continuamente aparecen nuevos datos y nuevos enlaces entre ellos, mientras otros quedan obsoletos y se eliminan. Además, los servidores que hospedan estos datos a veces no están activos, bien porque han caído o bien porque están bajo mantenimiento. Eso implica una gran variabilidad semántica en los datos, por lo que hay que abordar los problemas que surgen cuando cambia el significado de un término, aparece una nueva terminología o surgen definiciones contradictorias. La publicación masiva de datos implica tener que preservar la privacidad de las personas e instituciones, garantizando que no sea posible deducir indirectamente determinada información confidencial. Además, el hecho de que cualquiera pueda publicar y enlazar datos en la web de datos implica que hay que tener en cuenta también aspectos sobre la procedencia de los datos, su calidad y la fiabilidad de las fuentes.
+
+% http://www.fgcsic.es/lychnos/es_es/articulos/construyendo_una_web_semantica
+%Todas estas son ricas áreas de investigación en las que aplicar técnicas de inteligencia artificial, como el razonamiento automático, el alineamiento semántico, los modelos computacionales de confiabilidad, la minería de datos para la preservación de la privacidad y el control de revelación de estadísticas. Pero, en última instancia, las posibilidades de esta web semántica están en las manos de los usuarios, que son los que generan los datos e idean los servicios que, como decía Tim Berners-Lee, harán realidad todo el potencial de la Web.
+
+
+%La WS es aún una visión, un proyecto de futuro muy ambicioso, que permitirá, con ayuda de la Inteligencia Artificial, realizar un sinfín de operaciones en la Web, mucho más amplias que las ofertadas hoy en día. El tener toda la información etiquetada sintáctica y semánticamente facilitará la implementación eficaz de los llamados agentes inteligentes, capaces de ofrecer información Web pertinente, en función de los intereses y circunstancias personales de cada usuario (personalización máxima).
+
+%Esta situación imaginaria tiene ya su base real, materializada en los proyectos piloto realizados y en los grandes avances logrados para su creación en cuanto a estándares e infraestructura. Las principales empresas, como IBM, Microsoft, etc. participan activamente en su desarrollo, así como la comunidad investigadora, especialmente la universitaria. Por supuesto, el proyecto no hubiera sido posible sin el apoyo e impulso de la W3C, que junto con el sitio oficial www.semanticweb.org, se encarga de ofrecer toda la información disponible sobre los progresos en este ámbito. El interés por la WS se refleja en la celebración anual del Congreso internacional de la WWW, que en 2009 ha tenido lugar en la Universidad Politécnica de Madrid. También queda patente con la publicación de la revista Journal of Web Semantics.
+
+%En el terreno de las bibliotecas, la WS podrá ser decisiva de cara a la construcción de una Biblioteca Digital Universal, donde todo sea accesible de forma rápida y precisa, se encuentre donde se encuentre. Por supuesto, aún queda mucho camino por recorrer y la transición de la Web actual a la WS puede implicar un coste altísimo (en tiempo, dinero y esfuerzo), ya que no sólo se trata de estructurar la información web venidera, sino también la ya existente, labor que se prevé irrealizable.
+
 
 \section{Resumen del capítulo}
 
-- Interoperabilidad de datos geoespaciales: integración y estandarización
+% http://www.culturatic.es/2015/07/web-semantica-usos-y-aplicaciones.html
+% El éxito de la web es la indefinida cantidad de documentos y recursos a los que podemos acceder desde cualquier parte del mundo, lo que nos ha llevado, eso sí, a una situación de desinformación y diferencias de formatos. Para solucionar estos dos principales problemas recurrimos a la web semántica, que permite a los usuarios delegar esas tareas al software que permite procesar el contenido, razonarlo y combinarlo.
+%  la web semántica es una red de datos que puede ser procesada directa o indirectamente por máquinas. La información en la web se da con un significado bien definido, lo que facilita que ordenadores y personas trabajen en cooperación.
+% En resumen,  lo que hace la web semántica  es ayudarnos en la búsqueda de un tema. Para ello utiliza métodos de representación del conocimiento mediante una red de nodos conectados entre sí, para no confundir temas parecidos.  Realmente busca lo que queremos buscar a través de un lenguaje universal estándar. La web se encarga de enseñar a los ordenadores a saber lo que queremos buscar, a partir de algoritmos que permiten marcar semánticamente los contenidos en cualquier documento textual.
 
-- Dan problemas GDF y SDTS
+%La WS es aún una visión, un proyecto de futuro muy ambicioso, que permitirá, con ayuda de la Inteligencia Artificial, realizar un sinfín de operaciones en la Web, mucho más amplias que las ofertadas hoy en día. El tener toda la información etiquetada sintáctica y semánticamente facilitará la implementación eficaz de los llamados agentes inteligentes, capaces de ofrecer información Web pertinente, en función de los intereses y circunstancias personales de cada usuario (personalización máxima).
 
-- Ventajas del XML
+%Esta situación imaginaria tiene ya su base real, materializada en los proyectos piloto realizados y en los grandes avances logrados para su creación en cuanto a estándares e infraestructura. Las principales empresas, como IBM, Microsoft, etc. participan activamente en su desarrollo, así como la comunidad investigadora, especialmente la universitaria. Por supuesto, el proyecto no hubiera sido posible sin el apoyo e impulso de la W3C, que junto con el sitio oficial www.semanticweb.org, se encarga de ofrecer toda la información disponible sobre los progresos en este ámbito. El interés por la WS se refleja en la celebración anual del Congreso internacional de la WWW, que en 2009 ha tenido lugar en la Universidad Politécnica de Madrid. También queda patente con la publicación de la revista Journal of Web Semantics.
 
-- ¿Por qué usar XML?
+%En el terreno de las bibliotecas, la WS podrá ser decisiva de cara a la construcción de una Biblioteca Digital Universal, donde todo sea accesible de forma rápida y precisa, se encuentre donde se encuentre. Por supuesto, aún queda mucho camino por recorrer y la transición de la Web actual a la WS puede implicar un coste altísimo (en tiempo, dinero y esfuerzo), ya que no sólo se trata de estructurar la información web venidera, sino también la ya existente, labor que se prevé irrealizable.
 
-- ¿Por qué es escalable SVG?
-
-- Limitaciones SVG
-
-Este capítulo presenta la información de fondo sobre la interoperabilidad de datos geoespaciales y las tecnologías más avanzadas para lograr la interoperabilidad de datos geoespaciales, como GML, SVG y servicios web geoespaciales. Aunque se han desarrollado muchas bases de datos de SIG, la interoperabilidad de los datos geoespaciales sigue siendo un desafío para la comunidad geoespacial. GML como formato estándar de intercambio de datos tiene como objetivo lograr el objetivo de la interoperabilidad de los datos al proporcionar mecanismos para compartir y reutilizar datos a nivel de características en la Web. Sin embargo, GML se ha diseñado para mantener el principio de separar el contenido de la presentación. Por lo tanto, se puede usar SVG para diseñar los datos GML para la presentación. Como gráfico vectorial, SVG puede mostrar mapas de alta calidad. Mientras que GML proporciona un medio para codificar y transportar características geoespaciales a XML, SVG proporciona un medio para mostrar estas características geoespaciales codificadas en GML en mapas vectoriales en la Web. Un tema de preocupación es cómo realizar colas y extraer características de la base de datos para responder a las solicitudes de los usuarios. Las especificaciones de implementación de servicios web geoespaciales desarrolladas por OGC cumplen esta función. Específicamente, (1) Web Feature Service (WFS) permite a un cliente recuperar, consultar y manipular datos geoespaciales a nivel de característica codificados en GML (Geography Markup Language) desde múltiples fuentes; (2) Web Map Service es capaz de crear y mostrar mapas que provienen simultáneamente de múltiples fuentes heterogéneas en un formato de imagen estándar; (3) el Servicio de cobertura web proporciona acceso a conjuntos potencialmente detallados y ricos de información geoespacial en formas que son útiles para la representación del lado del cliente, cobertura multivalor y aportes a modelos científicos y otros clientes; (4) Web Processing Service define reglas para estandarizar entradas y salidas (solicitudes y respuestas) de servicios de procesamiento geoespacial; (5) El Servicio de catálogos proporciona catálogos para servicios web de OGC y admite la capacidad de publicar y buscar colecciones de información descriptiva (metadatos) para datos, servicios y objetos de información relacionados. La arquitectura que hace uso completo de los servicios de catálogo web y otros servicios web, como OGC WFS, WMS, WCS y WPS, se denomina Arquitectura Orientada a Servicios (SOA). La SOA se aleja de los sistemas monolíticos hacia sistemas distributivos con componentes interoperables, y las implementaciones de la SOA pueden disminuir los problemas en la duplicación y el mantenimiento de los datos y modelos.
-
-
-
-
-
-
-
-
-
-
+% https://www.researchgate.net/publication/216537707_La_Web_semantica_y_las_tecnologias_del_lenguaje_humano
+%¿En qué medida la semántica de la Web se supone que acabará por revolucionar Internet?  El gran reto de la web semántica reside en conseguir que los contenidos estén dotados explícitamente de semántica para que a partir aquí los agentes sean capaces de deducir e inferir conocimiento. Como ya se ha comentado, actualmente todavía estamos en una fase muy embrionaria de la idea y los más pesimistas dudan que se llegue a buen puerto, pues la inteligencia artificial lleva décadas persiguiendo este objetivo sin gran éxito. Pero durante los últimos años, las tecnologías del lenguaje humano han madurado bastante y han logrado aplicaciones robustas y escalables que pueden ocupar un papel destacado en el desarrollo de la web semántica.
 
