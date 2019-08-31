@@ -181,11 +181,11 @@ Por esta razón surge la Web Semántica, para proporcionar estructura al conteni
 
 \subsection{Concepto de Web Semántica} 
 
-Para comprender que es la Web Semántica, es necesario establecer los principios básicos sobre los que se asienta (figura \ref{fig:principio}). En el subapartado anterior se estableció el contexto en el que nace, a continuación se procede a explicar su definición. 
+Para comprender que es la Web Semántica (\url{ www.semanticweb.org}), es necesario establecer los principios básicos sobre los que se asienta (figura \ref{fig:principio}). En el subapartado anterior se estableció el contexto en el que nace, a continuación se procede a explicar su definición. 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.65\linewidth]{imagenes/capitulo3/principio}
+	\includegraphics[width=0.57\linewidth]{imagenes/capitulo3/principio}
 	\caption{Principios básicos de la Web Semántica \cite{aplicacion}}
 	\label{fig:principio}
 \end{figure}
@@ -227,15 +227,15 @@ De igual manera, nos encontramos a lo largo de la literatura más definiciones d
 	\item Se necesita poder consultar esos datos mediante aplicaciones computacionales. Para ello es necesario disponer de un \textbf{lenguaje para describir consultas procesables por un computador} para su entendimiento y ser capaz de sacar conclusiones a partir de los datos de manera automática. Con esto se pretende explorar la Web de forma más automática y obtener resultados más enfocados.
 \end{enumerate}
 
-% https://www.researchgate.net/publication/216537707_La_Web_semantica_y_las_tecnologias_del_lenguaje_humano
-A partir de los conceptos explicados hasta ahora, la implantación de la Web semántica frente a la actual Web supone un cambio de paradigma, ya que tiene que pasarse de una Web basada y creada en lenguaje natural a una Web estructurada y organizada, en donde los contenidos etiquetados semánticamente serán el elemento principal \cite{researchgate}. En la figura \ref{wa-ws} podemos ver la diferencia que hay entre ambos tipos de Web. Se observa como el esquema de la izquierda de la actual Web está basado en los enlaces con los que accedemos a otras páginas, mientras que en la Web Semántica (esquema de la derecha) disponemos de información relevante.
-
 \begin{figure}[H]
 	\centering
 	\includegraphics[height=5.60cm]{imagenes/capitulo3/web-actual-web-semantica.png}
 	\caption{Web Sintáctica vs. Web Semántica}
 	\label{wa-ws}
 \end{figure}
+
+% https://www.researchgate.net/publication/216537707_La_Web_semantica_y_las_tecnologias_del_lenguaje_humano
+A partir de los conceptos explicados hasta ahora, la implantación de la Web semántica frente a la actual Web supone un cambio de paradigma, ya que tiene que pasarse de una Web basada y creada en lenguaje natural a una Web estructurada y organizada, en donde los contenidos etiquetados semánticamente serán el elemento principal \cite{researchgate}. En la figura \ref{wa-ws} podemos ver la diferencia que hay entre ambos tipos de Web. Se observa como el esquema de la izquierda de la actual Web está basado en los enlaces con los que accedemos a otras páginas, mientras que en la Web Semántica (esquema de la derecha) disponemos de información relevante.
 
 \begin{figure}[H]
 	\centering
@@ -244,16 +244,18 @@ A partir de los conceptos explicados hasta ahora, la implantación de la Web sem
 	\label{busqueda-semantica}
 \end{figure}
 
+
+
+% https://www.makeuseof.com/tag/top-7-semantic-search-engines-alternative-google-search/
+% http://swoogle.umbc.edu/2006/ no funciona 
+Por otro lado, para comprender los conceptos hasta aquí tratados, vamos a ver un ejemplo de buscador semántico. En Internet existen muchos buscadores de este tipo, de entre todas las posibilidades revisadas \cite{buscadores-semanticos} nos hemos quedado con dos: \textit{Swoogle} (\url{http://swoogle.umbc.edu/2006/}) y \textit{DuckDuckGo} (\url{https://duckduckgo.com/?t=h_}), pero debido a que el primero no ha funcionado, hemos hecho una pequeña demostración con el segundo. \textbf{DuckDuckGo} es un motor de búsqueda semántico rico en funciones, tiene innumerables razones para dejar atrás a Google. Respecto a las búsquedas, podemos encontrar una búsqueda clásica, búsqueda de información y/o compras, entre otros. Si se busca un término que tiene más de un significado, nos da la oportunidad de elegir lo que estamos buscando originalmente, con sus distintos resultados o significados. Por ejemplo, la búsqueda del término \textit{Apple}, en un navegador con idioma inglés, ofrece una larga lista de posibles significados, entre los que podemos destacar la fruta, la empresa tecnológica y muchos otros. Además, los clasifica en categorías, como se puede observar en la figura \ref{busqueda-semantica}. Sin embargo, la búsqueda para el término \textit{Apple} en un buscador sintáctico como puede ser Google, nos ofrece de primeras sólo la empresa tecnológica, ya que debido a estadísticas se obtiene que esa es la simlitud con mayor porcentaje para mostrar de primeras (figura \ref{busqueda-sintactica}).
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[height=9.4cm]{imagenes/capitulo3/apple}
 	\caption{Búsqueda clásica de ``Apple'' en Google}
 	\label{busqueda-sintactica}
 \end{figure}
-
-% https://www.makeuseof.com/tag/top-7-semantic-search-engines-alternative-google-search/
-% http://swoogle.umbc.edu/2006/ no funciona 
-Por otro lado, para comprender los conceptos hasta aquí tratados, vamos a ver un ejemplo de buscador semántico. En Internet existen muchos buscadores de este tipo, de entre todas las posibilidades revisadas \cite{buscadores-semanticos} nos hemos quedado con dos: \textit{Swoogle} (\url{http://swoogle.umbc.edu/2006/}) y \textit{DuckDuckGo} (\url{https://duckduckgo.com/?t=h_}), pero debido a que el primero no ha funcionado, hemos hecho una pequeña demostración con el segundo. \textbf{DuckDuckGo} es un motor de búsqueda semántico rico en funciones, tiene innumerables razones para dejar atrás a Google. Respecto a las búsquedas, podemos encontrar una búsqueda clásica, búsqueda de información y/o compras, entre otros. Si se busca un término que tiene más de un significado, nos da la oportunidad de elegir lo que estamos buscando originalmente, con sus distintos resultados o significados. Por ejemplo, la búsqueda del término \textit{Apple}, en un navegador con idioma inglés, ofrece una larga lista de posibles significados, entre los que podemos destacar la fruta, la empresa tecnológica y muchos otros. Además, los clasifica en categorías, como se puede observar en la figura \ref{busqueda-semantica}. Sin embargo, la búsqueda para el término \textit{Apple} en un buscador sintáctico como puede ser Google, nos ofrece de primeras sólo la empresa tecnológica, ya que debido a estadísticas se obtiene que esa es la simlitud con mayor porcentaje para mostrar de primeras (figura \ref{busqueda-sintactica}).\\
 
 %\begin{figure}[H]
 %	\centering
@@ -277,9 +279,16 @@ Con esto hemos terminado de definir el concepto de Web Semántica, a continuaci�
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.6\linewidth]{imagenes/capitulo3/arquitectura1} 
+	\includegraphics[width=0.7\linewidth]{imagenes/capitulo3/arquitectura1} 
 	\caption{Modelo multicapa de la Web Semántica}
 	\label{fig:arquitectura1}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.55\linewidth]{imagenes/capitulo3/arquitectura2}
+	\caption{Estructura de la Web Semántica}
+	\label{fig:arquitectura2}
 \end{figure}
 
 % https://www.researchgate.net/publication/216537707_La_Web_semantica_y_las_tecnologias_del_lenguaje_humano
@@ -290,15 +299,11 @@ Con esto hemos terminado de definir el concepto de Web Semántica, a continuaci�
 	
 	\item \textbf{Lógica}: en esta capa a partir de la estructura semántica generada con las ontologías y los metadatos, se realizan las inferencias lógicas; sin embargo, actúan como freno para la Web Semántica ya que comportan una infraestructura que actualmente es difícil de realizar a gran escala. 
 	
-	\item \textbf{Seguridad y Confianza}: son las dos últimas capas más rápidas en implantarse, ya que la confianza y la seguridad son elementos clave de cualquier arquitectura.
+	\item \textbf{Seguridad y Confianza}: los agentes deben ser escépticos de la información obtenida, y contrastar minuciosamente las distintas fuentes; podrán utilizar la firma digital para verificar que la fuente es confiable. 
+	%las dos últimas capas más rápidas en implantarse, ya que la confianza y la seguridad son elementos clave de cualquier arquitectura, y se podrá usar la firma digital para verificar la fuente.
 \end{enumerate}
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.5\linewidth]{imagenes/capitulo3/arquitectura2}
-	\caption{Estructura de la Web Semántica}
-	\label{fig:arquitectura2}
-\end{figure}
+
 
 La figura \ref{fig:arquitectura1} no es la única forma de representación de las capas de la arquitectura para la Web Semántica, sino que a lo largo de los años han surgido modelos similares. En el presente trabajo nos vamos a centrar en otro esquema (figura \ref{fig:arquitectura2}), el cual ha sido explicado en los cursos a los que he asistido durante este año. Así que a partir del esquema de la figura \ref{fig:arquitectura2}, vamos a describir las tecnologías o capas de carácter importante que se utilizan durante el desarrollo del presente trabajo: URI/IRI, XML, RDF, RDF Schema, Ontología (OWL) y SPARQL (GeoSPARQL).
 
@@ -307,6 +312,14 @@ La figura \ref{fig:arquitectura1} no es la única forma de representación de la
 \subsection{URI/IRI}
 
 URI/IRI son los identificadores de la Web (figura \ref{fig:250px-irivenndiagramm}). Es el primer elemento necesario para el acceso a los recursos de la Web, los cuales pueden ser identificados unívocamente en cualquier idioma, a través del uso de Unicode e identificadores URI \cite{aplicacion}. El \textbf{URI} (\textit{\textbf{Uniform Resource Identifier}}) es una secuencia compacta de caracteres que identifican un recurso abstracto o físico que no tiene porqué existir en la Web. En la tabla \ref{uris} se observan algunos ejemplos de URIs \cite{uri}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.4\linewidth]{imagenes/capitulo3/URI}
+	\caption{Conjunto que englobas las IRI}
+	\label{fig:250px-irivenndiagramm}
+\end{figure}
+
 
 \begin{table}[H]
 	\caption{Ejemplos de URIs}
@@ -322,13 +335,6 @@ URI/IRI son los identificadores de la Web (figura \ref{fig:250px-irivenndiagramm
 		\url{telnet://melvyl.ucop.edu/} & Esquema TELNET para servicios interactivos a través del protocolo TELNET\\ \hline
 	\end{tabular}
 \end{table}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.35\linewidth]{imagenes/capitulo3/URI}
-	\caption{Conjunto que englobas las IRI}
-	\label{fig:250px-irivenndiagramm}
-\end{figure}
 
 El \textbf{IRI} (\textit{\textbf{International Resource Identifier}}) se puede utilizar para encontrar diferentes tipos de recursos, como documentos, personas, objetos físicos y conceptos abstractos. Las URL que usamos como direcciones Web son una forma de IRI que sí existen en la Web. Además el IRI nace como como complemento del URI, debido a que los IRI son identificadores globales, los usuarios pueden reutilizarlos para identificar lo mismo \cite{libro-gis}.
 
@@ -401,14 +407,16 @@ El \textbf{IRI} (\textit{\textbf{International Resource Identifier}}) se puede u
 
 %Para la descripción sintáctica de los recursos se utiliza XML y XML-Schema como estándares de base, pero es necesario utilizar lenguajes que permitan imponer restricciones semánticas para descripciones completas.
 
-\textbf{XML (\textit{Extensible Markup Language})} es un lenguaje de marcas, derivado de SGML\footnote{SGML (\textit{Standard Generalized Markup Language}) es un lenguaje para marcar y describir documentos con independencia total del hardware y software utilizados.}, pensado para ser utilizado en el entorno Web y para ser usado en la descripción sintáctica de los recursos, es decir, es la herramienta utilizada para estructurar y presentar los contenidos Web (figura \ref{fig:1kwulhdymttawk7zefee8q}). No obstante, ofrece una capacidad limitada para expresar semántica (no tiene etiquetas predefinidas), por lo que es necesario utilizar lenguajes que permitan imponer restricciones semánticas para descripciones completas \cite{aplicacion}.
-
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1\linewidth]{imagenes/capitulo3/1*kwUlHDYmt_TaWK7ZefEE8Q}
 	\caption{Ejemplo de XML}
 	\label{fig:1kwulhdymttawk7zefee8q}
 \end{figure}
+
+\textbf{XML (\textit{Extensible Markup Language})} es un lenguaje de marcas, derivado de SGML\footnote{SGML (\textit{Standard Generalized Markup Language}) es un lenguaje para marcar y describir documentos con independencia total del hardware y software utilizados.}, pensado para ser utilizado en el entorno Web y para ser usado en la descripción sintáctica de los recursos, es decir, es la herramienta utilizada para estructurar y presentar los contenidos Web (figura \ref{fig:1kwulhdymttawk7zefee8q}). No obstante, ofrece una capacidad limitada para expresar semántica (no tiene etiquetas predefinidas), por lo que es necesario utilizar lenguajes que permitan imponer restricciones semánticas para descripciones completas \cite{aplicacion}.
+
+
 
 
 %Por tanto, XML responde a la necesidad de representar sintácticamente el modelo planteado por RDF para archivos legibles por ordenador.
@@ -441,12 +449,6 @@ El \textbf{IRI} (\textit{\textbf{International Resource Identifier}}) se puede u
 
 La estructura central del RDF es un conjunto de triples (tripletas), que se conoce como grafo RDF y que consta de tres componentes, en donde cada miembro puede ser una referencia a un símbolo (generalmente representado por un URI), que tiene un significado bien definido \cite{web-semantica-w3c}. La figura \ref{fig:tripleta} ilustra los tres componentes de un grafo RDF, y la figura \ref{fig:ejemploRDF} muestra un ejemplo.
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.46\linewidth]{imagenes/capitulo3/tripleta1}
-	\caption{Estructura de un grafo RDF}
-	\label{fig:tripleta}
-\end{figure}
 
 \begin{enumerate}
 	\item \textbf{Sujeto}: es el recurso, es decir, todo aquello que puede ser descrito.
@@ -454,15 +456,23 @@ La estructura central del RDF es un conjunto de triples (tripletas), que se cono
 	\item \textbf{Objeto}: es el valor de dicha propiedad.
 \end{enumerate}
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.53\linewidth]{imagenes/capitulo3/tripleta1}
+	\caption{Estructura de un grafo RDF}
+	\label{fig:tripleta}
+\end{figure}
+
+
 %en donde el sujeto y el objeto representan los dos recursos relacionados y el predicado representa la relación entre los dos recursos.
 
 \begin{figure}[H]
 	\centering
-	\begin{subfigure}[h]{0.70\textwidth} 
+	\begin{subfigure}[h]{0.75\textwidth} 
 		\includegraphics[width=\textwidth]{imagenes/capitulo3/grafoRDF}
 		\caption{Grafo RDF}
 	\end{subfigure}       
-	\begin{subfigure}[h]{0.74\textwidth} 
+	\begin{subfigure}[h]{0.79\textwidth} 
 		\includegraphics[width=\textwidth]{imagenes/capitulo3/ejemploRDF}
 		\caption{Ejemplo RDF Tripleta}
 	\end{subfigure}
@@ -521,8 +531,6 @@ En la figura \ref{fig:ejemplo-rdf} podemos ver un ejemplo de RDF a partir del vo
 	\label{fig:ejemplo-rdf}
 \end{figure}
 
-En la figura \ref{fig:imagen1} se muestra otro ejemplo de tripletas que indican la relación entre un recurso, nombre del recurso y geometría, es decir, en este caso el sujeto es el \textit{Recurso} que tiene la propiedad \textit{Nombre} cuyo valor es \textit{Quito}, además \textit{Recurso} tiene la propiedad \textit{Geometría} cuyo valor es \textit{Punto} y finalmente se indica que el sujeto \textit{Punto}, tiene la propiedad \textit{WKT} que indica el formato de la geometría, cuyo valor es \textit{POINT(-78.52495 -0.22985)} \cite{coursera}. 
-
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.75\linewidth]{imagenes/capitulo3/Imagen1}
@@ -530,13 +538,18 @@ En la figura \ref{fig:imagen1} se muestra otro ejemplo de tripletas que indican 
 	\label{fig:imagen1}
 \end{figure}
 
+
+En la figura \ref{fig:imagen1} se muestra otro ejemplo de tripletas que indican la relación entre un recurso, nombre del recurso y geometría, es decir, en este caso el sujeto es el \textit{Recurso} que tiene la propiedad \textit{Nombre} cuyo valor es \textit{Quito}, además \textit{Recurso} tiene la propiedad \textit{Geometría} cuyo valor es \textit{Punto} y finalmente se indica que el sujeto \textit{Punto}, tiene la propiedad \textit{WKT} que indica el formato de la geometría, cuyo valor es \textit{POINT(-78.52495 -0.22985)} \cite{coursera}. \\
+
+
 Por tanto, se entiende que RDF es a la semántica lo que XML es a la sintaxis, ya que XML responde a la necesidad de representar sintácticamente el modelo planteado por RDF para archivos entendibles por ordenador \cite{web-semantica-w3c}.
 
 
 \subsection{RDF Schema}
 
-\textbf{Esquema RDF} o \textbf{RDFS} \textbf{(RDF Schema)} es una extensión semántica que enriquece a RDF. Es un vocabulario que permite definir un primer sistema de jerarquías entre las clases de recursos, especificando las propiedades y relaciones admitidas entre ellas, es decir, permite a los usuarios definir características semánticas de los datos RDF y comprobar las restricciones semánticas \cite{web-semantica-w3c, libro-gis, aplicacion}. Igual que se han definido para RDF, existe un vocabulario empleado por RDFS (tablas \ref{tabla-rdfs1} y \ref{tabla-rdfs2}) \cite{tesis-otro}.
+\textbf{Esquema RDF} o \textbf{RDFS} \textbf{(RDF Schema)} es una extensión semántica que enriquece a RDF. Es un vocabulario que permite definir un primer sistema de jerarquías entre las clases de recursos, especificando las propiedades y relaciones admitidas entre ellas, es decir, permite a los usuarios definir características semánticas de los datos RDF y comprobar las restricciones semánticas \cite{web-semantica-w3c, libro-gis, aplicacion}. Igual que se han definido para RDF, existe un vocabulario empleado por RDFS (tablas \ref{tabla-rdfs1} y \ref{tabla-rdfs2}) \cite{tesis-otro}.\\
 
+Sin embargo, RDFS tiene limitaciones al carecer de expresividad para: información negativa (las mujeres no son hombres), cuantificadores (para que alguien sea considerado madre debe tener al menos un hijo), cardinalidad (un buen estudiante tiene que tener aprobadas más de 4 asignaturas) y no permite atributos de propiedades (transitiva, simétrica, inversa). Por todo esto y más, no se considera lo bastante completo para describir los recursos de la Web con el detalle necesario, pero se utiliza porque se puede emplear en muchos dominios y actuar de puente entre vocabularios \cite{aplicacion}.
 
 %Junto al RDF, se usa RDFS (RDF Schema) para definir las propiedades de los recursos y los tipos de recursos que son descritos. Es un mecanismo necesario para detallar cada elemento, especificar un vocabulario para definir las clases y propiedades, restringir las posibles combinaciones de clases y relaciones, y detectar violaciones de estas restricciones. Mientras un XML Schema puede ser utilizado para validar la sintaxis de un RDF/XML, un RDF Schema permite comprobar las restricciones semánticas.
 
@@ -579,7 +592,7 @@ Por tanto, se entiende que RDF es a la semántica lo que XML es a la sintaxis, y
 	\end{tabular}
 \end{table}
 
-Sin embargo, RDFS tiene limitaciones al carecer de expresividad para: información negativa (las mujeres no son hombres), cuantificadores (para que alguien sea considerado madre debe tener al menos un hijo), cardinalidad (un buen estudiante tiene que tener aprobadas más de 4 asignaturas) y no permite atributos de propiedades (transitiva, simétrica, inversa). Por todo esto y más, no se considera lo bastante completo para describir los recursos de la Web con el detalle necesario, pero se utiliza porque se puede emplear en muchos dominios y actuar de puente entre vocabularios \cite{aplicacion}.
+
 
 \subsection{Ontología} % Web Ontology Language (OWL)
 
@@ -638,7 +651,7 @@ En Octubre de 2009 nació \textit{OWL 2 Web Ontology Language} como recomendaci�
 	\item \textbf{OWL Full}: diseñado para aquellos usuarios que quieren máxima expresividad y libertad sintáctica de RDF sin garantías computacionales, es decir, permite expresividad de segundo orden, pero sin decidibilidad (no hay garantía computacional).
 \end{itemize}
 
-Por otro lado, todas las ontologías deben de cumplir unas características: sintaxis bien definida, semántica específica, expresividad, fácilmente traducible entre los lenguajes ontológicos y eficiencia para realizar razonamientos \cite{apuntes-clase-jose}.\\
+Por otro lado, las ontologías deben de cumplir unas características: sintaxis bien definida, semántica específica, expresividad, fácilmente traducible entre los lenguajes ontológicos y eficiencia para realizar razonamientos \cite{apuntes-clase-jose}.\\
 
 No obstante, escribir en lenguajes como RDF y OWL resultan sumamente difícil y propensos a errores. Afortunadamente, existen en el mercado entornos gráficos para visualizar y construir ontologías de forma más razonable, como \textbf{Protegé}, software desarrollado por la Universidad de Stanford. Permite editar ontologías con una interfaz sencilla y en un entorno de menús, botones, cuadros de diálogo o representaciones gráficas fáciles de usar, tan importantes para una tarea con tanta de abstracción y síntesis.
 
@@ -658,30 +671,38 @@ Por último, nos queda presentar dos lenguajes de consulta semántica: SPARQL, e
 
 %En esta transparencia usted puede ver este grafo RDF escrito en un archivo como una secuencia de triples, recuerde cuando teníamos una secuencia de triples en primer lugar especificamos los prefijos que vamos a utilizar en los URIs, recuerden que estos prefijos son utilizados para simplificar la notación que tenemos en estos URIs Una vez que hemos escrito estos prefijos en este caso tenemos dbpprop, dbpedia-owl y dbpedia construimos nuestros triples en esta caso tenemos cuatro triples el primero de ellos es dbpedia:Santiago rdf:type y dbpedia-owl:place, en este triple estamos diciendo que Santiago es de tipo lugar. En esta transparencia usted puede ver un grafo en la dbpedia con datos sobre lugares, esto simplemente es parte del grafo anterior donde decíamos bueno dbpedia:Santiago es de tipo lugar, que se encuentra en Chile y que su nombre oficial es Santiago. En esta transparencia usted tambien puede ver una consulta SPARQL y a continuación mostraremos las distintas partes de esta consulta, en primer lugar tenemos el encabezado de la consulta que puede ver en amarillo, este encabezado se puede distinguir a través de la palabra SELECT. En segundo lugar tenemos el patrón de la consulta que en este caso también esta desatascado en amarillo y que se encuentra dentro de la cláusula where. Es importante destacar que el patrón sigue la estructura sujeto, predicado, objeto. Por ejemplo en este caso tenemos un patrón de nuevo podemos ver este patrón en amarillo en el cual tenemos dos triples, en el primer triple ?X dbpprop:officialName ?name tenemos como sujeto a X, como predicado a dbprop:officialName y como objeto a name. En el segundo triple tenemos como sujeto a X, como predicado a rdf:type y como objeto a dbpedia-owl:Place. También es importante destacar que en este patrón tenemos variables y tenemos URIs, cada variable en una consulta SPARQL comienza con el signo de pregunta. En este caso entonces, tenemos como variables a signo de pregunta X y signo de pregunta name. También en una consulta SPARQL podemos tener URIs y en estos URIs utilizamos la notación usual, por ejemplo en esta consulta tenemos el URI dbpprop:officialName, en este caso estamos usando el prefijo dbpprop: ¿Cómo se calcula la respuesta a una consulta SPARQL? Bueno, en el patrón remplazamos cada variable por un URI o por un literal, y lo que es importante es que los triples resultantes de este remplazo debe estar en el grafo RDF. por ejemplo, en este caso podemos remplazar como he mostrado en la figura la variable X por dbpedia:Santiago y la variable name por Santiago. Si hacemos este remplazo entonces en el primer triple vamos a obtener el triple de dbpedia:Santiago, dbpprop:officialName Santiago que es un type que esta en el grafo RDF como es marcado en rojo. Lo que es importante en este caso es que tenemos que hacer el mismo remplazo en el segundo triple, y en este caso vamos a obtener el triple dbpedia:Santiago rdf:type, dbpedia-owl:place que tambien esta en nuestro grafo RDF. Por lo tanto en este caso tenemos un remplazo exitoso. ¿Para qué sirve el encabezado de una consulta SPARQL? El encabezado nos indica en este caso tenemos SELECT ?name por lo tanto nos está indicando que vamos a retornar los valores que hemos dado a la variable name, en este caso Santiago vale decir, esta consulta nos permite encontrar todos los nombres oficiales de los lugares que tenemos en dbpedia.
 
-\textbf{SPARQL} se trata de un lenguaje estandarizado por la W3C clave para el desarrollo de la Web Semántica, permite escribir de manera precisa la información que queremos extraer y que es procesable por un computador, es decir, es una especificación que ofrece un lenguaje y protocolos para consultar y manipular RDF \cite{tesis-otro}. En la figura \ref{fig:sparql}, podemos encontrar una consulta básica de selección SPARQL. Entre las características de SPARQL, resaltan: 
+\textbf{SPARQL} es un lenguaje estandarizado por la W3C clave para el desarrollo de la Web Semántica que permite escribir de manera precisa la información que queremos extraer, es decir, es una especificación que ofrece un lenguaje y protocolos para consultar y manipular RDF \cite{tesis-otro}. En la figura \ref{fig:sparql}, podemos encontrar una consulta básica de selección SPARQL y comprobar que la estructura de este lenguaje se asemeja a SQL. Entre las características de SPARQL, resaltan (tabla \ref{carac-sparql}): 
 
-\begin{itemize}
-	\item Lenguaje de consulta.
-	\item Formato XML, JSON, CSV y TSV  para resultados en una consulta.
-	\item Actualización de grafos RDF.
-	\item Protocolo para RDF.
-	\item Descubrir información acerca de la información  almacenada (dataset). 
-	\item Manejo de grafos mediante el protocolo HTTP. 
-\end{itemize}
+\begin{table}[H]
+	\caption{Características de SPARQL}
+	\label{carac-sparql}
+	\centering
+	\begin{tabular}{|l|}
+		\hline
+		 Lenguaje de consulta \\ \hline
+		 Formato XML, JSON, CSV y TSV  para resultados en una consulta \\ \hline
+Actualización de grafos RDF	\\ \hline
+	Protocolo para RDF	\\ \hline
+	Descubrir información acerca de la información  almacenada (\textit{dataset})	\\ \hline
+	 Manejo de grafos mediante el protocolo HTTP 	\\ \hline
+	\end{tabular}
+\end{table}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=1\linewidth]{imagenes/capitulo3/sparql}
+	\includegraphics[width=1.1\linewidth]{imagenes/capitulo3/sparql}
 	\caption{Estructura de una consulta en SPARQL}
 	\label{fig:sparql}
 \end{figure}
 
-Un ejemplo simple de una consulta SELECT se encuentra en la figura \ref{fig:ejemplo-sparql}, en donde se quieren obtener de la Dbpedia, los engenieros que viven en ciudades con una población de más de 10000000 habitantes. En la figura \ref{fig:salida-sparql} se puede observar la salida a dicha consulta \cite{tesis-otro}.
+Los resultados de una consulta están restringidos por una sección \texttt{WHERE}, que proporciona el patrón de gráfico básico para que coincida con el gráfico de datos. El patrón gráfico consiste en un conjunto de triples, que forman un gráfico, donde un elemento de un triple puede ser un URI de un recurso, un valor de datos (en el caso del objeto triple) o una variable. Una variable tiene el prefijo con el signo de interrogación y puede aparecer en la sección \texttt{SELECT} (la variable de salida). La sección \texttt{WHERE} también puede contener cláusulas \texttt{FILTER}, que filtran, por ejemplo cadena y valores numéricos usando varias funciones (predicados) \cite{tesis-otro}.\\
+
+Un ejemplo simple de una consulta SELECT se encuentra en la figura \ref{fig:ejemplo-sparql}, en donde se quieren obtener de la Dbpedia, ingenieros que residen en ciudades con una población de más de 10000000 habitantes. En la figura \ref{fig:salida-sparql} se puede observar la salida a dicha consulta \cite{tesis-otro}.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\linewidth]{imagenes/capitulo3/ejemplo-sparql}
-	\caption{Ejemplo de consulta de SPARQL}
+	\includegraphics[width=0.9\linewidth]{imagenes/capitulo3/ejemplo-sparql}
+	\caption{Ejemplo de consulta de SPARQL \cite{tesis-otro}}
 	\label{fig:ejemplo-sparql}
 \end{figure}
 
@@ -695,128 +716,133 @@ Un ejemplo simple de una consulta SELECT se encuentra en la figura \ref{fig:ejem
 
 %En la figura 2.3 se muestra un ejemplo de consulta SPARQL, haciendo referencia a las tripletas de la figura 2.2, se observa la estructura de la consulta para obtener los datos deseados como el Nombre del recurso, tipo de geometría y la geometría en formato WKT. Lo que se encuentra en el recuadro de color verde permite identificar el recurso, en este caso “Quito”, posteriormente en el recuadro de color rojo se observa la parte de la consulta que permite obtener el tipo de geometría del recurso “Quito” y finalmente en el recuadro de color azul se encuentra la parte de la consulta que permite obtener la geometría en formato WKT del recurso “Quito”, tambíen se muestra el resultado generado por la consulta SPARQL. 
 
-Como hemos comentado anteriormente, la herramienta Protegé nos permite construir contologías de manera más sencilla y rápida, sin embargo, también nos ofrece herramientas para realizar consultas con SPARQL. Entonces, SPARQL está bien establecido y es un lenguaje ampliamente utilizado para consultar ontologías RDF, pero carece de las construcciones necesarias para consultar datos espaciales. Afortunadamente, disponemos del estándar: Geo-SPARQL.
+Como hemos comentado anteriormente, la herramienta Protegé nos permite construir contologías de manera más sencilla y rápida, sin embargo, también ofrece herramientas para realizar consultas con SPARQL. No obstante, aunque SPARQL sea un lenguaje ampliamente utilizado para consultar ontologías RDF, carece de las construcciones necesarias para consultar datos espaciales. Afortunadamente, disponemos del estándar: GeoSPARQL.
 
 \subsubsection{GeoSPARQL}
 
 % tesis
 % libro
-\textbf{GeoSPARQL} es un estándar establecido por \textit{Open Geoespatial Consortium} (OGC) (OGC11-052r4 2012). Es una extensión del lenguaje de consulta SPARQL para recuperar información geoespacial de conjuntos de datos RDF en la Web Semántica \cite{libro-gis}. Entre sus características podemos encontrar \cite{tesis}: 
+\textbf{GeoSPARQL} es un estándar establecido por \textit{Open Geoespatial Consortium} (OGC). Es una extensión del lenguaje de consulta SPARQL para recuperar información geoespacial de conjuntos de datos RDF en la Web Semántica \cite{libro-gis}. Entre sus características podemos encontrar \cite{ogc-geo}: 
 
 \begin{itemize}
 	\item Vocabulario RDF/OWL para representar información geoespacial.
 	\item Funciones extensión a SPARQL para cálculos espaciales.
-	\item Conjunto básico de clases, propiedades y tipo de datos que son utilizados para construir patrones de consulta. 
+	\item Conjunto básico de clases, propiedades y tipo de datos que son utilizados para construir patrones de consulta (figura \ref{fig:geosparql}). 
 \end{itemize}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\linewidth]{imagenes/capitulo3/geosparql}
-	\caption{}
+	\includegraphics[width=0.83\linewidth]{imagenes/capitulo3/geosparql}
+	\caption{Clases y propiedades básicas de GeoSPARQL}
 	\label{fig:geosparql}
 \end{figure}
 
+GeoSPARQL no define un vocabulario completo para representar información espacial, sino que define un conjunto central de clases, propiedades y tipos de datos que se pueden utilizar para construir patrones de consulta (figura \ref{fig:geosparql}) \cite{ogc-geo}. Es un lenguaje muy enfocado para la comunidad SIG. Por otro lado, para poder hacer uso de este tipo de consultas es necesario aplicar las especificaciones que vienen descritas en la documentación oficial\footnote{\url{https://www.opengeospatial.org/standards/geosparql}}. \\
+
+En la tabla \ref{topo-geosparql} podemos encontrar sus relaciones topológicas, mientras que en la tabla \ref{funciones-geosparql} podemos encontrar funciones de GeoSPARQL que incluyen alternativas de todas las propiedades de relación topológica, aplicadas como funciones en literales de geometría \cite{tesis-otro}. Respecto la geometría permite puntos, líneas y polígonos, como vimos en el capítulo anterior y además la representación de la geometría debe de estar codificada en formato WKT.
 
 \begin{table}[H]
+	\caption{Relaciones topológicas con sus significados}
+	\label{topo-geosparql}
 	\centering
 	\begin{tabular}{|l|l|}
 		\hline
 		\rowcolor[HTML]{EFEFEF} 
 		{\textbf{OBJETO}} & { \textbf{DESCRIPCIÓN}} \\ \hline
-	\texttt{sfEquals}	&              espacialmente igual           \\ \hline
-	\texttt{sfDisjoint}	&        disjunto (no puede tocar)                 \\ \hline
-	\texttt{sfIntersects}	&     compartir al menos un punto                    \\ \hline
-\texttt{sfTouches} &          tocar externamente               \\ \hline
-	\texttt{sfWithin}	&      dentro (puede tocar el límite)                   \\ \hline
-\texttt{sfContains} &             el inverso de sfWithin            \\ \hline
-	\texttt{sfOverlaps}	&            algunos puntos comunes, misma dimensión             \\ \hline
-\texttt{sfCrosses} &         p.ej. área cruza la línea                \\ \hline		
+	\texttt{sfEquals}	&              Espacialmente igual           \\ \hline
+	\texttt{sfDisjoint}	&        Disjunto (no puede tocar)                 \\ \hline
+	\texttt{sfIntersects}	&     Comparten al menos un punto                    \\ \hline
+\texttt{sfTouches} &          Se tocan externamente               \\ \hline
+	\texttt{sfWithin}	&      Está dentro (puede tocar el límite)                   \\ \hline
+\texttt{sfContains} &             El inverso de \texttt{sfWithin}            \\ \hline
+	\texttt{sfOverlaps}	&            Tienen algunos puntos comunes, misma dimensión             \\ \hline
+\texttt{sfCrosses} &         Por ejemplo, área cruza la línea                \\ \hline		
 	\end{tabular}
 \end{table}
 
+
 \begin{table}[H]
+	\caption{Funciones para comparar y manipular geometrías}
+	\label{funciones-geosparql}
 	\centering
-	\begin{tabular}{|l|m{8.3cm}|}
+	\begin{tabular}{|l|m{8.6cm}|}
 		\hline
 		\rowcolor[HTML]{EFEFEF} 
 		{\textbf{FUNCIÓN} } & {\textbf{DESCRIPCIÓN}} \\ \hline
-\texttt{distance}		&       la distancia de dos literales geométricos medidos en unidades dadas                  \\ \hline
-\texttt{buffer} &           literal de geometría como un literal de entrada con un buffer agregado, dado el radio y las unidades del buffer              \\ \hline
-	\texttt{convexHull}	&      el casco convexo de un literal de geometría                   \\ \hline
-\texttt{intersection} &          la intersección de dos literales de geometría               \\ \hline
-\texttt{union}		&     unión de dos literales de geometría                    \\ \hline
-\texttt{difference} &       la diferencia de dos literales de geometría                  \\ \hline
-	\texttt{symDifference}	&       establecer la diferencia simétrica de dos literales de geometría                  \\ \hline
-\texttt{envelope}  &              el cuadro delimitador de un literal de geometría           \\ \hline
-\texttt{boundary}		&    el límite de un literal de geometría                     \\ \hline
+\texttt{distance}		&       La distancia de dos literales geométricos medidos en unidades dadas                  \\ \hline
+\texttt{buffer} &           Literal de geometría como un literal de entrada con un buffer agregado, dado el radio y las unidades del buffer              \\ \hline
+	\texttt{convexHull}	&      El casco convexo de un literal de geometría                   \\ \hline
+\texttt{intersection} &          La intersección de dos literales de geometría               \\ \hline
+\texttt{union}		&     Unión de dos literales de geometría                    \\ \hline
+\texttt{difference} &       La diferencia de dos literales de geometría                  \\ \hline
+	\texttt{symDifference}	&      Establecer la diferencia simétrica de dos literales de geometría                  \\ \hline
+\texttt{envelope}  &              El cuadro delimitador de un literal de geometría           \\ \hline
+\texttt{boundary}		&    El límite de un literal de geometría                     \\ \hline
 \texttt{getsrid} &       URI del sistema de referencia espacial de un literal de geometría                  \\ \hline		
 	\end{tabular}
 \end{table}
 
-Para saber acerca del estándar y de su uso 
-
-En el apartado siguiente, haremos uso de este lenguaje para la obtención de la información geoespacial deseada, donde nos centraremos en varios ejemplos prácticos, y su uso de cara al futuro.\\
-
-
-En la figura \ref{fig:arquitectura2copia} podemos apreciar el recorrido que hemos hecho por las distintas capas que tiene la arquitectura para la Web Semántica. Como el resto de capas no resultan relevantes para nuestro proyecto, se ha obtado por no exponerlas, para así enfocar el presente trabajo en el objetivo planteado al principio del trabajo.
+En el apartado siguiente, haremos uso de este lenguaje para la obtención de la información geoespacial deseada, centrándonos en varios ejemplos prácticos, y su uso de cara al futuro. Con esto hemos terminado de explicar las tecnologías de la Web Semántica. En la figura \ref{fig:arquitectura2copia} podemos apreciar el recorrido que hemos hecho por las distintas capas que tiene la arquitectura para la Web Semántica. Como el resto de capas no resultan relevantes para nuestro proyecto, se ha obtado por no exponerlas, para así enfocar el presente trabajo en el objetivo planteado al principio del mismo.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.6\linewidth]{imagenes/capitulo3/arquitectura2copia}
+	\includegraphics[width=0.48\linewidth]{imagenes/capitulo3/arquitectura2copia}
 	\caption{Tecnologías de la Web Semántica explicadas}
 	\label{fig:arquitectura2copia}
 \end{figure}
 
 \section{¿Qué no es la Web Semántica?}
 
-Una vez expuestos los contenidos que comprenden la Web Semántica, es necesario enfatizar qué no es la Web Semántica, con el objeto de evitar posibles confusiones futuras. Durante el presente trabajo, hemos hablado que la Web Semántica es una extensión de la actual Web, por tanto hablaremos que una Web no es Semántica cuando sea diferente a la actual Web y tenga estándares incompatibles con la Web actual \cite{introduccion}. Además, debe seguir cumpliendo las características que conforman la Web, puesto que una Web de navegacioón compleja no transparente y difícil de usar para usuarios finales, tampoco entraría dentro de lo que llamamos Web Semántica. Además, no todos los navegadores hacen uso de búsquedas semánticas, ya que la mayoría se basan por similtudes con las palabras usadas para la búsqueda sin hacer uso de la interpretación de la información.
+Una vez expuestos los contenidos que comprenden la Web Semántica, es necesario enfatizar qué no es la Web Semántica, con el objeto de evitar posibles confusiones futuras. Durante el presente trabajo, hemos hablado de que la Web Semántica es una extensión de la actual Web, por tanto diremos que una Web no es Semántica cuando sea diferente a la actual Web y tenga estándares incompatibles con la Web actual \cite{introduccion}. Además, debe seguir cumpliendo las características que conforman la Web, puesto que una Web de navegacioón compleja no transparente y difícil de usar para usuarios, tampoco entraría dentro de lo que llamamos Web Semántica. Además, no todos los navegadores hacen uso de búsquedas semánticas, ya que la mayoría se basan por similtudes con las palabras usadas para la búsqueda sin hacer uso de la interpretación de la información.
 
 \section{Aplicaciones de la Web Semántica}
 
 
-Prototipo de un sistema semántico de diagnosis para congestiones de tráfico en carretera desarrollado por IBM (68), donde se presenta un prototipo que analiza de forma semántica y mediante enfoques de inteligencia artificial el histórico de congestiones de trafico para determinar las causas de situaciones inesperadas en casi tiempo real de la situación del trafico en la ciudad de Dublín.
+%Prototipo de un sistema semántico de diagnosis para congestiones de tráfico en carretera desarrollado por IBM (68), donde se presenta un prototipo que analiza de forma semántica y mediante enfoques de inteligencia artificial el histórico de congestiones de trafico para determinar las causas de situaciones inesperadas en casi tiempo real de la situación del trafico en la ciudad de Dublín.
+%
+%
+%Aplicación de la Web Semántica en Trafico
+%
+%
+%Reino Unido (data.gov.uk)
+%
+%El principal ejemplo encontrado con información de tráfico es el proporcionado desde el apartado transporte de la iniciativa de datos gubernamentales del Reino Unido (58), que permite consultar la información sobre estaciones de tren, aeropuertos y paradas de autobús entre otros, mediante consultas SPARQL.
+%Por ejemplo para las estaciones de tren, se pueden lanzar las consultas mediante una interfaz similar a la de la ilustración, obteniendo el listado de las estaciones resultantes en diferentes formatos disponibles (ilustración 19):
+%
+%Desde data.gob.uk, también se puede acceder a información como los datos de tráfico, eventos planeados y no planeados en (59) pero esta vez en formato XML, siguiendo la estructura propuesta por DATEX II v1.0. El ejemplo de futuros eventos planificados puede consultarse en (60).
+%Otra información disponible son los datos relativos a los conteos de tráfico en una región, pero estos sólo están disponibles en CSV o bien en PDF, sin integrar tampoco formatos RDF. Se pueden consultar desde (61).
+%
+%Estos ejemplos, son interesantes debido al tipo de información que publican, pero es necesario destacar que no se utilizan estándares de Web Semántica en la publicación de los datos, con lo que no se alcanzarían las 4 estrellas de la escala comentada en el apartado 4.2 Linked Data.
 
+%Directorios y catálogos de documentos.
+%Openguides.org
+%www.dmoz.org
+%Redes Sociales. FOAF
+%http://www.foaf-project.org/
+%Buscadores semánticos.
+%http://www.aktors.org/technologies/csaktivespace/
 
-Aplicación de la Web Semántica en Trafico
-
-
-Reino Unido (data.gov.uk)
-
-El principal ejemplo encontrado con información de tráfico es el proporcionado desde el apartado transporte de la iniciativa de datos gubernamentales del Reino Unido (58), que permite consultar la información sobre estaciones de tren, aeropuertos y paradas de autobús entre otros, mediante consultas SPARQL.
-Por ejemplo para las estaciones de tren, se pueden lanzar las consultas mediante una interfaz similar a la de la ilustración, obteniendo el listado de las estaciones resultantes en diferentes formatos disponibles (ilustración 19):
-
-Desde data.gob.uk, también se puede acceder a información como los datos de tráfico, eventos planeados y no planeados en (59) pero esta vez en formato XML, siguiendo la estructura propuesta por DATEX II v1.0. El ejemplo de futuros eventos planificados puede consultarse en (60).
-Otra información disponible son los datos relativos a los conteos de tráfico en una región, pero estos sólo están disponibles en CSV o bien en PDF, sin integrar tampoco formatos RDF. Se pueden consultar desde (61).
-
-Estos ejemplos, son interesantes debido al tipo de información que publican, pero es necesario destacar que no se utilizan estándares de Web Semántica en la publicación de los datos, con lo que no se alcanzarían las 4 estrellas de la escala comentada en el apartado 4.2 Linked Data.
-
-Directorios y catálogos de documentos.
-Openguides.org
-www.dmoz.org
-Redes Sociales. FOAF
-http://www.foaf-project.org/
-Buscadores semánticos.
-http://www.aktors.org/technologies/csaktivespace/
-
-Buscadores Semánticos: Satisfacer las expectativas de búsqueda de usuarios que requieren resultados precisos.
+%Buscadores Semánticos: Satisfacer las expectativas de búsqueda de usuarios que requieren resultados precisos.
 
 % http://www.fgcsic.es/lychnos/es_es/articulos/construyendo_una_web_semantica
-Actualmente ya son numerosas las aplicaciones que de una forma u otra se basan en tecnologías semánticas para la Web. A continuación ilustraremos tres casos de naturaleza diversa para mostrar el potencial que todavía alberga la Web.
+
+Los conceptos que acabamos de ver han repercutido en la actualidad, ya que existen diversas aplicaciones que de una forma u otra se basan en tecnologías semánticas para la Web. A continuación, mostramos algunas \cite{cwb}:
 
 \begin{itemize}
 	\item % http://www.fgcsic.es/lychnos/es_es/articulos/construyendo_una_web_semantica
-	\textbf{Producción científica}. Uno de los pilares para el avance de la ciencia es la publicación de los resultados de la experimentación científica para que puedan ser contrastados y corroborados por la comunidad científica y para que a su vez puedan ayudar a avanzar en otras líneas de investigación. El portal GoPubMed, por ejemplo, ofrece un buscador semántico de publicaciones científicas en el área de la biomedicina. Está conectado con la Gene Ontology, una ontología que unifica y estructura la terminología sobre genes y productos génicos de un amplio número de organismos. Con GoPubMed se pueden localizar los textos relevantes para una búsqueda no únicamente por la ocurrencia de determinadas palabras clave sino por la relación semántica existente entre conceptos biomédicos. 
-	
+	\textbf{Producción científica}: en el campo de la ciencia, la publicación de resultados de la experimentación es fundamental para la comunidad científica. Un ejemplo de ello es el portal \textbf{GoPubMed}\footnote{Actualmente no disponible (\url{https://www.gopubmed.org/})}, que ofrece un buscador semántico de publicaciones científicas en el área de la biomedicina, a través de la ontología \textit{Gene Ontology} que unifica y estructura la terminología sobre genes y productos génicos de un amplio número de organismos. Permite localizar textos relevantes no sólo por la ocurrencia de determinadas palabras clave sino por la relación semántica existente entre conceptos biomédicos. 
+ 
 	% http://www.fgcsic.es/lychnos/es_es/articulos/construyendo_una_web_semantica
-	La publicación no solo de los resultados de una investigación sino también de los datos experimentales sobre los que se ha basado permitirá una mayor colaboración y transparencia en el ámbito de la investigación científica. Proyectos financiados por la Unión Europea, como OpenKnowledge o LiquidPub, han investigado formas novedosas de colaboración y publicación distribuida en la Web que apuntan a que vamos a ser testigos de un cambio importante en cómo se publican, se comparten y se diseminan los resultados científicos.
+	%La publicación no solo de los resultados de una investigación sino también de los datos experimentales sobre los que se ha basado permitirá una mayor colaboración y transparencia en el ámbito de la investigación científica. Proyectos financiados por la Unión Europea, como OpenKnowledge o LiquidPub, han investigado formas novedosas de colaboración y publicación distribuida en la Web que apuntan a que vamos a ser testigos de un cambio importante en cómo se publican, se comparten y se diseminan los resultados científicos.
 	
-	\item % http://www.fgcsic.es/lychnos/es_es/articulos/construyendo_una_web_semantica
-	\textbf{Gobiernos abiertos}. Numerosos gobiernos nacionales están impulsando iniciativas de «gobierno abierto», haciendo públicos los conjuntos de datos en su posesión para promover la transparencia, aumentar la eficiencia administrativa y estimular el crecimiento económico. La combinación de estos datos mediante mashups –aplicaciones web que combinan datos y funcionalidades de diferentes fuentes– permite realizar consultas y presentar sus resultados de forma novedosa y creativa. En 2009, en una localidad del estado de Ohio, en Estados Unidos, un abogado creó un mashup que combinaba los datos públicos sobre la ubicación de las tuberías de agua corriente con los datos obtenidos del censo municipal sobre qué viviendas estaban habitadas por familias afroamericanas. El mapa resultante reveló que, en determinados barrios limítrofes, el ayuntamiento claramente discriminaba a los hogares afroamericanos. En consecuencia, un juez decretó una indemnización por daños y perjuicios.
+	%\item % http://www.fgcsic.es/lychnos/es_es/articulos/construyendo_una_web_semantica
+	%\textbf{Gobiernos abiertos}: Numerosos gobiernos nacionales están impulsando iniciativas de «gobierno abierto», haciendo públicos los conjuntos de datos en su posesión para promover la transparencia, aumentar la eficiencia administrativa y estimular el crecimiento económico. La combinación de estos datos mediante mashups –aplicaciones web que combinan datos y funcionalidades de diferentes fuentes– permite realizar consultas y presentar sus resultados de forma novedosa y creativa. En 2009, en una localidad del estado de Ohio, en Estados Unidos, un abogado creó un mashup que combinaba los datos públicos sobre la ubicación de las tuberías de agua corriente con los datos obtenidos del censo municipal sobre qué viviendas estaban habitadas por familias afroamericanas. El mapa resultante reveló que, en determinados barrios limítrofes, el ayuntamiento claramente discriminaba a los hogares afroamericanos. En consecuencia, un juez decretó una indemnización por daños y perjuicios.
 	
-	\item % hablar sobre la página esa que tiene Londres - London Data store
-	
+	% hablar sobre la página esa que tiene Londres - London Data store
+	\item \textbf{Gobiernos abiertos}: muchos gobiernos han impulsando iniciativas de \textit{gobierno abierto}, con el fin de hacer públicos conjuntos de datos para ayudar a comprender la ciudad y desarrollar soluciones a los problemas. \textbf{London Datastore} (\url{https://data.london.gov.uk}) es un portal gratuito y abierto para compartir datos donde cualquiera puede acceder a datos relacionados con Londres. Por ejemplo, en el apartado \textit{transporte} de esta iniciativa de datos gubernamentales del Reino Unido, nos permite consultar la información sobre estaciones de tren, aeropuertos y paradas de autobús entre otros, mediante consultas SPARQL.
+
 	% http://www.fgcsic.es/lychnos/es_es/articulos/construyendo_una_web_semantica
-	\textbf{Colaboración popular masiva}. LinkedGeoData es una iniciativa para añadir una dimensión espacial a los datos publicados en la web semántica y se basa en la información recogida por el proyecto OpenStreetMap, un mapa mundial abierto al que cualquiera puede añadir datos, al estilo de Wikipedia. A finales del 2009 muy pocas áreas de la ciudad de Port-au-Prince en Haití estaban etiquetadas. Pero justo después del gran terremoto de enero de 2010, cuando se hicieron públicas imágenes de satélite del país, miles de personas estudiaron estas imágenes y comenzaron a anotar en el OpenStreetMap información detallada sobre las zonas devastadas: carreteras bloqueadas, edificios dañados, ubicación de campos de refugiados y hospitales de campaña, muelles en los que atracaban los barcos con ayuda humanitaria, etc. Todos estos datos fueron de gran utilidad para los equipos de rescate que sobre el terreno consultaban esta información con sus dispositivos móviles.
+	\item \textbf{Colaboración popular masiva}: la exposición, edición, compartición e interconexión de datos estructurados en la Web es muy común. \textbf{LinkedGeoData} es una iniciativa para añadir una dimensión espacial a los datos publicados en la Web Semántica y se basa en la información recogida por el proyecto \textit{OpenStreetMap}\footnote{Mapa mundial abierto al que cualquiera puede añadir datos, parecido al funcionamiento de Wikipedia.}. Un ejemplo de ello, fue cuando a finales del 2009 muy pocas áreas de la ciudad de Port-au-Prince en Haití estaban etiquetadas. Pero justo después del terremoto de enero de 2010, cuando se hicieron públicas imágenes de satélite del país, miles de personas estudiaron estas imágenes y comenzaron a anotar en el \textit{OpenStreetMap} información detallada sobre las zonas devastadas: carreteras bloqueadas, edificios dañados, hospitales de campaña o muelles en los que atracaban los barcos con ayuda humanitaria. Todos estos datos fueron de gran utilidad para los equipos de rescate que sobre el terreno que consultaban esta información con sus dispositivos móviles.
 	
 \end{itemize}
 
@@ -840,9 +866,8 @@ Actualmente ya son numerosas las aplicaciones que de una forma u otra se basan e
 \section{Resumen del capítulo}
 
 % http://www.culturatic.es/2015/07/web-semantica-usos-y-aplicaciones.html
-% El éxito de la web es la indefinida cantidad de documentos y recursos a los que podemos acceder desde cualquier parte del mundo, lo que nos ha llevado, eso sí, a una situación de desinformación y diferencias de formatos. Para solucionar estos dos principales problemas recurrimos a la web semántica, que permite a los usuarios delegar esas tareas al software que permite procesar el contenido, razonarlo y combinarlo.
-%  la web semántica es una red de datos que puede ser procesada directa o indirectamente por máquinas. La información en la web se da con un significado bien definido, lo que facilita que ordenadores y personas trabajen en cooperación.
-% En resumen,  lo que hace la web semántica  es ayudarnos en la búsqueda de un tema. Para ello utiliza métodos de representación del conocimiento mediante una red de nodos conectados entre sí, para no confundir temas parecidos.  Realmente busca lo que queremos buscar a través de un lenguaje universal estándar. La web se encarga de enseñar a los ordenadores a saber lo que queremos buscar, a partir de algoritmos que permiten marcar semánticamente los contenidos en cualquier documento textual.
+
+Este capítulo ha introducido que el éxito de la Web se debe a la indefinida cantidad de documentos y recursos a los que podemos acceder desde cualquier parte del mundo, sin embargo, esto ha llevado a una situación de desinformación y diferencias de formatos. Para solucionar estos problemas se ha recurrido a la Web Semántica, una red de datos que puede ser procesada por máquinas, lo que facilita que ordenadores y personas trabajen en cooperación. Lo que hace la Web Semántica es ayudarnos en la búsqueda de un tema, es decir, utiliza métodos de representación del conocimiento mediante una red de nodos conectados entre sí, para no confundir temas parecidos. Para ello, la Web se encarga de enseñar a las máquinas a saber lo que queremos buscar, a partir de algoritmos que permiten marcar semánticamente los contenidos en cualquier documento textual. Para hacer esto real se necesitan tecnologías que conforman la arquitectura de la Web Semántica. El primer elemento necesario para el acceso a los recursos de la Web, es la posibilidad de que puedan ser identificados en cualquier idioma, con lo que se precisa el uso de Unicode e identificadores URI. Para la descripción sintáctica de los recursos se utiliza XML, pero es necesario utilizar lenguajes que permitan imponer restricciones semánticas para descripciones completas, siendo necesario hacer uso de RDF, lenguaje basado en XML que permite expresar tripletas que indican el sujeto, predicado y objeto de una sentencia. Estas sentencias indican qué recursos tienen qué propiedades y con qué valores, identificando cada objeto con una URI. Sin embargo, esta aportación de información no es suficiente, por ejemplo, en caso de que dos entornos utilicen diferentes identificadores para referirse al mismo objeto. Es por eso que se necesitan lenguajes como OWL, que tienen mayor expresividad y capacidad de razonamiento para representar los conocimientos y definir las ontologías, documentos o ficheros que definen formalmente las relaciones entre clases dentro de un dominio de la realidad: cardinalidad, igualdad, topologías de propiedades, caracterización de propiedades o clases enumeradas. Para el desarrollo de ontologías, existen herramientas como Protegé que nos facilitan su creación de manera más gráfica. Disponiendo de las ontologías para describir la información y las relaciones, se necesitan agentes inteligentes para rastrear la Web de forma automática y localizar exclusivamente, los recursos buscados, con el significado y concepto precisos con el que se interpreta el término buscado. Para ello, se dispone de dos lenguajes de consulta semántica: SPARQL, estándar ampliamente utilizado para consultar datos RDF y GeoSPARQL, extensión de SPARQL que admite operaciones geoespaciales.
 
 %La WS es aún una visión, un proyecto de futuro muy ambicioso, que permitirá, con ayuda de la Inteligencia Artificial, realizar un sinfín de operaciones en la Web, mucho más amplias que las ofertadas hoy en día. El tener toda la información etiquetada sintáctica y semánticamente facilitará la implementación eficaz de los llamados agentes inteligentes, capaces de ofrecer información Web pertinente, en función de los intereses y circunstancias personales de cada usuario (personalización máxima).
 

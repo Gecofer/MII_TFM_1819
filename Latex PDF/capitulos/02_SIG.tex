@@ -21,7 +21,7 @@ A continuación, vamos a introducir la definición de SIG, para ello se va a rea
 
 \subsection{Conceptos Generales}
 
-Los \textbf{Sistemas de Información Geográfica} (\textbf{SIG}) o \textbf{GIS (\textit{Geographic Information System})} hacen referencia a un término amplio que se refiere a una amplia familia de estándares, tecnologías y herramientas de software para almacenar, editar, analizar, mostrar e integrar datos espaciales. En el presente trabajo, nos vamos a centrar mayoritariamente en los aspectos de búsqueda e integración \cite{tesis}. De tal forma, que los SIG son sistemas complejos que integran una serie de diversos elementos interrelacionados \cite{VictorOlaya} (figura \ref{fig:elementosSIG}). Sin embargo, desde otro punto de vista, un SIG consiste en la unión de dos ciencias: la Geografía y la Informática, es decir, consiste en un Sistema de Información (SI) en donde dicha información incluye su posición en el espacio, utilizando para ello un sistema de coordenadas estandarizado resultado de una proyección cartográfica. 
+En las últimas décadas se han introducido los \textbf{Sistemas de Información Geográfica} (\textbf{SIG}) o \textbf{GIS (\textit{Geographic Information System})}, término amplio que referencia a una amplia familia de estándares, tecnologías y herramientas de software para almacenar, editar, analizar, mostrar e integrar datos espaciales. En el presente trabajo, nos vamos a centrar mayoritariamente en los aspectos de búsqueda e integración \cite{tesis}. De tal forma, los SIG son sistemas complejos que integran una serie de diversos elementos interrelacionados \cite{VictorOlaya} (figura \ref{fig:elementosSIG}). Sin embargo, desde otro punto de vista, un SIG consiste en la unión de dos ciencias: la Geografía y la Informática, es decir, consiste en un Sistema de Información (SI) en donde dicha información incluye su posición en el espacio, utilizando para ello un sistema de coordenadas estandarizado resultado de una proyección cartográfica. 
 
 \begin{figure}[H]
 	\centering
@@ -37,8 +37,6 @@ Para trabajar con información geoespacial georreferenciada es necesario el esta
 	
 	\item \textbf{WGS84} \textbf{(World Geodetic System 1984)} es un sistema de coordenadas geográficas mundial que permite localizar cualquier punto de la Tierra por medio de tres unidades dadas, es el más empleado en la actualidad. Este sistema de coordenadas agrega a \textit{Greenwich} como el punto de inicio (primer meridiano) para la longitud ($0^o$) y establece las unidades en grados \cite{VictorOlaya} (figura \ref{fig:WGS84}).
 \end{itemize}
-
-Ambos sistemas son muy usados actualmente, sin embargo en España se utiliza actualmente el \textit{ETRS89 (European Terrestrial Reference System, 1989)}, oficial en Europa \cite{AsignaturaSIG}.\\ 
 
 \begin{figure}[H]
 	\centering
@@ -60,6 +58,8 @@ Ambos sistemas son muy usados actualmente, sin embargo en España se utiliza act
 	\caption{Sistemas de coordenadas WGS84 \cite{WGS84}}
 	\label{fig:WGS84}
 \end{figure}
+
+Ambos sistemas son muy usados actualmente. Por ejemplo, en España hasta 2008 se utilizaba el sistema oficial \textit{ED50 (European Datum, 1950)}, hasta que apareció el \textit{ETRS89 (European Terrestrial Reference System, 1989)}, sistema global oficial en Europa y que sustituye al \textit{ED50} \cite{AsignaturaSIG}. ETRS89 es un sistema de referencia geocéntrico,  muy cercano al WGS84 del GPS para ser usado no sólo en Topografía, sino en dispositivos de navegación por toda Europa. Además, está regulado por el real decreto 1071/2007 como sistema de referencia geodésico para España.\\
 
 Tradicionalmente, la salida principal de los sistemas SIG es en formato de mapa\footnote{Un mapa ``es un conjunto de capas con información y datos, en donde los datos son codificados como alfanuméricos y contienen coordenadas que permiten ubicarlo'' \cite{congreso-ritsi}.}, lo que permite contener diferentes elementos relevantes como una leyenda (que explica lo que significan todos los símbolos utilizados), una escala (para mostrar la escala del mapa) o elementos interactivos (herramientas para hacer zoom, seleccionar capas o buscar), entre todos \cite{tesis}. Asimismo, un mapa puede estar constituido por varias capas, representadas en un orden determinado, una encima de otra. La primera capa (representada primero) generalmente se llama capa base, el resto de capas superpuestas. Las capas pueden ser muy diversas, desde fotografías aéreas, carreteras, parcelas de tierra o ríos hasta nombres de ciudades o de calles. En la figura \ref{fig:capas-mapas} podemos ver dos ejemplos de las distintas capas que puede tener un mapa \cite{VictorOlaya}.
 
@@ -92,15 +92,15 @@ Otra consideración importante de los mapas, es su representación. El mapa se p
 	
 \end{enumerate}
 
-Sin embargo, no es de extrañar que a veces veamos los dos modelos complementados, ya que las herramientas actuales permiten trabajar con ambos a la vez. Por ejemplo, si queremos ubicar en un mapa con puntos las oficinas de correos de la ciudad; existe una gran flexibilidad para transformar los datos de un modelo a otro.
+
 
 \begin{figure}[H]
 	\centering
-	\begin{subfigure}[h]{0.69\textwidth} 
+	\begin{subfigure}[h]{0.70\textwidth} 
 		\includegraphics[width=\textwidth]{imagenes/capitulo2/raster-vectorial}
 		\caption{}
 	\end{subfigure}       
-	\begin{subfigure}[h]{0.74\textwidth} 
+	\begin{subfigure}[h]{0.75\textwidth} 
 		\includegraphics[width=\textwidth]{imagenes/capitulo2/raster-vector-gis-i4}
 		\caption{}
 	\end{subfigure}
@@ -108,13 +108,15 @@ Sin embargo, no es de extrañar que a veces veamos los dos modelos complementado
 	\label{fig:raster-vectorial}
 \end{figure}
 
+Sin embargo, no es de extrañar que a veces veamos los dos modelos complementados, ya que las herramientas actuales permiten trabajar con ambos a la vez. Por ejemplo, si queremos ubicar en un mapa con puntos las oficinas de correos de la ciudad; existe una gran flexibilidad para transformar los datos de un modelo a otro.\\
+
 %\subsubsection{Formatos}
 
 A parte de los modelos de datos que acabamos de explicar, existen formatos estandarizados y de uso común para datos espaciales, entre ellos destacamos \textit{WKT} y \textit{GML}. La codificación \textbf{WKT} \textbf{(\textit{Well Known Tex})} es una sintaxis en formato ASCII estandarizada, definida por el \textit{Open Geospatial Consortium} (OGC)\footnote{OGC es una organización internacional para crear estándares geoespaciales abiertos que define varios estándares de servicios SIG para diferentes propósitos.} para el intercambio de información espacial (figura \ref{fig:wkt}) \cite{wkt}. Por otro lado, la codificación \textbf{GML} \textbf{(\textit{Geography Markup Language})} es un elemento de Geografía codificado en XML (figura \ref{fig:a-gml-representation-of-a-point-feature}), es más ventajoso que WKT, ya que permite expresar más funciones (sistemas de referencia de coordenadas, unidades de medida, tiempo y más tipos de geometría). 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.82\linewidth]{imagenes/capitulo2/wkt}
+	\includegraphics[width=0.9\linewidth]{imagenes/capitulo2/wkt}
 	\caption{Ejemplos de geometrías representadas en WKT}
 	\label{fig:wkt}
 \end{figure}

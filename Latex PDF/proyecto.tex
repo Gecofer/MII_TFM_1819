@@ -50,14 +50,15 @@
 
 \usepackage[pdfborder={000}]{hyperref} %referencia
 
+\usepackage{rotating}
 
 \newcommand\tab[1][1cm]{\hspace*{#1}}
 
 % ********************************************************************
 % Re-usable information
 % ********************************************************************
-\newcommand{\myTitle}{Análisis de Información Geográfica mediante QGIS y R\xspace}
-\newcommand{\myDegree}{Grado en Ingeniería Informática\xspace}
+\newcommand{\myTitle}{Integración de Información Geográfica en la Web Semántica\xspace}
+\newcommand{\myDegree}{Máster en Ingeniería Informática\xspace}
 \newcommand{\myName}{Gema Correa Fernández\xspace}
 \newcommand{\myOtherProf}{José Samos Jimenéz\xspace}
 %\newcommand{\mySupervisor}{Put name here\xspace}
@@ -168,6 +169,7 @@ pdfproducer = {pdflatex}
 	}
 \end{comment}
 
+ \usepackage{hvfloat}
  
 % minimizar fragmentado de listados
 \lstnewenvironment{listing}[1][]
@@ -265,11 +267,11 @@ pdfproducer = {pdflatex}
 \mainmatter
 %\input{capitulos/01_Introduccion}
 %\input{capitulos/02_SIG}
-\input{capitulos/03_WebSemantica}
-%\input{capitulos/04_Aplicacion}
+%\input{capitulos/03_WebSemantica}
+\input{capitulos/04_Aplicacion}
 %\input{capitulos/05_Resultados}
 %\input{capitulos/06_Conclusiones}
-\input{capitulos/07_AnexosA}
+%\input{capitulos/07_AnexosA}
 %\input{capitulos/07_AnexosB}
 %\input{capitulos/07_AnexosB}
 %\input{capitulo/glosario}
