@@ -1,0 +1,4 @@
+#Metadata: Fileset: POS
+#Tue Aug 06 13:21:04 CEST 2019
+tdb.file.type=rangeindex
+tdb.file.indexorder=POS

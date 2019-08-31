@@ -1,0 +1,16 @@
+#!/bin/sh
+
+# Unix shell script for invoking oracle.spatial.rdf.client.jena.utilities.RDFLoader
+# Example usage:
+# orardfldr M1 ./test_data N-TRIPLE 1 jdbc:oracle:thin:@localhost:1521:orcl rdfuser rdfuser "PARSE PARALLEL=4 MBV_METHOD=SHADOW"
+
+# make sure $ORACLE_JENA_HOME is set
+if [ -z "$ORACLE_JENA_HOME" ]; then
+  echo "ORACLE_JENA_HOME environment variable is not set"
+  exit 1
+fi
+
+# environment is set - do the load
+java -cp $ORACLE_JENA_HOME/jar/'*' oracle.spatial.rdf.client.jena.utilities.RDFLoader "$@"
+
+exit 0

@@ -1,0 +1,32 @@
+#!/bin/sh
+
+# Unix shell script for invoking oracle.spatial.rdf.client.jena.utilities.EncryptFusekiOraPwds
+
+# Utility program to encrypt clear text Oracle dataset passwords defined with jdbc url parameters in Apache Jena Fuseki configuration file. 
+# To encrypt the password add a '!' character at the beginning of the password name and execute this program.
+# 
+# For example:
+# 
+# oracle:connection
+# [ a oracle:OracleConnection ;
+#     oracle:jdbcURL "jdbc:oracle:thin:@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=127.0.0.1)(PORT=1521))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=srvc)))";
+#    oracle:User "scott";
+#    oracle:Password "!tiger"
+# ];
+# 
+# The input configuration file will be rewritten with passwords encrypted (a backup copy of original file will be generated). 
+# Then copy the new configuation file into Fuseki configuration directory and start or restart Fuseki if already running.
+ 
+# Example usage:
+# encfusekiorapwds /tmp/config.ttl
+
+# make sure $ORACLE_JENA_HOME is set
+if [ -z "$ORACLE_JENA_HOME" ]; then
+  echo "ORACLE_JENA_HOME environment variable is not set"
+  exit 1
+fi
+
+# environment is set - do the load
+java -cp $ORACLE_JENA_HOME/jar/'*' oracle.spatial.rdf.client.jena.utilities.EncryptFusekiOraPwds "$@"
+
+exit 0

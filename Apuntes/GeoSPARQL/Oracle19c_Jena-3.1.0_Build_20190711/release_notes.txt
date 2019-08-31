@@ -1,0 +1,120 @@
+Release notes for Oracle Jena Adapter (July 2019)
+
+
+The main updates on this release are:
+
+
+1) Oracle JDBC drivers have been updated to latest 19.3c version (ojdbc8-19.3.jar, orai18n-19.3.jar)
+
+
+2) Utility programs for loading RDF data and for encrypting Oracle passwords on Fuseki 
+configuration file.
+
+These utility programs are packaged inside the SDO RDF client jar, and can be executed from a 
+shell script or directly from a java command.
+
+2.1) RDF loader utility
+
+This utility program loads all files in a directory into a semantic model in Oracle database. 
+It supports several RDF serializations (RDF/XML, Turtle, N-Triple, N-Quads, Trig), and files compressed with gzip can be directly loaded - no uncompression is necessary. 
+In addition, Unicode character escaping and long literals (CLOBs) are handled automatically.
+
+The environment variable ${ORACLE_JENA_HOME} below is assumed to be pointing to the directory where the OTN kit has been stored. 
+
+Usage: java -cp ${ORACLE_JENA_HOME}/jar/'*' oracle.spatial.rdf.client.jena.utilities.RDFLoader <command_line_arguments>
+
+For help details: java -cp ${ORACLE_JENA_HOME}/jar/'*' oracle.spatial.rdf.client.jena.utilities.RDFLoader --help
+
+For convenience, a shell script in the bin directory can also be executed. To use this script, ${ORACLE_JENA_HOME} must be set, and ${ORACLE_JENA_HOME}/bin must appear on your Unix PATH.
+
+Usage: orardfldr <command_line_arguments>
+
+For help details: orardfldr --help
+
+The example usage below loads all N-Triple files in the directory /home/rdfuser/rdf_data into a pre-created semantic model named M1.
+
+orardfldr --model_name=M1 --fileDir=/home/rdfuser/rdf_data --lang=N-TRIPLE --jdbcUrl=jdbc:oracle:thin:@localhost:1521:orcl --user=RDFUSER --password=passwd --bulkLoadFlags="PARSE PARALLEL=4 MBV_METHOD=SHADOW" --numThreads=4
+
+Optional arugment bulkLoadFlags is used to specify options for SEM_APIS.BULK_LOAD_FROM_STAGING_TABLE, and optional argument numThreads is used to specify that 4 parallel threads should be used to load data from the filesystem into a staging table. Note that there must be at least 4 separate files in /home/rdfuser/rdf_data for 4 parallel threads to be utilized because at most 1 thread can be used for each file.
+
+Any invalid triples will be written to badTriples_n.bad (n is the thread number) in the current directory.
+
+
+2.2) Encrypt utility for Oracle passwords on Fuseki config file.
+
+This utility program encrypts clear text Oracle dataset passwords defined with jdbc url parameters in Apache Jena Fuseki configuration file. 
+
+To encrypt the password add a '!' character at the beginning of the password name and execute this program.
+
+For example, the Fuseki configuration file may have the following JDBC url connection defined:
+
+oracle:connection
+ [ a oracle:OracleConnection ;
+    oracle:jdbcURL "jdbc:oracle:thin:@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=127.0.0.1)(PORT=1521))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=srvc)))";
+   oracle:User "scott";
+   oracle:Password "!tiger"
+ ];
+
+The environment variable ${ORACLE_JENA_HOME} below is assumed to be pointing to the directory where the OTN kit has been stored.
+
+Usage: java -cp ${ORACLE_JENA_HOME}/jar/'*' oracle.spatial.rdf.client.jena.utilities.EncryptFusekiOraPwds <fuseki_config_filepath>
+
+For help details: java -cp ${ORACLE_JENA_HOME}/jar/'*' oracle.spatial.rdf.client.jena.utilities.EncryptFusekiOraPwds -help
+
+A shell script in the bin directory can also be executed (${ORACLE_JENA_HOME} must be set). For example: encfusekiorapwds /tmp/config.ttl
+
+
+The input configuration file will be rewritten with Oracle passwords encrypted (a backup copy of original file will be generated). If modified configuration file is not on FUSEKI_BASE directory, then copy it there and start or restart FUSEKI server.
+
+
+3) Connection pool for queries in Fuseki:
+
+
+Fuseki queries to Oracle datasets now make use of connection pools. This allow better handling of concurrent requests to same Oracle dataset defined in Fuseki configuration file. 
+
+Each connection pool has the following default JDBC parameters (for connections defined with JDBC url):
+
+    // Maximum number of connections
+    "MaxLimit" = 50 
+
+    //Sets the maximum time a physical connection can remain idle in a 
+    //connection cache. An idle connection is one that is not active and 
+    //does not have a logical handle associated with it. 
+    //When InactivityTimeout expires, the underlying physical connection 
+    //is closed. However, the size of the cache is not allowed to shrink
+    //below minLimit, if has been set.
+    "InactivityTimeout = 300 seconds
+    
+    //Specifies cache behavior when a connection is requested and there are 
+    //already MaxLimit connections active. If ConnectionWaitTimeout is 
+    //greater than zero (0), each connection request waits for the 
+    //specified number of seconds, or until a connection is returned to the 
+    //cache. If no connection is returned to the cache before the timeout 
+    //elapses, the connection request returns null.
+    "ConnectionWaitTimeout" = 60 seconds
+    
+    //Always validates a connection to be returned (may introduce some overhead - about 50ms on each call).
+    //With this parameter equal to true, it is expected no longer need to restart server or refresh its
+    //data sources when the database has been restarted.
+    "ValidateConnection" = true
+
+The connection pool JDBC parameters can be redefined on Fuseki Oracle connection section. For example:
+
+<#oracle> rdf:type oracle:Dataset;
+oracle:connection
+[ a oracle:OracleConnection ;
+  oracle:jdbcURL "jdbc:oracle:thin:@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=orcl.us.oracle.com)))";
+  oracle:User "scott";
+  oracle:Password "tiger"
+  oracle:Properties "MaxLimit=60,ConnectionWaitTimeout=45";
+];
+
+For dataset connections based on container datasources, use the container application (WebLogic, Tomcat, ...) to configure the connection parameters.
+
+
+Note that a new connection from the pool is used for any new query request, however for update requests, still just one connection from the pool is being used as in previous versions.
+
+
+
+
+

@@ -1,0 +1,4 @@
+
+            Oracle Jena Adapter 19c kit (supports older databases)
+            Version: 3.1.0.20190711
+            Build: 11-07-2019 10:00:27

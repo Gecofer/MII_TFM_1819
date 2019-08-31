@@ -1,0 +1,208 @@
+----------------------------------------------------------------------------------------------------------------
+README for Oracle Spatial and Graph support for Apache Jena (Jena Adapter) 
+
+This release is compatible with Oracle Database Releases 19c, 18c and 12c (12.1.0.1, 12.1.0.2, 12.2.0.1 and newer).
+
+From Database 19c, RDF allows the creation of private semantic networks. The major update of this Jena Adapter release is the support for these private networks.
+
+--
+-- Mandatory Configuration Step in the DB --
+--
+* Oracle Jena adapter autmoatically installs some functions and procedures on user schema when first accessed.
+* The previous versions of these functions/procedures are not compatible with this new release.
+* If you run support for Apache Jena and connect to Oracle Database as a user,for example the user "SCOTT", 
+* please use SQL*Plus and login as SCOTT and remove  existing procedures and helper functions. 
+* They will be re-created automatically next time this release support for Apache Jena is executed.
+* it is recommend to execute the commands below, anytime you switch to a different Jena adapter version.
+
+* sqlplus scott/<password>
+drop procedure ORACLE_ORARDF_S2SGETSRC;
+drop procedure ORACLE_ORARDF_S2SGETSRCCLOB;
+drop procedure ORACLE_ORARDF_S2SSVR;
+drop procedure ORACLE_ORARDF_S2SSVRNG;
+drop procedure ORACLE_ORARDF_S2SSVRNGCLOB;
+drop procedure ORACLE_ORARDF_GRANT;
+drop procedure ORACLE_ORARDF_VID2NAME_TYPE;
+drop procedure ORACLE_ORARDF_S2SSVRNGNPV;
+drop procedure ORACLE_ORARDF_S2SSVRNGCLOBNPV;
+drop function ORACLE_ORARDF_SGC;
+drop function ORACLE_ORARDF_SGCCLOB;
+drop function ORACLE_ORARDF_S2SUSR;
+drop function ORACLE_ORARDF_S2SUSRNG;
+drop function ORACLE_ORARDF_S2SUSRNGL;
+drop function ORACLE_ORARDF_S2SUSRNGCLOB;
+drop function ORACLE_ORARDF_S2SLG;
+drop function ORACLE_ORARDF_GETPLIST;
+drop function ORACLE_ORARDF_RES2VID;
+drop function ORACLE_ORARDF_VID2URI;
+-- End of configuration
+
+This release supports Apache Jena 3.1.0 and Apache Jena Fuseki 2.4.0, both standalone and web application versions. 
+Support for Joseki 3.4.4 is deprecated, but it is still packaged on this distribution.  Details can be found below.
+
+- Compliance with Apache Jena 3.1.0
+      This release complies with Apache Jena 3.1.0
+
+
+- Fuseki 2.4.0 standalone version support
+  To start Fuseki 2.4.0 standalone version, create a Fuseki configuration file with an Oracle dataset (see some examples with Oracle dataset definition on this README)
+  or edit the default Fuseki configuration file in FUSEKI_BASE directory, and then issue the following command:
+
+  If using a local configuration file:
+  ./fuseki-server --config config-oracle.ttl
+  Or if using the default configuration file from FUSEKI_BASE:
+  ./fuseki-server
+
+  After the above command, one should be able to use the SPARQL endpoint using 
+  http://<your_host_name>:3030/fuseki/
+
+
+- Fuseki 2.4.0 web app support
+  * Create a directory called /etc/fuseki/ (this is the default FUSEKI_BASE directory) that allows read and write access by the J2EE container process running on the system.
+
+  * Create /etc/fuseki/config.ttl with an Oracle dataset
+
+  * Deploy the fuseki.war. Note that after deploying fuseki.war to a J2EE container (Web Logic Server 12.2.1.0 or above), a few files and sub-directories will be automatically created under /etc/fuseki
+
+  * Modify /etc/fuseki/shiro.ini
+    To properly show dataset names when connecting to http://<your_host_name>:7001/fuseki/ (the port 7001 and also the fuseki/ context may vary depending on your
+    J2EE container setup), replace the following line of text in /etc/fuseki/shiro.ini,
+        /$/** = localhostFilter
+
+    with
+
+        /$/server   = anon
+        $/** = localhostFilter
+
+    After making the above change, restart the fuseki web application and one should be able to use the SPARQL endpoint via
+
+    http://<your_host_name>:7001/fuseki/
+
+
+- Joseki 3.4.4 support
+  The deployment and use of Joseki 3.4.4 has not changed since the previous release.
+
+
+An example config.ttl is as follows. Note that it is recommended to use oracle:allGraphs to expose RDF data including triples and quads.
+
+@prefix :        <#> .    
+@prefix fuseki:  <http://jena.apache.org/fuseki#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tdb:     <http://jena.hpl.hp.com/2008/tdb#> .
+@prefix ja:      <http://jena.hpl.hp.com/2005/11/Assembler#> .
+
+@prefix oracle:  <http://www.oracle.com/2009/05/orardf/jena-joseki-ns#> .
+
+[] rdf:type fuseki:Server ;
+   fuseki:services (
+     <#service1>
+   ) .
+
+# Custom code.
+[] ja:loadClass "oracle.spatial.rdf.client.jena.assembler.OracleAssemblerVocab" .
+oracle:Dataset  rdfs:subClassOf  ja:RDFDataset .
+
+<#oracle> rdf:type oracle:Dataset;
+    oracle:connection
+    [ a oracle:OracleConnection ;
+      oracle:jdbcURL "jdbc:oracle:thin:@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=orcl)))";
+      oracle:User "<your_DB_user>" ;
+      oracle:Password "<your_DB_password"
+    ];
+    oracle:allGraphs [ oracle:firstModel "TEST_MODEL" ] .
+
+
+## ---------------------------------------------------------------
+## Updatable in-memory dataset.
+
+<#service1> rdf:type fuseki:Service ;
+    # URI of the dataset -- http://host:port/ds
+    fuseki:name                     "oracle" ;
+
+    # SPARQL query services e.g. http://host:port/ds/sparql?query=...
+    fuseki:serviceQuery             "sparql" ;
+    fuseki:serviceQuery             "query" ;
+    # SPARQL Update service -- http://host:port/ds/update?request=...
+    fuseki:serviceUpdate            "update" ;   # SPARQL query service -- /ds/update
+
+    # Upload service -- http://host:port/ds/upload?graph=default or ?graph=URI or ?default
+    # followed by a multipart body, each part being RDF syntax.
+    # Syntax determined by the file name extension.
+    fuseki:serviceUpload            "upload" ;   # Non-SPARQL upload service
+
+    # SPARQL Graph store protocol (read and write)
+    # GET, PUT, POST DELETE to http://host:port/ds/data?graph= or ?default=
+    fuseki:serviceReadWriteGraphStore      "data" ;
+
+    # A separate read-only graph store endpoint:
+    fuseki:serviceReadGraphStore       "get" ;   # Graph store protocol (read only) -- /ds/get
+
+    fuseki:dataset           <#oracle> ;
+    .
+## In-memory, initially empty.
+<#emptyDataset> rdf:type ja:RDFDataset .
+
+For private semantic networks (19c databases) the Oracle dataset definition must include the network owner and network name for the model, like:
+
+    oracle:allGraphs [ oracle:firstModel "TEST_MODEL"; oracle:networkOwner "SCOTT"; oracle:networkName "MYNET" ] .
+
+
+----------------------------------------------------------------------------------------------------------------
+All improvements done on previous versions of the adapter remains on this new release.
+
+Smart router is a feature designed for small to medium size RDF/OWL datasets that can fit in memory. It improves the performance of complex SPARQL queries by up to 50x by storing a copy of the graph data in memory and switching, at run time, between in-memory execution and in-database execution, depending upon the relative progress of both execution paths.
+
+To enable smart router with either Joseki or Fuseki, use the predicate "oracle:hybridGraphs". An example snippet to be used in a Fuseki configuration is shown below. Modify the example to include your database connection, model name, sqlReadDOP (degree of parallelism used to populate the in-memory dataset), and maximum number of quads (triples) permitted for the in-memory dataset.
+
+<#oracle> rdf:type oracle:Dataset;
+    oracle:connection
+    [ a oracle:OracleConnection ;
+      oracle:jdbcURL "jdbc:oracle:thin:@<host>:<port>:<sid>" ;
+      oracle:User "*****" ;
+      oracle:Password "*****"
+    ];
+    oracle:hybridGraphs [ oracle:firstModel "my_graph" ;
+                          oracle:populateWithDBData "true";
+                          oracle:sqlReadDOP  4;
+                          oracle:maxQuadsAllowed 1800000 ] .
+
+An example configuration snippet to turn on smart router in Joseki is as follows.
+
+<#oracle> rdf:type oracle:Dataset;
+    joseki:poolSize     2 ;         ## Number of concurrent connections allowed to this dataset.
+    oracle:connection
+    [ a oracle:OracleConnection ;
+      oracle:dataSourceName "OracleSemDS"
+    ];
+    oracle:hybridGraphs [ oracle:firstModel "my_graph" ;
+                          oracle:populateWithDBData "true";
+                          oracle:sqlReadDOP  4;
+                          oracle:maxQuadsAllowed 1800000 ] .
+
+Smart router is not recommended for a dataset graph that does not entirely fit in memory or for a graph undergoing frequent changes. These dataset graphs should continue use "oracle:allGraphs".
+
+
+------------------------------------------------------------------------------------------------------------------------------
+Fuseki Configuration 
+
+A sample file 'config-oracle.ttl' is provided on directory fuseki of this kit. 
+Note that, customization of model name and database connection information is required to set up a service.
+
+cd fuseki/
+% ./fuseki-server --config config-oracle.ttl
+
+Once Fuseki is up and running, one can check the status by connecting to the following web URL: http://your_host_here:3030. Details on Fuseki can be found in
+
+http://jena.apache.org/documentation/serving_data/
+
+------------------------------------------------------------------------------------------------------------------------------
+Examples folder
+
+To compile  the example Java code, simply include all of the updated jar files from the jar/ directory in the classpath. Fior example:
+ javac -cp ../jar/'*' Test.java
+
+
+Similarly, to execute the example Java code, simply include all of the updated jar files from the jar/ directory in the classpath. For example:
+ java -cp ../jar/'*' Test "$@"

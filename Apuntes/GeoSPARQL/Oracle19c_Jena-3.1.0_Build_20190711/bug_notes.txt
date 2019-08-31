@@ -1,0 +1,3 @@
+Bugs addressed on this July/2019 released compared to 19c Kit released on May 2019:
+
+BUG 29895271 - UNABLE TO CREATE RDF PRIVATE NETWORK WITH DATABASE 19.3
