@@ -222,6 +222,12 @@ pdfproducer = {pdflatex}
 %"mystyle" code listing set
 \lstset{style=mystyle}
 
+\lstset{%
+	basicstyle=\small\ttfamily,
+	frame=single,
+	morecomment=[f][\color{green}][0]{*},
+	morecomment=[f][\color{gray}][0]{\#},
+}
 
 \newcommand{\bigrule}{\titlerule[0.5mm]}
 
@@ -265,15 +271,17 @@ pdfproducer = {pdflatex}
 
 
 \mainmatter
-%\input{capitulos/01_Introduccion}
-%\input{capitulos/02_SIG}
-%\input{capitulos/03_WebSemantica}
-\input{capitulos/04_Aplicacion}
+\input{capitulos/01_Introduccion}
+\input{capitulos/02_SIG}
+\input{capitulos/03_WebSemantica}
+\input{capitulos/04_SIGyGeoSPARQL}
+\input{capitulos/05_Aplicacion}
 %\input{capitulos/05_Resultados}
-%\input{capitulos/06_Conclusiones}
-%\input{capitulos/07_AnexosA}
-%\input{capitulos/07_AnexosB}
-%\input{capitulos/07_AnexosB}
+\input{capitulos/06_Conclusiones}
+\input{capitulos/07_AnexosA}
+\input{capitulos/07_AnexosC}
+\input{capitulos/07_AnexosB}
+%\input{capitulos/07_AnexosD}
 %\input{capitulo/glosario}
 
 
