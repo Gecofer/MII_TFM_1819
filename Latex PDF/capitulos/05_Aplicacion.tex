@@ -1,34 +1,35 @@
 \chapter{Web Semántica Geoespacial}
-\label{ch:aplicacion}
+\label{ch:capitulo5}
 
 \begin{quote}
-	{\bf\textsc{Resumen:}} Este capítulo presenta la prueba de concepto realizada para la incorporación de Información Geográfica, procedente de Ogíjares (Granada), mediante herramientas de la Web Semántica. En el ejemplo se estudian y proponen herramientas de la Web Semántica que se pueden utilizar para representar e integrar datos geoespaciales con diferentes geometrías.
+	{\bf\textsc{Resumen:}} Este capítulo presenta la prueba de concepto realizada para la incorporación de Información Geográfica, procedente de Ogíjares (Granada), mediante herramientas de la Web Semántica. En el ejemplo se estudian y proponen herramientas de la Web Semántica que se pueden utilizar para representar e integrar datos geoespaciales con diferentes geometrías. Para realizar esta integración, se desarrolla la ontología GEOARES. 
 \end{quote}
 
 
 
-\section{Prueba de Concepto}
+\section{Introducción a la prueba de concepto}
 
-Como hemos comentado, uno de nuestros objetivos es estudiar las herramientas de la Web Semántica que se pueden utilizar para representar e incorporar Información Geográfica, valorarlas y desarrollar una prueba de concepto. Para ello es necesario haber entendido los capítulos dedicados a los sistemas SIG y a la Web Semántica, y así comprender que el principal nexo de unión entre ambas tecnologías es la estandarización de las operaciones y funciones usadas en las consultas de GeoSPARQL; tal y como hemos visto en el anterior capítulo. Conociendo todos estos conceptos es posible comenzar con el desarollo de la ontología GEOARES, sin embargo, la primera tarea imprescindible es la selección del conjunto de datos geoespaciales que se desea hacer accesible mediante la Web Semántica. \\
+Como hemos comentado, uno de nuestros objetivos es estudiar las herramientas de la Web Semántica que se pueden utilizar para representar e incorporar Información Geográfica, valorarlas y desarrollar una prueba de concepto. Para ello se utilizarán los conceptos presentados en los capítulos dedicados a los sistemas SIG y a la Web Semántica, y así comprender que el principal nexo de unión entre ambas tecnologías es la estandarización de las operaciones y funciones usadas en las consultas de GeoSPARQL; tal y como hemos visto en el anterior capítulo. Conociendo todos estos conceptos es posible comenzar con el desarollo de la ontología GEOARES, sin embargo, la primera tarea imprescindible es la selección del conjunto de datos geoespaciales que se desea hacer accesible mediante la Web Semántica. \\
 
-Durante la prueba de concepto contaremos con la presencia de las herramientas destinadas a la generación de información geoespacial con \texttt{QGIS}, para permitir obtener la información de los \textit{Shapefile} a hojas de cálculo; generación de documentos \textit{RDF} con \texttt{Protegé}, para permitir llevar la información de los \textit{Shapefile} hacia documentos en formato \textit{RDF} de manera gráfica; consumo con \texttt{GraphBD},  para permitir la visualización de archivos en formato \textit{RDF} y la realización de las consultas con el lenguaje estándar de consulta geoespacial \textit{GEOSPARQL}; y visualización de la información geoespacial obtenida de las consultas con \texttt{R} para permitir ubicar la información geográfica en un mapa interactivo mediante la librería \textit{Shiny}.\\
+Durante la prueba de concepto contaremos y usaremos las herramientas destinadas a la generación de información geoespacial con \texttt{QGIS}, para permitir exportar la información de los \textit{Shapefile} a hojas de cálculo; generación de documentos \textit{RDF} con \texttt{Protegé}, para permitir llevar la información de los \textit{Shapefile} hacia documentos en formato \textit{RDF} de manera gráfica; consumo con \texttt{GraphBD},  para permitir la visualización de archivos en formato \textit{RDF} y la realización de las consultas con el lenguaje estándar de consulta geoespacial \textit{GeoSPARQL}; y visualización de la información geoespacial obtenida de las consultas con \texttt{R} para permitir ubicar la información geográfica en un mapa interactivo mediante la librería \textit{Shiny}.\\
 
 
 % \texttt{QGIS} para permitir obtener la información de los \textit{Shapefile} a hojas de cálculo, generación de documentos \textit{RDF}  mediante \texttt{Protegé} para permitir llevar la información de los \textit{Shapefile} hacia documentos en formato \textit{RDF} de manera gráfica y su posterior visualización), consumo (mediante \texttt{GraphBD} para permitir la visualización de archivos en formato \textit{RDF} y la realización de las consultas del lenguaje estándar de consulta geoespacial \textit{GEOSPARQL}) y visualización de la información geoespacial obtenida de las consultas (\texttt{R} para permitir ubicar la información geográfica en un mapa interactivo mediante la librería \textit{Shiny}). 
 
 \textit{\textbf{Nota}: La versión usada de QGIS es la 3.8.0-Zanzibar, la version de R es la 3.6.1, la versión de Protegé es la 5.5.0 y la versión de GraphDB Free es la 8.10.1, softwares usado en un macOS 10.14}
 
-\subsection{Selección y obtención de los datos geográficos}
+\section{Selección y obtención de los datos geográficos}
+\label{ch:capitulo5-datos}
 
 En la actualidad, disponemos de diversas fuentes oficiales y no oficiales que nos proporcionan mapas de calidad con los que poder trabajar. No obstante, al querer hacer uso de Información Geográfica de España, es importante destacar dos fuentes principales:
 
 \begin{itemize}
-	\item \textbf{Instituto Geográfico Nacional (IGN)}, es la fuenta oficial para todo el territorio español y la descarga de mapas se puede realizar a través de la dirección \url{http://centrodedescargas.cnig.es/CentroDescargas/buscador.do#}.
+	\item \textbf{Instituto Geográfico Nacional (IGN)}, es la fuente oficial para todo el territorio español y la descarga de mapas se puede realizar a través de la dirección \url{http://centrodedescargas.cnig.es/CentroDescargas/buscador.do#}.
 	
 	\item \textbf{Instituto de Estadística y Cartografía de Andalucía}, es la fuente oficial para todo el territorio andaluz y la descarga de mapas se puede realizar a través de la dirección \url{https://www.juntadeandalucia.es/institutodeestadisticaycartografia/bcadescargas/}.
 \end{itemize}
  
-Sin embargo, como vamos a trabajar con datos procedentes de la provincia de Granada, en concreto de mi pueblo Ogíjares, he optado por escoger los que nos proporciona el \textit{Instituto de Estadística y Cartografía de Andalucía} \cite{base-andalucia}. A continuación, se muestran los pasos para su obtención:
+Como vamos a trabajar con datos procedentes de la provincia de Granada, en concreto de mi pueblo, Ogíjares, he optado por escoger los que nos proporciona el \textit{Instituto de Estadística y Cartografía de Andalucía} \cite{base-andalucia}. A continuación, se muestran los pasos para su obtención:
 
 \begin{enumerate}
 	
@@ -39,9 +40,10 @@ Sin embargo, como vamos a trabajar con datos procedentes de la provincia de Gran
 		\label{fig:obtencion-informacion}
 	\end{figure}
 
-	\item La descarga se realiza a través de la plataforma del Instituto de Estadística y Cartografía de Andalucía, de la Consejería de Economía y Conocimiento (URL mencionada en el punto anterior). Una vez dentro, seleccionamos la opción \textit{Base Cartográfica de Andalucía (2)}, escogemos \textit{Base Cartográfica de Andalucía (shape)} y buscamos el municipio de \textit{Ogíjares} (figura \ref{fig:obtencion-informacion}). Nos aparecerán varios cuadrantes, escogemos con el que nosotros queramos trabajar; yo me he descargado el cuadrante que aparece seleccionado y remarcado en color, asociado a mi pueblo Ogíjares.
+	\item La descarga se realiza a través de la plataforma del Instituto de Estadística y Cartografía de Andalucía, de la Consejería de Economía y Conocimiento (URL mencionada en el punto anterior). Una vez dentro, seleccionamos la opción \texttt{Base Cartográfica de Andalucía (2)}, escogemos \texttt{Base Cartográfica de Andalucía (shape)} y buscamos el municipio de \textit{Ogíjares} (figura \ref{fig:obtencion-informacion}). Nos aparecerán varios cuadrantes, escogemos aquel con el que queramos trabajar; yo me he descargado el cuadrante que aparece seleccionado y remarcado en color, asociado a mi pueblo Ogíjares.
 	
-		\item La carpeta descargada contiene mapas de áreas muy diversas, las cuales hacen uso de geometría de punto, de línea o de área. Entre las capas que se nos proporciona nos podemos encontrar diversos modelos de datos (tabla \ref{elementos-mapas}). \textit{Si queremos saber más sobre de cada uno de ellos debemos acceder al siguiente \underline{\href{https://www.juntadeandalucia.es/institutodeestadisticaycartografia/prodCartografia/bc/modelo/00_Modelo_Datos_Base_Cartografica_Andalucia.pdf}{enlace}}.}
+		\item La carpeta descargada contiene mapas de áreas muy diversas, las cuales hacen uso de geometría de punto, de línea o de polígono. Entre las capas que se nos proporcionan nos podemos encontrar diversos modelos de datos (tabla \ref{elementos-mapas}). \textit{Si queremos saber más debemos acceder a \url{https://www.juntadeandalucia.es/institutodeestadisticaycartografia/prodCartografia/bc/modelo.htm} y ``Nuevo modelo de datos''}.
+			%\underline{\href{https://www.juntadeandalucia.es/institutodeestadisticaycartografia/prodCartografia/bc/modelo/00_Modelo_Datos_Base_Cartografica_Andalucia.pdf}{enlace}}.}
 		
 
 
@@ -72,14 +74,14 @@ Sin embargo, como vamos a trabajar con datos procedentes de la provincia de Gran
 		\end{tabular}
 	\end{table}
 	
-		\begin{figure}[H]
+				\begin{figure}[H]
 		\centering
-		\includegraphics[width=1\linewidth]{imagenes/capitulo2/shapefile}
+		\includegraphics[width=0.87\linewidth]{imagenes/capitulo2/shapefile}
 		\caption{Diferentes archivos que componen el formato Shapefile }
 		\label{fig:shapefile}
 	\end{figure}
-	
-	\item El fichero descargado para cada uno de los modelos de datos que acabamos de comentar tiene como formato principal \textit{Shapefile (sh)}, el formato más usado para almacenar información geoespacial. Es un formato de archivos que almacena información no topológica con características espaciales de elementos geográficos que soportan geometrías como puntos, líneas y polígonos \cite{tesis}.  Es originario de \textit{Enviromental Systems Research Institute} (ESRI)\footnote{Empresa que desarolla y comercializa software para SIG.} y consta fundamentalmente de un archivo principal, un archivo de índice y una tabla dBase. Estos archivos suelen requerir poco espacio de almacenamiento en disco y se pueden leer y escribir con facilidad. Los diferentes archivos que componen el formato Shapefile tienen el mismo nombre cada uno con su respectiva extensión, como se aprecia en la figura \ref{fig:shapefile}:
+
+	\item El fichero descargado para cada uno de los modelos de datos que acabamos de comentar tiene como formato principal \textit{Shapefile (sh)}, el formato más usado para almacenar información geoespacial. Es un formato de archivos que almacena información no topológica con características espaciales de elementos geográficos que soporta geometrías como puntos, líneas y polígonos \cite{tesis}.  Es originario de \textit{Enviromental Systems Research Institute} (ESRI)\footnote{Empresa que desarolla y comercializa software para SIG.} y consta principalmente de un archivo principal, un archivo de índice y una tabla dBase; las demás extensiones son ficheros genéricos, como se puede ver en la figura \ref{fig:shapefile}. Estos archivos suelen requerir poco espacio de almacenamiento en disco y se pueden leer y escribir con facilidad. Los diferentes archivos que componen fundamentalmente el formato Shapefile tienen el mismo nombre cada uno con su respectiva extensión, como se aprecia en la figura \ref{fig:shapefile}:
 	
 
 
@@ -91,19 +93,21 @@ Sin embargo, como vamos a trabajar con datos procedentes de la provincia de Gran
 		\item \textbf{Tabla dBase (*.dbf)}: almacena la información de atributos de las entidades. 
 	\end{itemize}	
 
-	\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.6\linewidth]{imagenes/capitulo5/codificacion}
-	\caption{Sistema de referencia usado en los Shapefiles}
-	\label{fig:codificacion}
-\end{figure}
+	
 
+	
+	
 	\item La visualización del archivo Shapefile se puede realizar a través de cualquier software SIG, en nuestro caso vamos a utilizar el software de análisis geoespacial QGIS. Respecto los modelos de datos disponibles que se desean escoger para hacer accesible mediante la Web Semántica, vamos a centrarnos en la información geoespacial de edificaciones, curvas de nivel y puntos de cota de Ogíjares (Granada) \cite{info-sh}, basados en el sistema de referencia ETRS89 (figura \ref{fig:codificacion}).
 	
 
 	
 
-	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.56\linewidth]{imagenes/capitulo5/codificacion}
+		\caption{Sistema de referencia usado en los Shapefiles}
+		\label{fig:codificacion}
+	\end{figure}
 
 	\begin{itemize}
 		\item \textbf{Edificaciones}: se agrupan en esta capa varios elementos que conforman edificaciones con geometría de polígono (figura \ref{fig:edificaciones}). Dispone de la información:
@@ -125,7 +129,7 @@ Sin embargo, como vamos a trabajar con datos procedentes de la provincia de Gran
 	
 		\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.92\linewidth]{imagenes/capitulo5/edificaciones}
+		\includegraphics[width=1\linewidth]{imagenes/capitulo5/edificaciones}
 		\caption{Visualización del elemento \textit{Edificaciones} en QGIS}
 		\label{fig:edificaciones}
 	\end{figure}
@@ -156,7 +160,7 @@ Sin embargo, como vamos a trabajar con datos procedentes de la provincia de Gran
 	
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.92\linewidth]{imagenes/capitulo5/curvasnivel}
+		\includegraphics[width=1\linewidth]{imagenes/capitulo5/curvasnivel}
 		\caption{Visualización del elemento \textit{Curvas de Nivel} en QGIS}
 		\label{fig:curvasnivel}
 	\end{figure}
@@ -174,7 +178,7 @@ Sin embargo, como vamos a trabajar con datos procedentes de la provincia de Gran
 			\begin{itemize}
 				\item 	\small{Caso genérico (CGN), cima (CIM), collado (COL), depresión (DEP), edificación (EDI) o sin clasificar (SCL).}
 			\end{itemize}
-		\end{itemize}
+	
 
 		\item \textsc{Tipo}: tipo de elemento según su función.
 		
@@ -183,10 +187,11 @@ Sin embargo, como vamos a trabajar con datos procedentes de la provincia de Gran
 			\item Punto cota construcción elevada (CON) o punto cota terreno (TER).
 		}\end{itemize}
 	\end{itemize}
+	\end{itemize}
 
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.92\linewidth]{imagenes/capitulo5/puntocota}
+		\includegraphics[width=0.95\linewidth]{imagenes/capitulo5/puntocota}
 		\caption{Visualización del elemento \textit{Punto Cota} en QGIS}
 		\label{fig:puntocota}
 	\end{figure}
@@ -199,10 +204,9 @@ Sin embargo, como vamos a trabajar con datos procedentes de la provincia de Gran
 	\label{fig:mapa}
 \end{figure}
 
+\textit{\textbf{Nota}: Estos ficheros se encuentran en el directorio \texttt{datos<shapefile}.}
 
-Con esto hemos terminado de explicar los datos que vamos hacer accesibles a través de la Web Semántica. En la figura \ref{fig:mapa} es posible visualizar las tres geometrías juntas y localizadas en QGIS a través de la capa \textit{OpenStreetMap}, en donde las líneas verdes hacen referencia a las curvas de nivel, los puntos rojos a los puntos de cota y los polígonos azules a las edificaciones.\\
-
-Al disponer de los datos listos para su uso, es necesario saber que para poblar una ontología con Protegé, se necesitan los datos geoespaciales en formato para CSV. Adicionalmente, como hemos visto, la representación de la ubicación de cada geometría la vamos a usar mediante la codificación WKT. No obstante, QGIS nos ofrece diversas funcionalidades, entre las que se encuentran las anteriores mencionadas y que nos permiten realizar el trabajo de una manera más sencilla.\\ 
+Con esto se han presentado los datos que vamos hacer accesibles a través de la Web Semántica. En la figura \ref{fig:mapa} es posible visualizar las tres geometrías juntas y localizadas en QGIS a través de la capa \textit{OpenStreetMap}, en donde las líneas verdes hacen referencia a las curvas de nivel, los puntos rojos a los puntos de cota y los polígonos azules a las edificaciones. Por tanto, al disponer de los datos listos para su uso, es necesario saber que para poblar una ontología con Protegé, se necesitan los datos geoespaciales en formato para CSV. Adicionalmente, como hemos visto, la representación de la ubicación de cada geometría la vamos a usar mediante la codificación WKT. No obstante, QGIS nos ofrece diversas funcionalidades, entre las que se encuentran las anteriores mencionadas y que nos permiten realizar el trabajo de una manera más sencilla.\\ 
 
 %Se han propuesto otros esquemas para codificar datos de geometría simple en RDF. El vocabulario de Geografía básica del W3C (http://www.w3.org/2003/01/geo/) es un vocabulario popular. Estos vocabularios simples tienen limitaciones, por ejemplo, la incapacidad de especificar diferentes datos y sistemas de coordenadas, y por lo tanto no se usaron en GeoSPARQL. Tenga en cuenta que la mayoría de los datos de geometría existentes codificados con estos vocabularios se pueden convertir fácilmente en representaciones GeoSPARQL. La consulta SPARQL a continuación crea valores geo: wktLiteral a partir de geometrías de geografía básica del W3C.
 
@@ -211,64 +215,7 @@ Al disponer de los datos listos para su uso, es necesario saber que para poblar 
 
 %Todos los literales RDFS de tipo geo: wktLiteral consistirán en un URI opcional que identifica el sistema de referencia de coordenadas seguido de Texto bien conocido de características simples (WKT) que describe un valor geométrico. Geo válido: wktLiterals se forman concatenando un URI absoluto válido como se define en [RFC 2396], uno o más espacios (carácter Unicode U + 0020) como separador y una cadena WKT como se define en Características simples [ISO 19125-1 ]
 
-Para obtener el formato CSV en QGIS se realizar el mismo proceso en las tres capas: \textit{click derecho sobre la capa en cuestión, Exportar > Guardar objetos como} y nos aparecerá una ventana como la de la figura \ref{fig:csv}.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.6\linewidth]{imagenes/capitulo5/csv}
-	\caption{Obtener la información de los Shapefiles en CSV}
-	\label{fig:csv}
-\end{figure}
-
-Además, para obtener la codificación WKT y poder hacer consultas a partir de la ubicación de las geometrías, debemos seleccionar en GEOMETRY la opción AS\_WKT (figura \ref{fig:opciones}). Por último, guardamos los CSV (figura \ref{fig:guardar}) y comprobamos que la salida es correcta (tablas \ref{csv-curva1}, \ref{csv-curvas2}, \ref{csv-poligonos} y \ref{csv-puntos}).
-
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.6\linewidth]{imagenes/capitulo5/opciones}
-	\caption{Seleccionar opciones para guardar el Shapefile}
-	\label{fig:opciones}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.6\linewidth]{imagenes/capitulo5/guardar}
-	\caption{Guardando el fichero CSV de los Shapefiles}
-	\label{fig:guardar}
-\end{figure}
-
-\begin{table}[H]
-	\centering
-	\caption{Parte del CSV para Edificaciones}
-	\label{csv-poligonos}
-	\begin{tabular}{|m{4cm}|c|c|c|c|}
-		\hline
-		\rowcolor[HTML]{EFEFEF} 
-		\textbf{WKT}                        & \textbf{GID} & \textbf{ID} & \textbf{TIPO} & \textbf{ESTADO} \\ \hline
-		POLYGON ((446020.74 4107035.28, ...)) & 181062       & 102632            & EDI           & USO                       \\ \hline
-		POLYGON ((446050.16 4107127.71, ...))  & 181064       & 102632            & EDI           & USO                  \\ \hline
-		POLYGON ((441430.69 4106827.08, ...)) & 758271       & 102632            & EDI           & USO                     \\ \hline
-		...  & ...       & ...            & ...           & ...                     \\ \hline
-		POLYGON ((446168.83 4108720.87, ... )) & 1330488       & 102632            & PAT           & CGN                    \\ \hline
-	\end{tabular}
-\end{table}
-
-\begin{table}[H]
-	\centering
-	\caption{Parte del CSV para Puntos de Cota}
-	\label{csv-puntos}
-	\begin{tabular}{|m{3cm}|c|c|c|c|c|}
-		\hline
-		\rowcolor[HTML]{EFEFEF} 
-		\textbf{WKT}                        & \textbf{GID} & \textbf{ID} & \textbf{TIPO} & \textbf{CONTEXTO} & \textbf{COTA} \\ \hline
-		MULTIPOINT ((446228.92 4108432.53)) & 890947       & 102632            & TER           & CGN               & 721.77        \\ \hline
-		MULTIPOINT ((446265.60 4108675.83))  & 890948       & 102632            & TER           & CGN               & 715.40        \\ \hline
-		MULTIPOINT ((445197.65 4107245.48)) & 890949       & 102632            & TER           & CGN               & 761.02        \\ \hline
-		...  & ...       & ...            & ...           & ...               &...        \\ \hline
-		MULTIPOINT ((442401.99 4104501.95)) & 891529       & 102632            & TER           & CGN               & 771.75        \\ \hline
-	\end{tabular}
-\end{table}
-
+Para obtener el formato CSV en QGIS se realiza el mismo proceso en las tres capas: \textit{click derecho sobre la capa en cuestión}, \texttt{Exportar>Guardar objetos como} y nos aparecerá una ventana como la de la figura \ref{fig:csv}. Además, para obtener la codificación WKT y poder hacer consultas a partir de la ubicación de las geometrías, debemos seleccionar en GEOMETRY la opción AS\_WKT (figura \ref{fig:opciones}) y ya podemos guardar los CSV (figura \ref{fig:guardar}). En las tablas \ref{csv-curva1}, \ref{csv-curvas2},\ref{csv-puntos} y \ref{csv-poligonos} se muestran fragmentos de dichos CSV.
 
 
 
@@ -283,9 +230,9 @@ Además, para obtener la codificación WKT y poder hacer consultas a partir de l
 		LINESTRING (440675.4 4106319.93, ....)       & 122602       & 102632            & CGN           & NOR                           \\ \hline
 		LINESTRING (440972.5 4106237.28, ...)     & 172684       & 102632            & CGN           & NOR                       \\ \hline
 		LINESTRING (440976.2 4106311.24, ...)              & 186391       & 102632            & CGN           & NOR                        \\ \hline
-	...                                & ...       & ...            & ...           & ...                      \\ \hline
-	
-	LINESTRING (442507.6 4105386.75, ...)             & 471150       & 102632            & DEP           & MAE                       \\ \hline
+		...                                & ...       & ...            & ...           & ...                      \\ \hline
+		
+		LINESTRING (442507.6 4105386.75, ...)             & 471150       & 102632            & DEP           & MAE                       \\ \hline
 	\end{tabular}
 \end{table}
 
@@ -306,17 +253,88 @@ Además, para obtener la codificación WKT y poder hacer consultas a partir de l
 	\end{tabular}
 \end{table}
 
+\begin{table}[H]
+	\centering
+	\caption{Parte del CSV para Puntos de Cota}
+	\label{csv-puntos}
+	\begin{tabular}{|m{3cm}|c|c|c|c|c|}
+		\hline
+		\rowcolor[HTML]{EFEFEF} 
+		\textbf{WKT}                        & \textbf{GID} & \textbf{ID} & \textbf{TIPO} & \textbf{CONTEXTO} & \textbf{COTA} \\ \hline
+		MULTIPOINT ((446228.92 4108432.53)) & 890947       & 102632            & TER           & CGN               & 721.77        \\ \hline
+		MULTIPOINT ((446265.60 4108675.83))  & 890948       & 102632            & TER           & CGN               & 715.40        \\ \hline
+		%MULTIPOINT ((445197.65 4107245.48)) & 890949       & 102632            & TER           & CGN               & 761.02        \\ \hline
+		...  & ...       & ...            & ...           & ...               &...        \\ \hline
+		MULTIPOINT ((442401.99 4104501.95)) & 891529       & 102632            & TER           & CGN               & 771.75        \\ \hline
+	\end{tabular}
+\end{table}
 
-Por tanto, la información que está contenida en la muestra de las anteriores tablas, contiene la información para poblar nuestra ontología, siendo necesario disponer de ellas en formato Excel.
+
+\begin{table}[H]
+	\centering
+	\caption{Parte del CSV para Edificaciones}
+	\label{csv-poligonos}
+	\begin{tabular}{|m{4cm}|c|c|c|c|}
+		\hline
+		\rowcolor[HTML]{EFEFEF} 
+		\textbf{WKT}                        & \textbf{GID} & \textbf{ID} & \textbf{TIPO} & \textbf{ESTADO} \\ \hline
+		POLYGON ((446020.74 4107035.28, ...)) & 181062       & 102632            & EDI           & USO                       \\ \hline
+		POLYGON ((446050.16 4107127.71, ...))  & 181064       & 102632            & EDI           & USO                  \\ \hline
+		POLYGON ((441430.69 4106827.08, ...)) & 758271       & 102632            & EDI           & USO                     \\ \hline
+		...  & ...       & ...            & ...           & ...                     \\ \hline
+		POLYGON ((446168.83 4108720.87, ... )) & 1330488       & 102632            & PAT           & CGN                    \\ \hline
+	\end{tabular}
+\end{table}
 
 
 
 
-\subsection{Creación de la ontología GEOARES}
+\textit{\textbf{Nota}: Los CSV se encuentran en el directorio \texttt{datos<csv}.}\\
 
-Una vez seleccionado el conjunto de datos que se desea hacer accesible mediante la Web Semántica, es hora de pasar al desarrollo y creación de la ontología GEOARES. Gracias a la ontología es posible romper la barrera de la interoperabilidad, en donde los datos geoespaciales pueden ser utilizados por diferentes tipos de programas y aplicaciones. La interoperabilidad de los datos geoespaciales es extremadamente importante para las aplicaciones geoespaciales, ya que existen grandes cantidades de datos espaciales en diferentes formatos geográficos. La interoperabilidad de los datos geoespaciales elimina las barreras para el intercambio de datos y permite a los usuarios acceder, mapear, visualizar y analizar directamente datos con diferentes formatos. Los datos geoespaciales interoperables hacen posible la distribución rápida de información y el intercambio entre departamentos \cite{libro-gis}.\\
+En las figuras \ref{fig:opciones}, \ref{fig:csv} y \ref{fig:guardar} se muestra el proceso para obtener la información que acabamos de comentar.
 
-No obstante, escribir en lenguajes como RDF y OWL para la creación de la ontología resultan sumamente difícil y propensos a errores. Afortunadamente, existen en el mercado entornos gráficos para visualizar y construir ontologías de forma más fácil, como \textbf{Protegé} (figura \ref{fig:protege}). Es por eso que vamos hacer uso de este software para la creación de nuestra ontología.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imagenes/capitulo5/opciones}
+	\caption{Seleccionar opciones para guardar el Shapefile}
+	\label{fig:opciones}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.68\linewidth]{imagenes/capitulo5/csv}
+	\caption{Obtener la información de los Shapefiles en CSV}
+	\label{fig:csv}
+\end{figure}
+
+
+
+
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.68\linewidth]{imagenes/capitulo5/guardar}
+	\caption{Guardando el fichero CSV de los Shapefiles}
+	\label{fig:guardar}
+\end{figure}
+
+
+
+
+
+Por tanto, la información que que se muestra en las anteriores tablas, es la que se utilizará para poblar nuestra ontología, siendo necesario disponer de ellas en formato Excel.
+
+
+
+
+\section{Creación de la ontología GEOARES}
+
+\label{ch:crear}
+
+Una vez seleccionado el conjunto de datos que se desea hacer accesible mediante la Web Semántica, es hora de pasar al desarrollo y creación de la ontología. En este caso, crearemos una nueva ontología a medida llamada  GEOARES. Gracias a la ontología es posible romper la barrera de la interoperabilidad, en donde los datos geoespaciales pueden ser utilizados por diferentes tipos de programas y aplicaciones. La interoperabilidad de los datos geoespaciales es extremadamente importante para las aplicaciones geoespaciales, ya que existen grandes cantidades de datos espaciales en diferentes formatos geográficos. La interoperabilidad de los datos geoespaciales elimina las barreras para el intercambio de datos y permite a los usuarios acceder, mapear, visualizar y analizar directamente datos con diferentes formatos. Los datos geoespaciales interoperables hacen posible la distribución rápida de información y el intercambio entre departamentos \cite{libro-gis}.\\
+
+No obstante, escribir directamente en lenguajes como RDF y OWL para la creación de la ontología resultan sumamente difícil y son propensos a errores. Afortunadamente, existen en el mercado entornos gráficos para visualizar y construir ontologías de forma más fácil, como \textbf{Protegé} (figura \ref{fig:protege}). Es por eso que vamos hacer uso de este software para la creación de nuestra ontología.
 
 \begin{figure}[H]
 	\centering
@@ -325,60 +343,63 @@ No obstante, escribir en lenguajes como RDF y OWL para la creación de la ontolo
 	\label{fig:protege}
 \end{figure}
 
-Hay que tener en cuenta que la ontología está enfocada para ser manejada en España y los datos obtenidos son procedentes de Andalucía, por lo cual las clases aparecerán en Español, a excepción de las que se nos especifique en GeoSPARQL según el estándar especificado. Básicamente una ontología geoespacial se basa en (figura \ref{fig:ontologia-geosparql}):
+% ¿Por qué crear una nueva ontología?
+%La elección de crear una nueva ontología se ha debido principalmente a la dificultad que puede conllevar crear una ontología desde cero la primera vez que se realiza, es por eso que en el trabajo se presentan herramientas y consejos para facilitar dicho desarollo.\\
+
+Hay que tener en cuenta que la ontología está enfocada para ser manejada en España y los datos obtenidos son procedentes de Andalucía, por lo cual las clases aparecerán en Español, a excepción de las que se nos especifique en GeoSPARQL según el estándar especificado. Básicamente una ontología geoespacial se basa en las clases mostradas en la figura \ref{fig:ontologia-geosparql}.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.65\linewidth]{imagenes/capitulo5/ontologia-geosparql}
+	\includegraphics[width=0.7\linewidth]{imagenes/capitulo5/ontologia-geosparql}
 	\caption{Estructura para una ontología geoespacial}
 	\label{fig:ontologia-geosparql}
 \end{figure}
 
-No obstante, a parte de hacer uso de las especificaciones de una ontología geoespacial, es interesante añadir información específica de nuestros datos geográficos, con el fin de enriquecer más nuestra ontología y hacerla más personalizable. Entonces, lo primero que tenemos que hacer es definir los URIs con los que vamos a trabajar, como vamos hacer uso tanto de SPARQL como GeoSPARQL, necesitaremos los siguientes (figura \ref{fig:prefijos}).
+No obstante, aparte de hacer uso de las especificaciones de una ontología geoespacial, es interesante añadir información específica de nuestros datos geográficos, con el fin de enriquecer más nuestra ontología y hacerla más personalizable. Entonces, lo primero que tenemos que hacer es definir los URIs con los que vamos a trabajar, como vamos hacer uso tanto de SPARQL como GeoSPARQL, necesitaremos los que se marcan (figura \ref{fig:prefijos}).
  
  %El de Applicattion, es para manejar los datos que hemos metido y no son de ningun estandar de GeoSPARQL.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.75\linewidth]{imagenes/capitulo5/prefijos}
+	\includegraphics[width=0.85\linewidth]{imagenes/capitulo5/prefijos}
 	\caption{Definición de URIs para la ontología}
 	\label{fig:prefijos}
 \end{figure}
 
-A continuación, creamos las clases por las que estará formado nuestra ontología (figura \ref{fig:ontologia}):
+A continuación, creamos las clases y subclases por las que estará formada nuestra ontología. En la figura \ref{fig:ontologia} se puede ver el resultado final.
 
 \begin{itemize}
-	\item Creamos la clase \textit{Polygon} con IRI \url{http://www.opengis.net/ont/sf}
+	\item La clase \textit{Polygon} con IRI \url{http://www.opengis.net/ont/sf}
 	
-	\item Creamos la clase \textit{Point} con IRI \url{http://www.opengis.net/ont/sf}
+	\item La clase \textit{Point} con IRI \url{http://www.opengis.net/ont/sf}
 	
-	\item Creamos la clase \textit{LineString} con IRI  \url{http://www.opengis.net/ont/sf}
+	\item La clase \textit{LineString} con IRI  \url{http://www.opengis.net/ont/sf}
 	
-	\item Creamos la clase \textit{Feature} con IRI \url{http://www.opengis.net/ont/geosparql}
+	\item La clase \textit{Feature} con IRI \url{http://www.opengis.net/ont/geosparql}
 	
 	\begin{itemize}
-		\item Creamos la subclase \textit{GID} con IRI \url{http://example.org/ApplicationSchema}
+		\item La subclase \textit{GID} con IRI \url{http://example.org/ApplicationSchema}
 	\end{itemize}
 	
 	
-	\item Creamos la clase \textit{Edificaciones} con IRI \url{http://example.org/ApplicationSchema}
+	\item La clase \textit{Edificaciones} con IRI \url{http://example.org/ApplicationSchema}
 		\begin{itemize}
-	\item Creamos la subclase \textit{TipoEdificaciones} con IRI \url{http://example.org/ApplicationSchema}
-	\item Creamos la subclase \textit{EstadoEdificaciones} con IRI \url{http://example.org/ApplicationSchema}
+	\item La subclase \textit{TipoEdificaciones} con IRI \url{http://example.org/ApplicationSchema}
+	\item La subclase \textit{EstadoEdificaciones} con IRI \url{http://example.org/ApplicationSchema}
 		\end{itemize}
 	
-	\item Creamos la clase \textit{PuntoCota} con IRI \url{http://example.org/ApplicationSchema}
+	\item La clase \textit{PuntoCota} con IRI \url{http://example.org/ApplicationSchema}
 		\begin{itemize}
-	\item Creamos la subclase \textit{TipoPuntoCota} con IRI \url{http://example.org/ApplicationSchema}
-	\item Creamos la subclase \textit{ContextoPuntoCota} con IRI \url{http://example.org/ApplicationSchema}
+	\item La subclase \textit{TipoPuntoCota} con IRI \url{http://example.org/ApplicationSchema}
+	\item La subclase \textit{ContextoPuntoCota} con IRI \url{http://example.org/ApplicationSchema}
 		\end{itemize}
 	
-	\item Creamos la clase \textit{CurvaNivel} con IRI \url{http://example.org/ApplicationSchema}
+	\item La clase \textit{CurvaNivel} con IRI \url{http://example.org/ApplicationSchema}
 	
 	\begin{itemize}
-	\item Creamos la subclase \textit{CategoriaCurvaNivel} con IRI \url{http://example.org/ApplicationSchema}
-	\item Creamos la subclase \textit{ProcedenciaCurvaNivel} con IRI \url{http://example.org/ApplicationSchema}
-	\item Creamos la subclase\textit{TipoCurvaNivel} con IRI \url{ http://example.org/ApplicationSchema}
+	\item La subclase \textit{CategoriaCurvaNivel} con IRI \url{http://example.org/ApplicationSchema}
+	\item La subclase \textit{ProcedenciaCurvaNivel} con IRI \url{http://example.org/ApplicationSchema}
+	\item La subclase\textit{TipoCurvaNivel} con IRI \url{ http://example.org/ApplicationSchema}
 	\end{itemize}
 \end{itemize}
 
@@ -389,17 +410,17 @@ A continuación, creamos las clases por las que estará formado nuestra ontolog�
 	\label{fig:ontologia}
 \end{figure}
 
-Al usar el formato WKT, tenemos que crear el tipo de dato \textit{geo:wktLiteral} en \textit{Datatype} con IRI \url{http://www.opengis.net/ont/geosparql} (figura \ref{fig:datatype}).
+Al usar el formato WKT, tenemos que crear el tipo de dato \texttt{geo:wktLiteral} en \textit{Datatype} con IRI \url{http://www.opengis.net/ont/geosparql} (figura \ref{fig:datatype}).
 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\linewidth]{imagenes/capitulo5/datatype}
+	\includegraphics[width=0.75\linewidth]{imagenes/capitulo5/datatype}
 	\caption{Crear el tipo de dato geo:wktLiteral}
 	\label{fig:datatype}
 \end{figure}
 
-Por otro lado, para asociar geometrías con sus literales es enecesario crear \textit{geo:asWKT}. Además de crear la propiedad \textit{tieneCota} con IRI \url{http://www.opengis.net/ont/geosparql} para obtener el valor de la cota en las geometrías de puntos y de líneas, atributo elemental en los elementos de curva de nivel y puntos de cota (figura \ref{fig:propiedad}).
+Por otro lado, para asociar geometrías con sus literales es necesario crear \texttt{geo:asWKT}. Además de crear la propiedad \textit{tieneCota} con IRI \url{http://www.opengis.net/ont/geosparql} para obtener el valor de la cota en las geometrías de puntos y de líneas, atributo elemental en los elementos de curva de nivel y puntos de cota (figura \ref{fig:propiedad}).
 
 
 %Creamos la propiedad asWKT con IRI: http://www.opengis.net/ont/geosparql
@@ -408,37 +429,41 @@ Por otro lado, para asociar geometrías con sus literales es enecesario crear \t
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\linewidth]{imagenes/capitulo5/propiedad}
+	\includegraphics[width=0.75\linewidth]{imagenes/capitulo5/propiedad}
 	\caption{Crear las propiedades}
 	\label{fig:propiedad}
 \end{figure}
 
-Con esto ya hemos terminado de definir nuestra ontología. A continuación, pasamos a poblarla, en donde deberemos identificas las instancias de los datos geográficos.
+Con esto ya hemos terminado de definir nuestra ontología. A continuación, pasamos a poblarla, en donde deberemos identificar las instancias de los datos geográficos escogidos.
 
-\subsection{Poblar la ontología}
+\section{Poblar la ontología}
 
-Como comentamos, Protegé nos permite poblar una ontología haciendo uso de las herramientas que ofrece, es por eso que la elección de dicho software ha sido principalmente por esta característica, ya que en caso de haber creado a mano las miles de instancias que tenemos no hubiera sido rentable ni eficiente. Para poblar una ontología en Protegé,  con la información procedente del CSV del Shapefile, nos vamos a $Tools\ > Create axioms for Excel Workbook$ y abrimos el fichero en cuestión. La única dificultad que presenta esta manera escogida para poblar es que debemos aprender unas reglas, sin embargo, desde mi punto de vista esta manera es más eficiente que hacerlo a mano, lo que conlleva una línea de aprendizaje menor. Para guardar las instancias de cada una de las capas y asociarlas a las clases ya creadas, vamos hacer uso del GID, y no del ID HOJA, puesto que el GID es único para cada uno.
+\label{ch:poblar}
+
+Protegé nos permite poblar una ontología haciendo uso de las herramientas que ofrece, es por eso que la elección de dicho software ha sido motivada principalmente por esta característica. Crear a mano las miles de instancias que tenemos no hubiera sido rentable ni eficiente. Para poblar una ontología en Protegé,  con la información procedente del CSV del Shapefile, nos vamos a \texttt{Tools> Create axioms for Excel Workbook} y abrimos el fichero en cuestión. La única dificultad que presenta esta manera escogida para poblar es que debemos aprender unas reglas, sin embargo, en cualquier caso esta forma es más eficiente que hacerlo a mano, lo que conlleva una línea de aprendizaje menor. Para guardar las instancias de cada una de las capas y asociarlas a las clases ya creadas, vamos hacer uso del GID, y no del ID HOJA, puesto que el GID es único para cada valor.\\
 
 
 %5. Se nos abre una pestaña con la que tenemos que crear reglas para poblar. Seleccionamos todo el libro de Excel y empezamos a crear las reglas:
 
-\subsubsection{Edificaciones}
+\textit{\textbf{Nota}: Las reglas se encuentran en el directorio \texttt{datos<reglas}.}
 
-Empezamos poblando la ontología con las Edificaciones cuya geometría es de polígonos. En la figura \ref{fig:edificaciones1} se nos abre una ventana que nos permite generar reglas y así creas las instancias y clases necesarias correspondientes a esta clase (figura \ref{fig:reglas-edificaciones}).
+\subsection{Edificaciones}
+
+Empezamos poblando la ontología con las Edificaciones cuya geometría es de polígonos. En la figura \ref{fig:edificaciones1} se nos abre una ventana que nos permite generar reglas, como veremos seguidamente, y así crear las instancias y clases necesarias correspondientes a esta clase (figura \ref{fig:reglas-edificaciones}).
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8\linewidth]{imagenes/capitulo5/edificaciones1}
+	\includegraphics[width=1\linewidth]{imagenes/capitulo5/edificaciones1}
 	\caption{Poblar ontología para los datos de Edificaciones}
 	\label{fig:edificaciones1}
 \end{figure}
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.9\linewidth]{imagenes/capitulo5/reglas-edificaciones}
-	\caption{Reglas para poblar la ontología con Edificaciones}
-	\label{fig:reglas-edificaciones}
-\end{figure}
+\begin{lstlisting}
+# Regla para agregar las instancias de la clase Polygon
+# a la propiedad geo:asWKT 
+Individual: @B*
+	Annotations: asWKT @A* (wktLiteral)
+\end{lstlisting}
 
 %REGLA PARA AÑADIR INSTANCIAS A LA CLASE GID y Polígono - 
 \begin{lstlisting}
@@ -474,9 +499,13 @@ Individual: @B*
 	Types: @E*
 \end{lstlisting}
 
+
+\vspace*{0.2cm}
+Después de haber creado las reglas con éxito (figura \ref{fig:reglas-edificaciones}) obtenemos un diagrama como el de la figura \ref{fig:edificaciones-copia}.
+
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\linewidth]{imagenes/capitulo5/Edificaciones-copia}
+	\includegraphics[width=0.65\linewidth]{imagenes/capitulo5/Edificaciones-copia}
 	\caption{Creación de las subclases para TipoEdificaciones y EstadoEdificaciones de Edificaciones}
 	\label{fig:edificaciones-copia}
 \end{figure}
@@ -484,20 +513,20 @@ Individual: @B*
 
 %Regla para añadir a asWKT la codificación del Polígono
 
-\begin{lstlisting}
-# Regla para agregar las instancias de la clase Polygon
-# a la propiedad geo:asWKT 
-Individual: @B*
-	Annotations: asWKT @A* (wktLiteral)
-\end{lstlisting}
 
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{imagenes/capitulo5/reglas-edificaciones}
+	\caption{Reglas para poblar la ontología con Edificaciones}
+	\label{fig:reglas-edificaciones}
+\end{figure}
 
-\subsubsection{CurvaNivel}
+\subsection{Curvas de Nivel}
 
-Seguimos poblando la ontología con las Curvas de Nivel cuya geometría es de líneas y generamos reglas necesarias así creas las instancias y clases necesarias correspondientes a esta clase (figura \ref{fig:reglas-curvanivel}).
+Seguimos poblando la ontología con las Curvas de Nivel cuya geometría es de líneas y generamos de igual forma las reglas necesarias así crear las instancias y clases necesarias correspondientes a esta clase (figura \ref{fig:reglas-curvanivel}).
 
-
+\vspace*{0.2cm}
 %REGLA PARA AÑADIR INSTANCIAS A LA CLASE GID y LineString - 
 \begin{lstlisting}
 # Regla para agregar las instancias GID 
@@ -530,7 +559,8 @@ Individual: @B*
 Class: @F*
 	SubClassOf: ProcedenciaCurvaNivel
 
-# Asignar los GID a las subclases de ProcedenciaCurvaNivel
+# Asignar los GID a las subclases de 
+# ProcedenciaCurvaNivel
 Individual: @B*
 	Types: @F*
 \end{lstlisting}
@@ -551,10 +581,27 @@ Individual: @B*
 	Types: @E*
 \end{lstlisting}
 
+\begin{lstlisting}
+# Regla para agregar las instancias de la clase 
+# LineString a la propiedad geo:asWKT 
+Individual: @B*
+	Annotations: asWKT @A* (wktLiteral)
+\end{lstlisting}
+
+\begin{lstlisting}
+# Regla para agregar las instancias de la clase 
+# CurvaNivel a la propiedad tieneCota
+Individual: @B*
+	Annotations: tieneCota @G* (xsd:double)
+\end{lstlisting}
+
+\vspace*{0.2cm}
+
+Después de haber creado las reglas con éxito (figura \ref{fig:reglas-curvanivel}) obtenemos un diagrama como el de la figura \ref{fig:tipos-curvasnivel}.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\linewidth]{imagenes/capitulo5/tipos-curvasnivel}
+	\includegraphics[width=0.75\linewidth]{imagenes/capitulo5/tipos-curvasnivel}
 	\caption{Creación de las subclases para TipoCurvaNivel, ProcedenciaCurvaNivel y CategoriaCurvaNivel de CurvaNivel}
 	\label{fig:tipos-curvasnivel}
 \end{figure}
@@ -562,35 +609,25 @@ Individual: @B*
 
 %Regla para añadir a asWKT la codificación del LineString
 
-\begin{lstlisting}
-# Regla para agregar las instancias de la clase LineString
-# a la propiedad geo:asWKT 
-Individual: @B*
-	Annotations: asWKT @A* (wktLiteral)
-\end{lstlisting}
+
 
 %Regla para añadir a tieneCota la codificación del LineString
 
-\begin{lstlisting}
-# Regla para agregar las instancias de la clase CurvaNivel
-# a la propiedad tieneCota
-Individual: @B*
-	Annotations: tieneCota @G* (xsd:double)
-\end{lstlisting}
+
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.9\linewidth]{imagenes/capitulo5/reglas-curvanivel}
+	\includegraphics[width=1\linewidth]{imagenes/capitulo5/reglas-curvanivel}
 	\caption{Reglas para poblar la ontología con CurvaNivel}
 	\label{fig:reglas-curvanivel}
 \end{figure}
 
 
-\subsubsection{PuntoCota}
+\subsection{Puntos de Cota}
 
 Por último, poblamos la ontología con los Puntos de cota cuya geometría es de puntos y generamos reglas necesarias así creas las instancias y clases necesarias correspondientes a esta clase (figura \ref{fig:reglas-puntocota}).
 
-5REGLA PARA AÑADIR INSTANCIAS A LA CLASE GID y LineString - 
+%REGLA PARA AÑADIR INSTANCIAS A LA CLASE GID y LineString - 
 \begin{lstlisting}
 # Regla para agregar las instancias GID 
 # a la clase GID y Point
@@ -625,6 +662,10 @@ Individual: @B*
 	Types: @E*
 \end{lstlisting}
 
+
+
+Después de haber creado las reglas con éxito (figura \ref{fig:reglas-puntocota}) obtenemos un diagrama como el de la figura \ref{fig:puntocota-1}.
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\linewidth]{imagenes/capitulo5/puntocota-1}
@@ -632,7 +673,8 @@ Individual: @B*
 	\label{fig:puntocota-1}
 \end{figure}
 
-Regla para añadir a asWKT la codificación del Polígono
+%Regla para añadir a asWKT la codificación del Polígono
+
 
 \begin{lstlisting}
 # Regla para agregar las instancias de la clase Point
@@ -641,30 +683,30 @@ Individual: @B*
 	Annotations: asWKT @A* (wktLiteral)
 \end{lstlisting}
 
-
-Regla para añadir a tieneCota la codificación del Point
-
 \begin{lstlisting}
 # Regla para agregar las instancias de la clase PuntoCota
 # a la propiedad tieneCota
 Individual: @B*
 	Annotations: tieneCota @F* (xsd:double)
 \end{lstlisting}
-
-\begin{figure}
-	\centering
-	\includegraphics[width=0.9\linewidth]{imagenes/capitulo5/reglas-puntocota}
-	\caption{Reglas para poblar la ontología con CurvaNivel}
-	\label{fig:reglas-puntocota}
-\end{figure}
-
-Y con esto hemos terminado nuestra ontología (figuras \ref{fig:info-ontologia} y \ref{fig:ontologia-final}), para ver la ontología es posible ver el fichero \texttt{ontologia.owl}.
+%Regla para añadir a tieneCota la codificación del Point
 
 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\linewidth]{imagenes/capitulo5/ontologia-final}
+	\includegraphics[width=1\linewidth]{imagenes/capitulo5/reglas-puntocota}
+	\caption{Reglas para poblar la ontología con CurvaNivel}
+	\label{fig:reglas-puntocota}
+\end{figure}
+
+Y con esto hemos terminado de poblar nuestra ontología (figuras \ref{fig:info-ontologia} y \ref{fig:ontologia-final}), para ver la ontología es posible ver el fichero \texttt{ontologia-geoares.owl}.
+
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\linewidth]{imagenes/capitulo5/ontologia-final}
 	\caption{Ontología GEOARES}
 	\label{fig:ontologia-final}
 \end{figure}
@@ -676,15 +718,18 @@ Y con esto hemos terminado nuestra ontología (figuras \ref{fig:info-ontologia} 
 	\label{fig:info-ontologia}
 \end{figure}
 
-\subsection{Realización de consultas GeoSPARQL}
+\section{Realización de consultas GeoSPARQL}
+
+\label{ch:consultas}
+
+Una vez creada nuestra ontología podemos pasar a hacer las consultas. Como GeoSPARQL es una extensión de SPARQL, para hacer uso de dicho lenguaje es necesario instalar un plugin.  Sin embargo, debido a la imposibilidad de usarlo en Protegé, ya que no detecta los prefijos que tiene GeoSPARQL, he encontrado otras alternativas (en el \texttt{Apéndice \ref{ch:ApendiceB}: Problemas y Soluciones} abarco todos los problemas encontrados durante la prueba de concepto y su posible solución). Así que he estado buscando si hay algún plugin con dicha librería y he hallado que GraphDB permite hacer uso de GeoSPARQL. En el \texttt{Apéndice \ref{ch:ApendiceC}: Instalación de GraphDB} se presenta cómo instalar e inicializar GraphDB.
 
 
-Una vez creada nuestra ontología podemos pasar a hacer las consultas. Como GeoSPARQL es una extensión de SPARQL, para hacer uso de dicho lenguaje es necesario instalar un plugin.  Sin embargo, debido a la imposibilidad de usarlo en Protegé, ya que no detecta los prefijos que tiene GeoSPARQL, he encontrado otras alternativas (en el \texttt{Apéndice C: Problemas y Soluciones} abarco todos los problemas encontrados durante la prueba de concepto y su posible solución). Así que he estado buscando si hay algún plugin con dicha librería, y he hallado que GraphDB, permite hacer uso de GeoSPARQL, la cual es una herramienta de fácil uso. En el \texttt{Apéndice B: Instalación de GraphDB} abarco como instalar e inicializar GraphDB.
+\subsection{Activar los plugin necesarios para manejar GeoSPARQL}
 
+Para manejar GeoSPARQL es necesario habilitar el complemento GeoSPARQL. Cuando el complemento está habilitado, indexa todos los datos GeoSPARQL existentes en el repositorio y reindexa automáticamente cualquier actualización.
 
-\subsubsection{Activar los plugin necesarios para manejar GeoSPARQL}
-
-Para manejar GeoSPARQL es necesario habilitar el complemento GeoSPARQL, cuando el complemento está habilitado, indexa todos los datos GeoSPARQL existentes en el repositorio y reindexa automáticamente cualquier actualización.\\
+\vspace*{0.2cm}
 
 \begin{lstlisting}
 PREFIX : <http://www.ontotext.com/plugins/geosparql#>
@@ -709,267 +754,253 @@ INSERT DATA {
 %}
 %\end{lstlisting}
 
-Con esto, ya podemos pasar a importar la ontología y hacer pruebas con ella (figura \ref{fig:import-owl}). Además, este software nos permite movernos gráficamente por la información contenida en la ontología GEOARES y así inspeccionar el grafo creado (figuras \ref{fig:class-hierarchy-tfm}, \ref{fig:class-hierarchy-tfm-2}, \ref{fig:class-hierarchy-tfm-3} y \ref{fig:class-hierarchy-tfm-4}).
+Con esto, ya podemos pasar a importar la ontología y hacer pruebas con ella (figura \ref{fig:import-owl}). Además, este software nos permite movernos gráficamente por la información contenida en la ontología GEOARES y así inspeccionar el grafo creado (figura \ref{fig:class}).
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.9\linewidth]{imagenes/capitulo5/import-owl}
+	\includegraphics[width=1\linewidth]{imagenes/capitulo5/import-owl}
 	\caption{Cómo importar una ontología en GraphDB}
 	\label{fig:import-owl}
 \end{figure}
 
 %Además una ventaja extra que tiene esta herramienta es que nos permite inspeccionar el grafo creado
 
+Asimismo, una buena funcionalidad que tiene esta herramienta es la posibilidad de inspeccionar la ontología por sus diferentes clases e instancias (figura \ref{fig:class}), lo que nos permite buscar o ver el tamaño de cada clase.
+
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.4\linewidth]{imagenes/capitulo5/class-hierarchy-TFM}
+	\begin{subfigure}[h]{0.33\textwidth} 
+		\includegraphics[width=\textwidth]{imagenes/capitulo5/class-hierarchy-TFM}
+		\caption{}
+	\end{subfigure}       
+	\begin{subfigure}[h]{0.33\textwidth} 
+		\includegraphics[width=\textwidth]{imagenes/capitulo5/class-hierarchy-TFM-2}
+		\caption{}
+	\end{subfigure}
+\begin{subfigure}[h]{0.33\textwidth} 
+	\includegraphics[width=\textwidth]{imagenes/capitulo5/class-hierarchy-TFM-3}
+	\caption{}
+\end{subfigure}
+\begin{subfigure}[h]{0.33\textwidth} 
+	\includegraphics[width=\textwidth]{imagenes/capitulo5/class-hierarchy-TFM-4}
+	\caption{}
+\end{subfigure}
 	\caption{Visualizar la ontología completa en GraphDB}
-	\label{fig:class-hierarchy-tfm}
+	\label{fig:class}
 \end{figure}
 
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.4\linewidth]{imagenes/capitulo5/class-hierarchy-TFM-2}
-	\caption{Visualizar la clase Edificaciones en GraphDB}
-	\label{fig:class-hierarchy-tfm-2}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.4\linewidth]{imagenes/capitulo5/class-hierarchy-TFM-3}
-	\caption{Visualizar la clase PuntoCota en GraphDB}
-	\label{fig:class-hierarchy-tfm-3}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.4\linewidth]{imagenes/capitulo5/class-hierarchy-TFM-4}
-	\caption{Visualizar la clase CurvaNivel en GraphDB}
-	\label{fig:class-hierarchy-tfm-4}
-\end{figure}
-
-Seguidamente, comenzamos la realización de las consultas de SPARQL y GeoSPARQL, clasificando las consultas de acuerdo a la geometría que contiene. Al principio comenzaremos con consultas más sencillas, hasta la obtención de la consulta que nos permita saber las \textbf{edificaciones que se encuentran a una cierta altura o cercanas a una cota} con el fin de obtener un objetivo, para ello, hemos cogido dos geometrías que nos pueden dar la misma aproximacion pero con geometrías distintas, una con puntos y otra con líneas.
+Seguidamente, comenzamos la realización de las consultas de SPARQL y GeoSPARQL, clasificando las consultas de acuerdo a la geometría que contiene. Al principio comenzaremos con consultas más sencillas, hasta la obtención de la consulta que nos permita saber las \textbf{edificaciones que se encuentran a una cierta altura o cercanas a una cota} con el fin de obtener un fin, para ello, hemos considerado dos geometrías que nos pueden dar la misma aproximación de altura pero con geometrías distintas, una con puntos y otra con líneas.
 
 
 
 %Lo primero, disponemos de la información geográfica espacial referente a Ogíjares con respecto edificaciones, curvas de nivel y cotas de altura. Con esta información, que fue seleccionada para un fin, queremos saber las edificaciones que se encuentran a una cierta altura con el fin de obtener un objetivo, para ello, hemos cogido dos geometrías que nos pueden dar la misma aproximacion pero con geometrías distintas, una con puntos y otra con líneas.
 
-\subsubsection{Consultas donde intervienen solo polígonos}
+\subsection{Consultas donde intervienen solo polígonos}
 
-\textit{Ejemplo 1}. Consulta que obtiene los tres primeros polígonos de Edificaciones que pertenecen a la clase TipoEdificaciones y son EDI, es decir, Edificación. \\
+\textit{Ejemplo 1}. Consulta que obtiene los tres primeros polígonos de Edificaciones que pertenecen a la clase TipoEdificaciones y son EDI (Edificación). Con esta consulta queremos obtener las edificaciones que están edificadas. 
+
+\vspace*{0.2cm}
 
 \begin{lstlisting}
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX geo: <http://www.opengis.net/ont/geosparql#>
-
 SELECT ?x ?p
 WHERE {
 	?x rdf:type geo:EDI .
 	?polygon geo:asWKT ?p
 }
-LIMIT 3
 \end{lstlisting}
+
+\vspace*{0.2cm}
+
+En la figura \ref{fig:salida3} podemos observar los GID correspondientes y sus coordenadas asociadas.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.9\linewidth]{imagenes/capitulo5/salida3}
+	\includegraphics[width=1\linewidth]{imagenes/capitulo5/salida3}
 	\caption{Salida de la consulta para el Ejemplo 1}
 	\label{fig:salida3}
 \end{figure}
 
-\textit{Ejemplo 1}. Consulta que obtiene la geoemtría especifica de WKT mediante el operador \texttt{geof:sfEquals}.\\
+\textit{Ejemplo 2}. Consulta que obtiene la geometría específica de WKT mediante el operador \texttt{geof:sfEquals}. Con esta consulta queremos obtener las Edificaciones correspondientes a una determinada ubicación.
+
+\vspace*{0.2cm}
 
 \begin{lstlisting}
-PREFIX my: <http://example.org/ApplicationSchema#>
-PREFIX geo: <http://www.opengis.net/ont/geosparql#>
-PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
-
 SELECT ?f
 WHERE {
-?f geo:asWKT ?fWKT .
-FILTER (geof:sfEquals(?fWKT, '''
-POLYGON ((446050.16 4107127.71,446053.42 4107107.66,446029.09 4107103.93,446028.94 4107104.69,446027.13 4107112.67,446041.35 4107115.08,446039.91 4107125.24,446050.16 4107127.71))
-'''^^geo:wktLiteral))
+	?f geo:asWKT ?fWKT .
+	
+	FILTER (geof:sfEquals(?fWKT, '''
+	POLYGON ((446050.16 4107127.71, 446053.42 4107107.66, 446029.09 4107103.93, 446028.94 4107104.69, 446027.13 4107112.67, 446041.35 4107115.08, 446039.91 4107125.24, 446050.16 4107127.71)) 
+	'''^^geo:wktLiteral))
 } 
 \end{lstlisting}
 
+\vspace*{0.2cm}
+
+En la figura \ref{fig:salida3} podemos observar cómo una ubicación exacta solo referencia a una geometría. Además, si pinchamos sobre ella nos devuelve información relevante al respecto (figura \ref{fig:info-salida}).
+
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.9\linewidth]{imagenes/capitulo5/salida2}
-	\caption{Salida de la consulta para el Ejemplo 1}
+	\includegraphics[width=1\linewidth]{imagenes/capitulo5/salida2}
+	\caption{Salida de la consulta para el Ejemplo 2}
 	\label{fig:salida2}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.9\linewidth]{imagenes/capitulo5/info-salida}
-	\caption{Información de la salida de la consulta para el Ejemplo 1}
+	\includegraphics[width=1\linewidth]{imagenes/capitulo5/info-salida}
+	\caption{Información de la consulta para el Ejemplo 2}
 	\label{fig:info-salida}
 \end{figure}
 
 Para comprobar que corresponde dicha salida con la información de la ontología, veamos el fragmento correspondiente al GID 181064.
 
+\vspace*{0.2cm}
+
 \begin{lstlisting}
 <!-- http://www.opengis.net/ont/geosparql#181064 -->
 
-<owl:NamedIndividual rdf:about="http://www.opengis.net/ont/geosparql#181064">
-<rdf:type rdf:resource="http://www.opengis.net/ont/geosparql#EDI"/>
-<rdf:type rdf:resource="http://www.opengis.net/ont/geosparql#GID"/>
-<rdf:type rdf:resource="http://www.opengis.net/ont/geosparql#USO"/>
-<rdf:type rdf:resource="http://www.opengis.net/ont/sf#Polygon"/>
-<geo:asWKT rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral">POLYGON ((446050.16 4107127.71,446053.42 4107107.66,446029.09 4107103.93,446028.94 4107104.69,446027.13 4107112.67,446041.35 4107115.08,446039.91 4107125.24,446050.16 4107127.71))</geo:asWKT>
-</owl:NamedIndividual>
+<geo:asWKT rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral"> POLYGON ((446050.16 4107127.71, 446053.42 4107107.66, 446029.09 4107103.93, 446028.94 4107104.69, 446027.13 4107112.67, 446041.35 4107115.08, 446039.91 4107125.24, 446050.16 4107127.71))
+</geo:asWKT>
 \end{lstlisting} 
 
-\subsubsection{Consultas donde intervienen solo puntos}
+\subsection{Consultas donde intervienen solo puntos}
 
-\textit{Ejemplo 1}. Consulta que obtiene los cinco primeros puntos de PuntoCota con una cota de 700 metros de altitud, y que pertenecen a la clase ContextoPuntoCota y son DEP, es decir, Depresión. \\
+\textit{Ejemplo 3}. Consulta que obtiene los cinco primeros puntos de PuntoCota con una cota de 700 metros de altitud, y que pertenecen a la clase ContextoPuntoCota y son DEP(Depresión). Con esta consulta queremos obtener los Puntos de Cota que tiene más de una cierta altura y son depresiones.
 
+\vspace*{0.2cm}
 
 \begin{lstlisting}
-PREFIX my: <http://example.org/ApplicationSchema#>
-PREFIX geo: <http://www.opengis.net/ont/geosparql#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-
 SELECT DISTINCT ?point ?pointCota
 WHERE {
-
 	?point rdf:type geo:DEP ;
 	geo:tieneCota ?pointCota ;
 	
 	FILTER (?pointCota > 700)
 }
-
-ORDER BY DESC(?pointCota)
-LIMIT 5
 \end{lstlisting}
+
+\vspace*{0.2cm}
+
+En la figura \ref{fig:salida5} podemos observar los cinco primeros puntos obtenidos y sus correspondientes cotas.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.9\linewidth]{imagenes/capitulo5/salida5}
-	\caption{Salida de la consulta para el Ejemplo 1}
+	\includegraphics[width=1\linewidth]{imagenes/capitulo5/salida5}
+	\caption{Salida de la consulta para el Ejemplo 3}
 	\label{fig:salida5}
 \end{figure}
 
+\textit{Ejemplo 4}. Consulta que obtiene la geometría específica de WKT mediante el operador \texttt{geof:sfWithin}. Con esta consulta queremos obtener los Puntos de Cota que están dentro de una determinada ubicación, pudiendo obtener un único valor o varios. 
 
-\textit{Ejemplo 1}. Consulta que obtiene la geoemtría especifica de WKT mediante el operador \texttt{geof:sfWithin}.\\
-
-\begin{lstlisting}
-PREFIX my: <http://example.org/ApplicationSchema#>
-PREFIX geo: <http://www.opengis.net/ont/geosparql#>
-PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
-
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-SELECT ?f
-WHERE {
-?f geo:asWKT ?fWKT .
-FILTER (geof:sfWithin(?fWKT, '''
-MULTIPOINT ((446228.92 4108432.53))
-'''^^geo:wktLiteral))
-} 
-
-
-\end{lstlisting}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.9\linewidth]{imagenes/capitulo5/salida7}
-	\caption{}
-	\label{fig:salida7}
-\end{figure}
-
-\subsubsection{Consultas donde intervienen solo líneas}
-
-\textit{Ejemplo 1}. Consulta que obtiene la geoemtría especifica de WKT mediante el operador \texttt{geof:sfEquals}.\\
+\vspace*{0.2cm}
 
 \begin{lstlisting}
-PREFIX my: <http://example.org/ApplicationSchema#>
-PREFIX geo: <http://www.opengis.net/ont/geosparql#>
-PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
-
 SELECT ?f
 WHERE {
 	?f geo:asWKT ?fWKT .
-	FILTER (geof:sfEquals(?fWKT, '''
-	LINESTRING (440972.52 4106237.28,440972.4 4106232.04,440972.15 4106226.75,440967.68 4106204.44,440964.32 4106205.94,440963.48 4106208.23,440962.08 4106213.03,440960.59 4106219.28,440959.9 4106224.26,440958.99 4106229.78,440958.44 4106234.81,440958.11 4106240.01,440958.05 4106245.3,440958.04 4106250.86,440958.16 4106255.93,440958.41 4106261.44,440959.21 4106266.96,440960.76 4106272.24,440971.61 4106288.61,440974.39 4106281.06,440974.85 4106275.81,440974.77 4106270.3,440972.52 4106237.28)
+	
+	FILTER (geof:sfWithin(?fWKT, '''
+	MULTIPOINT ((446228.92 4108432.53))
 	'''^^geo:wktLiteral))
 } 
 \end{lstlisting}
 
+En la figura \ref{fig:salida7} podemos observar que solo se encuentra dentro de esa ubicación una cota.
+
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.9\linewidth]{imagenes/capitulo5/salida1}
-	\caption{Salida de la consulta para el Ejemplo 1}
+	\includegraphics[width=1\linewidth]{imagenes/capitulo5/salida7}
+	\caption{Salida de la consulta para el Ejemplo 4}
+	\label{fig:salida7}
+\end{figure}
+
+\subsection{Consultas donde intervienen solo líneas}
+
+\textit{Ejemplo 5}. Consulta que obtiene  la geometría específica de WKT mediante el operador \texttt{geof:sfEquals}. Con esta consulta obtener las Curvas de Nivel correspondientes a una ubicación exacta.
+
+\vspace*{0.2cm}
+
+\begin{lstlisting}
+SELECT ?f
+WHERE {
+	?f geo:asWKT ?fWKT .
+	
+	FILTER (geof:sfEquals(?fWKT, '''
+	LINESTRING (440972.52 4106237.28, 440972.4 4106232.04, 440972.15 4106226.75, 440967.68 4106204.44, 440964.32 4106205.94, 440963.48 4106208.23, 440962.08 4106213.03, 440960.59 4106219.28, 440959.9 4106224.26, 440958.99 4106229.78, 440958.44 4106234.81, 440958.11 4106240.01, 440958.05 4106245.3, 440958.04 4106250.86, 440958.16 4106255.93, 440958.41 4106261.44, 440959.21 4106266.96, 440960.76 4106272.24, 440971.61 4106288.61, 440974.39 4106281.06, 440974.85 4106275.81, 440974.77 4106270.3, 440972.52 4106237.28)
+	'''^^geo:wktLiteral))
+} 
+\end{lstlisting}
+
+En la figura \ref{fig:salida1} podemos observar cómo una ubicación exacta solo referencia a una geometría.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{imagenes/capitulo5/salida1}
+	\caption{Salida de la consulta para el Ejemplo 5}
 	\label{fig:salida1}
 \end{figure}
 
 Para comprobar que corresponde dicha salida con la información de la ontología, veamos el fragmento correspondiente al GID 172684.
 
+\vspace*{0.2cm}
+
 \begin{lstlisting}
 <!-- http://www.opengis.net/ont/geosparql#172684 -->
 
-<owl:NamedIndividual rdf:about="http://www.opengis.net/ont/geosparql#172684">
-<rdf:type rdf:resource="http://www.opengis.net/ont/geosparql#CGN"/>
-<rdf:type rdf:resource="http://www.opengis.net/ont/geosparql#CMB"/>
-<rdf:type rdf:resource="http://www.opengis.net/ont/geosparql#GID"/>
-<rdf:type rdf:resource="http://www.opengis.net/ont/geosparql#NOR"/>
-<rdf:type rdf:resource="http://www.opengis.net/ont/sf#LineString"/>
-<geo:asWKT rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral">LINESTRING (440972.52 4106237.28,440972.4 4106232.04,440972.15 4106226.75,440967.68 4106204.44,440964.32 4106205.94,440963.48 4106208.23,440962.08 4106213.03,440960.59 4106219.28,440959.9 4106224.26,440958.99 4106229.78,440958.44 4106234.81,440958.11 4106240.01,440958.05 4106245.3,440958.04 4106250.86,440958.16 4106255.93,440958.41 4106261.44,440959.21 4106266.96,440960.76 4106272.24,440971.61 4106288.61,440974.39 4106281.06,440974.85 4106275.81,440974.77 4106270.3,440972.52 4106237.28)</geo:asWKT>
-<geo:tieneCota rdf:datatype="http://www.w3.org/2001/XMLSchema#double">780.0</geo:tieneCota>
-</owl:NamedIndividual>
+<geo:asWKT rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral">LINESTRING (440972.52 4106237.28, 440972.4 4106232.04, 440972.15 4106226.75, 440967.68 4106204.44, 440964.32 4106205.94, 440963.48 4106208.23, 440962.08 4106213.03, 440960.59 4106219.28, 440959.9 4106224.26, 440958.99 4106229.78, 440958.44 4106234.81, 440958.11 4106240.01, 440958.05 4106245.3, 440958.04 4106250.86, 440958.16 4106255.93, 440958.41 4106261.44, 440959.21 4106266.96, 440960.76 4106272.24, 440971.61 4106288.61, 440974.39 4106281.06, 440974.85 4106275.81, 440974.77 4106270.3, 440972.52 4106237.28)
+</geo:asWKT>
 \end{lstlisting}
 
-\subsubsection{Consultas donde intervienen líneas y puntos}
+\subsection{Consultas donde intervienen líneas y puntos}
 
-\textit{Ejemplo 2}. Consulta que obtiene las cincos primeras geometrías (líneas y puntos) que tienen una cota superior a 700 metros de altitud.\\
+\textit{Ejemplo 6}. Consulta que obtiene las cincos primeras geometrías (líneas y puntos) que tienen una cota superior a 700 metros de altitud. Con esta consulta estamos quedándonos con las alturas correspondientes a un valor.
+
+\vspace*{0.2cm}
 
 \begin{lstlisting}
-PREFIX geo: <http://www.opengis.net/ont/geosparql#>
-
 SELECT ?f
-
 WHERE {
 	?f geo:tieneCota ?fCota
 	FILTER (?fCota > 700)
 }
-LIMIT 5
 \end{lstlisting}
 
+En la figura \ref{fig:salida4} podemos observar los GID obtenidos.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.9\linewidth]{imagenes/capitulo5/salida4}
-	\caption{Salida de la consulta para el Ejemplo 2}
+	\includegraphics[width=1\linewidth]{imagenes/capitulo5/salida4}
+	\caption{Salida de la consulta para el Ejemplo 6}
 	\label{fig:salida4}
 \end{figure}
 
-\textit{Ejemplo 3}. Consulta que obtiene las cincos primeras geometrías (líneas y puntos) que tienen una cota superior a 720 metros de altitud y muestra tanto su ubicación con WKT como su cota.\\
+\textit{Ejemplo 7}. Consulta que obtiene las cincos primeras geometrías (líneas y puntos) que tienen una cota superior a 720 metros de altitud y muestra tanto su ubicación con WKT como su cota. Con esta consulta estamos quedándonos con las alturas correspondientes a un valor, y mostrando el valor de su cota y su ubicación. En la figura \ref{fig:salida6} se observa el resultado.
+
+
+\vspace*{0.2cm}
 
 \begin{lstlisting}
-   PREFIX my: <http://example.org/ApplicationSchema#>
-PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 SELECT DISTINCT ?point ?pointWKT ?pointCOTA
-WHERE 
-{
+WHERE {
 	?point 	geo:asWKT ?pointWKT ;
 	geo:tieneCota ?pointCOTA .
 	FILTER (xsd:double(?pointCOTA) > 720)
 }
-LIMIT 3
 \end{lstlisting}
 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.9\linewidth]{imagenes/capitulo5/salida6}
-	\caption{Salida de la consulta para el Ejemplo 3}
+	\includegraphics[width=1\linewidth]{imagenes/capitulo5/salida6}
+	\caption{Salida de la consulta para el Ejemplo 7}
 	\label{fig:salida6}
 \end{figure}
 
 
 
-Hay que tener en cuenta que hay muchas maneras de hacer las consultas, por lo que para realizar uan consulta, no es necesario realizarla de la misma forma que estamos haciéndola nosotros.
+Hay que tener en cuenta que hay muchas maneras de hacer las consultas, por lo que para realizar una consulta, no es necesario realizarla de la misma forma que estamos haciéndola nosotros.
 
 
 
@@ -977,137 +1008,126 @@ Hay que tener en cuenta que hay muchas maneras de hacer las consultas, por lo qu
 %\underline{GEOF:sfEquals}
 
 
-\subsubsection{Consultas donde intervienen polígonos y puntos}
+\subsection{Consultas donde intervienen polígonos y puntos}
+
+\textit{Ejemplo 8}. Consulta que obtiene las cincos primeras geometrías de puntos cercanas a un metro del GID de Edificaciones 889549. Con esta consulta nos estamos quedando los Puntos de Cota que están cercanos al GID 889549, con esto es posible obtener la altura asociada a dicha edificación.
+
+\vspace*{0.2cm}
 
 \begin{lstlisting}
-PREFIX uom: <http://www.opengis.net/def/uom/OGC/1.0/>
-PREFIX my: <http://example.org/ApplicationSchema#>
-PREFIX geo: <http://www.opengis.net/ont/geosparql#>
-PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX sf: <http://www.opengis.net/ont/sf#>
-
 SELECT ?f
 WHERE {
-geo:889549 geo:asWKT ?WKT .
-
-?f rdf:type sf:Point ;
-geo:asWKT ?fWKT .
-FILTER (?fGeom != ?WKT)
+	geo:889549 geo:asWKT ?WKT .
+	?f rdf:type sf:Point ;
+	geo:asWKT ?fWKT .
+	
+	FILTER (?fGeom != ?WKT)
 }
-
 ORDER BY ASC(geof:distance(?cWKT, ?fWKT, uom:metre))
-LIMIT 5
 \end{lstlisting}
+
+En la figura \ref{fig:salida9} podemos apreciar los 5 puntos más cercanos al 889549.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.9\linewidth]{imagenes/capitulo5/salida9}
-	\caption{Salida de la consulta para el Ejemplo 3}
+	\includegraphics[width=1\linewidth]{imagenes/capitulo5/salida9}
+	\caption{Salida de la consulta para el Ejemplo 8}
 	\label{fig:salida9}
 \end{figure}
 
 %\underline{GEOF:WITHIN}
 
-\begin{lstlisting}
-PREFIX uom: <http://www.opengis.net/def/uom/OGC/1.0/>
-PREFIX my: <http://example.org/ApplicationSchema#>
-PREFIX geo: <http://www.opengis.net/ont/geosparql#>
-PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX sf: <http://www.opengis.net/ont/sf#>
+\textit{Ejemplo 9}. Consulta que obtiene las cincos primeras geometrías de polígonos cercanas a un metro de las geometrías de puntos. Con esta consulta nos estamos quedando con las Edificaciones que están a más de 700 metros de altitud.
 
+\vspace*{0.2cm}
+
+\begin{lstlisting}
 SELECT ?p
 WHERE {
-?p rdf:type sf:Polygon ;
-geo:asWKT ?pWKT .
-
-?f rdf:type sf:Point ;
-geo:tieneCota ?pointCota ;
-geo:asWKT ?fWKT .
-
-FILTER (?pointCota > 700)
-
+	?p rdf:type sf:Polygon ;
+	geo:asWKT ?pWKT .
+	?f rdf:type sf:Point ;
+	geo:tieneCota ?pointCota ;
+	geo:asWKT ?fWKT .
+	
+	FILTER (?pointCota > 700)
 }
-
 ORDER BY ASC(geof:distance(?pWKT, ?fWKT, uom:metre))
-LIMIT 5
 \end{lstlisting}
+
+En la figura \ref{fig:salida9} podemos apreciar los 5 edificios más cercanos a una cota superior a 700 metros de altura.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.9\linewidth]{imagenes/capitulo5/salida11}
-	\caption{}
+	\includegraphics[width=1\linewidth]{imagenes/capitulo5/salida11}
+	\caption{Salida de la consulta para el Ejemplo 9}
 	\label{fig:salida11}
 \end{figure}
 
-\subsubsection{Consultas donde intervienen polígonos y líneas}
+\subsection{Consultas donde intervienen polígonos y líneas}
+
+\textit{Ejemplo 10}. Consulta que obtiene las cincos primeras geometrías de líneas cercanas a un metro del GID de Edificaciones 889549. Con esta consulta nos estamos quedando las Curvas de Nivel que están cercanos al GID 889549, con esto es posible obtener la altura asociada a dicha edificación.
+
+\vspace*{0.2cm}
 
 \begin{lstlisting}
-PREFIX uom: <http://www.opengis.net/def/uom/OGC/1.0/>
-PREFIX my: <http://example.org/ApplicationSchema#>
-PREFIX geo: <http://www.opengis.net/ont/geosparql#>
-PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX sf: <http://www.opengis.net/ont/sf#>
-
 SELECT ?f
 WHERE {
-geo:889549 geo:asWKT ?WKT .
-
-?f rdf:type sf:LineString ;
-geo:asWKT ?fWKT .
-FILTER (?fGeom != ?WKT)
+	geo:889549 geo:asWKT ?WKT .
+	?f rdf:type sf:LineString ;
+	geo:asWKT ?fWKT .
+	
+	FILTER (?fGeom != ?WKT)
 }
-
 ORDER BY ASC(geof:distance(?cWKT, ?fWKT, uom:metre))
-LIMIT 5
 \end{lstlisting}
+
+En la figura \ref{fig:salida9} podemos apreciar las 5 líneas más cercanos al edificio 889549.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.9\linewidth]{imagenes/capitulo5/salida10}
-	\caption{}
+	\includegraphics[width=1\linewidth]{imagenes/capitulo5/salida10}
+	\caption{Salida de la consulta para el Ejemplo 10}
 	\label{fig:salida10}
 \end{figure}
 
-\subsubsection{Consultas donde intervienen polígonos, líneas y puntos}
+\subsection{Consultas donde intervienen polígonos, líneas y puntos}
 
 %geof:distance
 
+\textit{Ejemplo 11}. Consulta que obtiene las cincos primeras geometrías más cercanas a un metro del GID de Edificaciones 889549. Con esta consulta nos estamos quedando con las características más cercanas al GID 889549.
+
 %Find the 3 closest features to feature my:C, where computations are based on my:hasExactGeometry.
-Ejemplo 1. Encuentre las 3 características más cercanas para presentar my: C, donde los cálculos se basan en my: hasExactGeometry.
+%Encuentre las 3 características más cercanas para presentar my: C, donde los cálculos se basan en my: hasExactGeometry.
+
+\vspace*{0.2cm}
 
 \begin{lstlisting}
-PREFIX uom: <http://www.opengis.net/def/uom/OGC/1.0/>
-PREFIX my: <http://example.org/ApplicationSchema#>
-PREFIX geo: <http://www.opengis.net/ont/geosparql#>
-PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
-
 SELECT ?f
 WHERE {
-geo:889549 geo:asWKT ?WKT .
-?f geo:asWKT ?fWKT .
-FILTER (?fGeom != ?WKT)
+	geo:889549 geo:asWKT ?WKT .
+	?f geo:asWKT ?fWKT .
+	
+	FILTER (?fGeom != ?WKT)
 }
-
 ORDER BY ASC(geof:distance(?cWKT, ?fWKT, uom:metre))
-LIMIT 5
+
 \end{lstlisting}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.9\linewidth]{imagenes/capitulo5/salida8}
-	\caption{Salida de la consulta para el Ejemplo 3}
+	\includegraphics[width=1\linewidth]{imagenes/capitulo5/salida8}
+	\caption{Salida de la consulta para el Ejemplo 11}
 	\label{fig:salida8}
 \end{figure}
 
 
 
 
+Acabamos de comprobar como es posible obtener de manera eficaz los GID ubicados en el mapa, sin embargo \textit{¿dónde se encuentran exactamente ubicados?} A continuación, contestamos esta pregunta.\\
 
 
-
+\textit{\textbf{Nota}: Las consultas se encuentran en el directorio \texttt{consultas}.}
 
 
 
@@ -1115,44 +1135,60 @@ LIMIT 5
 
 
 
-\subsection{Visualización de la Información Geográfica}
+\section{Visualización de la Información Geográfica}
+\label{ch:visualizacion}
 
-
-Sin embargo, con eso sólo podemos obtener los identificadores que queremos, ¿entonces como podemos visualizarlo y ubicarlos en un mapa? La respuesta es muy simple con Leaflet. Para ello nos hemos creado un ejemplo con R.
-
-En Java hay consultas para trabajar con información espacial, (WorldWindJava)
-
-Hablar sobre la librería MapView y leafet de Java
-
-Está hecho con Shiny Web App.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\linewidth]{imagenes/capitulo5/R1}
-	\caption{}
+	\includegraphics[width=1\linewidth]{imagenes/capitulo5/R1}
+	\caption{Página principal del mapa Web}
 	\label{fig:r1}
 \end{figure}
+
+Con los GID que antes hemos mostrado, no conocemos información acerca de a que GID está haciendo referencia \textit{¿entonces como podemos visualizarlo y ubicarlos en un mapa?} La respuesta es muy simple con \texttt{Leaflet} que es una biblioteca JavaScript de código abierto ampliamente utilizada para crear aplicaciones de mapeo Web. Para hacer uso de ella se suele usar principalemente Java, sin embargo, nosotros hemos hecho uso de R al haber encontrado un tutorial que explica muy bien su utilización con Shiny\footnote{Shiny es un framework Web para R.} (\url{https://rstudio.github.io/leaflet/shiny.html}). Para ejecutarla hace falta abrir el fichero en R Studio y pulsar el boton ``Run App''.\\
+
+
+En las figuras \ref{fig:r1},  \ref{fig:r2}, \ref{fig:r3} y \ref{fig:r4} podemos ver una visualización del mapeo Web realizado para encontrar los GID de nuestros datos en el mapa. En la figura \ref{fig:r1} se observa la página inicial de la aplicación. Con esto, se extiende el uso que se le puede dar a la prueba de concepto, ya que esta aplicación ha permitido que podamos obtener y ubicar en un mapa información.\\
+
+
+
+% Para ello nos hemos creado un ejemplo con R.
+
+%En Java hay consultas para trabajar con información espacial, (WorldWindJava)
+
+%Hablar sobre la librería MapView y leafet de Java
+
+%Está hecho con Shiny Web App.
+
+
+
+En las figuras \ref{fig:r2}, \ref{fig:r3} y \ref{fig:r4} se observan las geometrías ubicadas en el mapa para las distintas geometrías que tenemos, para ello se ha hecho un ejemplo con cada una de ellas. Por esa misma razón, a partir de la realización de la consulta para obtener los edificios que están a una determinada altura es posible saber de manera gráfica donde se encuentra su ubicación exacta mediante el uso de esta aplicación. No obstante, hemos puesto que se ubique en el mapa las tres geometrías que hemos venido comentando. A continuación, se muestran tres ejemplos, en donde se debe pulsar el botón ``Buscar" para que los ubique en el mapa.
+
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\linewidth]{imagenes/capitulo5/R2}
-	\caption{}
+	\includegraphics[width=1\linewidth]{imagenes/capitulo5/R2}
+	\caption{Obtención de la información del GID para Edificaciones}
 	\label{fig:r2}
 \end{figure}
+
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\linewidth]{imagenes/capitulo5/R3}
-	\caption{}
+	\includegraphics[width=1\linewidth]{imagenes/capitulo5/R3}
+	\caption{Obtención de la información del GID para Curvas de Nivel}
 	\label{fig:r3}
 \end{figure}
+
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\linewidth]{imagenes/capitulo5/R4}
-	\caption{}
+	\includegraphics[width=1\linewidth]{imagenes/capitulo5/R4}
+	\caption{Obtención de la información del GID para Puntos de Cota}
 	\label{fig:r4}
 \end{figure}
 
 
 
+\textit{\textbf{Nota}: El código se encuentra en el directorio \texttt{visualizacion}.}\\
 
 %\section{Evaluación de la prueba de concepto}
 
@@ -1161,9 +1197,9 @@ Está hecho con Shiny Web App.
 
 \section{Conclusiones}
 
+En este capítulo, se ha presentado la prueba de concepto realizada para la Web Semántica Geoespacial en donde se han obtenido los datos del Instituto de Estadística y Cartografía de Andalucía, en concreto la información geoespacial de edificaciones, curvas de nivel y puntos de cota de Ogíjares (Granada) en formato Shapefile. A partir de esa información se ha creado la ontología GEOARES en RDF/OWL y poblado mediante la herramienta Protegé, haciendo uso de unas determinadas reglas. Seguidamente, debido a diversos problemas, se ha hecho uso de la alternativa GraphDB para aplicar las búsquedas mediante los lenguajes de consulta GeoSPARQL y SPARQL. Finalmente, se ha creado una pequeña aplicación de mapa Web para obtener las salidas de las consultas en un mapa y así observar su visualización. Esta prueba de concepto nos ha permitido comprobar cómo la Web Semántica permite hacer uso de diversas herramientas esenciales que facilitan la búsqueda de la información, en este caso de Información Geográfica.
 
 
-\newpage
 
 
 
@@ -1175,7 +1211,7 @@ Está hecho con Shiny Web App.
 
 
 
-\newpage
+
 
 % Uso de la similitud semántica para la recuperación de información geoespacial: https://dialnet.unirioja.es/servlet/tesis?codigo=61960
 % http://rua.ua.es/dspace/handle/10045/45811
@@ -1237,7 +1273,7 @@ Está hecho con Shiny Web App.
 
 % 
 
-https://mangomap.com/gis-mapping
+%https://mangomap.com/gis-mapping
 
 % ---------------------------------------------------------------------------
 
@@ -1276,7 +1312,7 @@ https://mangomap.com/gis-mapping
 
 %---
 
-\section{Resumen del capítulo}
+%\section{Resumen del capítulo}
 
 
 

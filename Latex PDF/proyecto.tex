@@ -22,6 +22,7 @@
 
 
 
+
 % Definir los márgenes
 %\usepackage[a4paper, left = 1.18in, right = 0.79in, top = 1.18in, bottom = 0.79in]{geometry}
 
@@ -278,9 +279,14 @@ pdfproducer = {pdflatex}
 \input{capitulos/05_Aplicacion}
 %\input{capitulos/05_Resultados}
 \input{capitulos/06_Conclusiones}
+
+\appendix
+%\begin{appendices}
 \input{capitulos/07_AnexosA}
 \input{capitulos/07_AnexosC}
 \input{capitulos/07_AnexosB}
+%\end{appendices}
+
 %\input{capitulos/07_AnexosD}
 %\input{capitulo/glosario}
 
@@ -292,7 +298,7 @@ pdfproducer = {pdflatex}
 % \nocite{*}
 
 \addcontentsline{toc}{chapter}{Bibliografía}
-\bibliographystyle{unsrt}
+\bibliographystyle{abbrv}
 \bibliography{references}
 
 %\appendix

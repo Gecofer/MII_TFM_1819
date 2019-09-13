@@ -3,17 +3,17 @@
 % En este capítulo debe ser proporcionado el estado del arte o referencial teórico sobre el tema al que se refiere el estudio. Un buen investigador no debe repetir trabajos ya concluidos o que ya están en marcha. Por eso esta sesión es donde el autor demuestra hasta dónde va la investigación actual en el campo de estudios en cuestión y establece las bases sobre las cuales desarrollará el estudio propuesto. También este punto se podría denominar "Situación actual de la tecnología". No se habla del estado actual de la tecnología con la que se desarrollará el trabajo, sino de qué otras aplicaciones que existen actualmente o han existido en el mercado (historia de la evolución tecnológica) y que realicen funcionalidades iguales o parecidas a las que se propone desarrollar en el TFG. En este punto hay que presentar lo que hay, simplemente describiendo. Se puede hacer alguna pequeña valoración que muestre los puntos fuertes de la tecnología o su utilidad, en que ámbitos se puede aplicar, para posteriormente, en el apartado de "Crítica al estado del arte" enjuiciar constructivamente cada aportación y de ahí extraer consecuencias para el TFG.
 
 \chapter{Sistemas de Información Geográfica}
-\label{ch:sig}
+\label{ch:capitulo2}
 
 \begin{quote}
-  	{\bf\textsc{Resumen:}} Este capítulo presenta los SIG como una herramienta que permite manejar Información Geográfica para la posterior integración de datos geográficos en la Web Semántica. De esta forma, explicaremos y nos adentraremos en el mundo de los SIG, hablaremos sobre los posibles modelos y representaciones de los datos geográficos, y de algunas herramientas existentes en el mercado para el tratamiento de datos e Información Geográfica.
+  	{\bf\textsc{Resumen:}} Este capítulo presenta los SIG como una herramienta que permite manejar Información Geográfica. De esta forma, explicaremos y nos adentraremos en el mundo de los SIG, hablaremos sobre los posibles modelos y representaciones de los datos geográficos, y de algunas herramientas existentes en el mercado para el tratamiento de datos e Información Geográfica.
 \end{quote}
 
 % coger lo del TFG y modificarlo y adaptarlo un poco, y ver algún enlace nuevo  
 
 \section{Sistemas de Información Geográfica}
 
-A continuación, vamos a introducir la definición de SIG, para ello se va a realizar un breve estudio del arte, para contextualizar los elementos claves e introducir los SIG hacia su integración con la Web Semántica.
+A continuación, vamos a introducir la definición de SIG, para ello se va a tratar de contextualizar los elementos clave de los SIG.
 
 % Definición de los SIG
 
@@ -21,7 +21,7 @@ A continuación, vamos a introducir la definición de SIG, para ello se va a rea
 
 \subsection{Conceptos generales}
 
-En las últimas décadas se han introducido los \textbf{Sistemas de Información Geográfica} \textbf{(SIG)} o \textbf{GIS} \textbf{(\textit{Geographic Information System})}, término amplio que referencia a una amplia familia de estándares, tecnologías y herramientas de software para almacenar, editar, analizar, mostrar e integrar datos espaciales. En el presente trabajo, nos vamos a centrar mayoritariamente en los aspectos de \textit{búsqueda} e \textit{integración} \cite{tesis}. De tal forma que los SIG son sistemas complejos que integran una serie de diversos elementos interrelacionados entre sí \cite{VictorOlaya} (figura \ref{fig:elementosSIG}). Sin embargo, desde otro punto de vista, un SIG consiste en la unión de dos ciencias: la Geografía y la Informática, es decir, consiste en un Sistema de Información (SI) en donde dicha información incluye su posición en el espacio, utilizando para ello un sistema de coordenadas estandarizado resultado de una proyección cartográfica. 
+Los \textbf{Sistemas de Información Geográfica} \textbf{(SIG)} o \textbf{GIS} \textbf{(\textit{Geographic Information System})}, hacen referencia a una amplia familia de estándares, tecnologías y herramientas de software para almacenar, editar, analizar, mostrar e integrar datos espaciales. En el presente trabajo, nos vamos a centrar mayoritariamente en los aspectos de \textit{búsqueda} e \textit{integración} \cite{tesis}. De tal forma que los SIG son sistemas complejos que integran un conjunto de elementos interrelacionados entre sí \cite{VictorOlaya} (figura \ref{fig:elementosSIG}). Sin embargo, desde otro punto de vista, un SIG consiste en la unión de dos ciencias: la Geografía y la Informática, es decir, consiste en un Sistema de Información (SI) en donde dicha información incluye su posición en el espacio, utilizando para ello un sistema de coordenadas estandarizado resultado de una proyección cartográfica. 
 
 \begin{figure}[H]
 	\centering
@@ -63,7 +63,7 @@ Para trabajar con información espacial georreferenciada es necesario el estable
 
 %Ambos sistemas son muy usados actualmente. Por ejemplo, \\
 
-Tradicionalmente, la salida principal de los sistemas SIG es en formato de mapa\footnote{Un mapa ``es un conjunto de capas con información y datos, en donde los datos son codificados como alfanuméricos y contienen coordenadas que permiten ubicarlo'' \cite{congreso-ritsi}.}, lo que permite contener diferentes elementos relevantes como una leyenda (que explica lo que significan todos los símbolos utilizados), una escala (para mostrar la escala del mapa) o elementos interactivos (herramientas para hacer zoom, seleccionar capas o buscar), entre todos \cite{tesis}. Asimismo, un mapa puede estar constituido por varias capas, representadas en un orden determinado, una encima de otra. La primera capa (representada primero) generalmente se llama capa base, el resto de capas superpuestas. Las capas pueden ser muy diversas, desde fotografías aéreas, carreteras, parcelas de tierra o ríos hasta nombres de ciudades o de calles. En la figura \ref{fig:capas-mapas} podemos ver dos ejemplos de las distintas capas que puede tener un mapa \cite{VictorOlaya}.
+Tradicionalmente, la salida principal de los sistemas SIG es en formato de mapa\footnote{Un mapa ``es un conjunto de capas con información y datos, en donde los datos son codificados como alfanuméricos y contienen coordenadas que permiten ubicarlo'' \cite{congreso-ritsi}.}, lo que permite contener diferentes elementos relevantes como una leyenda (que explica lo que significan todos los símbolos utilizados), una escala (para mostrar la escala del mapa) o elementos interactivos (herramientas para hacer zoom, seleccionar capas o buscar), entre otros \cite{tesis}. Asimismo, un mapa puede estar constituido por varias capas, representadas en un orden determinado, una encima de otra. La primera capa (representada primero) generalmente se llama capa base, el resto de capas superpuestas. Las capas pueden ser muy diversas, desde fotografías aéreas, carreteras, parcelas de tierra o ríos hasta nombres de ciudades o de calles. En la figura \ref{fig:capas-mapas} podemos ver dos ejemplos de las distintas capas que puede tener un mapa \cite{VictorOlaya}.
 
 \begin{figure}[H]
 	\centering
@@ -79,9 +79,10 @@ Tradicionalmente, la salida principal de los sistemas SIG es en formato de mapa\
 	\label{fig:capas-mapas}
 \end{figure}
 
-En la figura \ref{fig:capas-mapas} se aprecia como cada capa aporta información relevante para la construcción del mapa, sin embargo es necesario conocer su representación. Entonces, gracias a esa información y a la Web Semántica, veremos como es posible transformar la capa de un mapa a instancias de una clase.
+En la figura \ref{fig:capas-mapas} se aprecia como cada capa aporta información relevante para la construcción del mapa, sin embargo es necesario conocer su representación. Entonces, gracias a esa información y a la Web Semántica, veremos cómo es posible transformar la capa de un mapa a instancias de una clase.
 
-\subsection{Representación de gatos geoespaciales}
+\subsection{Representación de datos geoespaciales}
+\label{ch:capitulo2-representacion}
 
 %\subsubsection{Tipo de datos}
 
@@ -112,11 +113,11 @@ Otra consideración importante de los mapas, es su representación. El mapa se p
 	\label{fig:raster-vectorial}
 \end{figure}
 
-Sin embargo, no es de extrañar que a veces veamos los dos modelos complementados, ya que las herramientas actuales permiten trabajar con ambos a la vez. Un ejemplo de ello es si queremos ubicar en un mapa con puntos las oficinas de correos de la ciudad. Además, existe una gran flexibilidad para transformar los datos de un modelo a otro.\\
+Sin embargo, no es de extrañar que a veces veamos los dos modelos combinados, ya que las herramientas actuales permiten trabajar con ambos a la vez. Un ejemplo de ello es si queremos representar en un mapa con puntos las oficinas de correos de la ciudad. Además, existe una gran flexibilidad para transformar los datos de un modelo a otro.\\
 
 %\subsubsection{Formatos}
 
-A parte de los modelos de datos que acabamos de explicar, existen formatos estandarizados y de uso común para datos espaciales, entre ellos destacamos \textit{WKT} y \textit{GML}. La codificación \textbf{WKT} \textbf{(\textit{Well Known Text})} es una sintaxis en formato ASCII estandarizada, definida por el \textit{Open Geospatial Consortium} (OGC)\footnote{OGC es una organización internacional para crear estándares geoespaciales abiertos que define varios estándares de servicios SIG para diferentes propósitos.} para el intercambio de información espacial en formato vectorial. WKT se puede usar para representar geometrías, sistemas de referencia de coordenadas y transformaciones entre sistemas de referencia de coordenadas. Este estándar se concentra en formas de representar y manipular características simples. Las geometrías representadas usando WKT tienen las siguientes propiedades \cite{wkt-database}:
+A parte de los modelos de datos que acabamos de explicar, existen formatos estandarizados y de uso común para datos espaciales, entre ellos destacamos \textit{GML} y \textit{WKT} (usado en la prueba de concepto). La codificación \textbf{WKT} \textbf{(\textit{Well Known Text})} es una sintaxis en formato ASCII estandarizada, definida por el \textit{Open Geospatial Consortium} (OGC)\footnote{OGC es una organización internacional para crear estándares geoespaciales abiertos que define varios estándares de servicios SIG para diferentes propósitos.} para el intercambio de información espacial en formato vectorial. WKT se puede usar para representar geometrías, sistemas de referencia de coordenadas y transformaciones entre sistemas de referencia de coordenadas. Este estándar se concentra en formas de representar y manipular características simples. Las geometrías representadas usando WKT tienen las siguientes propiedades \cite{wkt-database}:
 
 \begin{itemize}
 	\item Todas las geometrías están cerradas topológicamente, lo que significa que todos los puntos que comprenden el límite de la geometría pertenecen a la geometría.
@@ -124,7 +125,7 @@ A parte de los modelos de datos que acabamos de explicar, existen formatos estan
 	\item Todas las coordenadas dentro de una geometría están en el mismo sistema de referencia de coordenadas.
 \end{itemize} 
 
-Además, está basado en un estándar que define cómo representar las geometrías de los vectores. En la figura \ref{fig:the-classes-of-geometries-in-wkt-figure-from-4} se presenta la jerarquía de clases para geometrías de características simples representadas en WKT.  De todas maneras, sobre este estándar se entrará en detalle en el \texttt{Capítulo 4 }\texttt{(Estándares de Consulta de Información Geográfica y GeoSPARQL)}.
+Además, está basado en un estándar que define cómo representar las geometrías de los vectores. En la figura \ref{fig:the-classes-of-geometries-in-wkt-figure-from-4} se presenta la jerarquía de clases para geometrías de características simples representadas en WKT.  Este estándar se detallará en el \texttt{capítulo \ref{ch:capitulo4}, sección \ref{ch:capitulo4-estandar} Estándar OGC para la Información Geográfica}.
 
 \begin{figure}[H]
 	\centering
@@ -133,7 +134,7 @@ Además, está basado en un estándar que define cómo representar las geometrí
 	\label{fig:the-classes-of-geometries-in-wkt-figure-from-4}
 \end{figure}
 
-En la figura \ref{fig:wkt} se aprecian los objetos que es capaz de describir WKT \cite{wkt}. Por ejemplo, el punto \texttt{POINT(37.96 23.71)} podría usarse para representar la ubicación de la ciudad de Atenas; donde 37.96 es la latitud de Atenas y 23.71 su longitud \cite{wkt-database}.
+En la figura \ref{fig:wkt} se aprecian los objetos que es capaz de describir WKT \cite{wkt}. Por ejemplo, la geometría de punto \texttt{POINT(37.96 23.71)} podría usarse para representar la ubicación de la ciudad de Atenas; donde 37.96 es la latitud de Atenas y 23.71 su longitud \cite{wkt-database}.
 
 \begin{figure}[H]
 	\centering
@@ -142,24 +143,24 @@ En la figura \ref{fig:wkt} se aprecian los objetos que es capaz de describir WKT
 	\label{fig:wkt}
 \end{figure}
 
-Por otro lado, la codificación \textbf{GML} \textbf{(\textit{Geography Markup Language})} es el estándar de codificación basado en XML más común para la representación de datos geoespaciales (figura \ref{fig:a-gml-representation-of-a-point-feature}). GML fue desarrollado por OGC y proporciona esquemas XML para definir una variedad de conceptos que son útiles en Geografía: características geográficas, geometría, sistemas de referencia de coordenadas, topología, tiempo y unidades de medida \cite{wkt-database}. Por eso, este elemento de Geografía codificado en XML, es más ventajoso que WKT, ya que permite expresar más funciones (sistemas de referencia de coordenadas, unidades de medida, tiempo y más tipos de geometría) \cite{tesis-otro}. 
+Por otro lado, la codificación \textbf{GML} \textbf{(\textit{Geography Markup Language})} es el estándar de codificación basado en XML más común para la representación de datos geoespaciales (figura \ref{fig:a-gml-representation-of-a-point-feature}). GML fue desarrollado por OGC y proporciona esquemas XML para definir una variedad de conceptos que son útiles en Geografía: características geográficas, geometría, sistemas de referencia de coordenadas, topología, tiempo y unidades de medida \cite{wkt-database}. Por eso, este elemento de Geografía codificado en XML (figura \ref{fig:a-gml-representation-of-a-point-feature}), es más ventajoso que WKT, ya que permite expresar más información (sistemas de referencia de coordenadas, unidades de medida, tiempo y más tipos de geometría) \cite{tesis-otro}. 
 
 
 \begin{figure}[H]
 	% https://www.researchgate.net/publication/266141194_Geography_20-A_mash-up_perspective
 	\centering
-	\includegraphics[width=0.65\linewidth]{imagenes/capitulo2/A-GML-representation-of-a-point-feature}
+	\includegraphics[width=0.71\linewidth]{imagenes/capitulo2/A-GML-representation-of-a-point-feature}
 	\caption{Ejemplo de GML \cite{gml}}
 	\label{fig:a-gml-representation-of-a-point-feature}
 \end{figure}
 
-EJEMPLO DE SIG
+%EJEMPLO DE SIG
 
-Acabamos de comprobar, como la aparición de los SIG y la inmensa posibilidad que nos dan para operar sobre un mapa pueden servir como impulso para la creación de diversas aplicaciones. Sin embargo, sigue siendo un gran problema compartir estos datos geoespaciales y utilizarlos para el desarrollo de aplicaciones SIG, no porque los datos no estén disponibles sino porque hay una gran cantidad de datos geográficos almacenados en diferentes lugares y con diferentes formatos, lo que dificulta la reutilización de datos para nuevas aplicaciones e imposibilita el intercambio de datos. De tal forma que dichas tareas son difíciles debido a la heterogeneidad de los sistemas existentes en términos de conceptos de modelado de datos, técnicas de codificación de datos y estructuras de almacenamiento. Entonces, gracias a su integración con la Web Semántica se pueden solventar gran parte de las carencias que acabamos de comentar \cite{tesis}.
+La aparición de los SIG y las posibilidades que ofrecen para operar sobre un mapa pueden servir como impulso para la creación de diversas aplicaciones, por ejemplo, en el ámbito ambiental, la planificación de tuberías subterráneas o la gestión de los servicios de emergencia \cite{gisESRI}. Sin embargo, sigue siendo un gran problema compartir estos datos geoespaciales y utilizarlos para el desarrollo de aplicaciones SIG, no porque los datos no estén disponibles sino porque hay una gran cantidad de datos geográficos almacenados en diferentes lugares y con diferentes formatos, lo que dificulta la reutilización de datos para nuevas aplicaciones e imposibilita el intercambio de datos. De tal forma que dichas tareas son difíciles debido a la heterogeneidad de los sistemas existentes en términos de conceptos de modelado de datos, técnicas de codificación de datos y estructuras de almacenamiento. Entonces, gracias a su integración con la Web Semántica, se pueden solventar gran parte de las carencias que acabamos de comentar \cite{tesis}.
 
 \section{?`Qué no es un SIG?}
 
-Hasta ahora hemos visto que los SIG trabajan con Información Geográfica, no obstante existen herramientas que hacen uso y explotan de distinta manera este tipo de información, las cuales pueden incluir tecnologías o sistemas más complejos similares a los SIG pero con un enfoque distinto. Por este motivo, es imprescindible mencionar los programas de \textbf{Diseño Asistido por Ordenador (CAD)}, estas herramientas se pueden dividir básicamente en programas de dibujo 2D y de modelado 3D. Los CAD comparten características comunes con los SIG, pero no lo son \cite{VictorOlaya}, ya que a parte de ser muy usados en áreas como la arquitectura para crear planos en 3D, presentan diferencias con los SIG \cite{sig-cad}:
+Hasta ahora hemos visto que los SIG trabajan con Información Geográfica, no obstante existen herramientas que hacen uso y explotan de distinta manera este tipo de información, las cuales pueden incluir tecnologías o sistemas más complejos similares a los SIG pero con un enfoque totalmente distinto. Por este motivo, es imprescindible mencionar los programas de \textbf{Diseño Asistido por Ordenador (CAD)}, estas herramientas se pueden dividir básicamente en programas de dibujo 2D y de modelado 3D. Los CAD comparten características comunes con los SIG, pero no lo son \cite{VictorOlaya}, ya que aparte de ser muy usados en áreas como la arquitectura para crear planos en 3D, presentan diferencias con los SIG \cite{sig-cad}:
 
 \begin{itemize}
 	
@@ -175,7 +176,7 @@ Hasta ahora hemos visto que los SIG trabajan con Información Geográfica, no ob
 	
 	\item Un dato SIG se almacena como un dato geográfico complejo, mientras que un dato CAD se almacena como un \textit{dibujo} (figura \ref{fig:c4nmjdnwcaaoub7}).
 	
-	\item En un CAD lo habitual es trabajar con un único fichero que contenga distinta información, mientras que en un SIG tradicionalmente se trabaja con un fichero por capa tipo de geometría.
+	\item En un CAD lo habitual es trabajar con un único fichero que contenga distinta información, mientras que en un SIG tradicionalmente se trabaja con un fichero por cada tipo de geometría.
 	
 \end{itemize}
 
@@ -199,11 +200,13 @@ Hasta ahora hemos visto que los SIG trabajan con Información Geográfica, no ob
 
 \section{Tipos de software SIG}
 
-Dentro de los tipos de software disponibles para la manipulación de datos geoespaciales, existen sistemas de software SIG de escritorio tanto comerciales como \textit{open-source}, es decir, libres y no libres. Dentro de los softwares no libres, podemos ubicar los softwares no comerciales, como los creados por empresas u organismos gubernamentales, algunos accesibles desde su plataforma web. Los diferentes proveedores tienen sus propios diseños de software propietario, modelos de datos y estructuras de almacenamiento de bases de datos. Por lo tanto, las bases de datos geográficas basadas en estos diseños no pueden comunicarse sin la conversión de datos. Entonces, para intercambiar información y compartir recursos entre sistemas heterogéneos, se deben desarrollar herramientas de conversión para transferir datos de un formato a otro y así mejorar dicha acesibilidad \cite{libro-gis}. \\
+Dentro de los tipos de software disponibles para la manipulación de datos geoespaciales, existen sistemas de software SIG de escritorio tanto comerciales como \textit{open-source}, es decir, libres y no libres. Dentro de los softwares no libres, podemos ubicar los softwares no comerciales, como los creados por empresas u organismos gubernamentales, algunos de los cuales son accesibles desde su plataforma Web. Por otro lado, los diferentes proveedores tienen sus propios diseños de software propietario, modelos de datos y estructuras de almacenamiento de bases de datos. Por lo tanto, las bases de datos geográficas basadas en estos diseños no pueden comunicarse sin la conversión de datos. Entonces, para intercambiar información y compartir recursos entre sistemas heterogéneos, se deben desarrollar herramientas de conversión para transferir datos de un formato a otro y así mejorar dicha acesibilidad \cite{libro-gis}. \\
 
 % Es improbable que todas las aplicaciones GIS utilicen el mismo software. Los diferentes proveedores tienen sus propios diseños de software propietario, modelos de datos y estructuras de almacenamiento de bases de datos. Por lo tanto, las bases de datos geográficas basadas en estos diseños no pueden comunicarse sin la conversión de datos. Para intercambiar información y compartir recursos de geo-bases de datos computacionales entre sistemas heterogéneos, se deben desarrollar herramientas de conversión para transferir datos de un formato a otro. Además, estas diversas estructuras de bases de datos SIG de escritorio hacen que el intercambio de datos remoto y el intercambio sean más difíciles debido a la accesibilidad limitada y la conversión de datos requerida.\\
 
-Por otro lado, también podemos encontrar otro tipo de software relacionados con la posibilidad de compartir datos a través de la Web, conocidos como Web SIG (\textit{Esri’s ArcGIS Server}, \textit{MapInfo’s MapExtrem}e). Estos programas ofrecen mejores herramientas para compartir datos en la Web, no obstante tienen los mismos problemas de los diseños del software propietario, los modelos de datos y las estructuras de almacenamiento de bases de datos \cite{libro-gis}. El intercambio de datos, facilitado por los avances en las tecnologías de red, se ve obstaculizado por la incompatibilidad de la variedad de modelos y formatos de datos utilizados en diferentes sitios. En la tabla \ref{softwaresSIG} mostramos los software SIG más usados a nivel nacional, sin olvidarnos de que cada país u organismo puede hacer uso de otros.
+Por otra parte, también podemos encontrar otro tipo de software relacionado con la posibilidad de compartir datos a través de la Web, conocidos como Web SIG (\textit{Esri’s ArcGIS Server} o \textit{MapInfo’s MapExtreme}). Estos programas ofrecen mejores herramientas para compartir datos en la Web, no obstante tienen los mismos problemas de los diseños del software propietario, los modelos de datos y las estructuras de almacenamiento de bases de datos \cite{libro-gis}. El intercambio de datos, facilitado por los avances en las tecnologías de red, se ve obstaculizado por la incompatibilidad de la variedad de modelos y formatos de datos utilizados en diferentes sitios. \\
+
+En la tabla \ref{softwaresSIG} mostramos los software SIG más usados a nivel nacional, sin olvidarnos de que cada país u organismo puede hacer uso de otros.
 
 %Internet GIS o Web GIS crea un entorno único para compartir datos geoespaciales. Hay muchos programas de Internet GIS o Web GIS disponibles para compartir datos a través de la Web, como Esri’s ArcGIS Server, Intergraph’s GeoMedia WebMap, MapInfo’s MapExtreme, AutoDesk’s MapGuide, GE SmallWorld’s Internet Application Server y ER Mapper’s Image Web Server.\\
 
@@ -239,11 +242,13 @@ Por otro lado, también podemos encontrar otro tipo de software relacionados con
 \end{table}
 
 
-Entre los SIG de código abierto, es importante subrayar que QGIS es a día hoy el software libre con más proyección. Por eso mismo y por tener conocimientos en el manejo de este programa, voy hacer uso de él para obtener la información relevante de los \textit{Shapefile} a hojas de cálculo y ver su representación. %Además de usar QGIS, también haremos uso de otras herramientas relacionadas con la Web Semántica y que nos permiten integrar Información Geográfica.
+ %Además de usar QGIS, también haremos uso de otras herramientas relacionadas con la Web Semántica y que nos permiten integrar Información Geográfica.
 
 %Además, como hemos ido viendo a lo largo del capítulo, existen miles de aplicaciones en el mundo de los SIG, los cuales caen fuera del ámbito de este trabajo, sin embargo, nos centraremos en general en el análisis de los MDT y, en particular, en su aplicación para obtener el mapa de sombras. De todos modos, comentaremos algunos estudios y/o aplicaciones adicionales. En el siguiente capítulo, profundizamos sobre todos estos temas mencionados.
 
 
 \section{Conclusiones}
 
-Este capítulo ha introducido los SIG como a un término amplio que hace referencia a una amplia familia de estándares, tecnologías y herramientas de software para almacenar, editar, analizar, mostrar e integrar datos espaciales. Dichos datos espaciales necesitan hacer uso de un sistema de referencia con el que poder expresar la situación de un punto dado; entre los sistemas que existen en la actualidad debemos destacar \textit{UTM} y \textit{WGS4}. No obstante, en España se utiliza el oficial en Europa, \textit{ETRS89 (European Terrestrial Reference System 1989)}, y será el que usen nuestros datos geográficos. Respecto los datos geoespaciales, vamos a coger datos en formato \textit{Shapefiles} procedentes del Instituto de Estadística y Cartografía de Andalucía, en donde nos centraremos en las capas de edificaciones (geometría de polígonos), curvas de nivel (geometría de líneas) y puntos de cota (geometría de puntos) procedentes de Ogíjares (Granada). Por otro lado, para comprobar la visualización de dicha información haremos uso del software QGIS, además este software nos permitirá obtener la codificación WKT para la representación de las geometrías, debido a que este formato es el empleado en la representación de la estructura para los datos geográficos de la Web Semántica en las consultas con GeoSPARQL.
+Este capítulo ha introducido los SIG como a un término amplio que hace referencia a una amplia familia de estándares, tecnologías y herramientas de software para almacenar, editar, analizar, mostrar e integrar datos espaciales. Dichos datos espaciales necesitan hacer uso de un sistema de referencia con el que poder expresar la situación de un punto dado; entre los sistemas que existen en la actualidad debemos destacar \textit{UTM} y \textit{WGS4}. No obstante, en España se utiliza el oficial en Europa, \textit{ETRS89 (European Terrestrial Reference System 1989)}. Entre los SIG de código abierto, es importante subrayar que QGIS es a día hoy el software libre con más proyección. Además este software nos permitirá obtener la codificación WKT para la representación de las geometrías, debido a que este formato es el empleado en la representación de la estructura para los datos geográficos de la Web Semántica en las consultas con GeoSPARQL.
+
+%Este capítulo ha introducido los SIG como a un término amplio que hace referencia a una amplia familia de estándares, tecnologías y herramientas de software para almacenar, editar, analizar, mostrar e integrar datos espaciales. Dichos datos espaciales necesitan hacer uso de un sistema de referencia con el que poder expresar la situación de un punto dado; entre los sistemas que existen en la actualidad debemos destacar \textit{UTM} y \textit{WGS4}. No obstante, en España se utiliza el oficial en Europa, \textit{ETRS89 (European Terrestrial Reference System 1989)}, y será el que usen nuestros datos geográficos. Respecto los datos geoespaciales, vamos a coger datos en formato \textit{Shapefiles} procedentes del Instituto de Estadística y Cartografía de Andalucía, en donde nos centraremos en las capas de edificaciones (geometría de polígonos), curvas de nivel (geometría de líneas) y puntos de cota (geometría de puntos) procedentes de Ogíjares (Granada). Entre los SIG de código abierto, es importante subrayar que QGIS es a día hoy el software libre con más proyección. Por eso mismo y por tener conocimientos en el manejo de este programa, voy hacer uso de él para obtener la información relevante de los \textit{Shapefile} a hojas de cálculo y para ver su representación. Además este software nos permitirá obtener la codificación WKT para la representación de las geometrías, debido a que este formato es el empleado en la representación de la estructura para los datos geográficos de la Web Semántica en las consultas con GeoSPARQL.

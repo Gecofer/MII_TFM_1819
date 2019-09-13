@@ -1,22 +1,24 @@
 % Realizar el mismo ejemplo en ambos y comparar mejoras, deficiencias de cada uno, diferencias..
 
 \chapter{Estándares de Consulta de Información Geográfica y GeoSPARQL}
-\label{ch:ge}
+\label{ch:capitulo4}
 
 \begin{quote}
   {\bf\textsc{Resumen:}} Este capítulo define la arquitectura común que presentan las geometrías de características simples, estándar definido por OGC, y en el cual se basa el lenguaje de consulta geoespacial GeoSPARQL que vamos a usar en la prueba de concepto. Los conocimientos expuestos en este capítulo hacen referencia al nexo de unión existente entre las áreas de SIG y Web Semántica.
 \end{quote}
 
-\section{Estándares para la Información Geográfica y GeoSPARQL}
+%\section{Estándares para la Información Geográfica y GeoSPARQL}
+\section{Introducción}
 
-Uno de los objetivos del presente trabajo es estudiar las herramientas de la Web Semántica que se pueden utilizar para representar e incorporar Información Geográfica. Para ello es necesario conocer el nexo de unión que guardan ambos ámbitos aquí expuestos, puesto que al crear y desarrollar la ontología geoespacial GEOARES es necesario prestar especial atención a los estándares definidos por OGC, para su adecuada definición.
+Uno de los objetivos del presente trabajo es estudiar las herramientas de la Web Semántica que se pueden usar para representar e incorporar Información Geográfica. Para ello es necesario conocer el nexo de unión que guardan ambos ámbitos aquí expuestos para su adecuada utilización conjunta.
 
 
-\subsection{Estándar OGC para la Información Geográfica}
+\section{Estándar OGC para la Información Geográfica}
+\label{ch:capitulo4-estandar}
 
-El estándar expuesto en este apartado establece una arquitectura común y define los términos a usar dentro de dicha arquitectura para la representación geográfica y nivel lógico. La representación geográfica que vamos a usar se basa en el estándar \textit{ANSI/ISO SQL} y \textit{SQL/MM Part 3: Spatial}, definido por el organismo OGC, que contiene: jerarquía de clases y funciones estándar para datos espaciales en SQL \cite{AsignaturaSIG}.\\
+El estándar expuesto en este apartado establece una arquitectura común y define los términos a usar dentro de dicha arquitectura para la representación geográfica y nivel lógico. La representación geográfica que vamos a usar se basa en el estándar muy parecido a \textit{ANSI/ISO SQL} y \textit{SQL/MM Part 3: Spatial}, definido por el organismo OGC, que contiene: jerarquía de clases y funciones estándar para datos espaciales en SQL \cite{AsignaturaSIG}.\\
 
-En la figura \ref{fig:the-clases-geometry} se presenta la jerarquía de clases para geometrías de características simples, y como se observa es la misma que la mostrada en la figura \ref{fig:the-classes-of-geometries-in-wkt-figure-from-4} para la codificación WKT, vista en el \texttt{Capítulo 2}.
+En la figura \ref{fig:the-clases-geometry} se presenta la jerarquía de clases para geometrías de características simples y como se puede observar es la misma que la mostrada en la figura \ref{fig:the-classes-of-geometries-in-wkt-figure-from-4} para la codificación WKT, presentada en el \texttt{capítulo \ref{ch:capitulo2}, sección \ref{ch:capitulo2-representacion} Representación de datos geoespaciales}.
 
 \begin{figure}[H]
 	\centering
@@ -36,37 +38,37 @@ Entonces, la figura \ref{fig:the-clases-geometry} muestra el modelo de objetos p
 	
 	\item \textit{\textbf{LineString}}: es un subtipo de la clase \textit{Curve}, no tiene intersecciones propias y es cerrada si su punto de inicio es igual a su punto final.
 	
-	\item \textit{\textbf{Line}}: \textit{LineString} con exactamente dos puntos. 
+	\item \textit{\textbf{Line}}: es un subtipo de \textit{LineString} con exactamente dos puntos. 
 	
-	\item \textit{\textbf{LinearRing}}: \textit{LineString} cerrada y simple. 
+	\item \textit{\textbf{LinearRing}}: es un subtipo de \textit{LineString} cerrada y simple. 
 	
 	\item \textit{\textbf{Surface}}: es una geometría bidimensional (p.e. polígono con agujeros).% Esta clase es abstracta. %(es decir, no puede ser instanciada). %Una superficie simple puede consistir en un solo "parche" que tiene un límite "exterior" y 0 o más límites "interiores" (por ejemplo, un polígono con agujeros) .
 	
-	\item \textbf{Polygon}: \textit{Surface} simple plana que tiene exactamente un límite exterior y puede tener varios límites interiores que no se cruzan. %Cada polígono está topológicamente cerrado y no se cruzan dos límites. 
+	\item \textbf{Polygon}: es un subtipo de \textit{Surface} simple plana que tiene exactamente un límite exterior y puede tener varios límites interiores que no se cruzan. %Cada polígono está topológicamente cerrado y no se cruzan dos límites. 
 	
-	\item \textit{\textbf{Triangle}}: es un \textit{Polygon} con 3 vértices distintos no colineales y sin límite interior. 
+	\item \textit{\textbf{Triangle}}: es un subtipo de \textit{Polygon} con 3 vértices distintos no colineales y sin límite interior. 
 	
-	\item \textbf{\textit{Polyhedral Surface}}: es una colección contigua de \textit{Polygon} que comparten segmentos límite comunes. %Cada par de polígonos que tocan tienen un límite común que se expresa como una colección finita de cadenas de líneas. 
+	\item \textbf{\textit{Polyhedral Surface}}: es una colección contigua de \textit{Polygon} que comparte segmentos en los límites comunes. %Cada par de polígonos que tocan tienen un límite común que se expresa como una colección finita de cadenas de líneas. 
 	
 	\item \textit{\textbf{Triangulated Irregular Network}}: un conjunto de puntos de triangulación para representar superficies en 3D.
 	
 	\item \textit{\textbf{Geometry Collection}}:  es un conjunto de geometrías distintas. 
 		
-	\item \textit{\textbf{MultiPoint}}: esta es una colección de geometría cuyos elementos son \textit{Point} que no están conectados.
+	\item \textit{\textbf{MultiPoint}}: es un subtipo de \textit{Geometry Collection} cuyos elementos son \textit{Point} que no están conectados.
 	
-	\item \textit{\textbf{MultiCurve}}: es una colección de geometría con elementos son \textit{Curve}.
+	\item \textit{\textbf{MultiCurve}}: es un subtipo de \textit{Geometry Collection} cuyos elementos son \textit{Curve}.
 	
-	\item \textit{\textbf{MultiLineString}}: es una colección de geometría cuyos elementos son \textit{LineString}. 
+	\item \textit{\textbf{MultiLineString}}: es un subtipo de \textit{Geometry Collection} cuyos elementos son \textit{LineString}. 
 	
-	\item \textit{\textbf{MultiSurface}}: es una colección de geometría bidimensional cuyos elementos son \textit{Surface}.  
+	\item \textit{\textbf{MultiSurface}}: es un subtipo de \textit{Geometry Collection} bidimensional cuyos elementos son \textit{Surface}.  
 	
-	\item \textit{\textbf{MultiPolygon}}: es una colección de superficies múltiples cuyos elementos son polígonos. Los límites de cada polígono pueden no cruzarse.
+	\item \textit{\textbf{MultiPolygon}}: es una colección de \textit{MultiSurface} cuyos elementos son \textit{Polygon}. Los límites de cada polígono pueden no cruzarse.
 	
 \end{itemize}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.9\linewidth]{imagenes/capitulo4/ejemplos}
+	\includegraphics[width=1\linewidth]{imagenes/capitulo4/ejemplos}
 	\caption{\textit{OpenGIS Simple Features Access} \cite{imagen-ejemplos}}
 	\label{fig:ejemplos}
 \end{figure}
@@ -80,16 +82,15 @@ Una vez que hemos definido las clases que componen el estándar, es necesario co
 	\label{fig:geometry-class}
 \end{figure}
 
-\subsubsection{Operadores Booleanos de relaciones espaciales}
+\subsection{Operadores booleanos de relaciones espaciales}
 
-Comecemos por los \textbf{métodos para probar las relaciones espaciales entre objetos geométricos} de la clase \textit{Geometry}. Para cada uno de los métodos de la tabla \ref{estandar-funciones}), el tipo de retorno es entero, pero se interpreta como booleano, VERDADERO = 1, FALSO = 0. Corresponde a la parte de \texttt{query} de la figura \ref{fig:geometry-class} \cite{estandar, wkt-database}.
+Comecemos por los \textbf{métodos para probar las relaciones espaciales entre objetos geométricos} de la clase \textit{Geometry}. Para cada uno de los métodos de la tabla \ref{estandar-funciones}, el tipo de retorno es entero, pero se interpreta como booleano, VERDADERO = 1, FALSO = 0. Corresponde a la parte de \texttt{query} de la figura \ref{fig:geometry-class} \cite{estandar, wkt-database}. En la tabla \ref{estandar-funciones} se representan los operadores booleanos de relaciones espaciales, y en las figuras \ref{fig:touches} y \ref{fig:within} se presenta de forma gráfica el resultado de realizar la operación \texttt{Touches} y \texttt{Within}.
 
 
 
-\subsubsection{Métodos de apoyo al análisis espacial}
 
-Por otro lado los \textbf{métodos que apoyan el análisis espacial} de la clase \textit{Geometry} son análisis geométricos que dependen de la precisión de las representaciones de coordenadas y las limitaciones de la interpolación lineal en este estándar. La precisión del resultado a un buen nivel estará limitada por estos y otros problemas relacionados (tabla \ref{estandar-metodos}). Corresponde a la parte de \texttt{analysis} de la figura \ref{fig:geometry-class} \cite{estandar}.
  
+
 
  
  \begin{table}[H]
@@ -114,17 +115,36 @@ Por otro lado los \textbf{métodos que apoyan el análisis espacial} de la clase
 
  \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\linewidth]{imagenes/capitulo4/within}
+	\includegraphics[width=0.69\linewidth]{imagenes/capitulo4/within}
 	\caption{Ejemplos del operador \textit{Within} \cite{estandar}}
 	\label{fig:within}
 \end{figure}
 
  \begin{figure}[H]
  	\centering
- 	\includegraphics[width=0.71\linewidth]{imagenes/capitulo4/touches1}
+ 	\includegraphics[width=0.86\linewidth]{imagenes/capitulo4/touches1}
  	\caption{Ejemplos del operador \textit{Touches} \cite{estandar}}
  	\label{fig:touches}
  \end{figure}
+
+\subsection{Métodos de apoyo al análisis espacial}
+
+Por otro lado los \textbf{métodos que apoyan el análisis espacial} de la clase \textit{Geometry} son análisis geométricos que dependen de la precisión de las representaciones de coordenadas y las limitaciones de la interpolación lineal en este estándar. La precisión del resultado a un buen nivel estará limitada por estos y otros problemas relacionados (tabla \ref{estandar-metodos}). Corresponde a la parte de \texttt{analysis} de la figura \ref{fig:geometry-class} \cite{estandar}. En la tabla \ref{estandar-metodos} se representan los operadores booleanos de relaciones espaciales, y en la figura \ref{fig:ejemplos-metodos} se presenta de forma gráfica la función \texttt{Buffer} y \texttt{ConvexHull}.
+
+
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}[h]{0.38\textwidth} 
+		\includegraphics[width=\textwidth]{imagenes/capitulo4/buffer}
+		\caption{\textit{Buffer}}
+	\end{subfigure}       
+	\begin{subfigure}[h]{0.38\textwidth} 
+		\includegraphics[width=\textwidth]{imagenes/capitulo4/convexHull}
+		\caption{\textit{ConvexHull}}
+	\end{subfigure}
+	\caption{Ejemplos de los métodos \cite{AsignaturaSIG}}
+	\label{fig:ejemplos-metodos}
+\end{figure}
 
 
 \begin{table}[H]
@@ -145,28 +165,16 @@ Por otro lado los \textbf{métodos que apoyan el análisis espacial} de la clase
 	\end{tabular}
 \end{table}
 
-\begin{figure}[H]
-	\centering
-	\begin{subfigure}[h]{0.32\textwidth} 
-		\includegraphics[width=\textwidth]{imagenes/capitulo4/buffer}
-		\caption{\textit{Buffer}}
-	\end{subfigure}       
-	\begin{subfigure}[h]{0.32\textwidth} 
-		\includegraphics[width=\textwidth]{imagenes/capitulo4/convexHull}
-		\caption{\textit{ConvexHull}}
-	\end{subfigure}
-	\caption{Ejemplos de los métodos \cite{AsignaturaSIG}}
-	\label{fig:ejemplos-metodos}
-\end{figure}
 
 
 
  
 
 
-Con esto acabamos de definir los métodos y las funciones para manejar las subclases de las clases de \textit{Geometry}. A continuación, vamos a definir GeoSPARQL, lenguaje de consulta geoespacial muy relacionado con el estándar aquí expuesto.
+Con esto acabamos de mostrar una pincelada de los métodos y las funciones para manejar las subclases de las clases de \textit{Geometry}. Asimismo, estos elementos están incluidos en el lenguaje de consulta SQL que soportan SGBD como PostGIS. A continuación, vamos a definir GeoSPARQL, lenguaje de consulta geoespacial muy relacionado con el estándar aquí expuesto.
 
-\subsection{GeoSPARQL}
+\section{GeoSPARQL}
+\label{ch:capitulo4-geosparql}
 
 % tesis
 % libro
@@ -181,25 +189,12 @@ Con esto acabamos de definir los métodos y las funciones para manejar las subcl
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.9\linewidth]{imagenes/capitulo3/geosparql}
+	\includegraphics[width=1\linewidth]{imagenes/capitulo3/geosparql}
 	\caption{Clases y propiedades básicas de GeoSPARQL \cite{tesis-otro}}
 	\label{fig:geosparql}
 \end{figure}
 
-GeoSPARQL no define un vocabulario completo para representar información espacial, sino que define un conjunto central de clases, propiedades y tipos de datos que se pueden utilizar para construir patrones de consulta (figura \ref{fig:geosparql}) \cite{ogc-geo}. Es un lenguaje muy enfocado para la comunidad SIG. Por otro lado, para poder hacer uso de este tipo de consultas es necesario aplicar las especificaciones del estándar que vienen descritas en la documentación oficial\footnote{\url{https://www.opengeospatial.org/standards/geosparql}}. En la tabla \ref{topo-geosparql} podemos encontrar sus relaciones topológicas, mientras que en la tabla \ref{funciones-geosparql} podemos encontrar funciones de GeoSPARQL que incluyen alternativas de todas las propiedades de relación topológica, aplicadas como funciones en literales de geometría \cite{tesis-otro}. \\
-
-Una decisión de diseño crucial de GeoSPARQL es usar valores literales para codificar geometrías como una sola unidad (puntos, líneas y polígonos,) e introducir dos tipos de datos RDF \texttt{geo:wktLiteral} y \texttt{geo:gmlLiteral} para estos literales. Dicha extensión está parametrizada por el estándar de serialización de OGC para codificar literales de geometría (WKT o GML). En nuestro caso, como ya hemos ido comentando vamos hacer uso del literal  \texttt{geo:wktLiteral}. \texttt{wktLiteral} consiste en un URI opcional que identifica el sistema de referencia de coordenadas seguido de la codificación WKT de una geometría, por ejemplo \cite{wkt-database}: 
-
-\begin{lstlisting}
-# Primera manera para representar el literal wktLiteral
-"POINT(-83.38 33.95)"^^geo:wktLiteral
-
-# Segunda manear para representar el literal wktLiteral
-"<http://www.opengis.net/def/crs/EPSG/0/4326>
-POINT(33.95 -83.38)"^^geo:wktLiteral
-\end{lstlisting}
-
-%Respecto la geometría permite puntos, líneas y polígonos, como vimos en el capítulo anterior y además la representación de la geometría debe de estar codificada en formato WKT 
+GeoSPARQL no define un vocabulario completo para representar información espacial, sino que define un conjunto central de clases, propiedades y tipos de datos que se pueden utilizar para construir patrones de consulta (figura \ref{fig:geosparql}) \cite{ogc-geo}. Es un lenguaje muy enfocado para la comunidad SIG. Por otro lado, para poder hacer uso de este tipo de consultas es necesario aplicar las especificaciones del estándar que vienen descritas en la documentación oficial\footnote{\url{https://www.opengeospatial.org/standards/geosparql}}. En la tabla \ref{topo-geosparql} podemos encontrar sus relaciones topológicas, mientras que en la tabla \ref{funciones-geosparql} podemos encontrar las funciones de GeoSPARQL que incluyen alternativas de todas las propiedades de relación topológica, aplicadas como funciones en literales de geometría \cite{tesis-otro}. 
 
 \begin{table}[H]
 	\caption{Relaciones topológicas con sus significados}
@@ -219,10 +214,6 @@ POINT(33.95 -83.38)"^^geo:wktLiteral
 		\texttt{sfCrosses} &         Por ejemplo, área cruza la línea                \\ \hline		
 	\end{tabular}
 \end{table}
-
-
-También se definen propiedades para representar metadatos de geometrías (por ejemplo, \textit{geo:dimension} que captura la dimensión topológica) o para asociar geometrías con sus literales (\textit{geo:asWKT}). Además, esta extensión define funciones para realizar operaciones no topológicas en geometrías (por ejemplo, \textit{geof:distancie} o \textit{geof:ConvexHull}), las cuales son las mismas definidas anteriormente por el estándar \cite{wkt-database}.
-
 
 \begin{table}[H]
 	\caption{Funciones para comparar y manipular geometrías}
@@ -245,7 +236,28 @@ También se definen propiedades para representar metadatos de geometrías (por e
 	\end{tabular}
 \end{table}
 
-En el apartado siguiente, haremos uso de este lenguaje para la obtención de la información geoespacial deseada, centrándonos en varios ejemplos prácticos, y su uso de cara al futuro.
+Una decisión de diseño crucial de GeoSPARQL es usar valores de literales para codificar geometrías como una sola unidad (puntos, líneas y polígonos) e introducir dos tipos de datos RDF \texttt{geo:wktLiteral} y \texttt{geo:gmlLiteral} para estos literales. Dicha extensión está parametrizada por el estándar de serialización de OGC para codificar literales de geometría (WKT o GML). En nuestro caso, como ya hemos ido comentando vamos hacer uso del literal  \texttt{geo:wktLiteral} que consiste en un URI opcional que identifica el sistema de referencia de coordenadas seguido de la codificación WKT de una geometría, por ejemplo \cite{wkt-database}: 
+
+\vspace*{0.2cm}
+
+\begin{lstlisting}
+# Primera manera para representar el literal wktLiteral
+"POINT(-83.38 33.95)"^^geo:wktLiteral
+
+# Segunda manear para representar el literal wktLiteral
+"<http://www.opengis.net/def/crs/EPSG/0/4326>
+POINT(33.95 -83.38)"^^geo:wktLiteral
+\end{lstlisting}
+
+%Respecto la geometría permite puntos, líneas y polígonos, como vimos en el capítulo anterior y además la representación de la geometría debe de estar codificada en formato WKT 
+
+
+\vspace*{0.2cm}
+
+También se definen propiedades para representar metadatos de geometrías (por ejemplo, \texttt{geo:dimension} que captura la dimensión topológica) o para asociar geometrías con sus literales (\texttt{geo:asWKT}). Además, esta extensión define funciones para realizar operaciones no topológicas en geometrías (por ejemplo, \texttt{geof:distance} o \texttt{geof:ConvexHull}), las cuales son las mismas definidas anteriormente por el estándar \cite{wkt-database}.\\
+
+
+En el apartado siguiente (\texttt{capítulo \ref{ch:capitulo5}}), haremos uso de este lenguaje para la obtención de la información geoespacial deseada, centrándonos en varios ejemplos prácticos, y su uso de cara al futuro.
 
 \section{Conclusiones}
 

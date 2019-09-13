@@ -12,7 +12,7 @@
 \thispagestyle{empty}
 
 \begin{center} 
-	\large{\textbf{Integración de Información Geográfica en la Web Semántica:\\ SUBTÍTULO}}\\
+	\large{\textbf{Integración de Información Geográfica en la Web Semántica:\\ Ontología GEOARES}}\\
 	\vspace{0.25in}
 	Gema Correa Fernández
 \end{center}
@@ -22,11 +22,13 @@
 
 % Este trabajo tiene como objetivo el análisis de Información Geográfica mediante el uso de las herramientas QGIS y R, herramientas de software libre de amplia difusión. En particular, está centrado en el estudio del Modelo Digital del Terreno. Para entender el ámbito, se contextualizan y desarrollan los conceptos necesarios del área de los Sistemas de Información Geográfica. El Modelo Digital del Terreno es un modelo de datos que permite la realización de análisis sofisticados; estos análisis se pueden realizar tanto en QGIS como en R. En el trabajo se profundizan y se estudian los análisis considerados más relevantes para este ámbito con ambas herramientas, realizando una comparación y evaluación de ambas. A modo de ejemplo se realiza el análisis para la parte occidental de la Vega de Granada. Los datos utilizados y las funciones desarrolladas mediante paquetes existentes de R, se han estructurado en forma de un nuevo paquete. Por el enfoque que se realiza, este trabajo puede resultar de utilidad para aquellas personas que se adentran en este tema.
 
-Este trabajo tiene como objetivo estudiar las herramientas de la Web Semántica que se pueden utilizar para representar e integrar Información Geográfica. En particular, está centrado en valorar las posibles herramientas que ofrece la Web Semántica y en el desarrollo de una prueba de concepto con Información Geográfica procedente de la provincia de Granada. Para entender el ámbito, se contextualizan y desarrollan los conceptos necesarios del área de los Sistemas de Información Geográfica, además de comprender los conceptos clave de la Web Semántica, que ofrece mecanismos muy útiles para la integración de información y estándares de representación de Información Geográfica mediante diversas herramientas. Por el enfoque que se realiza, este trabajo puede resultar de utilidad para aquellas personas que quieren seguir aprendiendo sobre los Sistemas de Información en un ámbito distinto.
+Este trabajo tiene como objetivo estudiar las herramientas de la Web Semántica que se pueden utilizar para representar e integrar Información Geográfica. En particular, está centrado en valorar las posibles herramientas y tecnologías que ofrece la Web Semántica mediante el desarrollo de una prueba de concepto con Información Geográfica procedente de la provincia de Granada, a través de la creación de la ontología GEOARES. Para entender el ámbito de aplicación, se contextualizan y desarrollan los conceptos necesarios en el ámbito de los Sistemas de Información Geográfica y Web Semántica, esta última área ofrece mecanismos muy útiles para la representación de estándares e incorporación de información geoespacial. Gracias a la capa semántica que ofrecen los Sistemas de Información Geográfica es posible agregar conocimiento de dominio sobre la estructura de los datos de la Web Semántica y consultar dicha información haciendo uso de los estándares definidos. Por el enfoque que se realiza, este trabajo puede resultar de utilidad para aquellas personas que quieren seguir aprendiendo sobre los Sistemas de Información Geográfica en un ámbito distinto y quieren adentrarse en la Web Semántica.
+
+
 
 \vspace{0.25in}
 
-{\bf Palabras-clave:} Sistema de Información Geográfica, SIG, Web actual, Web Semántica, OWL, RDF, GEOSPARQL, Shapefile, Protegé, GraphBD.
+{\bf Palabras-clave:} Sistemas de Información Geográfica, SIG, Web actual, Web Semántica, OWL, RDF, SPARQL, GeoSPARQL, Shapefile, QGIS, R,  Protegé, GraphBD.
 
 \cleardoublepage
 
@@ -35,18 +37,19 @@ Este trabajo tiene como objetivo estudiar las herramientas de la Web Semántica 
 
 
 \begin{center} 
-	\large{\textbf{TÍTULO EN INGLÉS:\\ SUBTÍTULO EN INGLÉS}}\\
+	\large{\textbf{Integration of Geographic Information in the Semantic Web:\\ GEOARES Ontology}}\\
 	\vspace{0.25in}
 	Gema Correa Fernández
 \end{center}
 
 \section*{Abstract} 
 
+The purpose of this project is study the tools of the Semantic Web that can be used to represent and integrate Geographic Information. In particular, it is focused on assessing the possible tools and technologies offered by the Semantic Web by developing a proof of concept with Geographic Information from the province of Granada, through the creation of the GEOARES ontology. To understand the scope, the necessary concepts are contextualized and developed in the field of Geographic Information Systems and Semantic Web, the latter area offers very useful mechanisms for the representation of standards and incorporation of geospatial information. Thanks to the semantic layer offered by the Geographic Information Systems it is possible to add domain knowledge about the structure of the data of the Semantic Web and consult this information using the defined standards. Due to the approach carried out, this work can be useful for those who want to continue learning about Geographic Information Systems in a different area and want to enter the Semantic Web.
 
 
 \vspace{0.25in}
 
-{\bf Key-words:} 
+{\bf Key-words:} Geographic Information Systems, GIS, Current Web, Semantic Web, OWL, RDF, SPARQL, GeoSPARQL, Shapefile, QGIS, R, Protegé, GraphBD.
 
 \chapter*{}
 \thispagestyle{empty}
@@ -81,7 +84,7 @@ D. \textbf{José Samos Jiménez}, Profesor del Departamento de Lenguajes y Siste
 
 \vspace{0.5cm}
 
-Que el presente trabajo, titulado \textit{\textbf{Integración de Información Geográfica en la Web Semántica, SUBTÍTULO}},
+Que el presente trabajo, titulado \textit{\textbf{Integración de Información Geográfica en la Web Semántica, Ontología GEOARES}},
 ha sido realizado bajo su supervisión por \textbf{Gema Correa Fernández}, y autorizamos la defensa de dicho trabajo ante el tribunal que corresponda.
 
 \vspace{0.5cm}
@@ -100,8 +103,8 @@ Y para que conste, expiden y firman el presente informe en Granada a \today.
 \thispagestyle{empty}
 
        \vspace{1cm}
-
-% A mi apoyo incondicional durante casi 17 años, quién me enseñó a luchar en los momentos más díficiles y a no rendirme bajo ningún concepto.\\
+       
+ A toda esa gente que ha estado acompañandome durante este etapa, familia, amigos y profesores. Gracias a vosotros he crecido tanto personal como profesionalmente. Pero sobretodo quiero agradecer a mi apoyo incondicional durante casi 17 años, quién me ha enseñado a luchar en los momentos más díficiles y a no rendirme bajo ningún concepto.\\
 
 % A toda esa gente que ha estado acompañandome durante este tiempo, familia, amigos y profesores. Gracias a vosotros he crecido tanto personal como profesionalmente.
 
